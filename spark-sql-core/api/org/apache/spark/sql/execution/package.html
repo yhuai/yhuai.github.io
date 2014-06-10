@@ -185,7 +185,8 @@ group.</p>
         <a href="ExplainCommandPhysical.html"><span class="name">ExplainCommandPhysical</span></a><span class="params">(<span name="child">child: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="output">output: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.UnaryNode">UnaryNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
-      
+      <p class="comment cmt">:: DeveloperApi ::
+</p>
     </li><li name="org.apache.spark.sql.execution.Filter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="FilterextendsSparkPlanwithUnaryNodewithProductwithSerializable"></a>
       <a id="Filter:Filter"></a>
@@ -310,6 +311,20 @@ Take the first limit elements.</p>
       </span>
       <span class="symbol">
         <a href="Sample.html"><span class="name">Sample</span></a><span class="params">(<span name="fraction">fraction: <span class="extype" name="scala.Double">Double</span></span>, <span name="withReplacement">withReplacement: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span></span>, <span name="child">child: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.UnaryNode">UnaryNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">:: DeveloperApi ::
+</p>
+    </li><li name="org.apache.spark.sql.execution.SetCommandPhysical" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SetCommandPhysicalextendsSparkPlanwithLeafNodewithProductwithSerializable"></a>
+      <a id="SetCommandPhysical:SetCommandPhysical"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SetCommandPhysical.html"><span class="name">SetCommandPhysical</span></a><span class="params">(<span name="key">key: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="value">value: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="output">output: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.LeafNode">LeafNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::

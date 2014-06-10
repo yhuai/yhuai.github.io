@@ -107,8 +107,21 @@
       </span>
       </h4>
       
+    </li><li name="org.apache.spark.sql.SQLConf" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SQLConfextendsAnyRef"></a>
+      <a id="SQLConf:SQLConf"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SQLConf.html"><span class="name">SQLConf</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">SQLConf holds mutable config parameters and hints.</p>
     </li><li name="org.apache.spark.sql.SQLContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SQLContextextendsorg.apache.spark.sql.LoggingwithExpressionConversionswithSerializable"></a>
+      <a id="SQLContextextendsorg.apache.spark.sql.LoggingwithSQLConfwithExpressionConversionswithSerializable"></a>
       <a id="SQLContext:SQLContext"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -116,7 +129,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SQLContext.html"><span class="name">SQLContext</span></a><span class="result"> extends <a href="#Logging=com.typesafe.scalalogging.slf4j.Logging" class="extmbr" name="org.apache.spark.sql.Logging">Logging</a> with <span class="extype" name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions">ExpressionConversions</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="SQLContext.html"><span class="name">SQLContext</span></a><span class="result"> extends <a href="#Logging=com.typesafe.scalalogging.slf4j.Logging" class="extmbr" name="org.apache.spark.sql.Logging">Logging</a> with <a href="SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a> with <span class="extype" name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions">ExpressionConversions</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">:: AlphaComponent ::

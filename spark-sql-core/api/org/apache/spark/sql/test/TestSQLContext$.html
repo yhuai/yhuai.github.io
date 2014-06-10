@@ -41,7 +41,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A SQLContext that can be used for local testing.</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions">ExpressionConversions</span>, <span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions">ExpressionConversions</span>, <a href="../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -59,7 +59,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.apache.spark.sql.test.TestSQLContext"><span>TestSQLContext</span></li><li class="in" name="org.apache.spark.sql.SQLContext"><span>SQLContext</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions"><span>ExpressionConversions</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.apache.spark.sql.test.TestSQLContext"><span>TestSQLContext</span></li><li class="in" name="org.apache.spark.sql.SQLContext"><span>SQLContext</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions"><span>ExpressionConversions</span></li><li class="in" name="org.apache.spark.sql.SQLConf"><span>SQLConf</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -354,6 +354,19 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLConf#contains" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="contains(key:String):Boolean"></a>
+      <a id="contains(String):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">contains</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.SQLContext#createParquetFile" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
       <a id="createParquetFile[A&lt;:Product](path:String,allowExisting:Boolean,conf:org.apache.hadoop.conf.Configuration)(implicitevidence$2:reflect.runtime.universe.TypeTag[A]):org.apache.spark.sql.SchemaRDD"></a>
       <a id="createParquetFile[A&lt;:Product](String,Boolean,Configuration)(scala.reflect.api.JavaUniverse.TypeTag[A]):SchemaRDD"></a>
@@ -422,6 +435,19 @@ sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></d
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLContext#emptyResult" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="emptyResult:org.apache.spark.rdd.RDD[org.apache.spark.sql.Row]"></a>
+      <a id="emptyResult:RDD[Row]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">emptyResult</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="org.apache.spark.sql">org.apache.spark.sql</a>] </dd><dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -506,6 +532,45 @@ sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></d
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLConf#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get(key:String,defaultValue:String):String"></a>
+      <a id="get(String,String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="defaultValue">defaultValue: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLConf#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get(key:String):String"></a>
+      <a id="get(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLConf#getAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getAll:Array[(String,String)]"></a>
+      <a id="getAll:Array[(String,String)]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getAll</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -519,6 +584,19 @@ sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></d
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLConf#getOption" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getOption(key:String):Option[String]"></a>
+      <a id="getOption(String):Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getOption</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -570,8 +648,8 @@ sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></d
         <span class="name">jsonFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="mode">mode: <a href="../json/SchemaResolutionMode.html" class="extype" name="org.apache.spark.sql.json.SchemaResolutionMode">SchemaResolutionMode</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">EagerSchemaResolution</a></span></span></span>)</span><span class="result">: <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Loads a JSON file, returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a JSON file, returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.
-Right now, we only do eager schema resolution.
+      <p class="shortcomment cmt">Loads a JSON file (one object per line), returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a JSON file (one object per line), returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>. The schema
+of the returned <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> is inferred based on the method specified by <code>mode</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.SQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="jsonRDD(json:org.apache.spark.rdd.RDD[String],mode:org.apache.spark.sql.json.SchemaResolutionMode):org.apache.spark.sql.SchemaRDD"></a>
@@ -585,10 +663,10 @@ Right now, we only do eager schema resolution.
         <span class="name">jsonRDD</span><span class="params">(<span name="json">json: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="mode">mode: <a href="../json/SchemaResolutionMode.html" class="extype" name="org.apache.spark.sql.json.SchemaResolutionMode">SchemaResolutionMode</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">EagerSchemaResolution</a></span></span></span>)</span><span class="result">: <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Loads a RDD[String] storing JSON objects (one object per record),
-returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a RDD[String] storing JSON objects (one object per record),
-returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.
-Right now, we only do eager schema resolution.
+      <p class="shortcomment cmt">Loads a RDD[String] storing JSON objects (one object per record), returning the result as a
+<a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a RDD[String] storing JSON objects (one object per record), returning the result as a
+<a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>. The schema of the returned <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> is inferred based on the method
+specified by <code>mode</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="com.typesafe.scalalogging.slf4j.Logging#logger" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logger:com.typesafe.scalalogging.slf4j.Logger"></a>
@@ -637,19 +715,6 @@ them directly is not recommended.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
-    </li><li name="org.apache.spark.sql.SQLContext#mkQueryExecution" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="mkQueryExecution(plan:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan):SQLContext.this.QueryExecution{vallogical:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan}"></a>
-      <a id="mkQueryExecution(LogicalPlan):QueryExecution{vallogical:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan}"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">mkQueryExecution</span><span class="params">(<span name="plan">plan: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>)</span><span class="result">: <a href="#QueryExecutionextendsAnyRef" class="extmbr" name="org.apache.spark.sql.SQLContext.QueryExecution">QueryExecution</a> { val logical: org.apache.spark.sql.catalyst.plans.logical.LogicalPlan }</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="org.apache.spark.sql">org.apache.spark.sql</a>] </dd><dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -786,6 +851,32 @@ inserting shuffle operations as needed.
       <p class="shortcomment cmt">Registers the given RDD as a temporary table in the catalog.</p><div class="fullcomment"><div class="comment cmt"><p>Registers the given RDD as a temporary table in the catalog.  Temporary tables exist only
 during the lifetime of this instance of SQLContext.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLConf#set" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set(key:String,value:String):Unit"></a>
+      <a id="set(String,String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLConf#set" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set(props:java.util.Properties):Unit"></a>
+      <a id="set(Properties):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="params">(<span name="props">props: <span class="extype" name="java.util.Properties">Properties</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#shortToLiteral" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="shortToLiteral(s:Short):org.apache.spark.sql.catalyst.expressions.Literal"></a>
       <a id="shortToLiteral(Short):Literal"></a>
@@ -891,6 +982,19 @@ during the lifetime of this instance of SQLContext.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLConf#toDebugString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toDebugString:String"></a>
+      <a id="toDebugString:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toDebugString</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a></dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
@@ -991,6 +1095,8 @@ during the lifetime of this instance of SQLContext.
               <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
             </div><div class="parent" name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions">
               <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions">ExpressionConversions</span></h3>
+            </div><div class="parent" name="org.apache.spark.sql.SQLConf">
+              <h3>Inherited from <a href="../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a></h3>
             </div><div class="parent" name="com.typesafe.scalalogging.slf4j.Logging">
               <h3>Inherited from <span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span></h3>
             </div><div class="parent" name="scala.AnyRef">
