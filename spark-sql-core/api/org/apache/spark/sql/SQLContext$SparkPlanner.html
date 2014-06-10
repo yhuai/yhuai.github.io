@@ -97,7 +97,20 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="org.apache.spark.sql.catalyst.planning.QueryPlanner.Strategy" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
+              <ol><li name="org.apache.spark.sql.execution.SparkStrategies.CommandStrategy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CommandStrategyextendsSparkStrategies.this.StrategywithProductwithSerializable"></a>
+      <a id="CommandStrategy:CommandStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">CommandStrategy</span><span class="result"> extends <a href="#Strategyextendsorg.apache.spark.sql.Logging" class="extmbr" name="org.apache.spark.sql.SQLContext.SparkPlanner.Strategy">Strategy</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SparkStrategies</dd></dl></div>
+    </li><li name="org.apache.spark.sql.catalyst.planning.QueryPlanner.Strategy" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="Strategyextendsorg.apache.spark.sql.Logging"></a>
       <a id="Strategy:Strategy"></a>
       <h4 class="signature">
@@ -231,6 +244,19 @@
       </span>
       <span class="symbol">
         <span class="name">HashJoin</span><span class="result"> extends <a href="#Strategyextendsorg.apache.spark.sql.Logging" class="extmbr" name="org.apache.spark.sql.SQLContext.SparkPlanner.Strategy">Strategy</a> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.PredicateHelper">PredicateHelper</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SparkStrategies</dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkStrategies.LeftSemiJoin" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="LeftSemiJoin"></a>
+      <a id="LeftSemiJoin:LeftSemiJoin"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <span class="name">LeftSemiJoin</span><span class="result"> extends <a href="#Strategyextendsorg.apache.spark.sql.Logging" class="extmbr" name="org.apache.spark.sql.SQLContext.SparkPlanner.Strategy">Strategy</a> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.PredicateHelper">PredicateHelper</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SparkStrategies</dd></dl></div>

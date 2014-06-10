@@ -2,17 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>JsonTable - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.json.JsonTable</title>
-          <meta name="description" content="JsonTable - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.json.JsonTable" />
-          <meta name="keywords" content="JsonTable Spark 1.1.0 ScalaDoc org.apache.spark.sql.json.JsonTable" />
+          <title>DebugQuery - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.execution.debug.DebugQuery</title>
+          <meta name="description" content="DebugQuery - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.execution.debug.DebugQuery" />
+          <meta name="keywords" content="DebugQuery Spark 1.1.0 ScalaDoc org.apache.spark.sql.execution.debug.DebugQuery" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../../../index.html';
-            var hash = 'org.apache.spark.sql.json.JsonTable$';
+            var url = '../../../../../../index.html';
+            var hash = 'org.apache.spark.sql.execution.debug.package$$DebugQuery';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -22,34 +22,31 @@
    	  </script>
     
         </head>
-        <body class="value">
+        <body class="type">
       <div id="definition">
-        <img src="../../../../../lib/object_big.png" />
-        <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.apache">apache</a>.<a href="../../package.html" class="extype" name="org.apache.spark">spark</a>.<a href="../package.html" class="extype" name="org.apache.spark.sql">sql</a>.<a href="package.html" class="extype" name="org.apache.spark.sql.json">json</a></p>
-        <h1>JsonTable</h1>
+        <img src="../../../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../../../package.html" class="extype" name="org">org</a>.<a href="../../../../package.html" class="extype" name="org.apache">apache</a>.<a href="../../../package.html" class="extype" name="org.apache.spark">spark</a>.<a href="../../package.html" class="extype" name="org.apache.spark.sql">sql</a>.<a href="../package.html" class="extype" name="org.apache.spark.sql.execution">execution</a>.<a href="package.html" class="extype" name="org.apache.spark.sql.execution.debug">debug</a></p>
+        <h1>DebugQuery</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="modifier">implicit </span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">JsonTable</span><span class="result"> extends <a href="../package.html#Logging=com.typesafe.scalalogging.slf4j.Logging" class="extmbr" name="org.apache.spark.sql.Logging">Logging</a></span>
+        <span class="name">DebugQuery</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>:: Experimental ::
-Converts a JSON file to a SparkSQL logical query plan.  This implementation is only designed to
-work on JSON files that have mostly uniform schema.  The conversion suffers from the following
-limitation:</p><ul><li>The data is optionally sampled to determine all of the possible fields. Any fields that do
-   not appear in this sample will not be included in the final output.
-</li></ul></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Experimental</span><span class="args">()</span>
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>:: DeveloperApi ::
+Augments SchemaRDDs with debug methods.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@DeveloperApi</span><span class="args">()</span>
               
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -67,7 +64,7 @@ limitation:</p><ul><li>The data is optionally sampled to determine all of the po
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.apache.spark.sql.json.JsonTable"><span>JsonTable</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.apache.spark.sql.execution.debug.DebugQuery"><span>DebugQuery</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -85,7 +82,23 @@ limitation:</p><ul><li>The data is optionally sampled to determine all of the po
 
       <div id="template">
         <div id="allMembers">
-        
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="org.apache.spark.sql.execution.debug.DebugQuery#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(query:org.apache.spark.sql.SchemaRDD):org.apache.spark.sql.execution.debug.package.DebugQuery"></a>
+      <a id="&lt;init&gt;:DebugQuery"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">DebugQuery</span><span class="params">(<span name="query">query: <a href="../../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>)</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
 
         
 
@@ -158,19 +171,6 @@ limitation:</p><ul><li>The data is optionally sampled to determine all of the po
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#asAttributes" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="asAttributes(struct:org.apache.spark.sql.catalyst.types.StructType):Seq[org.apache.spark.sql.catalyst.expressions.AttributeReference]"></a>
-      <a id="asAttributes(StructType):Seq[AttributeReference]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">asAttributes</span><span class="params">(<span name="struct">struct: <span class="extype" name="org.apache.spark.sql.catalyst.types.StructType">StructType</span></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.AttributeReference">AttributeReference</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -184,19 +184,6 @@ limitation:</p><ul><li>The data is optionally sampled to determine all of the po
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#asRow" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="asRow(json:Map[String,Any],schema:org.apache.spark.sql.catalyst.types.StructType):org.apache.spark.sql.catalyst.expressions.Row"></a>
-      <a id="asRow(Map[String,Any],StructType):catalyst.expressions.Row"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">asRow</span><span class="params">(<span name="json">json: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>, <span name="schema">schema: <span class="extype" name="org.apache.spark.sql.catalyst.types.StructType">StructType</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Row">catalyst.expressions.Row</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -209,26 +196,26 @@ limitation:</p><ul><li>The data is optionally sampled to determine all of the po
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#enforceCorrectType" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="enforceCorrectType(value:Any,desiredType:org.apache.spark.sql.catalyst.types.DataType):Any"></a>
-      <a id="enforceCorrectType(Any,DataType):Any"></a>
+    </li><li name="org.apache.spark.sql.execution.debug.DebugQuery#debug" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(implicitsc:org.apache.spark.SparkContext):Unit"></a>
+      <a id="debug(SparkContext):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">enforceCorrectType</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Any">Any</span></span>, <span name="desiredType">desiredType: <span class="extype" name="org.apache.spark.sql.catalyst.types.DataType">DataType</span></span>)</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
+        <span class="name">debug</span><span class="params">(<span class="implicit">implicit </span><span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="package.html" class="extype" name="org.apache.spark.sql.json">org.apache.spark.sql.json</a>] </dd></dl></div>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -267,32 +254,13 @@ limitation:</p><ul><li>The data is optionally sampled to determine all of the po
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="symbol">classOf[java.lang.Throwable]</span>
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#getAllKeysWithValueTypes" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getAllKeysWithValueTypes(m:Map[String,Any]):Set[(String,org.apache.spark.sql.catalyst.types.DataType)]"></a>
-      <a id="getAllKeysWithValueTypes(Map[String,Any]):Set[(String,DataType)]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getAllKeysWithValueTypes</span><span class="params">(<span name="m">m: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="org.apache.spark.sql.catalyst.types.DataType">DataType</span>)]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Figures out all key names and data types of values from a parsed JSON object
-(in the format of Map[Stirng, Any]).</p><div class="fullcomment"><div class="comment cmt"><p>Figures out all key names and data types of values from a parsed JSON object
-(in the format of Map[Stirng, Any]). When the value of a key is an JSON object, we
-only use a placeholder (StructType(Nil)) to mark that it should be a struct
-instead of getting all fields of this struct because a field does not appear
-in this JSON object can appear in other JSON objects.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -306,50 +274,6 @@ in this JSON object can appear in other JSON objects.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#getCompatibleType" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getCompatibleType(t1:org.apache.spark.sql.catalyst.types.DataType,t2:org.apache.spark.sql.catalyst.types.DataType):org.apache.spark.sql.catalyst.types.DataType"></a>
-      <a id="getCompatibleType(DataType,DataType):DataType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getCompatibleType</span><span class="params">(<span name="t1">t1: <span class="extype" name="org.apache.spark.sql.catalyst.types.DataType">DataType</span></span>, <span name="t2">t2: <span class="extype" name="org.apache.spark.sql.catalyst.types.DataType">DataType</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.types.DataType">DataType</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Returns the most general data type for two given data types.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the most general data type for two given data types.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#getPrimitiveType" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getPrimitiveType(value:Any):org.apache.spark.sql.catalyst.types.DataType"></a>
-      <a id="getPrimitiveType(Any):DataType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getPrimitiveType</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.types.DataType">DataType</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#getTypeOfArray" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getTypeOfArray(l:Seq[Any]):org.apache.spark.sql.catalyst.types.ArrayType"></a>
-      <a id="getTypeOfArray(Seq[Any]):ArrayType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getTypeOfArray</span><span class="params">(<span name="l">l: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.types.ArrayType">ArrayType</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Returns the element type of an JSON array.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the element type of an JSON array. We go through all elements of this array
-to detect any possible type conflict. We use <a href="#getCompatibleType(t1:org.apache.spark.sql.catalyst.types.DataType,t2:org.apache.spark.sql.catalyst.types.DataType):org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.json.JsonTable#getCompatibleType">getCompatibleType</a> to resolve
-type conflicts. Right now, when the element of an array is another array, we
-treat the element as String.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -363,19 +287,6 @@ treat the element as String.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#inferSchema" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="inferSchema(json:org.apache.spark.rdd.RDD[String],samplingRatio:Double):org.apache.spark.sql.catalyst.plans.logical.LogicalPlan"></a>
-      <a id="inferSchema(RDD[String],Double):LogicalPlan"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">inferSchema</span><span class="params">(<span name="json">json: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="samplingRatio">samplingRatio: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -389,19 +300,6 @@ treat the element as String.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.typesafe.scalalogging.slf4j.Logging#logger" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="logger:com.typesafe.scalalogging.slf4j.Logger"></a>
-      <a id="logger:Logger"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">logger</span><span class="result">: <span class="extype" name="com.typesafe.scalalogging.slf4j.Logger">Logger</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -441,36 +339,6 @@ treat the element as String.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#parseJson" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="parseJson(json:org.apache.spark.rdd.RDD[String]):org.apache.spark.rdd.RDD[Map[String,Any]]"></a>
-      <a id="parseJson(RDD[String]):RDD[Map[String,Any]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">parseJson</span><span class="params">(<span name="json">json: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#scalafy" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="scalafy(obj:Any):Any"></a>
-      <a id="scalafy(Any):Any"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">scalafy</span><span class="params">(<span name="obj">obj: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Converts a Java Map/List to a Scala Map/List.</p><div class="fullcomment"><div class="comment cmt"><p>Converts a Java Map/List to a Scala Map/List.
-We do not use Jackson's scala module at here because
-DefaultScalaModule in jackson-module-scala will make
-the parsing very slow.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -484,45 +352,6 @@ the parsing very slow.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#toDecimal" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toDecimal(value:Any):scala.math.BigDecimal"></a>
-      <a id="toDecimal(Any):BigDecimal"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toDecimal</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.math.BigDecimal">BigDecimal</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#toDouble" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toDouble(value:Any):Double"></a>
-      <a id="toDouble(Any):Double"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toDouble</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="org.apache.spark.sql.json.JsonTable#toLong" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toLong(value:Any):Long"></a>
-      <a id="toLong(Any):Long"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toLong</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
@@ -602,9 +431,7 @@ the parsing very slow.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="com.typesafe.scalalogging.slf4j.Logging">
-              <h3>Inherited from <span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
@@ -624,6 +451,6 @@ the parsing very slow.
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
     </body>
       </html>

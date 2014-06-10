@@ -173,6 +173,19 @@ group.</p>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::
 </p>
+    </li><li name="org.apache.spark.sql.execution.ExplainCommandPhysical" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ExplainCommandPhysicalextendsSparkPlanwithUnaryNodewithProductwithSerializable"></a>
+      <a id="ExplainCommandPhysical:ExplainCommandPhysical"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ExplainCommandPhysical.html"><span class="name">ExplainCommandPhysical</span></a><span class="params">(<span name="child">child: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="output">output: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.UnaryNode">UnaryNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
     </li><li name="org.apache.spark.sql.execution.Filter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="FilterextendsSparkPlanwithUnaryNodewithProductwithSerializable"></a>
       <a id="Filter:Filter"></a>
@@ -216,6 +229,36 @@ output of each into a new stream of rows.</p>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::
 </p>
+    </li><li name="org.apache.spark.sql.execution.LeftSemiJoinBNL" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LeftSemiJoinBNLextendsSparkPlanwithBinaryNodewithProductwithSerializable"></a>
+      <a id="LeftSemiJoinBNL:LeftSemiJoinBNL"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="LeftSemiJoinBNL.html"><span class="name">LeftSemiJoinBNL</span></a><span class="params">(<span name="streamed">streamed: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="broadcast">broadcast: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="condition">condition: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="params">(<span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.BinaryNode">BinaryNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">:: DeveloperApi ::
+Using BroadcastNestedLoopJoin to calculate left semi join result when there's no join keys
+for hash join.</p>
+    </li><li name="org.apache.spark.sql.execution.LeftSemiJoinHash" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LeftSemiJoinHashextendsSparkPlanwithBinaryNodewithProductwithSerializable"></a>
+      <a id="LeftSemiJoinHash:LeftSemiJoinHash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="LeftSemiJoinHash.html"><span class="name">LeftSemiJoinHash</span></a><span class="params">(<span name="leftKeys">leftKeys: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>, <span name="rightKeys">rightKeys: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>, <span name="left">left: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="right">right: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.BinaryNode">BinaryNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">:: DeveloperApi ::
+Build the right table's join keys into a HashSet, and iteratively go through the left
+table, to find the if join keys are in the Hash set.</p>
     </li><li name="org.apache.spark.sql.execution.Limit" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="LimitextendsSparkPlanwithUnaryNodewithProductwithSerializable"></a>
       <a id="Limit:Limit"></a>
@@ -394,6 +437,20 @@ Take the first limit elements as defined by the sortOrder.</p>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::
 </p>
+    </li><li name="org.apache.spark.sql.execution.debug" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug"></a>
+      <a id="debug:debug"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="debug/package.html"><span class="name">debug</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">:: DeveloperApi ::
+Contains methods for debugging query execution.</p>
     </li></ol>
             </div>
 

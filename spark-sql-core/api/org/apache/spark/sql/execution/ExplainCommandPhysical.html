@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>HashJoin - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.execution.HashJoin</title>
-          <meta name="description" content="HashJoin - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.execution.HashJoin" />
-          <meta name="keywords" content="HashJoin Spark 1.1.0 ScalaDoc org.apache.spark.sql.execution.HashJoin" />
+          <title>ExplainCommandPhysical - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.execution.ExplainCommandPhysical</title>
+          <meta name="description" content="ExplainCommandPhysical - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.execution.ExplainCommandPhysical" />
+          <meta name="keywords" content="ExplainCommandPhysical Spark 1.1.0 ScalaDoc org.apache.spark.sql.execution.ExplainCommandPhysical" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
-            var hash = 'org.apache.spark.sql.execution.HashJoin';
+            var hash = 'org.apache.spark.sql.execution.ExplainCommandPhysical';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -26,7 +26,7 @@
       <div id="definition">
         <img src="../../../../../lib/class_big.png" />
         <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.apache">apache</a>.<a href="../../package.html" class="extype" name="org.apache.spark">spark</a>.<a href="../package.html" class="extype" name="org.apache.spark.sql">sql</a>.<a href="package.html" class="extype" name="org.apache.spark.sql.execution">execution</a></p>
-        <h1>HashJoin</h1>
+        <h1>ExplainCommandPhysical</h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -35,17 +35,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">HashJoin</span><span class="params">(<span name="leftKeys">leftKeys: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>, <span name="rightKeys">rightKeys: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>, <span name="buildSide">buildSide: <a href="BuildSide.html" class="extype" name="org.apache.spark.sql.execution.BuildSide">BuildSide</a></span>, <span name="left">left: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="right">right: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.BinaryNode">BinaryNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">ExplainCommandPhysical</span><span class="params">(<span name="child">child: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="output">output: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.UnaryNode">UnaryNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>:: DeveloperApi ::
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@DeveloperApi</span><span class="args">()</span>
-              
-        </dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="org.apache.spark.sql.execution.BinaryNode">BinaryNode</span>, <span class="extype" name="org.apache.spark.sql.catalyst.trees.BinaryNode">catalyst.trees.BinaryNode</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span>, <span class="extype" name="org.apache.spark.sql.catalyst.plans.QueryPlan">QueryPlan</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="org.apache.spark.sql.execution.UnaryNode">UnaryNode</span>, <span class="extype" name="org.apache.spark.sql.catalyst.trees.UnaryNode">catalyst.trees.UnaryNode</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span>, <span class="extype" name="org.apache.spark.sql.catalyst.plans.QueryPlan">QueryPlan</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -63,7 +59,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.apache.spark.sql.execution.HashJoin"><span>HashJoin</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="org.apache.spark.sql.execution.BinaryNode"><span>BinaryNode</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.BinaryNode"><span>BinaryNode</span></li><li class="in" name="org.apache.spark.sql.execution.SparkPlan"><span>SparkPlan</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.sql.catalyst.plans.QueryPlan"><span>QueryPlan</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.TreeNode"><span>TreeNode</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.apache.spark.sql.execution.ExplainCommandPhysical"><span>ExplainCommandPhysical</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="org.apache.spark.sql.execution.UnaryNode"><span>UnaryNode</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.UnaryNode"><span>UnaryNode</span></li><li class="in" name="org.apache.spark.sql.execution.SparkPlan"><span>SparkPlan</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.sql.catalyst.plans.QueryPlan"><span>QueryPlan</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.TreeNode"><span>TreeNode</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -83,16 +79,16 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="org.apache.spark.sql.execution.HashJoin#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(leftKeys:Seq[org.apache.spark.sql.catalyst.expressions.Expression],rightKeys:Seq[org.apache.spark.sql.catalyst.expressions.Expression],buildSide:org.apache.spark.sql.execution.BuildSide,left:org.apache.spark.sql.execution.SparkPlan,right:org.apache.spark.sql.execution.SparkPlan):org.apache.spark.sql.execution.HashJoin"></a>
-      <a id="&lt;init&gt;:HashJoin"></a>
+              <ol><li name="org.apache.spark.sql.execution.ExplainCommandPhysical#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(child:org.apache.spark.sql.execution.SparkPlan,output:Seq[org.apache.spark.sql.catalyst.expressions.Attribute])(context:org.apache.spark.sql.SQLContext):org.apache.spark.sql.execution.ExplainCommandPhysical"></a>
+      <a id="&lt;init&gt;:ExplainCommandPhysical"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">HashJoin</span><span class="params">(<span name="leftKeys">leftKeys: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>, <span name="rightKeys">rightKeys: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>, <span name="buildSide">buildSide: <a href="BuildSide.html" class="extype" name="org.apache.spark.sql.execution.BuildSide">BuildSide</a></span>, <span name="left">left: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="right">right: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>)</span>
+        <span class="name">ExplainCommandPhysical</span><span class="params">(<span name="child">child: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="output">output: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span>
       </span>
       </h4>
       
@@ -222,32 +218,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#buildKeys" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="buildKeys:Seq[org.apache.spark.sql.catalyst.expressions.Expression]"></a>
-      <a id="buildKeys:Seq[Expression]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">buildKeys</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="org.apache.spark.sql.execution.HashJoin#buildPlan" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="buildPlan:org.apache.spark.sql.execution.SparkPlan"></a>
-      <a id="buildPlan:SparkPlan"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">buildPlan</span><span class="result">: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>
-      </span>
-      </h4>
-      
     </li><li name="org.apache.spark.sql.execution.SparkPlan#buildRow" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="buildRow(values:Seq[Any]):org.apache.spark.sql.Row"></a>
       <a id="buildRow(Seq[Any]):Row"></a>
@@ -261,45 +231,32 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#buildSide" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="buildSide:org.apache.spark.sql.execution.BuildSide"></a>
-      <a id="buildSide:BuildSide"></a>
+    </li><li name="org.apache.spark.sql.execution.ExplainCommandPhysical#child" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="child:org.apache.spark.sql.execution.SparkPlan"></a>
+      <a id="child:SparkPlan"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">buildSide</span><span class="result">: <a href="BuildSide.html" class="extype" name="org.apache.spark.sql.execution.BuildSide">BuildSide</a></span>
+        <span class="name">child</span><span class="result">: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>
       </span>
       </h4>
-      
-    </li><li name="org.apache.spark.sql.execution.HashJoin#buildSideKeyGenerator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="buildSideKeyGenerator:org.apache.spark.sql.catalyst.expressions.Projection"></a>
-      <a id="buildSideKeyGenerator:Projection"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">buildSideKeyGenerator</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Projection">Projection</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="org.apache.spark.sql.catalyst.trees.BinaryNode#children" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="children:Seq[BaseType]"></a>
-      <a id="children:Seq[SparkPlan]"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a> → UnaryNode</dd></dl></div>
+    </li><li name="org.apache.spark.sql.catalyst.trees.UnaryNode#children" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="children:List[BaseType]"></a>
+      <a id="children:List[SparkPlan]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">children</span><span class="result">: <span class="extype" name="scala.collection.Seq">Seq</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</span>
+        <span class="name">children</span><span class="result">: <span class="extype" name="scala.collection.immutable.List">List</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>BinaryNode</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UnaryNode</dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -345,20 +302,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#execute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="execute():org.apache.spark.rdd.RDD[org.apache.spark.sql.catalyst.expressions.Row]"></a>
-      <a id="execute():RDD[catalyst.expressions.Row]"></a>
+    </li><li name="org.apache.spark.sql.execution.ExplainCommandPhysical#execute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="execute():org.apache.spark.rdd.RDD[org.apache.spark.sql.Row]"></a>
+      <a id="execute():RDD[Row]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">execute</span><span class="params">()</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Row">catalyst.expressions.Row</span>]</span>
+        <span class="name">execute</span><span class="params">()</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Runs this query returning the result as an RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Runs this query returning the result as an RDD.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a> → <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a> → <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.execution.SparkPlan#executeCollect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="executeCollect():Array[org.apache.spark.sql.Row]"></a>
       <a id="executeCollect():Array[Row]"></a>
@@ -522,32 +479,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#left" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="left:org.apache.spark.sql.execution.SparkPlan"></a>
-      <a id="left:SparkPlan"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">left</span><span class="result">: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a> → BinaryNode</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#leftKeys" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="leftKeys:Seq[org.apache.spark.sql.catalyst.expressions.Expression]"></a>
-      <a id="leftKeys:Seq[Expression]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">leftKeys</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="com.typesafe.scalalogging.slf4j.Logging#logger" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logger:com.typesafe.scalalogging.slf4j.Logger"></a>
       <a id="logger:Logger"></a>
@@ -563,14 +494,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#makeCopy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="makeCopy(newArgs:Array[AnyRef]):org.apache.spark.sql.catalyst.trees.&lt;refinement&gt;.type"></a>
-      <a id="makeCopy(Array[AnyRef]):HashJoin.this.type"></a>
+      <a id="makeCopy(Array[AnyRef]):ExplainCommandPhysical.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">makeCopy</span><span class="params">(<span name="newArgs">newArgs: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a>.this.type</span>
+        <span class="name">makeCopy</span><span class="params">(<span name="newArgs">newArgs: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
@@ -589,14 +520,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#mapChildren" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mapChildren(f:BaseType=&gt;BaseType):org.apache.spark.sql.catalyst.trees.&lt;refinement&gt;.type"></a>
-      <a id="mapChildren((SparkPlan)⇒SparkPlan):HashJoin.this.type"></a>
+      <a id="mapChildren((SparkPlan)⇒SparkPlan):ExplainCommandPhysical.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">mapChildren</span><span class="params">(<span name="f">f: (<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>) ⇒ <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a>.this.type</span>
+        <span class="name">mapChildren</span><span class="params">(<span name="f">f: (<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>) ⇒ <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
@@ -665,33 +596,33 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
-    </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#otherCopyArgs" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="otherCopyArgs:Seq[AnyRef]"></a>
-      <a id="otherCopyArgs:Seq[AnyRef]"></a>
+    </li><li name="org.apache.spark.sql.execution.ExplainCommandPhysical#otherCopyArgs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="otherCopyArgs:List[org.apache.spark.sql.SQLContext]"></a>
+      <a id="otherCopyArgs:List[SQLContext]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">otherCopyArgs</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>
+        <span class="name">otherCopyArgs</span><span class="result">: <span class="extype" name="scala.collection.immutable.List">List</span>[<a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#output" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a> → TreeNode</dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.ExplainCommandPhysical#output" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="output:Seq[org.apache.spark.sql.catalyst.expressions.Attribute]"></a>
       <a id="output:Seq[Attribute]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">output</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a> → QueryPlan</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#outputPartitioning" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a> → QueryPlan</dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.UnaryNode#outputPartitioning" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="outputPartitioning:org.apache.spark.sql.catalyst.plans.physical.Partitioning"></a>
       <a id="outputPartitioning:Partitioning"></a>
       <h4 class="signature">
@@ -703,7 +634,7 @@
         <span class="name">outputPartitioning</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.plans.physical.Partitioning">Partitioning</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Specifies how data is partitioned across different nodes in the cluster.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies how data is partitioned across different nodes in the cluster.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a> → <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
+      <p class="shortcomment cmt">Specifies how data is partitioned across different nodes in the cluster.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies how data is partitioned across different nodes in the cluster.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>UnaryNode → <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.plans.QueryPlan#outputSet" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="outputSet:Set[org.apache.spark.sql.catalyst.expressions.Attribute]"></a>
       <a id="outputSet:Set[Attribute]"></a>
@@ -730,45 +661,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QueryPlan</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#requiredChildDistribution" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="requiredChildDistribution:List[org.apache.spark.sql.catalyst.plans.physical.ClusteredDistribution]"></a>
-      <a id="requiredChildDistribution:List[ClusteredDistribution]"></a>
+    </li><li name="org.apache.spark.sql.execution.SparkPlan#requiredChildDistribution" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="requiredChildDistribution:Seq[org.apache.spark.sql.catalyst.plans.physical.Distribution]"></a>
+      <a id="requiredChildDistribution:Seq[Distribution]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">requiredChildDistribution</span><span class="result">: <span class="extype" name="scala.collection.immutable.List">List</span>[<span class="extype" name="org.apache.spark.sql.catalyst.plans.physical.ClusteredDistribution">ClusteredDistribution</span>]</span>
+        <span class="name">requiredChildDistribution</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.plans.physical.Distribution">Distribution</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Specifies any partition requirements on the input data for this operator.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies any partition requirements on the input data for this operator.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a> → <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#right" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="right:org.apache.spark.sql.execution.SparkPlan"></a>
-      <a id="right:SparkPlan"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">right</span><span class="result">: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a> → BinaryNode</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#rightKeys" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="rightKeys:Seq[org.apache.spark.sql.catalyst.expressions.Expression]"></a>
-      <a id="rightKeys:Seq[Expression]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">rightKeys</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>
-      </span>
-      </h4>
-      
+      <p class="shortcomment cmt">Specifies any partition requirements on the input data for this operator.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies any partition requirements on the input data for this operator.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#sameInstance" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sameInstance(other:org.apache.spark.sql.catalyst.trees.TreeNode[_]):Boolean"></a>
       <a id="sameInstance(TreeNode[_]):Boolean"></a>
@@ -795,45 +700,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.HashJoin#streamSideKeyGenerator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="streamSideKeyGenerator:()=&gt;org.apache.spark.sql.catalyst.expressions.MutableProjection"></a>
-      <a id="streamSideKeyGenerator:()⇒MutableProjection"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">streamSideKeyGenerator</span><span class="result">: () ⇒ <span class="extype" name="org.apache.spark.sql.catalyst.expressions.MutableProjection">MutableProjection</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="org.apache.spark.sql.execution.HashJoin#streamedKeys" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="streamedKeys:Seq[org.apache.spark.sql.catalyst.expressions.Expression]"></a>
-      <a id="streamedKeys:Seq[Expression]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">streamedKeys</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="org.apache.spark.sql.execution.HashJoin#streamedPlan" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="streamedPlan:org.apache.spark.sql.execution.SparkPlan"></a>
-      <a id="streamedPlan:SparkPlan"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">streamedPlan</span><span class="result">: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>
-      </span>
-      </h4>
-      
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#stringArgs" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="stringArgs:Iterator[Any]"></a>
       <a id="stringArgs:Iterator[Any]"></a>
@@ -888,40 +754,40 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.plans.QueryPlan#transformAllExpressions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="transformAllExpressions(rule:PartialFunction[org.apache.spark.sql.catalyst.expressions.Expression,org.apache.spark.sql.catalyst.expressions.Expression]):org.apache.spark.sql.catalyst.plans.QueryPlan.&lt;refinement&gt;.type"></a>
-      <a id="transformAllExpressions(PartialFunction[Expression,Expression]):HashJoin.this.type"></a>
+      <a id="transformAllExpressions(PartialFunction[Expression,Expression]):ExplainCommandPhysical.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">transformAllExpressions</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a>.this.type</span>
+        <span class="name">transformAllExpressions</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QueryPlan</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#transformChildrenDown" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="transformChildrenDown(rule:PartialFunction[BaseType,BaseType]):org.apache.spark.sql.catalyst.trees.&lt;refinement&gt;.type"></a>
-      <a id="transformChildrenDown(PartialFunction[SparkPlan,SparkPlan]):HashJoin.this.type"></a>
+      <a id="transformChildrenDown(PartialFunction[SparkPlan,SparkPlan]):ExplainCommandPhysical.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">transformChildrenDown</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>, <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a>.this.type</span>
+        <span class="name">transformChildrenDown</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>, <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#transformChildrenUp" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="transformChildrenUp(rule:PartialFunction[BaseType,BaseType]):org.apache.spark.sql.catalyst.trees.&lt;refinement&gt;.type"></a>
-      <a id="transformChildrenUp(PartialFunction[SparkPlan,SparkPlan]):HashJoin.this.type"></a>
+      <a id="transformChildrenUp(PartialFunction[SparkPlan,SparkPlan]):ExplainCommandPhysical.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">transformChildrenUp</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>, <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a>.this.type</span>
+        <span class="name">transformChildrenUp</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>, <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
@@ -940,40 +806,40 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.plans.QueryPlan#transformExpressions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="transformExpressions(rule:PartialFunction[org.apache.spark.sql.catalyst.expressions.Expression,org.apache.spark.sql.catalyst.expressions.Expression]):org.apache.spark.sql.catalyst.plans.QueryPlan.&lt;refinement&gt;.type"></a>
-      <a id="transformExpressions(PartialFunction[Expression,Expression]):HashJoin.this.type"></a>
+      <a id="transformExpressions(PartialFunction[Expression,Expression]):ExplainCommandPhysical.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">transformExpressions</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a>.this.type</span>
+        <span class="name">transformExpressions</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QueryPlan</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.plans.QueryPlan#transformExpressionsDown" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="transformExpressionsDown(rule:PartialFunction[org.apache.spark.sql.catalyst.expressions.Expression,org.apache.spark.sql.catalyst.expressions.Expression]):org.apache.spark.sql.catalyst.plans.QueryPlan.&lt;refinement&gt;.type"></a>
-      <a id="transformExpressionsDown(PartialFunction[Expression,Expression]):HashJoin.this.type"></a>
+      <a id="transformExpressionsDown(PartialFunction[Expression,Expression]):ExplainCommandPhysical.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">transformExpressionsDown</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a>.this.type</span>
+        <span class="name">transformExpressionsDown</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QueryPlan</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.plans.QueryPlan#transformExpressionsUp" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="transformExpressionsUp(rule:PartialFunction[org.apache.spark.sql.catalyst.expressions.Expression,org.apache.spark.sql.catalyst.expressions.Expression]):org.apache.spark.sql.catalyst.plans.QueryPlan.&lt;refinement&gt;.type"></a>
-      <a id="transformExpressionsUp(PartialFunction[Expression,Expression]):HashJoin.this.type"></a>
+      <a id="transformExpressionsUp(PartialFunction[Expression,Expression]):ExplainCommandPhysical.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">transformExpressionsUp</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a>.this.type</span>
+        <span class="name">transformExpressionsUp</span><span class="params">(<span name="rule">rule: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QueryPlan</dd></dl></div>
@@ -1062,14 +928,14 @@
         </dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#withNewChildren" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="withNewChildren(newChildren:Seq[BaseType]):org.apache.spark.sql.catalyst.trees.&lt;refinement&gt;.type"></a>
-      <a id="withNewChildren(Seq[SparkPlan]):HashJoin.this.type"></a>
+      <a id="withNewChildren(Seq[SparkPlan]):ExplainCommandPhysical.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withNewChildren</span><span class="params">(<span name="newChildren">newChildren: <span class="extype" name="scala.Seq">Seq</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.HashJoin">HashJoin</a>.this.type</span>
+        <span class="name">withNewChildren</span><span class="params">(<span name="newChildren">newChildren: <span class="extype" name="scala.Seq">Seq</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
@@ -1090,10 +956,10 @@
               <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
             </div><div class="parent" name="scala.Equals">
               <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
-            </div><div class="parent" name="org.apache.spark.sql.execution.BinaryNode">
-              <h3>Inherited from <span class="extype" name="org.apache.spark.sql.execution.BinaryNode">BinaryNode</span></h3>
-            </div><div class="parent" name="org.apache.spark.sql.catalyst.trees.BinaryNode">
-              <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.trees.BinaryNode">catalyst.trees.BinaryNode</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</h3>
+            </div><div class="parent" name="org.apache.spark.sql.execution.UnaryNode">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.sql.execution.UnaryNode">UnaryNode</span></h3>
+            </div><div class="parent" name="org.apache.spark.sql.catalyst.trees.UnaryNode">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.trees.UnaryNode">catalyst.trees.UnaryNode</span>[<a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</h3>
             </div><div class="parent" name="org.apache.spark.sql.execution.SparkPlan">
               <h3>Inherited from <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></h3>
             </div><div class="parent" name="com.typesafe.scalalogging.slf4j.Logging">
