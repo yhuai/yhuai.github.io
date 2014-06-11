@@ -58,32 +58,20 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="org.apache.spark.sql.json.EagerSchemaResolutionWithSampling" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="EagerSchemaResolutionWithSamplingextendsSchemaResolutionModewithProductwithSerializable"></a>
-      <a id="EagerSchemaResolutionWithSampling:EagerSchemaResolutionWithSampling"></a>
+              <ol><li name="org.apache.spark.sql.json.JsonTable" visbl="prt" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonTableextendsSchemaRDD"></a>
+      <a id="JsonTable:JsonTable"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="EagerSchemaResolutionWithSampling.html"><span class="name">EagerSchemaResolutionWithSampling</span></a><span class="params">(<span name="samplingRatio">samplingRatio: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result"> extends <a href="SchemaResolutionMode.html" class="extype" name="org.apache.spark.sql.json.SchemaResolutionMode">SchemaResolutionMode</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="JsonTable.html"><span class="name">JsonTable</span></a><span class="result"> extends <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
       </span>
       </h4>
-      <p class="comment cmt">Eagerly infers the schema by scanning a sampled subset of the dataset.</p>
-    </li><li name="org.apache.spark.sql.json.SchemaResolutionMode" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="SchemaResolutionModeextendsAnyRef"></a>
-      <a id="SchemaResolutionMode:SchemaResolutionMode"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">sealed </span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="SchemaResolutionMode.html"><span class="name">SchemaResolutionMode</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4>
-      
+      <p class="comment cmt">A JsonTable is a special kind of <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> used to represent a JSON dataset backed by
+a <span class="extype" name="RDD">RDD</span> of strings.</p>
     </li></ol>
             </div>
 
@@ -91,20 +79,7 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="org.apache.spark.sql.json.EagerSchemaResolution" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="EagerSchemaResolution"></a>
-      <a id="EagerSchemaResolution:EagerSchemaResolution"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="EagerSchemaResolution$.html"><span class="name">EagerSchemaResolution</span></a><span class="result"> extends <a href="SchemaResolutionMode.html" class="extype" name="org.apache.spark.sql.json.SchemaResolutionMode">SchemaResolutionMode</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4>
-      <p class="comment cmt">Eagerly infers the schema by scanning the entire dataset.</p>
-    </li><li name="org.apache.spark.sql.json.JsonTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="org.apache.spark.sql.json.JsonTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JsonTable"></a>
       <a id="JsonTable:JsonTable"></a>
       <h4 class="signature">
@@ -113,7 +88,7 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="JsonTable$.html"><span class="name">JsonTable</span></a><span class="result"> extends <a href="../package.html#Logging=com.typesafe.scalalogging.slf4j.Logging" class="extmbr" name="org.apache.spark.sql.Logging">Logging</a></span>
+        <a href="JsonTable$.html"><span class="name">JsonTable</span></a><span class="result"> extends <a href="../package.html#Logging=com.typesafe.scalalogging.slf4j.Logging" class="extmbr" name="org.apache.spark.sql.Logging">Logging</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">:: Experimental ::

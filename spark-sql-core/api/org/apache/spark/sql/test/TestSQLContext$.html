@@ -623,6 +623,19 @@ sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></d
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLContext#isCached" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isCached(tableName:String):Boolean"></a>
+      <a id="isCached(String):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isCached</span><span class="params">(<span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns true if the table is currently cached in-memory.</p><div class="fullcomment"><div class="comment cmt"><p>Returns true if the table is currently cached in-memory.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -636,37 +649,38 @@ sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></d
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.SQLContext#jsonFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="jsonFile(path:String,mode:org.apache.spark.sql.json.SchemaResolutionMode):org.apache.spark.sql.SchemaRDD"></a>
-      <a id="jsonFile(String,SchemaResolutionMode):SchemaRDD"></a>
+    </li><li name="org.apache.spark.sql.SQLContext#jsonFile" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
+      <a id="jsonFile(path:String,samplingRatio:Double):org.apache.spark.sql.json.JsonTable"></a>
+      <a id="jsonFile(String,Double):JsonTable"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">jsonFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="mode">mode: <a href="../json/SchemaResolutionMode.html" class="extype" name="org.apache.spark.sql.json.SchemaResolutionMode">SchemaResolutionMode</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">EagerSchemaResolution</a></span></span></span>)</span><span class="result">: <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
+        <span class="name">jsonFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="samplingRatio">samplingRatio: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>)</span><span class="result">: <a href="../json/JsonTable.html" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Loads a JSON file (one object per line), returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a JSON file (one object per line), returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>. The schema
-of the returned <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> is inferred based on the method specified by <code>mode</code>.
+      <p class="shortcomment cmt">Loads a JSON file (one object per line), returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a JSON file (one object per line), returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.
+If a sampled <code>json</code> needs to be used, <code>samplingRatio</code> can be used to specify
+the sampling ratio.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
-    </li><li name="org.apache.spark.sql.SQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="jsonRDD(json:org.apache.spark.rdd.RDD[String],mode:org.apache.spark.sql.json.SchemaResolutionMode):org.apache.spark.sql.SchemaRDD"></a>
-      <a id="jsonRDD(RDD[String],SchemaResolutionMode):SchemaRDD"></a>
+    </li><li name="org.apache.spark.sql.SQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
+      <a id="jsonRDD(json:org.apache.spark.rdd.RDD[String],samplingRatio:Double):org.apache.spark.sql.json.JsonTable"></a>
+      <a id="jsonRDD(RDD[String],Double):JsonTable"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">jsonRDD</span><span class="params">(<span name="json">json: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="mode">mode: <a href="../json/SchemaResolutionMode.html" class="extype" name="org.apache.spark.sql.json.SchemaResolutionMode">SchemaResolutionMode</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">EagerSchemaResolution</a></span></span></span>)</span><span class="result">: <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
+        <span class="name">jsonRDD</span><span class="params">(<span name="json">json: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="samplingRatio">samplingRatio: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>)</span><span class="result">: <a href="../json/JsonTable.html" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Loads a RDD[String] storing JSON objects (one object per record), returning the result as a
 <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a RDD[String] storing JSON objects (one object per record), returning the result as a
-<a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>. The schema of the returned <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> is inferred based on the method
-specified by <code>mode</code>.
+<a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>. If a sampled <code>json</code> needs to be used, <code>samplingRatio</code> can be used to specify
+the sampling ratio.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="com.typesafe.scalalogging.slf4j.Logging#logger" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logger:com.typesafe.scalalogging.slf4j.Logger"></a>

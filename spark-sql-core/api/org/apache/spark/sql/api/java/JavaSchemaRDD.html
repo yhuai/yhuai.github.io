@@ -84,7 +84,7 @@ future SQL statement.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.apache.spark.sql.api.java.JavaSchemaRDD#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(sqlContext:org.apache.spark.sql.SQLContext,logicalPlan:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
+      <a id="&lt;init&gt;(sqlContext:org.apache.spark.sql.SQLContext,_logicalPlan:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
       <a id="&lt;init&gt;:JavaSchemaRDD"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,7 +92,7 @@ future SQL statement.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">JavaSchemaRDD</span><span class="params">(<span name="sqlContext">sqlContext: <a href="../../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>, <span name="logicalPlan">logicalPlan: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>)</span>
+        <span class="name">JavaSchemaRDD</span><span class="params">(<span name="sqlContext">sqlContext: <a href="../../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>, <span name="_logicalPlan">_logicalPlan: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>)</span>
       </span>
       </h4>
       
@@ -170,6 +170,32 @@ future SQL statement.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.JavaSchemaRDD#_logicalPlan" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="_logicalPlan:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan"></a>
+      <a id="_logicalPlan:LogicalPlan"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_logicalPlan</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../package.html" class="extype" name="org.apache.spark">org.apache.spark</a>] </dd></dl></div>
+    </li><li name="org.apache.spark.sql.SchemaRDDLike#_queryExecution" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="_queryExecution:SchemaRDDLike.this.sqlContext.QueryExecution"></a>
+      <a id="_queryExecution:QueryExecution"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_queryExecution</span><span class="result">: <a href="../../SQLContext$QueryExecution.html" class="extype" name="org.apache.spark.sql.SQLContext.QueryExecution">QueryExecution</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>SchemaRDDLike</dd></dl></div>
     </li><li name="org.apache.spark.api.java.JavaRDDLike#aggregate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="aggregate[U&lt;:&lt;?&gt;](zeroValue:&lt;?&gt;)(seqOp:&lt;?&gt;,combOp:&lt;?&gt;):U"></a>
       <a id="aggregate[U](U)(Function2[U,Row,U],Function2[U,U,U]):U"></a>
@@ -838,7 +864,7 @@ duplicate elements, even if the input RDDs did.</p><p>Note that this method perf
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
         <span class="name">logicalPlan</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>
@@ -1123,15 +1149,15 @@ have a storage level set yet..
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JavaRDDLike</dd></dl></div>
     </li><li name="org.apache.spark.sql.SchemaRDDLike#printSchema" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="printSchema:Unit"></a>
-      <a id="printSchema:Unit"></a>
+      <a id="printSchema():Unit"></a>
+      <a id="printSchema():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">printSchema</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">printSchema</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Print the schema of this SchemaRDD.</p><div class="fullcomment"><div class="comment cmt"><p>Print the schema of this SchemaRDD.
@@ -1142,7 +1168,7 @@ have a storage level set yet..
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
         <span class="name">queryExecution</span><span class="result">: <a href="../../SQLContext$QueryExecution.html" class="extype" name="org.apache.spark.sql.SQLContext.QueryExecution">QueryExecution</a></span>
@@ -1159,7 +1185,10 @@ or producing any specific output, even for exactly the same query.</p><p>Additio
 In particular, it does not contain any schema information, and it reuses Row objects
 internally.  This object reuse improves performance, but can make programming against the RDD
 more difficult.  Instead end users should perform RDD operations on a SchemaRDD directly.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchemaRDDLike</dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchemaRDDLike</dd><dt>Annotations</dt><dd>
+                <span class="name">@DeveloperApi</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="org.apache.spark.sql.api.java.JavaSchemaRDD#rdd" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="rdd:org.apache.spark.rdd.RDD[org.apache.spark.sql.api.java.Row]"></a>
       <a id="rdd:RDD[Row]"></a>
