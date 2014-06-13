@@ -43,8 +43,10 @@
 An RDD of <a href="package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a> objects that has an associated schema. In addition to standard RDD functions,
 SchemaRDDs can be used in relational queries, as shown in the examples below.</p><p>Importing a SQLContext brings an implicit into scope that automatically converts a standard RDD
 whose elements are scala case classes into a SchemaRDD.  This conversion can also be done
-explicitly using the <code>createSchemaRDD</code> function on a <a href="SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a>.</p><p>A <code>SchemaRDD</code> can also be created by loading data in from external sources, for example,
-by using the <code>parquetFile</code> method on <a href="SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a>.</p><h4> SQL Queries </h4><p>A SchemaRDD can be registered as a table in the <a href="SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a> that was used to create it.  Once
+explicitly using the <code>createSchemaRDD</code> function on a <a href="SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a>.</p><p>A <code>SchemaRDD</code> can also be created by loading data in from external sources.
+Examples are loading data from Parquet files by using by using the
+<code>parquetFile</code> method on <a href="SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a>, and loading JSON datasets
+by using <code>jsonFile</code> and <code>jsonRDD</code> methods on <a href="SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a>.</p><h4> SQL Queries </h4><p>A SchemaRDD can be registered as a table in the <a href="SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a> that was used to create it.  Once
 an RDD has been registered as a table, it can be used in the FROM clause of SQL statements.</p><pre><span class="cmt">// One method for defining the schema of an RDD is to make a case class with the desired column</span>
 <span class="cmt">// names and types.</span>
 <span class="kw">case</span> <span class="kw">class</span> Record(key: <span class="std">Int</span>, value: <span class="std">String</span>)
@@ -77,9 +79,6 @@ rdd.where('key === <span class="num">1</span>).orderBy('value.asc).select('key).
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="org.apache.spark.sql.SchemaRDDLike">SchemaRDDLike</span>, <a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>], <a href="../Logging.html" class="extype" name="org.apache.spark.Logging">spark.Logging</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="json/JsonTable.html" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a></div>
         </div></div>
         
 

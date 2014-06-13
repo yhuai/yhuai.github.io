@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>JsonTable - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.json.JsonTable</title>
-          <meta name="description" content="JsonTable - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.json.JsonTable" />
-          <meta name="keywords" content="JsonTable Spark 1.1.0 ScalaDoc org.apache.spark.sql.json.JsonTable" />
+          <title>JsonTable - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.json.JsonRDD</title>
+          <meta name="description" content="JsonTable - Spark 1.1.0 ScalaDoc - org.apache.spark.sql.json.JsonRDD" />
+          <meta name="keywords" content="JsonTable Spark 1.1.0 ScalaDoc org.apache.spark.sql.json.JsonRDD" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -147,7 +147,7 @@ unionedJsonTable.where(
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.apache.spark.sql.json.JsonTable"><span>JsonTable</span></li><li class="in" name="org.apache.spark.sql.SchemaRDD"><span>SchemaRDD</span></li><li class="in" name="org.apache.spark.sql.SchemaRDDLike"><span>SchemaRDDLike</span></li><li class="in" name="org.apache.spark.rdd.RDD"><span>RDD</span></li><li class="in" name="org.apache.spark.Logging"><span>Logging</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.apache.spark.sql.json.JsonRDD"><span>JsonTable</span></li><li class="in" name="org.apache.spark.sql.SchemaRDD"><span>SchemaRDD</span></li><li class="in" name="org.apache.spark.sql.SchemaRDDLike"><span>SchemaRDDLike</span></li><li class="in" name="org.apache.spark.rdd.RDD"><span>RDD</span></li><li class="in" name="org.apache.spark.Logging"><span>Logging</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -168,7 +168,7 @@ unionedJsonTable.where(
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.apache.spark.sql.json.JsonTable#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(sqlContext:org.apache.spark.sql.SQLContext,logicalPlan:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan,baseRDD:org.apache.spark.rdd.RDD[String],baseSchema:org.apache.spark.sql.catalyst.types.StructType):org.apache.spark.sql.json.JsonTable"></a>
+      <a id="&lt;init&gt;(sqlContext:org.apache.spark.sql.SQLContext,logicalPlan:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan,baseRDD:org.apache.spark.rdd.RDD[String],baseSchema:org.apache.spark.sql.catalyst.types.StructType):org.apache.spark.sql.json.JsonRDD"></a>
       <a id="&lt;init&gt;:JsonTable"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -380,7 +380,7 @@ x.join(y).where(<span class="lit">"x.a"</span>.attr === <span class="lit">"y.a"<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cache</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a>.this.type</span>
+        <span class="name">cache</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonRDD">JsonTable</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Persist this RDD with the default storage level (<code>MEMORY_ONLY</code>).</p><div class="fullcomment"><div class="comment cmt"><p>Persist this RDD with the default storage level (<code>MEMORY_ONLY</code>).</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
@@ -1399,7 +1399,7 @@ subclasses of RDD.
         <span class="name">logicalPlan</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../package.html" class="extype" name="org.apache.spark">org.apache.spark</a>] </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a> → <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> → SchemaRDDLike</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../package.html" class="extype" name="org.apache.spark">org.apache.spark</a>] </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.json.JsonRDD">JsonTable</a> → <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> → SchemaRDDLike</dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#map" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="map[U](f:T=&gt;U)(implicitevidence$3:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
       <a id="map[U]((Row)⇒U)(ClassTag[U]):RDD[U]"></a>
@@ -1597,7 +1597,7 @@ RDD is checkpointed or not.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">persist</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a>.this.type</span>
+        <span class="name">persist</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonRDD">JsonTable</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Persist this RDD with the default storage level (<code>MEMORY_ONLY</code>).</p><div class="fullcomment"><div class="comment cmt"><p>Persist this RDD with the default storage level (<code>MEMORY_ONLY</code>).</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
@@ -1610,7 +1610,7 @@ RDD is checkpointed or not.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">persist</span><span class="params">(<span name="newLevel">newLevel: <a href="../../storage/StorageLevel.html" class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</a></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a>.this.type</span>
+        <span class="name">persist</span><span class="params">(<span name="newLevel">newLevel: <a href="../../storage/StorageLevel.html" class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</a></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonRDD">JsonTable</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set this RDD's storage level to persist its values across operations after the first time
@@ -1925,7 +1925,7 @@ in SQL.</p><pre>schemaRDD.select(<span class="lit">'a, '</span>b + <span class="
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setName</span><span class="params">(<span name="_name">_name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a>.this.type</span>
+        <span class="name">setName</span><span class="params">(<span name="_name">_name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonRDD">JsonTable</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Assign a name to this RDD</p><div class="fullcomment"><div class="comment cmt"><p>Assign a name to this RDD</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
@@ -1954,7 +1954,7 @@ in SQL.</p><pre>schemaRDD.select(<span class="lit">'a, '</span>b + <span class="
         <span class="name">sqlContext</span><span class="result">: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a> → <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> → SchemaRDDLike</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.json.JsonRDD">JsonTable</a> → <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> → SchemaRDDLike</dd></dl></div>
     </li><li name="org.apache.spark.sql.SchemaRDD#subtract" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="subtract(other:org.apache.spark.rdd.RDD[org.apache.spark.sql.Row],p:org.apache.spark.Partitioner)(implicitord:Ordering[org.apache.spark.sql.Row]):org.apache.spark.sql.SchemaRDD"></a>
       <a id="subtract(RDD[Row],Partitioner)(Ordering[Row]):SchemaRDD"></a>
@@ -2182,7 +2182,7 @@ sc.parallelize([<span class="num">2</span>, <span class="num">3</span>, <span cl
 times (use <code>.distinct()</code> to eliminate them).
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.json.JsonTable#unionAll" visbl="pub" data-isabs="false" fullComment="no" group="Query">
-      <a id="unionAll(otherPlan:org.apache.spark.sql.json.JsonTable):org.apache.spark.sql.json.JsonTable"></a>
+      <a id="unionAll(otherPlan:org.apache.spark.sql.json.JsonTable):org.apache.spark.sql.json.JsonRDD"></a>
       <a id="unionAll(JsonTable):JsonTable"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2190,7 +2190,7 @@ times (use <code>.distinct()</code> to eliminate them).
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unionAll</span><span class="params">(<span name="otherPlan">otherPlan: <a href="" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a></span>
+        <span class="name">unionAll</span><span class="params">(<span name="otherPlan">otherPlan: <a href="" class="extype" name="org.apache.spark.sql.json.JsonRDD">JsonTable</a></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonRDD">JsonTable</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Combines the tuples of two JsonTables and union their schemas, keeping duplicates.</p>
@@ -2217,7 +2217,7 @@ times (use <code>.distinct()</code> to eliminate them).
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unpersist</span><span class="params">(<span name="blocking">blocking: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonTable">JsonTable</a>.this.type</span>
+        <span class="name">unpersist</span><span class="params">(<span name="blocking">blocking: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.json.JsonRDD">JsonTable</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Mark the RDD as non-persistent, and remove all blocks for it from memory and disk.</p><div class="fullcomment"><div class="comment cmt"><p>Mark the RDD as non-persistent, and remove all blocks for it from memory and disk.
