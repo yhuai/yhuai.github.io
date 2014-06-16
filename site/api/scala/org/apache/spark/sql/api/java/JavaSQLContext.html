@@ -54,7 +54,7 @@
         <div id="order">
               <span class="filtertype">Ordering</span>
               <ol>
-                
+                <li class="group out"><span>Grouped</span></li>
                 <li class="alpha in"><span>Alphabetic</span></li>
                 <li class="inherit out"><span>By inheritance</span></li>
               </ol>
@@ -352,6 +352,33 @@ sqlCtx.sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#jsonFile" visbl="pub" data-isabs="false" fullComment="no" group="userf">
+      <a id="jsonFile(path:String):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
+      <a id="jsonFile(String):JavaSchemaRDD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jsonFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Loads a JSON file (one object per line), returning the result as a <a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a>.</p>
+    </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="no" group="userf">
+      <a id="jsonRDD(json:org.apache.spark.api.java.JavaRDD[String]):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
+      <a id="jsonRDD(JavaRDD[String]):JavaSchemaRDD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jsonRDD</span><span class="params">(<span name="json">json: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Loads a RDD[String] storing JSON objects (one object per record), returning the result as a
+<a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a>.</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -547,7 +574,10 @@ during the lifetime of this instance of SQLContext.
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="Ungrouped">
+        <div class="group" name="userf">
+              <h3>userf</h3>
+              
+            </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>
               
             </div>

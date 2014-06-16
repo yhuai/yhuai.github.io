@@ -117,7 +117,7 @@ rdd.where('key === <span class="num">1</span>).orderBy('value.asc).select('key).
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.apache.spark.sql.SchemaRDD#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(sqlContext:org.apache.spark.sql.SQLContext,logicalPlan:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan):org.apache.spark.sql.SchemaRDD"></a>
+      <a id="&lt;init&gt;(sqlContext:org.apache.spark.sql.SQLContext,baseLogicalPlan:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan):org.apache.spark.sql.SchemaRDD"></a>
       <a id="&lt;init&gt;:SchemaRDD"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -125,7 +125,7 @@ rdd.where('key === <span class="num">1</span>).orderBy('value.asc).select('key).
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">SchemaRDD</span><span class="params">(<span name="sqlContext">sqlContext: <a href="SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>, <span name="logicalPlan">logicalPlan: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>)</span>
+        <span class="name">SchemaRDD</span><span class="params">(<span name="sqlContext">sqlContext: <a href="SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>, <span name="baseLogicalPlan">baseLogicalPlan: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>)</span>
       </span>
       </h4>
       
@@ -281,6 +281,19 @@ x.join(y).where(<span class="lit">"x.a"</span>.attr === <span class="lit">"y.a"<
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.spark.sql.SchemaRDD#baseLogicalPlan" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="baseLogicalPlan:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan"></a>
+      <a id="baseLogicalPlan:LogicalPlan"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">baseLogicalPlan</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> → SchemaRDDLike</dd></dl></div>
     </li><li name="org.apache.spark.sql.SchemaRDD#baseSchemaRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="baseSchemaRDD:org.apache.spark.sql.SchemaRDD"></a>
       <a id="baseSchemaRDD:SchemaRDD"></a>
@@ -869,6 +882,19 @@ be called once, so it is safe to implement a time-consuming computation in it.
       </h4>
       <p class="shortcomment cmt">Optionally overridden by subclasses to specify placement preferences.</p><div class="fullcomment"><div class="comment cmt"><p>Optionally overridden by subclasses to specify placement preferences.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.SchemaRDDLike#getSchemaTreeString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getSchemaTreeString():String"></a>
+      <a id="getSchemaTreeString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSchemaTreeString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the output schema in the tree format.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the output schema in the tree format.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchemaRDDLike</dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#getStorageLevel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getStorageLevel:org.apache.spark.storage.StorageLevel"></a>
       <a id="getStorageLevel:StorageLevel"></a>
@@ -1310,7 +1336,7 @@ subclasses of RDD.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
-    </li><li name="org.apache.spark.sql.SchemaRDD#logicalPlan" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.apache.spark.sql.SchemaRDDLike#logicalPlan" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logicalPlan:org.apache.spark.sql.catalyst.plans.logical.LogicalPlan"></a>
       <a id="logicalPlan:LogicalPlan"></a>
       <h4 class="signature">
@@ -1322,7 +1348,7 @@ subclasses of RDD.
         <span class="name">logicalPlan</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="org.apache.spark">org.apache.spark</a>] </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> → SchemaRDDLike</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="org.apache.spark">org.apache.spark</a>] </dd><dt>Definition Classes</dt><dd>SchemaRDDLike</dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#map" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="map[U](f:T=&gt;U)(implicitevidence$3:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
       <a id="map[U]((Row)⇒U)(ClassTag[U]):RDD[U]"></a>
@@ -1621,8 +1647,7 @@ RDD is checkpointed.
         <span class="name">printSchema</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Print the schema of this SchemaRDD.</p><div class="fullcomment"><div class="comment cmt"><p>Print the schema of this SchemaRDD.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchemaRDDLike</dd></dl></div>
+      <p class="shortcomment cmt">Prints out the schema in the tree format.</p><div class="fullcomment"><div class="comment cmt"><p>Prints out the schema in the tree format.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchemaRDDLike</dd></dl></div>
     </li><li name="org.apache.spark.sql.SchemaRDDLike#queryExecution" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="queryExecution:SchemaRDDLike.this.sqlContext.QueryExecution"></a>
       <a id="queryExecution:QueryExecution"></a>

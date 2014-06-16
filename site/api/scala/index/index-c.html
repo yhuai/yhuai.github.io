@@ -12,7 +12,7 @@
     
         </head>
         <body><div class="entry">
-      <div class="name">CacheCommandPhysical</div>
+      <div class="name">CacheCommand</div>
       <div class="occurrences"><a href="../org/apache/spark/sql/execution/package.html" class="extype" name="org.apache.spark.sql.execution">execution</a> </div>
     </div><div class="entry">
       <div class="name">CanonicalRandomVertexCut</div>
@@ -35,6 +35,9 @@
     </div><div class="entry">
       <div class="name">Combiner</div>
       <div class="occurrences"><a href="../org/apache/spark/bagel/package.html" class="extype" name="org.apache.spark.bagel">bagel</a> </div>
+    </div><div class="entry">
+      <div class="name">Command</div>
+      <div class="occurrences"><a href="../org/apache/spark/sql/execution/package.html" class="extype" name="org.apache.spark.sql.execution">execution</a> </div>
     </div><div class="entry">
       <div class="name">ComplexFutureAction</div>
       <div class="occurrences"><a href="../org/apache/spark/package.html" class="extype" name="org.apache.spark">spark</a> </div>
@@ -112,7 +115,7 @@
       <div class="occurrences"><a href="../org/apache/spark/SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a> <a href="../org/apache/spark/api/java/JavaSparkContext.html" class="extype" name="org.apache.spark.api.java.JavaSparkContext">JavaSparkContext</a> </div>
     </div><div class="entry">
       <div class="name">child</div>
-      <div class="occurrences"><a href="../org/apache/spark/sql/execution/Aggregate.html" class="extype" name="org.apache.spark.sql.execution.Aggregate">Aggregate</a> <a href="../org/apache/spark/sql/execution/Exchange.html" class="extype" name="org.apache.spark.sql.execution.Exchange">Exchange</a> <a href="../org/apache/spark/sql/execution/ExplainCommandPhysical.html" class="extype" name="org.apache.spark.sql.execution.ExplainCommandPhysical">ExplainCommandPhysical</a> <a href="../org/apache/spark/sql/execution/Filter.html" class="extype" name="org.apache.spark.sql.execution.Filter">Filter</a> <a href="../org/apache/spark/sql/execution/Generate.html" class="extype" name="org.apache.spark.sql.execution.Generate">Generate</a> <a href="../org/apache/spark/sql/execution/Limit.html" class="extype" name="org.apache.spark.sql.execution.Limit">Limit</a> <a href="../org/apache/spark/sql/execution/Project.html" class="extype" name="org.apache.spark.sql.execution.Project">Project</a> <a href="../org/apache/spark/sql/execution/Sample.html" class="extype" name="org.apache.spark.sql.execution.Sample">Sample</a> <a href="../org/apache/spark/sql/execution/Sort.html" class="extype" name="org.apache.spark.sql.execution.Sort">Sort</a> <a href="../org/apache/spark/sql/execution/TakeOrdered.html" class="extype" name="org.apache.spark.sql.execution.TakeOrdered">TakeOrdered</a> <a href="../org/apache/spark/sql/hive/execution/InsertIntoHiveTable.html" class="extype" name="org.apache.spark.sql.hive.execution.InsertIntoHiveTable">InsertIntoHiveTable</a> <a href="../org/apache/spark/sql/hive/execution/ScriptTransformation.html" class="extype" name="org.apache.spark.sql.hive.execution.ScriptTransformation">ScriptTransformation</a> <a href="../org/apache/spark/sql/parquet/InsertIntoParquetTable.html" class="extype" name="org.apache.spark.sql.parquet.InsertIntoParquetTable">InsertIntoParquetTable</a> </div>
+      <div class="occurrences"><a href="../org/apache/spark/sql/execution/Aggregate.html" class="extype" name="org.apache.spark.sql.execution.Aggregate">Aggregate</a> <a href="../org/apache/spark/sql/execution/Exchange.html" class="extype" name="org.apache.spark.sql.execution.Exchange">Exchange</a> <a href="../org/apache/spark/sql/execution/ExplainCommand.html" class="extype" name="org.apache.spark.sql.execution.ExplainCommand">ExplainCommand</a> <a href="../org/apache/spark/sql/execution/Filter.html" class="extype" name="org.apache.spark.sql.execution.Filter">Filter</a> <a href="../org/apache/spark/sql/execution/Generate.html" class="extype" name="org.apache.spark.sql.execution.Generate">Generate</a> <a href="../org/apache/spark/sql/execution/Limit.html" class="extype" name="org.apache.spark.sql.execution.Limit">Limit</a> <a href="../org/apache/spark/sql/execution/Project.html" class="extype" name="org.apache.spark.sql.execution.Project">Project</a> <a href="../org/apache/spark/sql/execution/Sample.html" class="extype" name="org.apache.spark.sql.execution.Sample">Sample</a> <a href="../org/apache/spark/sql/execution/Sort.html" class="extype" name="org.apache.spark.sql.execution.Sort">Sort</a> <a href="../org/apache/spark/sql/execution/TakeOrdered.html" class="extype" name="org.apache.spark.sql.execution.TakeOrdered">TakeOrdered</a> <a href="../org/apache/spark/sql/hive/execution/InsertIntoHiveTable.html" class="extype" name="org.apache.spark.sql.hive.execution.InsertIntoHiveTable">InsertIntoHiveTable</a> <a href="../org/apache/spark/sql/hive/execution/ScriptTransformation.html" class="extype" name="org.apache.spark.sql.hive.execution.ScriptTransformation">ScriptTransformation</a> <a href="../org/apache/spark/sql/parquet/InsertIntoParquetTable.html" class="extype" name="org.apache.spark.sql.parquet.InsertIntoParquetTable">InsertIntoParquetTable</a> </div>
     </div><div class="entry">
       <div class="name">children</div>
       <div class="occurrences"><a href="../org/apache/spark/sql/execution/SparkLogicalPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkLogicalPlan">SparkLogicalPlan</a> <a href="../org/apache/spark/sql/execution/Union.html" class="extype" name="org.apache.spark.sql.execution.Union">Union</a> </div>
@@ -213,9 +216,6 @@
       <div class="name"><strike>combineValuesByKey</strike></div>
       <div class="occurrences"><strike><a href="../org/apache/spark/Aggregator.html" class="extype" name="org.apache.spark.Aggregator">Aggregator</a></strike> </div>
     </div><div class="entry">
-      <div class="name">commandSideEffect</div>
-      <div class="occurrences"><a href="../org/apache/spark/sql/execution/CacheCommandPhysical.html" class="extype" name="org.apache.spark.sql.execution.CacheCommandPhysical">CacheCommandPhysical</a> </div>
-    </div><div class="entry">
       <div class="name">commands</div>
       <div class="occurrences"><a href="../org/apache/spark/sql/hive/test/TestHiveContext$TestTable.html" class="extype" name="org.apache.spark.sql.hive.test.TestHiveContext.TestTable">TestTable</a> </div>
     </div><div class="entry">
@@ -286,7 +286,7 @@
       <div class="occurrences"><a href="../org/apache/spark/SparkConf.html" class="extype" name="org.apache.spark.SparkConf">SparkConf</a> <a href="../org/apache/spark/sql/SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a> </div>
     </div><div class="entry">
       <div class="name">context</div>
-      <div class="occurrences"><a href="../org/apache/spark/InterruptibleIterator.html" class="extype" name="org.apache.spark.InterruptibleIterator">InterruptibleIterator</a> <a href="../org/apache/spark/api/java/JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a> <a href="../org/apache/spark/rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a> <a href="../org/apache/spark/streaming/api/java/JavaDStreamLike.html" class="extype" name="org.apache.spark.streaming.api.java.JavaDStreamLike">JavaDStreamLike</a> <a href="../org/apache/spark/streaming/dstream/DStream.html" class="extype" name="org.apache.spark.streaming.dstream.DStream">DStream</a> </div>
+      <div class="occurrences"><a href="../org/apache/spark/InterruptibleIterator.html" class="extype" name="org.apache.spark.InterruptibleIterator">InterruptibleIterator</a> <a href="../org/apache/spark/api/java/JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a> <a href="../org/apache/spark/rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a> <a href="../org/apache/spark/sql/hive/execution/HiveTableScan.html" class="extype" name="org.apache.spark.sql.hive.execution.HiveTableScan">HiveTableScan</a> <a href="../org/apache/spark/streaming/api/java/JavaDStreamLike.html" class="extype" name="org.apache.spark.streaming.api.java.JavaDStreamLike">JavaDStreamLike</a> <a href="../org/apache/spark/streaming/dstream/DStream.html" class="extype" name="org.apache.spark.streaming.dstream.DStream">DStream</a> </div>
     </div><div class="entry">
       <div class="name">convertToCatalyst</div>
       <div class="occurrences"><a href="../org/apache/spark/sql/execution/ExistingRdd$.html" class="extype" name="org.apache.spark.sql.execution.ExistingRdd">ExistingRdd</a> </div>

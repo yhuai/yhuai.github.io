@@ -131,16 +131,16 @@ group.</p>
                 <span class="name">@<a href="../../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.CacheCommandPhysical" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="CacheCommandPhysicalextendsSparkPlanwithLeafNodewithProductwithSerializable"></a>
-      <a id="CacheCommandPhysical:CacheCommandPhysical"></a>
+    </li><li name="org.apache.spark.sql.execution.CacheCommand" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CacheCommandextendsSparkPlanwithLeafNodewithCommandwithProductwithSerializable"></a>
+      <a id="CacheCommand:CacheCommand"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="CacheCommandPhysical.html"><span class="name">CacheCommandPhysical</span></a><span class="params">(<span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="doCache">doCache: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.LeafNode">LeafNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="CacheCommand.html"><span class="name">CacheCommand</span></a><span class="params">(<span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="doCache">doCache: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.LeafNode">LeafNode</span> with <a href="Command.html" class="extype" name="org.apache.spark.sql.execution.Command">Command</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::
@@ -159,6 +159,19 @@ group.</p>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::
 </p>
+    </li><li name="org.apache.spark.sql.execution.Command" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CommandextendsAnyRef"></a>
+      <a id="Command:Command"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Command.html"><span class="name">Command</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      
     </li><li name="org.apache.spark.sql.execution.Exchange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ExchangeextendsSparkPlanwithUnaryNodewithProductwithSerializable"></a>
       <a id="Exchange:Exchange"></a>
@@ -187,16 +200,16 @@ group.</p>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::
 </p>
-    </li><li name="org.apache.spark.sql.execution.ExplainCommandPhysical" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ExplainCommandPhysicalextendsSparkPlanwithUnaryNodewithProductwithSerializable"></a>
-      <a id="ExplainCommandPhysical:ExplainCommandPhysical"></a>
+    </li><li name="org.apache.spark.sql.execution.ExplainCommand" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ExplainCommandextendsSparkPlanwithUnaryNodewithCommandwithProductwithSerializable"></a>
+      <a id="ExplainCommand:ExplainCommand"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="ExplainCommandPhysical.html"><span class="name">ExplainCommandPhysical</span></a><span class="params">(<span name="child">child: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="output">output: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.UnaryNode">UnaryNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="ExplainCommand.html"><span class="name">ExplainCommand</span></a><span class="params">(<span name="child">child: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="output">output: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.UnaryNode">UnaryNode</span> with <a href="Command.html" class="extype" name="org.apache.spark.sql.execution.Command">Command</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::
@@ -329,16 +342,16 @@ Take the first limit elements.</p>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::
 </p>
-    </li><li name="org.apache.spark.sql.execution.SetCommandPhysical" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SetCommandPhysicalextendsSparkPlanwithLeafNodewithProductwithSerializable"></a>
-      <a id="SetCommandPhysical:SetCommandPhysical"></a>
+    </li><li name="org.apache.spark.sql.execution.SetCommand" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SetCommandextendsSparkPlanwithLeafNodewithCommandwithProductwithSerializable"></a>
+      <a id="SetCommand:SetCommand"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SetCommandPhysical.html"><span class="name">SetCommandPhysical</span></a><span class="params">(<span name="key">key: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="value">value: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="output">output: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.LeafNode">LeafNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="SetCommand.html"><span class="name">SetCommand</span></a><span class="params">(<span name="key">key: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="value">value: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="output">output: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.LeafNode">LeafNode</span> with <a href="Command.html" class="extype" name="org.apache.spark.sql.execution.Command">Command</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::

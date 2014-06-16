@@ -930,8 +930,6 @@ in the HiveConf.
       </span>
       </h4>
       <p class="shortcomment cmt">Loads a JSON file (one object per line), returning the result as a <a href="../../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a JSON file (one object per line), returning the result as a <a href="../../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.
-If a sampled <code>json</code> needs to be used, <code>samplingRatio</code> can be used to specify
-the sampling ratio.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.SQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="jsonRDD(json:org.apache.spark.rdd.RDD[String],samplingRatio:Double):org.apache.spark.sql.SchemaRDD"></a>
@@ -962,8 +960,7 @@ the sampling ratio.
       </h4>
       <p class="shortcomment cmt">Loads a RDD[String] storing JSON objects (one object per record), returning the result as a
 <a href="../../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a RDD[String] storing JSON objects (one object per record), returning the result as a
-<a href="../../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>. If a sampled <code>json</code> needs to be used, <code>samplingRatio</code> can be used to specify
-the sampling ratio.
+<a href="../../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.hive.test.TestHiveContext#loadTestTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="loadTestTable(name:String):Unit"></a>

@@ -687,7 +687,7 @@ sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></d
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 </p>
-    </li><li name="org.apache.spark.sql.SQLContext#jsonFile" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
+    </li><li name="org.apache.spark.sql.SQLContext#jsonFile" visbl="pub" data-isabs="false" fullComment="no" group="userf">
       <a id="jsonFile(path:String):org.apache.spark.sql.SchemaRDD"></a>
       <a id="jsonFile(String):SchemaRDD"></a>
       <h4 class="signature">
@@ -699,10 +699,7 @@ sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></d
         <span class="name">jsonFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Loads a JSON file (one object per line), returning the result as a <a href="SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a JSON file (one object per line), returning the result as a <a href="SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.
-If a sampled <code>json</code> needs to be used, <code>samplingRatio</code> can be used to specify
-the sampling ratio.
-</p></div></div>
+      <p class="shortcomment cmt">Loads a JSON file (one object per line), returning the result as a <a href="SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p>
     </li><li name="org.apache.spark.sql.SQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="jsonRDD(json:org.apache.spark.rdd.RDD[String],samplingRatio:Double):org.apache.spark.sql.SchemaRDD"></a>
       <a id="jsonRDD(RDD[String],Double):SchemaRDD"></a>
@@ -717,7 +714,7 @@ the sampling ratio.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 </p>
-    </li><li name="org.apache.spark.sql.SQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
+    </li><li name="org.apache.spark.sql.SQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="no" group="userf">
       <a id="jsonRDD(json:org.apache.spark.rdd.RDD[String]):org.apache.spark.sql.SchemaRDD"></a>
       <a id="jsonRDD(RDD[String]):SchemaRDD"></a>
       <h4 class="signature">
@@ -730,10 +727,7 @@ the sampling ratio.
       </span>
       </h4>
       <p class="shortcomment cmt">Loads a RDD[String] storing JSON objects (one object per record), returning the result as a
-<a href="SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a RDD[String] storing JSON objects (one object per record), returning the result as a
-<a href="SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>. If a sampled <code>json</code> needs to be used, <code>samplingRatio</code> can be used to specify
-the sampling ratio.
-</p></div></div>
+<a href="SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p>
     </li><li name="com.typesafe.scalalogging.slf4j.Logging#logger" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logger:com.typesafe.scalalogging.slf4j.Logger"></a>
       <a id="logger:Logger"></a>
