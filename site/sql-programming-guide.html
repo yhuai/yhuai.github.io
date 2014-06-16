@@ -110,14 +110,15 @@
 
           <ul id="markdown-toc">
   <li><a href="#overview">Overview</a></li>
-  <li><a href="#getting-started">Getting Started</a>    <ul>
-      <li><a href="#running-sql-on-rdds">Running SQL on RDDs</a></li>
-      <li><a href="#running-sql-on-json-datasets">Running SQL on JSON Datasets</a></li>
-      <li><a href="#using-parquet">Using Parquet</a></li>
-      <li><a href="#writing-language-integrated-relational-queries">Writing Language-Integrated Relational Queries</a></li>
+  <li><a href="#getting-started">Getting Started</a></li>
+  <li><a href="#data-sources">Data Sources</a>    <ul>
+      <li><a href="#rdds">RDDs</a></li>
+      <li><a href="#parquet-files">Parquet Files</a></li>
+      <li><a href="#json-datasets">JSON Datasets</a></li>
+      <li><a href="#hive-tables">Hive Tables</a></li>
     </ul>
   </li>
-  <li><a href="#hive-support">Hive Support</a></li>
+  <li><a href="#writing-language-integrated-relational-queries">Writing Language-Integrated Relational Queries</a></li>
 </ul>
 
 <h1 id="overview">Overview</h1>
@@ -131,20 +132,20 @@ Spark.  At the core of this component is a new type of RDD,
 <a href="api/scala/index.html#org.apache.spark.sql.catalyst.expressions.Row">Row</a> objects along with
 a schema that describes the data types of each column in the row.  A SchemaRDD is similar to a table
 in a traditional relational database.  A SchemaRDD can be created from an existing RDD, <a href="http://parquet.io">Parquet</a>
-file, or by running HiveQL against data stored in <a href="http://hive.apache.org/">Apache Hive</a>.</p>
+file, a JSON dataset, or by running HiveQL against data stored in <a href="http://hive.apache.org/">Apache Hive</a>.</p>
 
     <p>All of the examples on this page use sample data included in the Spark distribution and can be run in the <code>spark-shell</code>.</p>
 
   </div>
 
 <div data-lang="java">
-    <p>Spark SQL allows relational queries expressed in SQL, HiveQL, or Scala to be executed using
+    <p>Spark SQL allows relational queries expressed in SQL or HiveQL to be executed using
 Spark.  At the core of this component is a new type of RDD,
 <a href="api/scala/index.html#org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a>.  JavaSchemaRDDs are composed
 <a href="api/scala/index.html#org.apache.spark.sql.api.java.Row">Row</a> objects along with
 a schema that describes the data types of each column in the row.  A JavaSchemaRDD is similar to a table
 in a traditional relational database.  A JavaSchemaRDD can be created from an existing RDD, <a href="http://parquet.io">Parquet</a>
-file, or by running HiveQL against data stored in <a href="http://hive.apache.org/">Apache Hive</a>.</p>
+file, a JSON dataset, or by running HiveQL against data stored in <a href="http://hive.apache.org/">Apache Hive</a>.</p>
   </div>
 
 <div data-lang="python">
@@ -155,7 +156,7 @@ Spark.  At the core of this component is a new type of RDD,
 <a href="api/python/pyspark.sql.Row-class.html">Row</a> objects along with
 a schema that describes the data types of each column in the row.  A SchemaRDD is similar to a table
 in a traditional relational database.  A SchemaRDD can be created from an existing RDD, <a href="http://parquet.io">Parquet</a>
-file, or by running HiveQL against data stored in <a href="http://hive.apache.org/">Apache Hive</a>.</p>
+file, a JSON dataset, or by running HiveQL against data stored in <a href="http://hive.apache.org/">Apache Hive</a>.</p>
 
     <p>All of the examples on this page use sample data included in the Spark distribution and can be run in the <code>pyspark</code> shell.</p>
   </div>
@@ -175,10 +176,10 @@ file, or by running HiveQL against data stored in <a href="http://hive.apache.or
 descendants.  To create a basic SQLContext, all you need is a SparkContext.</p>
 
     <div class="highlight"><pre><code class="scala"><span class="k">val</span> <span class="n">sc</span><span class="k">:</span> <span class="kt">SparkContext</span> <span class="c1">// An existing SparkContext.</span>
-<span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">sqlCtx</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
 
-<span class="c1">// Importing the SQL context gives access to all the public SQL functions and implicit conversions.</span>
-<span class="k">import</span> <span class="nn">sqlContext._</span></code></pre></div>
+<span class="c1">// createSchemaRDD is used to implicitly convert a RDD to a SchemaRDD.</span>
+<span class="k">import</span> <span class="nn">sqlCtx.createSchemaRDD</span></code></pre></div>
 
   </div>
 
@@ -188,8 +189,8 @@ descendants.  To create a basic SQLContext, all you need is a SparkContext.</p>
 <a href="api/scala/index.html#org.apache.spark.sql.api.java.JavaSQLContext">JavaSQLContext</a> class, or one
 of its descendants.  To create a basic JavaSQLContext, all you need is a JavaSparkContext.</p>
 
-    <div class="highlight"><pre><code class="java"><span class="n">JavaSparkContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="o">...;</span> <span class="c1">// An existing JavaSparkContext.</span>
-<span class="n">JavaSQLContext</span> <span class="n">sqlCtx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">JavaSQLContext</span><span class="o">(</span><span class="n">ctx</span><span class="o">);</span></code></pre></div>
+    <div class="highlight"><pre><code class="java"><span class="n">JavaSparkContext</span> <span class="n">sc</span> <span class="o">=</span> <span class="o">...;</span> <span class="c1">// An existing JavaSparkContext.</span>
+<span class="n">JavaSQLContext</span> <span class="n">sqlCtx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">JavaSQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">);</span></code></pre></div>
 
   </div>
 
@@ -206,7 +207,9 @@ of its decedents.  To create a basic SQLContext, all you need is a SparkContext.
 
 </div>
 
-<h2 id="running-sql-on-rdds">Running SQL on RDDs</h2>
+<h1 id="data-sources">Data Sources</h1>
+
+<h2 id="rdds">RDDs</h2>
 
 <div class="codetabs">
 
@@ -218,8 +221,10 @@ reflection and become the names of the columns. Case classes can also be nested 
 types such as Sequences or Arrays. This RDD can be implicitly converted to a SchemaRDD and then be
 registered as a table.  Tables can be used in subsequent SQL statements.</p>
 
-    <div class="highlight"><pre><code class="scala"><span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
-<span class="k">import</span> <span class="nn">sqlContext._</span>
+    <div class="highlight"><pre><code class="scala"><span class="c1">// sc is an existing SparkContext.</span>
+<span class="k">val</span> <span class="n">sqlCtx</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
+<span class="c1">// createSchemaRDD is used to implicitly convert a RDD to a SchemaRDD.</span>
+<span class="k">import</span> <span class="nn">sqlCtx.createSchemaRDD</span>
 
 <span class="c1">// Define the schema using a case class.</span>
 <span class="c1">// Note: Case classes in Scala 2.10 can support only up to 22 fields. To work around this limit, </span>
@@ -230,8 +235,8 @@ registered as a table.  Tables can be used in subsequent SQL statements.</p>
 <span class="k">val</span> <span class="n">people</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="o">).</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">)).</span><span class="n">map</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">p</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">p</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="n">trim</span><span class="o">.</span><span class="n">toInt</span><span class="o">))</span>
 <span class="n">people</span><span class="o">.</span><span class="n">registerAsTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">)</span>
 
-<span class="c1">// SQL statements can be run by using the sql methods provided by sqlContext.</span>
-<span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
+<span class="c1">// SQL statements can be run by using the sql methods provided by sqlCtx.</span>
+<span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
 
 <span class="c1">// The results of SQL queries are SchemaRDDs and support all the normal RDD operations.</span>
 <span class="c1">// The columns of a row in the result can be accessed by ordinal.</span>
@@ -270,11 +275,11 @@ class that implements Serializable and has getters and setters for all of its fi
     <p>A schema can be applied to an existing RDD by calling <code>applySchema</code> and providing the Class object
 for the JavaBean.</p>
 
-    <div class="highlight"><pre><code class="java"><span class="n">JavaSparkContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="o">...;</span> <span class="c1">// An existing JavaSparkContext.</span>
-<span class="n">JavaSQLContext</span> <span class="n">sqlCtx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">JavaSQLContext</span><span class="o">(</span><span class="n">ctx</span><span class="o">)</span>
+    <div class="highlight"><pre><code class="java"><span class="c1">// sc is an existing JavaSparkContext.</span>
+<span class="n">JavaSQLContext</span> <span class="n">sqlCtx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">JavaSQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
 
 <span class="c1">// Load a text file and convert each line to a JavaBean.</span>
-<span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">people</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="na">textFile</span><span class="o">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="o">).</span><span class="na">map</span><span class="o">(</span>
+<span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">people</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">textFile</span><span class="o">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="o">).</span><span class="na">map</span><span class="o">(</span>
   <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Person</span><span class="o">&gt;()</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">Person</span> <span class="nf">call</span><span class="o">(</span><span class="n">String</span> <span class="n">line</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
       <span class="n">String</span><span class="o">[]</span> <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">);</span>
@@ -311,7 +316,11 @@ dictionary define the columns names of the table, and the types are inferred by 
 row. Any RDD of dictionaries can converted to a SchemaRDD and then registered as a table.  Tables
 can be used in subsequent SQL statements.</p>
 
-    <div class="highlight"><pre><code class="python"><span class="c"># Load a text file and convert each line to a dictionary.</span>
+    <div class="highlight"><pre><code class="python"><span class="c"># sc is an existing SparkContext.</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SQLContext</span>
+<span class="n">sqlCtx</span> <span class="o">=</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+
+<span class="c"># Load a text file and convert each line to a dictionary.</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="p">)</span>
 <span class="n">parts</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">))</span>
 <span class="n">people</span> <span class="o">=</span> <span class="n">parts</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])})</span>
@@ -319,14 +328,16 @@ can be used in subsequent SQL statements.</p>
 <span class="c"># Infer the schema, and register the SchemaRDD as a table.</span>
 <span class="c"># In future versions of PySpark we would like to add support for registering RDDs with other</span>
 <span class="c"># datatypes as tables</span>
-<span class="n">peopleTable</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">inferSchema</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
-<span class="n">peopleTable</span><span class="o">.</span><span class="n">registerAsTable</span><span class="p">(</span><span class="s">&quot;people&quot;</span><span class="p">)</span>
+<span class="n">schemaPeople</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">inferSchema</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
+<span class="n">schemaPeople</span><span class="o">.</span><span class="n">registerAsTable</span><span class="p">(</span><span class="s">&quot;people&quot;</span><span class="p">)</span>
 
 <span class="c"># SQL can be run over SchemaRDDs that have been registered as a table.</span>
 <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="p">)</span>
 
 <span class="c"># The results of SQL queries are RDDs and support all the normal RDD operations.</span>
-<span class="n">teenNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></code></pre></div>
+<span class="n">teenNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">teenName</span> <span class="ow">in</span> <span class="n">teenNames</span><span class="o">.</span><span class="n">collect</span><span class="p">():</span>
+  <span class="k">print</span> <span class="n">teenName</span></code></pre></div>
 
   </div>
 
@@ -336,27 +347,105 @@ can be used in subsequent SQL statements.</p>
 Users that want a more complete dialect of SQL should look at the HiveQL support provided by
 <code>HiveContext</code>.</p>
 
-<h2 id="running-sql-on-json-datasets">Running SQL on JSON Datasets</h2>
-<p><strong>Running SQL on JSON datasets is currently only supported in Scala.</strong></p>
+<h2 id="parquet-files">Parquet Files</h2>
 
-<p>Spark SQL supports querying JSON datasets. To query a JSON dataset, a SchemaRDD needs to be created for this JSON dataset. There are three ways:</p>
+<p><a href="http://parquet.io">Parquet</a> is a columnar format that is supported by many other data processing systems.
+Spark SQL provides support for both reading and writing Parquet files that automatically preserves the schema
+of the original data.  Using the data from the above example:</p>
 
-<ol>
-  <li>Creating the SchemaRDD from text files that store one JSON object per line by using <code>jsonFile</code>.</li>
-  <li>Creating the SchemaRDD from a RDD of strings (<code>RDD[String]</code>) that stores one JSON object per string by using <code>jsonRDD</code>.</li>
-  <li>Creating the SchemaRDD by unioning two SchemaRDDs for two JSON datasets through <code>schemaRDD1.unionAll(schemaRDD2)</code>.</li>
-</ol>
+<div class="codetabs">
 
-<p>The schema (field names and types) of a JSON dataset is automatically inferred when the SchemaRDD is created.</p>
+<div data-lang="scala">
 
-<div class="highlight"><pre><code class="scala"><span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
-<span class="k">import</span> <span class="nn">sqlContext._</span>
+    <div class="highlight"><pre><code class="scala"><span class="c1">// sqlCtx from the previous example is used in this example.</span>
+<span class="c1">// createSchemaRDD is used to implicitly convert a RDD to a SchemaRDD.</span>
+<span class="k">import</span> <span class="nn">sqlCtx.createSchemaRDD</span>
+
+<span class="k">val</span> <span class="n">people</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Person</span><span class="o">]</span> <span class="k">=</span> <span class="o">...</span> <span class="c1">// An RDD of case class objects, from the previous example.</span>
+
+<span class="c1">// The RDD is implicitly converted to a SchemaRDD by createSchemaRDD, allowing it to be stored using Parquet.</span>
+<span class="n">people</span><span class="o">.</span><span class="n">saveAsParquetFile</span><span class="o">(</span><span class="s">&quot;people.parquet&quot;</span><span class="o">)</span>
+
+<span class="c1">// Read in the parquet file created above.  Parquet files are self-describing so the schema is preserved.</span>
+<span class="c1">// The result of loading a Parquet file is also a SchemaRDD.</span>
+<span class="k">val</span> <span class="n">parquetFile</span> <span class="k">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">parquetFile</span><span class="o">(</span><span class="s">&quot;people.parquet&quot;</span><span class="o">)</span>
+
+<span class="c1">//Parquet files can also be registered as tables and then used in SQL statements.</span>
+<span class="n">parquetFile</span><span class="o">.</span><span class="n">registerAsTable</span><span class="o">(</span><span class="s">&quot;parquetFile&quot;</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM parquetFile WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
+<span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
+
+  </div>
+
+<div data-lang="java">
+
+    <div class="highlight"><pre><code class="java"><span class="c1">// sqlCtx from the previous example is used in this example.</span>
+
+<span class="n">JavaSchemaRDD</span> <span class="n">schemaPeople</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">// The JavaSchemaRDD from the previous example.</span>
+
+<span class="c1">// JavaSchemaRDDs can be saved as Parquet files, maintaining the schema information.</span>
+<span class="n">schemaPeople</span><span class="o">.</span><span class="na">saveAsParquetFile</span><span class="o">(</span><span class="s">&quot;people.parquet&quot;</span><span class="o">);</span>
+
+<span class="c1">// Read in the Parquet file created above.  Parquet files are self-describing so the schema is preserved.</span>
+<span class="c1">// The result of loading a parquet file is also a JavaSchemaRDD.</span>
+<span class="n">JavaSchemaRDD</span> <span class="n">parquetFile</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="na">parquetFile</span><span class="o">(</span><span class="s">&quot;people.parquet&quot;</span><span class="o">);</span>
+
+<span class="c1">//Parquet files can also be registered as tables and then used in SQL statements.</span>
+<span class="n">parquetFile</span><span class="o">.</span><span class="na">registerAsTable</span><span class="o">(</span><span class="s">&quot;parquetFile&quot;</span><span class="o">);</span>
+<span class="n">JavaSchemaRDD</span> <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM parquetFile WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">);</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">teenagerNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">call</span><span class="o">(</span><span class="n">Row</span> <span class="n">row</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}).</span><span class="na">collect</span><span class="o">();</span></code></pre></div>
+
+  </div>
+
+<div data-lang="python">
+
+    <div class="highlight"><pre><code class="python"><span class="c"># sqlCtx from the previous example is used in this example.</span>
+
+<span class="n">schemaPeople</span> <span class="c"># The SchemaRDD from the previous example.</span>
+
+<span class="c"># SchemaRDDs can be saved as Parquet files, maintaining the schema information.</span>
+<span class="n">schemaPeople</span><span class="o">.</span><span class="n">saveAsParquetFile</span><span class="p">(</span><span class="s">&quot;people.parquet&quot;</span><span class="p">)</span>
+
+<span class="c"># Read in the Parquet file created above.  Parquet files are self-describing so the schema is preserved.</span>
+<span class="c"># The result of loading a parquet file is also a SchemaRDD.</span>
+<span class="n">parquetFile</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">parquetFile</span><span class="p">(</span><span class="s">&quot;people.parquet&quot;</span><span class="p">)</span>
+
+<span class="c"># Parquet files can also be registered as tables and then used in SQL statements.</span>
+<span class="n">parquetFile</span><span class="o">.</span><span class="n">registerAsTable</span><span class="p">(</span><span class="s">&quot;parquetFile&quot;</span><span class="p">);</span>
+<span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM parquetFile WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="p">)</span>
+<span class="n">teenNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">teenName</span> <span class="ow">in</span> <span class="n">teenNames</span><span class="o">.</span><span class="n">collect</span><span class="p">():</span>
+  <span class="k">print</span> <span class="n">teenName</span></code></pre></div>
+
+  </div>
+
+</div>
+
+<h2 id="json-datasets">JSON Datasets</h2>
+<div class="codetabs">
+
+<div data-lang="scala">
+    <p>Spark SQL supports querying JSON datasets. To query a JSON dataset, a SchemaRDD needs to be created for this JSON dataset. There are two ways to create a SchemaRDD for a JSON dataset:</p>
+
+    <ol>
+      <li>Creating the SchemaRDD from text files that store one JSON object per line.</li>
+      <li>Creating the SchemaRDD from a RDD of strings (<code>RDD[String]</code>) that stores one JSON object.</li>
+    </ol>
+
+    <p>The schema of a JSON dataset is automatically inferred when the SchemaRDD is created.</p>
+
+    <div class="highlight"><pre><code class="scala"><span class="c1">// sc is an existing SparkContext.</span>
+<span class="k">val</span> <span class="n">sqlCtx</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
 
 <span class="c1">// A JSON dataset is pointed by path.</span>
 <span class="c1">// The path can be either a single text file or a directory storing text files.</span>
 <span class="k">val</span> <span class="n">path</span> <span class="k">=</span> <span class="s">&quot;examples/src/main/resources/people.json&quot;</span>
 <span class="c1">// Create a SchemaRDD from the file(s) pointed by path</span>
-<span class="k">val</span> <span class="n">people</span> <span class="k">=</span> <span class="n">jsonFile</span><span class="o">(</span><span class="n">path</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">people</span> <span class="k">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">jsonFile</span><span class="o">(</span><span class="n">path</span><span class="o">)</span>
 
 <span class="c1">// Because the schema of a JSON dataset is automatically inferred, to write queries,</span>
 <span class="c1">// it is better to take a look at what is the schema.</span>
@@ -369,17 +458,18 @@ Users that want a more complete dialect of SQL should look at the HiveQL support
 <span class="c1">// Register this SchemaRDD as a table.</span>
 <span class="n">people</span><span class="o">.</span><span class="n">registerAsTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">)</span>
 
-<span class="c1">// SQL statements can be run by using the sql methods provided by sqlContext.</span>
-<span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
+<span class="c1">// SQL statements can be run by using the sql methods provided by sqlCtx.</span>
+<span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
 
 <span class="c1">// The results of SQL queries are SchemaRDDs and support all the normal RDD operations.</span>
 <span class="c1">// The columns of a row in the result can be accessed by ordinal.</span>
 <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span>
 
-<span class="c1">// Let&#39;s create another SchemaRDD from a RDD[String] storing one JSON object per string.</span>
+<span class="c1">// Alternatively, a SchemaRDD can be created for a JSON dataset represented by</span>
+<span class="c1">// a RDD[String] storing one JSON object per string.</span>
 <span class="k">val</span> <span class="n">anotherPeopleRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span>
   <span class="s">&quot;&quot;&quot;{&quot;name&quot;:&quot;Yin&quot;,&quot;address&quot;:{&quot;city&quot;:&quot;Columbus&quot;,&quot;state&quot;:&quot;Ohio&quot;}}&quot;&quot;&quot;</span> <span class="o">::</span> <span class="nc">Nil</span><span class="o">)</span>
-<span class="k">val</span> <span class="n">anotherPeople</span> <span class="k">=</span> <span class="n">jsonRDD</span><span class="o">(</span><span class="n">anotherPeopleRDD</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">anotherPeople</span> <span class="k">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">jsonRDD</span><span class="o">(</span><span class="n">anotherPeopleRDD</span><span class="o">)</span>
 
 <span class="c1">// Take a look at the schema of this new SchemaRDD.</span>
 <span class="n">anotherPeople</span><span class="o">.</span><span class="n">printSchema</span><span class="o">()</span>
@@ -388,116 +478,129 @@ Users that want a more complete dialect of SQL should look at the HiveQL support
 <span class="c1">//  |-- address: StructType</span>
 <span class="c1">//  |    |-- city: StringType</span>
 <span class="c1">//  |    |-- state: StringType</span>
-<span class="c1">//  |-- name: StringType</span>
- 
-<span class="c1">// Two SchemaRDDs created from JSON datasets can be unioned together.</span>
-<span class="k">val</span> <span class="n">peopleUnioned</span> <span class="k">=</span> <span class="n">people</span><span class="o">.</span><span class="n">unionAll</span><span class="o">(</span><span class="n">anotherPeople</span><span class="o">)</span>
-
-<span class="c1">// Take a look at the schema of this unioned SchemaRDD.</span>
-<span class="n">peopleUnioned</span><span class="o">.</span><span class="n">printSchema</span><span class="o">()</span>
-<span class="c1">// The schema of this unioned SchemaRDD is ...</span>
-<span class="c1">// root</span>
-<span class="c1">//  |-- address: StructType</span>
-<span class="c1">//  |    |-- city: StringType</span>
-<span class="c1">//  |    |-- state: StringType</span>
-<span class="c1">//  |-- age: IntegerType</span>
-<span class="c1">//  |-- name: StringType</span>
-
-<span class="c1">// Register this unioned SchemaRDD as a table.</span>
-<span class="n">peopleUnioned</span><span class="o">.</span><span class="n">registerAsTable</span><span class="o">(</span><span class="s">&quot;peopleUnioned&quot;</span><span class="o">)</span>
-<span class="k">val</span> <span class="n">peopleFromColumbus</span> <span class="k">=</span>
-  <span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name, address.city FROM peopleUnioned WHERE address.city = &#39;Columbus&#39;&quot;</span><span class="o">)</span>
-
-<span class="c1">// See the result.</span>
-<span class="n">peopleFromColumbus</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="s">&quot;, City: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">1</span><span class="o">)).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
-
-<h2 id="using-parquet">Using Parquet</h2>
-
-<p><a href="http://parquet.io">Parquet</a> is a columnar format that is supported by many other data processing systems.
-Spark SQL provides support for both reading and writing Parquet files that automatically preserves the schema
-of the original data.  Using the data from the above example:</p>
-
-<div class="codetabs">
-
-<div data-lang="scala">
-
-    <div class="highlight"><pre><code class="scala"><span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
-<span class="k">import</span> <span class="nn">sqlContext._</span>
-
-<span class="k">val</span> <span class="n">people</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Person</span><span class="o">]</span> <span class="k">=</span> <span class="o">...</span> <span class="c1">// An RDD of case class objects, from the previous example.</span>
-
-<span class="c1">// The RDD is implicitly converted to a SchemaRDD, allowing it to be stored using Parquet.</span>
-<span class="n">people</span><span class="o">.</span><span class="n">saveAsParquetFile</span><span class="o">(</span><span class="s">&quot;people.parquet&quot;</span><span class="o">)</span>
-
-<span class="c1">// Read in the parquet file created above.  Parquet files are self-describing so the schema is preserved.</span>
-<span class="c1">// The result of loading a Parquet file is also a JavaSchemaRDD.</span>
-<span class="k">val</span> <span class="n">parquetFile</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">parquetFile</span><span class="o">(</span><span class="s">&quot;people.parquet&quot;</span><span class="o">)</span>
-
-<span class="c1">//Parquet files can also be registered as tables and then used in SQL statements.</span>
-<span class="n">parquetFile</span><span class="o">.</span><span class="n">registerAsTable</span><span class="o">(</span><span class="s">&quot;parquetFile&quot;</span><span class="o">)</span>
-<span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM parquetFile WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
-<span class="n">teenagers</span><span class="o">.</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
+<span class="c1">//  |-- name: StringType</span></code></pre></div>
 
   </div>
 
 <div data-lang="java">
+    <p>Spark SQL supports querying JSON datasets. To query a JSON dataset, a JavaSchemaRDD needs to be created for this JSON dataset. There are two ways to create a JavaSchemaRDD for a JSON dataset:</p>
 
-    <div class="highlight"><pre><code class="java"><span class="n">JavaSchemaRDD</span> <span class="n">schemaPeople</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">// The JavaSchemaRDD from the previous example.</span>
+    <ol>
+      <li>Creating the JavaSchemaRDD from text files that store one JSON object per line.</li>
+      <li>Creating the JavaSchemaRDD from a RDD of strings (<code>RDD[String]</code>) that stores one JSON object.</li>
+    </ol>
 
-<span class="c1">// JavaSchemaRDDs can be saved as Parquet files, maintaining the schema information.</span>
-<span class="n">schemaPeople</span><span class="o">.</span><span class="na">saveAsParquetFile</span><span class="o">(</span><span class="s">&quot;people.parquet&quot;</span><span class="o">);</span>
+    <p>The schema of a JSON dataset is automatically inferred when the JavaSchemaRDD is created.</p>
 
-<span class="c1">// Read in the Parquet file created above.  Parquet files are self-describing so the schema is preserved.</span>
-<span class="c1">// The result of loading a parquet file is also a JavaSchemaRDD.</span>
-<span class="n">JavaSchemaRDD</span> <span class="n">parquetFile</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="na">parquetFile</span><span class="o">(</span><span class="s">&quot;people.parquet&quot;</span><span class="o">);</span>
+    <div class="highlight"><pre><code class="java"><span class="c1">// sc is an existing JavaSparkContext.</span>
+<span class="n">JavaSQLContext</span> <span class="n">sqlCtx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">JavaSQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">);</span>
 
-<span class="c1">//Parquet files can also be registered as tables and then used in SQL statements.</span>
-<span class="n">parquetFile</span><span class="o">.</span><span class="na">registerAsTable</span><span class="o">(</span><span class="s">&quot;parquetFile&quot;</span><span class="o">);</span>
-<span class="n">JavaSchemaRDD</span> <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM parquetFile WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">);</span></code></pre></div>
+<span class="c1">// A JSON dataset is pointed by path.</span>
+<span class="c1">// The path can be either a single text file or a directory storing text files.</span>
+<span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;examples/src/main/resources/people.json&quot;</span><span class="o">;</span>
+<span class="c1">// Create a JavaSchemaRDD from the file(s) pointed by path</span>
+<span class="n">JavaSchemaRDD</span> <span class="n">people</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="na">jsonFile</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+
+<span class="c1">// Because the schema of a JSON dataset is automatically inferred, to write queries,</span>
+<span class="c1">// it is better to take a look at what is the schema.</span>
+<span class="n">people</span><span class="o">.</span><span class="na">printSchema</span><span class="o">();</span>
+<span class="c1">// The schema of people is ...</span>
+<span class="c1">// root</span>
+<span class="c1">//  |-- age: IntegerType</span>
+<span class="c1">//  |-- name: StringType</span>
+
+<span class="c1">// Register this JavaSchemaRDD as a table.</span>
+<span class="n">people</span><span class="o">.</span><span class="na">registerAsTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">);</span>
+
+<span class="c1">// SQL statements can be run by using the sql methods provided by sqlCtx.</span>
+<span class="n">JavaSchemaRDD</span> <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">);</span>
+
+<span class="c1">// The results of SQL queries are JavaSchemaRDDs and support all the normal RDD operations.</span>
+<span class="c1">// The columns of a row in the result can be accessed by ordinal.</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">teenagerNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">call</span><span class="o">(</span><span class="n">Row</span> <span class="n">row</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}).</span><span class="na">collect</span><span class="o">();</span>
+
+<span class="c1">// Alternatively, a JavaSchemaRDD can be created for a JSON dataset represented by</span>
+<span class="c1">// a RDD[String] storing one JSON object per string.</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">jsonData</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
+  <span class="s">&quot;{\&quot;name\&quot;:\&quot;Yin\&quot;,\&quot;address\&quot;:{\&quot;city\&quot;:\&quot;Columbus\&quot;,\&quot;state\&quot;:\&quot;Ohio\&quot;}}&quot;</span><span class="o">);</span>
+<span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">anotherPeopleRDD</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">parallelize</span><span class="o">(</span><span class="n">jsonData</span><span class="o">);</span>
+<span class="n">JavaSchemaRDD</span> <span class="n">anotherPeople</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="na">jsonRDD</span><span class="o">(</span><span class="n">anotherPeopleRDD</span><span class="o">);</span>
+
+<span class="c1">// Take a look at the schema of this new JavaSchemaRDD.</span>
+<span class="n">anotherPeople</span><span class="o">.</span><span class="na">printSchema</span><span class="o">();</span>
+<span class="c1">// The schema of anotherPeople is ...</span>
+<span class="c1">// root</span>
+<span class="c1">//  |-- address: StructType</span>
+<span class="c1">//  |    |-- city: StringType</span>
+<span class="c1">//  |    |-- state: StringType</span>
+<span class="c1">//  |-- name: StringType</span></code></pre></div>
 
   </div>
 
 <div data-lang="python">
+    <p>Spark SQL supports querying JSON datasets. To query a JSON dataset, a SchemaRDD needs to be created for this JSON dataset. There are two ways to create a SchemaRDD for a JSON dataset:</p>
 
-    <div class="highlight"><pre><code class="python"><span class="n">peopleTable</span> <span class="c"># The SchemaRDD from the previous example.</span>
+    <ol>
+      <li>Creating the SchemaRDD from text files that store one JSON object per line.</li>
+      <li>Creating the SchemaRDD from a RDD of strings (<code>RDD[String]</code>) that stores one JSON object.</li>
+    </ol>
 
-<span class="c"># SchemaRDDs can be saved as Parquet files, maintaining the schema information.</span>
-<span class="n">peopleTable</span><span class="o">.</span><span class="n">saveAsParquetFile</span><span class="p">(</span><span class="s">&quot;people.parquet&quot;</span><span class="p">)</span>
+    <p>The schema of a JSON dataset is automatically inferred when the SchemaRDD is created.</p>
 
-<span class="c"># Read in the Parquet file created above.  Parquet files are self-describing so the schema is preserved.</span>
-<span class="c"># The result of loading a parquet file is also a SchemaRDD.</span>
-<span class="n">parquetFile</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">parquetFile</span><span class="p">(</span><span class="s">&quot;people.parquet&quot;</span><span class="p">)</span>
+    <div class="highlight"><pre><code class="python"><span class="c"># sc is an existing SparkContext.</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SQLContext</span>
+<span class="n">sqlCtx</span> <span class="o">=</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
 
-<span class="c"># Parquet files can also be registered as tables and then used in SQL statements.</span>
-<span class="n">parquetFile</span><span class="o">.</span><span class="n">registerAsTable</span><span class="p">(</span><span class="s">&quot;parquetFile&quot;</span><span class="p">);</span>
-<span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM parquetFile WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="p">)</span></code></pre></div>
+<span class="c"># A JSON dataset is pointed by path.</span>
+<span class="c"># The path can be either a single text file or a directory storing text files.</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">&quot;examples/src/main/resources/people.json&quot;</span>
+<span class="c"># Create a SchemaRDD from the file(s) pointed by path</span>
+<span class="n">people</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">jsonFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="c"># Because the schema of a JSON dataset is automatically inferred, to write queries,</span>
+<span class="c"># it is better to take a look at what is the schema.</span>
+<span class="n">people</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+<span class="c"># The schema of people is ...</span>
+<span class="c"># root</span>
+<span class="c">#  |-- age: IntegerType</span>
+<span class="c">#  |-- name: StringType</span>
+
+<span class="c"># Register this SchemaRDD as a table.</span>
+<span class="n">people</span><span class="o">.</span><span class="n">registerAsTable</span><span class="p">(</span><span class="s">&quot;people&quot;</span><span class="p">)</span>
+
+<span class="c"># SQL statements can be run by using the sql methods provided by sqlCtx.</span>
+<span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="p">)</span>
+
+<span class="c"># The results of SQL queries are SchemaRDDs and support all the normal RDD operations.</span>
+<span class="c"># The columns of a row in the result can be accessed by ordinal.</span>
+<span class="n">teenNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">teenName</span> <span class="ow">in</span> <span class="n">teenNames</span><span class="o">.</span><span class="n">collect</span><span class="p">():</span>
+  <span class="k">print</span> <span class="n">teenName</span>
+
+<span class="c"># Alternatively, a SchemaRDD can be created for a JSON dataset represented by</span>
+<span class="c"># a RDD[String] storing one JSON object per string.</span>
+<span class="n">anotherPeopleRDD</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">([</span>
+  <span class="s">&#39;{&quot;name&quot;:&quot;Yin&quot;,&quot;address&quot;:{&quot;city&quot;:&quot;Columbus&quot;,&quot;state&quot;:&quot;Ohio&quot;}}&#39;</span><span class="p">])</span>
+<span class="n">anotherPeople</span> <span class="o">=</span> <span class="n">sqlCtx</span><span class="o">.</span><span class="n">jsonRDD</span><span class="p">(</span><span class="n">anotherPeopleRDD</span><span class="p">)</span>
+
+<span class="c"># Take a look at the schema of this new SchemaRDD.</span>
+<span class="n">anotherPeople</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+<span class="c"># The schema of anotherPeople is ...</span>
+<span class="c"># root</span>
+<span class="c">#  |-- address: StructType</span>
+<span class="c">#  |    |-- city: StringType</span>
+<span class="c">#  |    |-- state: StringType</span>
+<span class="c">#  |-- name: StringType</span></code></pre></div>
 
   </div>
 
 </div>
 
-<h2 id="writing-language-integrated-relational-queries">Writing Language-Integrated Relational Queries</h2>
-
-<p><strong>Language-Integrated queries are currently only supported in Scala.</strong></p>
-
-<p>Spark SQL also supports a domain specific language for writing queries.  Once again,
-using the data from the above examples:</p>
-
-<div class="highlight"><pre><code class="scala"><span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
-<span class="k">import</span> <span class="nn">sqlContext._</span>
-<span class="k">val</span> <span class="n">people</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Person</span><span class="o">]</span> <span class="k">=</span> <span class="o">...</span> <span class="c1">// An RDD of case class objects, from the first example.</span>
-
-<span class="c1">// The following is the same as &#39;SELECT name FROM people WHERE age &gt;= 10 AND age &lt;= 19&#39;</span>
-<span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">people</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="-Symbol">&#39;age</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="o">).</span><span class="n">where</span><span class="o">(</span><span class="-Symbol">&#39;age</span> <span class="o">&lt;=</span> <span class="mi">19</span><span class="o">).</span><span class="n">select</span><span class="o">(</span><span class="-Symbol">&#39;name</span><span class="o">)</span></code></pre></div>
-
-<p>The DSL uses Scala symbols to represent columns in the underlying table, which are identifiers
-prefixed with a tick (<code>'</code>).  Implicit conversions turn these symbols into expressions that are
-evaluated by the SQL execution engine.  A full list of the functions supported can be found in the
-<a href="api/scala/index.html#org.apache.spark.sql.SchemaRDD">ScalaDoc</a>.</p>
-
-<!-- TODO: Include the table of operations here. -->
-
-<h1 id="hive-support">Hive Support</h1>
+<h2 id="hive-tables">Hive Tables</h2>
 
 <p>Spark SQL also supports reading and writing data stored in <a href="http://hive.apache.org/">Apache Hive</a>.
 However, since Hive has a large number of dependencies, it is not included in the default Spark assembly.
@@ -518,17 +621,14 @@ not have an existing Hive deployment can also experiment with the <code>LocalHiv
 which is similar to <code>HiveContext</code>, but creates a local copy of the <code>metastore</code> and <code>warehouse</code>
 automatically.</p>
 
-    <div class="highlight"><pre><code class="scala"><span class="k">val</span> <span class="n">sc</span><span class="k">:</span> <span class="kt">SparkContext</span> <span class="c1">// An existing SparkContext.</span>
-<span class="k">val</span> <span class="n">hiveContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">hive</span><span class="o">.</span><span class="nc">HiveContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
+    <div class="highlight"><pre><code class="scala"><span class="c1">// sc is an existing SparkContext.</span>
+<span class="k">val</span> <span class="n">hiveCtx</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">hive</span><span class="o">.</span><span class="nc">HiveContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
 
-<span class="c1">// Importing the SQL context gives access to all the public SQL functions and implicit conversions.</span>
-<span class="k">import</span> <span class="nn">hiveContext._</span>
-
-<span class="n">hql</span><span class="o">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span><span class="o">)</span>
-<span class="n">hql</span><span class="o">(</span><span class="s">&quot;LOAD DATA LOCAL INPATH &#39;examples/src/main/resources/kv1.txt&#39; INTO TABLE src&quot;</span><span class="o">)</span>
+<span class="n">hiveCtx</span><span class="o">.</span><span class="n">hql</span><span class="o">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span><span class="o">)</span>
+<span class="n">hiveCtx</span><span class="o">.</span><span class="n">hql</span><span class="o">(</span><span class="s">&quot;LOAD DATA LOCAL INPATH &#39;examples/src/main/resources/kv1.txt&#39; INTO TABLE src&quot;</span><span class="o">)</span>
 
 <span class="c1">// Queries are expressed in HiveQL</span>
-<span class="n">hql</span><span class="o">(</span><span class="s">&quot;FROM src SELECT key, value&quot;</span><span class="o">).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
+<span class="n">hiveCtx</span><span class="o">.</span><span class="n">hql</span><span class="o">(</span><span class="s">&quot;FROM src SELECT key, value&quot;</span><span class="o">).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
 
   </div>
 
@@ -539,8 +639,8 @@ adds support for finding tables in in the MetaStore and writing queries using Hi
 the <code>sql</code> method a <code>JavaHiveContext</code> also provides an <code>hql</code> methods, which allows queries to be
 expressed in HiveQL.</p>
 
-    <div class="highlight"><pre><code class="java"><span class="n">JavaSparkContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="o">...;</span> <span class="c1">// An existing JavaSparkContext.</span>
-<span class="n">JavaHiveContext</span> <span class="n">hiveCtx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">hive</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">HiveContext</span><span class="o">(</span><span class="n">ctx</span><span class="o">);</span>
+    <div class="highlight"><pre><code class="java"><span class="c1">// sc is an existing JavaSparkContext.</span>
+<span class="n">JavaHiveContext</span> <span class="n">hiveCtx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">hive</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">HiveContext</span><span class="o">(</span><span class="n">sc</span><span class="o">);</span>
 
 <span class="n">hiveCtx</span><span class="o">.</span><span class="na">hql</span><span class="o">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span><span class="o">);</span>
 <span class="n">hiveCtx</span><span class="o">.</span><span class="na">hql</span><span class="o">(</span><span class="s">&quot;LOAD DATA LOCAL INPATH &#39;examples/src/main/resources/kv1.txt&#39; INTO TABLE src&quot;</span><span class="o">);</span>
@@ -557,7 +657,8 @@ adds support for finding tables in in the MetaStore and writing queries using Hi
 the <code>sql</code> method a <code>HiveContext</code> also provides an <code>hql</code> methods, which allows queries to be
 expressed in HiveQL.</p>
 
-    <div class="highlight"><pre><code class="python"><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">HiveContext</span>
+    <div class="highlight"><pre><code class="python"><span class="c"># sc is an existing SparkContext.</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">HiveContext</span>
 <span class="n">hiveCtx</span> <span class="o">=</span> <span class="n">HiveContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
 
 <span class="n">hiveCtx</span><span class="o">.</span><span class="n">hql</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span><span class="p">)</span>
@@ -568,6 +669,30 @@ expressed in HiveQL.</p>
 
   </div>
 </div>
+
+<h1 id="writing-language-integrated-relational-queries">Writing Language-Integrated Relational Queries</h1>
+
+<p><strong>Language-Integrated queries are currently only supported in Scala.</strong></p>
+
+<p>Spark SQL also supports a domain specific language for writing queries.  Once again,
+using the data from the above examples:</p>
+
+<div class="highlight"><pre><code class="scala"><span class="c1">// sc is an existing SparkContext.</span>
+<span class="k">val</span> <span class="n">sqlCtx</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
+<span class="c1">// Importing the SQL context gives access to all the public SQL functions and implicit conversions.</span>
+<span class="k">import</span> <span class="nn">sqlCtx._</span>
+<span class="k">val</span> <span class="n">people</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Person</span><span class="o">]</span> <span class="k">=</span> <span class="o">...</span> <span class="c1">// An RDD of case class objects, from the first example.</span>
+
+<span class="c1">// The following is the same as &#39;SELECT name FROM people WHERE age &gt;= 10 AND age &lt;= 19&#39;</span>
+<span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">people</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="-Symbol">&#39;age</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="o">).</span><span class="n">where</span><span class="o">(</span><span class="-Symbol">&#39;age</span> <span class="o">&lt;=</span> <span class="mi">19</span><span class="o">).</span><span class="n">select</span><span class="o">(</span><span class="-Symbol">&#39;name</span><span class="o">)</span>
+<span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
+
+<p>The DSL uses Scala symbols to represent columns in the underlying table, which are identifiers
+prefixed with a tick (<code>'</code>).  Implicit conversions turn these symbols into expressions that are
+evaluated by the SQL execution engine.  A full list of the functions supported can be found in the
+<a href="api/scala/index.html#org.apache.spark.sql.SchemaRDD">ScalaDoc</a>.</p>
+
+<!-- TODO: Include the table of operations here. -->
 
 
         </div> <!-- /container -->

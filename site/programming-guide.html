@@ -520,13 +520,21 @@ We describe operations on distributed datasets later on.</p>
       </li>
     </ul>
 
-    <p>Apart from reading files as a collection of lines,
-<code>SparkContext.wholeTextFiles</code> lets you read a directory containing multiple small text files, and returns each of them as (filename, content) pairs. This is in contrast with <code>textFile</code>, which would return one record per line in each file.</p>
+    <p>Apart from text files, Spark’s Python API also supports several other data formats:</p>
+
+    <ul>
+      <li>
+        <p><code>SparkContext.wholeTextFiles</code> lets you read a directory containing multiple small text files, and returns each of them as (filename, content) pairs. This is in contrast with <code>textFile</code>, which would return one record per line in each file.</p>
+      </li>
+      <li>
+        <p><code>RDD.saveAsPickleFile</code> and <code>SparkContext.pickleFile</code> support saving an RDD in a simple format consisting of pickled Python objects. Batching is used on pickle serialization, with default batch size 10.</p>
+      </li>
+      <li>
+        <p>Details on reading <code>SequenceFile</code> and arbitrary Hadoop <code>InputFormat</code> are given below.</p>
+      </li>
+    </ul>
 
     <h3 id="sequencefile-and-hadoop-inputformats">SequenceFile and Hadoop InputFormats</h3>
-
-    <p>In addition to reading text files, PySpark supports reading <code>SequenceFile</code> 
-and any arbitrary <code>InputFormat</code>.</p>
 
     <p><strong>Note</strong> this feature is currently marked <code>Experimental</code> and is intended for advanced users. It may be replaced in future with read/write support based on SparkSQL, in which case SparkSQL is the preferred approach.</p>
 
@@ -871,6 +879,11 @@ many times each line of text occurs in a file:</p>
     <p>We could also use <code>counts.sortByKey()</code>, for example, to sort the pairs alphabetically, and finally
 <code>counts.collect()</code> to bring them back to the driver program as an array of objects.</p>
 
+    <p><strong>Note:</strong> when using custom objects as the key in key-value pair operations, you must be sure that a
+custom <code>equals()</code> method is accompanied with a matching <code>hashCode()</code> method.  For full details, see
+the contract outlined in the <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode()">Object.hashCode()
+documentation</a>.</p>
+
   </div>
 
 <div data-lang="java">
@@ -900,6 +913,11 @@ many times each line of text occurs in a file:</p>
 
     <p>We could also use <code>counts.sortByKey()</code>, for example, to sort the pairs alphabetically, and finally
 <code>counts.collect()</code> to bring them back to the driver program as an array of objects.</p>
+
+    <p><strong>Note:</strong> when using custom objects as the key in key-value pair operations, you must be sure that a
+custom <code>equals()</code> method is accompanied with a matching <code>hashCode()</code> method.  For full details, see
+the contract outlined in the <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode()">Object.hashCode()
+documentation</a>.</p>
 
   </div>
 
@@ -993,7 +1011,7 @@ for details.</p>
 </tr>
 <tr>
   <td> <b>reduceByKey</b>(<i>func</i>, [<i>numTasks</i>]) </td>
-  <td> When called on a dataset of (K, V) pairs, returns a dataset of (K, V) pairs where the values for each key are aggregated using the given reduce function. Like in <code>groupByKey</code>, the number of reduce tasks is configurable through an optional second argument. </td>
+  <td> When called on a dataset of (K, V) pairs, returns a dataset of (K, V) pairs where the values for each key are aggregated using the given reduce function <i>func</i>, which must be of type (V,V) =&gt; V. Like in <code>groupByKey</code>, the number of reduce tasks is configurable through an optional second argument. </td>
 </tr>
 <tr>
   <td> <b>aggregateByKey</b>(<i>zeroValue</i>)(<i>seqOp</i>, <i>combOp</i>, [<i>numTasks</i>]) </td>
@@ -1161,7 +1179,10 @@ storage levels is:</p>
   <td> Store RDD in serialized format in <a href="http://tachyon-project.org">Tachyon</a>.
     Compared to MEMORY_ONLY_SER, OFF_HEAP reduces garbage collection overhead and allows executors
     to be smaller and to share a pool of memory, making it attractive in environments with
-    large heaps or multiple concurrent applications.
+    large heaps or multiple concurrent applications. Furthermore, as the RDDs reside in Tachyon,
+    the crash of an executor does not lead to losing the in-memory cache. In this mode, the memory 
+    in Tachyon is discardable. Thus, Tachyon does not attempt to reconstruct a block that it evicts
+    from memory.
   </td>
 </tr>
 </table>

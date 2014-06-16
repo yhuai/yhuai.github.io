@@ -1033,7 +1033,7 @@ is 200 milliseconds.</p>
 
 <p>An alternative to receiving data with multiple input streams / receivers is to explicitly repartition
 the input data stream (using <code>inputStream.repartition(&lt;number of partitions&gt;)</code>).
-This distributes the received batches of data across all the machines in the cluster
+This distributes the received batches of data across specified number of machines in the cluster
 before further processing.</p>
 
 <h3 id="level-of-parallelism-in-data-processing">Level of Parallelism in Data Processing</h3>
