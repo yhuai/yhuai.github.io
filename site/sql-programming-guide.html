@@ -178,7 +178,7 @@ descendants.  To create a basic SQLContext, all you need is a SparkContext.</p>
     <div class="highlight"><pre><code class="scala"><span class="k">val</span> <span class="n">sc</span><span class="k">:</span> <span class="kt">SparkContext</span> <span class="c1">// An existing SparkContext.</span>
 <span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
 
-<span class="c1">// createSchemaRDD is used to implicitly convert a RDD to a SchemaRDD.</span>
+<span class="c1">// createSchemaRDD is used to implicitly convert an RDD to a SchemaRDD.</span>
 <span class="k">import</span> <span class="nn">sqlContext.createSchemaRDD</span></code></pre></div>
 
   </div>
@@ -211,17 +211,17 @@ of its decedents.  To create a basic SQLContext, all you need is a SparkContext.
 
 <div class="codetabs">
 <div data-lang="scala">
-    <p>Spark SQL supports operating of a variety of data sources though the SchemaRDD interface.
+    <p>Spark SQL supports operating on a variety of data sources through the <code>SchemaRDD</code> interface.
 Once a dataset has been loaded, it can be registered as a table and even joined with data from other sources.</p>
   </div>
 
 <div data-lang="java">
-    <p>Spark SQL supports operating of a variety of data sources though the JavaSchemaRDD interface.
+    <p>Spark SQL supports operating on a variety of data sources through the <code>JavaSchemaRDD</code> interface.
 Once a dataset has been loaded, it can be registered as a table and even joined with data from other sources.</p>
   </div>
 
 <div data-lang="python">
-    <p>Spark SQL supports operating of a variety of data sources though the SchemaRDD interface.
+    <p>Spark SQL supports operating on a variety of data sources through the <code>SchemaRDD</code> interface.
 Once a dataset has been loaded, it can be registered as a table and even joined with data from other sources.</p>
   </div>
 </div>
@@ -240,7 +240,7 @@ registered as a table.  Tables can be used in subsequent SQL statements.</p>
 
     <div class="highlight"><pre><code class="scala"><span class="c1">// sc is an existing SparkContext.</span>
 <span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
-<span class="c1">// createSchemaRDD is used to implicitly convert a RDD to a SchemaRDD.</span>
+<span class="c1">// createSchemaRDD is used to implicitly convert an RDD to a SchemaRDD.</span>
 <span class="k">import</span> <span class="nn">sqlContext.createSchemaRDD</span>
 
 <span class="c1">// Define the schema using a case class.</span>
@@ -375,7 +375,7 @@ of the original data.  Using the data from the above example:</p>
 <div data-lang="scala">
 
     <div class="highlight"><pre><code class="scala"><span class="c1">// sqlContext from the previous example is used in this example.</span>
-<span class="c1">// createSchemaRDD is used to implicitly convert a RDD to a SchemaRDD.</span>
+<span class="c1">// createSchemaRDD is used to implicitly convert an RDD to a SchemaRDD.</span>
 <span class="k">import</span> <span class="nn">sqlContext.createSchemaRDD</span>
 
 <span class="k">val</span> <span class="n">people</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Person</span><span class="o">]</span> <span class="k">=</span> <span class="o">...</span> <span class="c1">// An RDD of case class objects, from the previous example.</span>
@@ -457,15 +457,14 @@ This conversion can be done using one of two methods in a SQLContext:</p>
     <div class="highlight"><pre><code class="scala"><span class="c1">// sc is an existing SparkContext.</span>
 <span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
 
-<span class="c1">// A JSON dataset is pointed by path.</span>
+<span class="c1">// A JSON dataset is pointed to by path.</span>
 <span class="c1">// The path can be either a single text file or a directory storing text files.</span>
 <span class="k">val</span> <span class="n">path</span> <span class="k">=</span> <span class="s">&quot;examples/src/main/resources/people.json&quot;</span>
-<span class="c1">// Create a SchemaRDD from the file(s) pointed by path</span>
+<span class="c1">// Create a SchemaRDD from the file(s) pointed to by path</span>
 <span class="k">val</span> <span class="n">people</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">jsonFile</span><span class="o">(</span><span class="n">path</span><span class="o">)</span>
 
 <span class="c1">// The inferred schema can be visualized using the printSchema() method.</span>
 <span class="n">people</span><span class="o">.</span><span class="n">printSchema</span><span class="o">()</span>
-<span class="c1">// The schema of people is ...</span>
 <span class="c1">// root</span>
 <span class="c1">//  |-- age: IntegerType</span>
 <span class="c1">//  |-- name: StringType</span>
@@ -477,7 +476,7 @@ This conversion can be done using one of two methods in a SQLContext:</p>
 <span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
 
 <span class="c1">// Alternatively, a SchemaRDD can be created for a JSON dataset represented by</span>
-<span class="c1">// a RDD[String] storing one JSON object per string.</span>
+<span class="c1">// an RDD[String] storing one JSON object per string.</span>
 <span class="k">val</span> <span class="n">anotherPeopleRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span>
   <span class="s">&quot;&quot;&quot;{&quot;name&quot;:&quot;Yin&quot;,&quot;address&quot;:{&quot;city&quot;:&quot;Columbus&quot;,&quot;state&quot;:&quot;Ohio&quot;}}&quot;&quot;&quot;</span> <span class="o">::</span> <span class="nc">Nil</span><span class="o">)</span>
 <span class="k">val</span> <span class="n">anotherPeople</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">jsonRDD</span><span class="o">(</span><span class="n">anotherPeopleRDD</span><span class="o">)</span></code></pre></div>
@@ -496,15 +495,14 @@ This conversion can be done using one of two methods in a JavaSQLContext :</p>
     <div class="highlight"><pre><code class="java"><span class="c1">// sc is an existing JavaSparkContext.</span>
 <span class="n">JavaSQLContext</span> <span class="n">sqlContext</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">JavaSQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">);</span>
 
-<span class="c1">// A JSON dataset is pointed by path.</span>
+<span class="c1">// A JSON dataset is pointed to by path.</span>
 <span class="c1">// The path can be either a single text file or a directory storing text files.</span>
 <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;examples/src/main/resources/people.json&quot;</span><span class="o">;</span>
-<span class="c1">// Create a JavaSchemaRDD from the file(s) pointed by path</span>
+<span class="c1">// Create a JavaSchemaRDD from the file(s) pointed to by path</span>
 <span class="n">JavaSchemaRDD</span> <span class="n">people</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">jsonFile</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
 
 <span class="c1">// The inferred schema can be visualized using the printSchema() method.</span>
 <span class="n">people</span><span class="o">.</span><span class="na">printSchema</span><span class="o">();</span>
-<span class="c1">// The schema of people is ...</span>
 <span class="c1">// root</span>
 <span class="c1">//  |-- age: IntegerType</span>
 <span class="c1">//  |-- name: StringType</span>
@@ -516,7 +514,7 @@ This conversion can be done using one of two methods in a JavaSQLContext :</p>
 <span class="n">JavaSchemaRDD</span> <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">);</span>
 
 <span class="c1">// Alternatively, a JavaSchemaRDD can be created for a JSON dataset represented by</span>
-<span class="c1">// a RDD[String] storing one JSON object per string.</span>
+<span class="c1">// an RDD[String] storing one JSON object per string.</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">jsonData</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
   <span class="s">&quot;{\&quot;name\&quot;:\&quot;Yin\&quot;,\&quot;address\&quot;:{\&quot;city\&quot;:\&quot;Columbus\&quot;,\&quot;state\&quot;:\&quot;Ohio\&quot;}}&quot;</span><span class="o">);</span>
 <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">anotherPeopleRDD</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">parallelize</span><span class="o">(</span><span class="n">jsonData</span><span class="o">);</span>
@@ -537,15 +535,14 @@ This conversion can be done using one of two methods in a SQLContext:</p>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SQLContext</span>
 <span class="n">sqlContext</span> <span class="o">=</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
 
-<span class="c"># A JSON dataset is pointed by path.</span>
+<span class="c"># A JSON dataset is pointed to by path.</span>
 <span class="c"># The path can be either a single text file or a directory storing text files.</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;examples/src/main/resources/people.json&quot;</span>
-<span class="c"># Create a SchemaRDD from the file(s) pointed by path</span>
+<span class="c"># Create a SchemaRDD from the file(s) pointed to by path</span>
 <span class="n">people</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">jsonFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
 <span class="c"># The inferred schema can be visualized using the printSchema() method.</span>
 <span class="n">people</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
-<span class="c"># The schema of people is ...</span>
 <span class="c"># root</span>
 <span class="c">#  |-- age: IntegerType</span>
 <span class="c">#  |-- name: StringType</span>
@@ -557,7 +554,7 @@ This conversion can be done using one of two methods in a SQLContext:</p>
 <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="p">)</span>
 
 <span class="c"># Alternatively, a SchemaRDD can be created for a JSON dataset represented by</span>
-<span class="c"># a RDD[String] storing one JSON object per string.</span>
+<span class="c"># an RDD[String] storing one JSON object per string.</span>
 <span class="n">anotherPeopleRDD</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">([</span>
   <span class="s">&#39;{&quot;name&quot;:&quot;Yin&quot;,&quot;address&quot;:{&quot;city&quot;:&quot;Columbus&quot;,&quot;state&quot;:&quot;Ohio&quot;}}&#39;</span><span class="p">])</span>
 <span class="n">anotherPeople</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">jsonRDD</span><span class="p">(</span><span class="n">anotherPeopleRDD</span><span class="p">)</span></code></pre></div>

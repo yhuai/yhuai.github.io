@@ -865,3 +865,22 @@ div.fullcomment dl.paramcmts > dd {
   font-family: Arial, san-serif;
   float: right;
 }
+
+/* Dynamically injected style for the API docs */
+
+.developer {
+  background-color: #44751E;
+}
+
+.experimental {
+  background-color: #257080;
+}
+
+.alphaComponent {
+  background-color: #bb0000;
+}
+
+.badge {
+  font-family: Arial, san-serif;
+  float: right;
+}
