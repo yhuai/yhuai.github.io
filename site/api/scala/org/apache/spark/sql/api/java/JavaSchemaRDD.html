@@ -308,8 +308,8 @@ memory, otherwise saving it on a file will require recomputation.
       </span>
       </h4>
       <p class="shortcomment cmt">Return a new RDD that is reduced into <code>numPartitions</code> partitions.</p>
-    </li><li name="org.apache.spark.api.java.JavaRDDLike#collect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="collect():java.util.List[T]"></a>
+    </li><li name="org.apache.spark.sql.api.java.JavaSchemaRDD#collect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="collect():java.util.List[org.apache.spark.sql.api.java.Row]"></a>
       <a id="collect():List[Row]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -321,7 +321,7 @@ memory, otherwise saving it on a file will require recomputation.
       </span>
       </h4>
       <p class="shortcomment cmt">Return an array that contains all of the elements in this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return an array that contains all of the elements in this RDD.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../api/java/JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a> → <a href="../../../api/java/JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a></dd></dl></div>
     </li><li name="org.apache.spark.api.java.JavaRDDLike#collectPartitions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="collectPartitions(partitionIds:Array[Int]):Array[java.util.List[T]]"></a>
       <a id="collectPartitions(Array[Int]):Array[List[Row]]"></a>
@@ -1523,8 +1523,8 @@ RDD will be &lt;= us.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.apache.spark.api.java.JavaRDDLike#take" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="take(num:Int):java.util.List[T]"></a>
+    </li><li name="org.apache.spark.sql.api.java.JavaSchemaRDD#take" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="take(num:Int):java.util.List[org.apache.spark.sql.api.java.Row]"></a>
       <a id="take(Int):List[Row]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1538,7 +1538,7 @@ RDD will be &lt;= us.
       <p class="shortcomment cmt">Take the first num elements of the RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Take the first num elements of the RDD. This currently scans the partitions *one by one*, so
 it will be slow if a lot of partitions are required. In that case, use collect() to get the
 whole RDD instead.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../api/java/JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a> → <a href="../../../api/java/JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a></dd></dl></div>
     </li><li name="org.apache.spark.api.java.JavaRDDLike#takeOrdered" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="takeOrdered(num:Int):java.util.List[T]"></a>
       <a id="takeOrdered(Int):List[Row]"></a>

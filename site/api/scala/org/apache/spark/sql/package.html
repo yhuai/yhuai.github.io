@@ -410,7 +410,23 @@ A <a href="#StructType=org.apache.spark.sql.catalyst.types.StructType" class="ex
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>A <a href="#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a> object can be constructed by providing field values. Example:</p><pre><span class="kw">import</span> org.apache.spark.sql._
 
-Row(value1, value2, value3, ...)</pre><p>Fields in a <a href="#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a> object can be extracted in a pattern match. Example:</p><pre><span class="kw">import</span> org.apache.spark.sql._
+Row(value1, value2, value3, ...)</pre><p>A value of a row can be accessed through both generic access by ordinal,
+which will incur boxing overhead for primitives, as well as native primitive access.
+An example of generic access by ordinal:</p><pre><span class="kw">import</span> org.apache.spark.sql._
+
+<span class="kw">val</span> row = Row(<span class="num">1</span>, <span class="kw">true</span>, <span class="lit">"a string"</span>, <span class="kw">null</span>)
+<span class="cmt">// row: Row = [1,true,a string,null]</span>
+<span class="kw">val</span> firstValue = row(<span class="num">0</span>)
+<span class="cmt">// firstValue: Any = 1</span>
+<span class="kw">val</span> fourthValue = row(<span class="num">3</span>)
+<span class="cmt">// fourthValue: Any = null</span></pre><p>For native primitive access, it is invalid to use the native primitive interface to retrieve
+a value that is null, instead a user must check <code>isNullAt</code> before attempting to retrieve a value
+that might be null.
+An example of native primitive access:</p><pre><span class="cmt">// using the row from the previous example.</span>
+<span class="kw">val</span> firstValue = row.getInt(<span class="num">0</span>)
+<span class="cmt">// firstValue: Int = 1</span>
+<span class="kw">val</span> isNull = row.isNullAt(<span class="num">3</span>)
+<span class="cmt">// isNull: Boolean = true</span></pre><p>Interfaces related to native primitive access are:</p><p><code>isNullAt(i: Int): Boolean</code></p><p><code>getInt(i: Int): Int</code></p><p><code>getLong(i: Int): Long</code></p><p><code>getDouble(i: Int): Double</code></p><p><code>getFloat(i: Int): Float</code></p><p><code>getBoolean(i: Int): Boolean</code></p><p><code>getShort(i: Int): Short</code></p><p><code>getByte(i: Int): Byte</code></p><p><code>getString(i: Int): String</code></p><p>Fields in a <a href="#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a> object can be extracted in a pattern match. Example:</p><pre><span class="kw">import</span> org.apache.spark.sql._
 
 <span class="kw">val</span> pairs = sql(<span class="lit">"SELECT key, value FROM src"</span>).rdd.map {
   <span class="kw">case</span> Row(key: <span class="std">Int</span>, value: <span class="std">String</span>) <span class="kw">=&gt;</span>
