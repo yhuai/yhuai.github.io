@@ -84,7 +84,7 @@ Information gain statistics for each split</p></div><dl class="attributes block"
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.apache.spark.mllib.tree.model.InformationGainStats#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(gain:Double,impurity:Double,leftImpurity:Double,rightImpurity:Double,predict:Double):org.apache.spark.mllib.tree.model.InformationGainStats"></a>
+      <a id="&lt;init&gt;(gain:Double,impurity:Double,leftImpurity:Double,rightImpurity:Double,predict:Double,prob:Double):org.apache.spark.mllib.tree.model.InformationGainStats"></a>
       <a id="&lt;init&gt;:InformationGainStats"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,10 +92,10 @@ Information gain statistics for each split</p></div><dl class="attributes block"
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">InformationGainStats</span><span class="params">(<span name="gain">gain: <span class="extype" name="scala.Double">Double</span></span>, <span name="impurity">impurity: <span class="extype" name="scala.Double">Double</span></span>, <span name="leftImpurity">leftImpurity: <span class="extype" name="scala.Double">Double</span></span>, <span name="rightImpurity">rightImpurity: <span class="extype" name="scala.Double">Double</span></span>, <span name="predict">predict: <span class="extype" name="scala.Double">Double</span></span>)</span>
+        <span class="name">InformationGainStats</span><span class="params">(<span name="gain">gain: <span class="extype" name="scala.Double">Double</span></span>, <span name="impurity">impurity: <span class="extype" name="scala.Double">Double</span></span>, <span name="leftImpurity">leftImpurity: <span class="extype" name="scala.Double">Double</span></span>, <span name="rightImpurity">rightImpurity: <span class="extype" name="scala.Double">Double</span></span>, <span name="predict">predict: <span class="extype" name="scala.Double">Double</span></span>, <span name="prob">prob: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.0</span></span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">gain</dt><dd class="cmt"><p>information gain value</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>current node impurity</p></dd><dt class="param">leftImpurity</dt><dd class="cmt"><p>left node impurity</p></dd><dt class="param">rightImpurity</dt><dd class="cmt"><p>right node impurity</p></dd><dt class="param">predict</dt><dd class="cmt"><p>predicted value
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">gain</dt><dd class="cmt"><p>information gain value</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>current node impurity</p></dd><dt class="param">leftImpurity</dt><dd class="cmt"><p>left node impurity</p></dd><dt class="param">rightImpurity</dt><dd class="cmt"><p>right node impurity</p></dd><dt class="param">predict</dt><dd class="cmt"><p>predicted value</p></dd><dt class="param">prob</dt><dd class="cmt"><p>probability of the label (classification only)
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -377,7 +377,20 @@ Information gain statistics for each split</p></div><dl class="attributes block"
         <span class="name">predict</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">predicted value
+      <p class="shortcomment cmt">predicted value</p>
+    </li><li name="org.apache.spark.mllib.tree.model.InformationGainStats#prob" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="prob:Double"></a>
+      <a id="prob:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">prob</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">probability of the label (classification only)
 </p>
     </li><li name="org.apache.spark.mllib.tree.model.InformationGainStats#rightImpurity" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="rightImpurity:Double"></a>

@@ -52,7 +52,7 @@
       <div class="occurrences"><a href="../org/apache/spark/SparkContext$.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a> </div>
     </div><div class="entry">
       <div class="name">IntegerType</div>
-      <div class="occurrences"><a href="../org/apache/spark/sql/package.html" class="extype" name="org.apache.spark.sql">sql</a> </div>
+      <div class="occurrences"><a href="../org/apache/spark/sql/package.html" class="extype" name="org.apache.spark.sql">sql</a> <a href="../org/apache/spark/sql/api/java/types/package.html" class="extype" name="org.apache.spark.sql.api.java.types">types</a> </div>
     </div><div class="entry">
       <div class="name">InterruptibleIterator</div>
       <div class="occurrences"><a href="../org/apache/spark/package.html" class="extype" name="org.apache.spark">spark</a> </div>
@@ -64,7 +64,7 @@
       <div class="occurrences"><a href="../org/apache/spark/mllib/linalg/distributed/MatrixEntry.html" class="extype" name="org.apache.spark.mllib.linalg.distributed.MatrixEntry">MatrixEntry</a> </div>
     </div><div class="entry">
       <div class="name">id</div>
-      <div class="occurrences"><a href="../org/apache/spark/Accumulable.html" class="extype" name="org.apache.spark.Accumulable">Accumulable</a> <a href="../org/apache/spark/api/java/JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a> <a href="../org/apache/spark/broadcast/Broadcast.html" class="extype" name="org.apache.spark.broadcast.Broadcast">Broadcast</a> <a href="../org/apache/spark/mllib/tree/model/Node.html" class="extype" name="org.apache.spark.mllib.tree.model.Node">Node</a> <a href="../org/apache/spark/rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a> <a href="../org/apache/spark/storage/RDDInfo.html" class="extype" name="org.apache.spark.storage.RDDInfo">RDDInfo</a> <a href="../org/apache/spark/streaming/dstream/ReceiverInputDStream.html" class="extype" name="org.apache.spark.streaming.dstream.ReceiverInputDStream">ReceiverInputDStream</a> </div>
+      <div class="occurrences"><a href="../org/apache/spark/Accumulable.html" class="extype" name="org.apache.spark.Accumulable">Accumulable</a> <a href="../org/apache/spark/api/java/JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a> <a href="../org/apache/spark/broadcast/Broadcast.html" class="extype" name="org.apache.spark.broadcast.Broadcast">Broadcast</a> <a href="../org/apache/spark/mllib/tree/model/Node.html" class="extype" name="org.apache.spark.mllib.tree.model.Node">Node</a> <a href="../org/apache/spark/rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a> <a href="../org/apache/spark/scheduler/TaskInfo.html" class="extype" name="org.apache.spark.scheduler.TaskInfo">TaskInfo</a> <a href="../org/apache/spark/storage/RDDInfo.html" class="extype" name="org.apache.spark.storage.RDDInfo">RDDInfo</a> <a href="../org/apache/spark/streaming/dstream/ReceiverInputDStream.html" class="extype" name="org.apache.spark.streaming.dstream.ReceiverInputDStream">ReceiverInputDStream</a> </div>
     </div><div class="entry">
       <div class="name">impl</div>
       <div class="occurrences"><a href="../org/apache/spark/graphx/package.html" class="extype" name="org.apache.spark.graphx">graphx</a> </div>
@@ -101,9 +101,6 @@
     </div><div class="entry">
       <div class="name">input</div>
       <div class="occurrences"><a href="../org/apache/spark/sql/hive/execution/ScriptTransformation.html" class="extype" name="org.apache.spark.sql.hive.execution.ScriptTransformation">ScriptTransformation</a> </div>
-    </div><div class="entry">
-      <div class="name">inputBytes</div>
-      <div class="occurrences"><a href="../org/apache/spark/ui/jobs/ExecutorSummary.html" class="extype" name="org.apache.spark.ui.jobs.ExecutorSummary">ExecutorSummary</a> </div>
     </div><div class="entry">
       <div class="name">inputDStream</div>
       <div class="occurrences"><a href="../org/apache/spark/streaming/api/java/JavaInputDStream.html" class="extype" name="org.apache.spark.streaming.api.java.JavaInputDStream">JavaInputDStream</a> <a href="../org/apache/spark/streaming/api/java/JavaPairInputDStream.html" class="extype" name="org.apache.spark.streaming.api.java.JavaPairInputDStream">JavaPairInputDStream</a> </div>
@@ -156,6 +153,9 @@
       <div class="name">isCompleted</div>
       <div class="occurrences"><a href="../org/apache/spark/ComplexFutureAction.html" class="extype" name="org.apache.spark.ComplexFutureAction">ComplexFutureAction</a> <a href="../org/apache/spark/FutureAction.html" class="extype" name="org.apache.spark.FutureAction">FutureAction</a> <a href="../org/apache/spark/SimpleFutureAction.html" class="extype" name="org.apache.spark.SimpleFutureAction">SimpleFutureAction</a> </div>
     </div><div class="entry">
+      <div class="name">isContainsNull</div>
+      <div class="occurrences"><a href="../org/apache/spark/sql/api/java/types/ArrayType.html" class="extype" name="org.apache.spark.sql.api.java.types.ArrayType">ArrayType</a> </div>
+    </div><div class="entry">
       <div class="name">isExtended</div>
       <div class="occurrences"><a href="../org/apache/spark/sql/hive/execution/DescribeHiveTableCommand.html" class="extype" name="org.apache.spark.sql.hive.execution.DescribeHiveTableCommand">DescribeHiveTableCommand</a> </div>
     </div><div class="entry">
@@ -168,11 +168,20 @@
       <div class="name">isLocal</div>
       <div class="occurrences"><a href="../org/apache/spark/SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a> <a href="../org/apache/spark/api/java/JavaSparkContext.html" class="extype" name="org.apache.spark.api.java.JavaSparkContext">JavaSparkContext</a> </div>
     </div><div class="entry">
+      <div class="name">isMulticlassClassification</div>
+      <div class="occurrences"><a href="../org/apache/spark/mllib/tree/configuration/Strategy.html" class="extype" name="org.apache.spark.mllib.tree.configuration.Strategy">Strategy</a> </div>
+    </div><div class="entry">
+      <div class="name">isMulticlassWithCategoricalFeatures</div>
+      <div class="occurrences"><a href="../org/apache/spark/mllib/tree/configuration/Strategy.html" class="extype" name="org.apache.spark.mllib.tree.configuration.Strategy">Strategy</a> </div>
+    </div><div class="entry">
       <div class="name">isMultipleOf</div>
       <div class="occurrences"><a href="../org/apache/spark/streaming/Duration.html" class="extype" name="org.apache.spark.streaming.Duration">Duration</a> <a href="../org/apache/spark/streaming/Time.html" class="extype" name="org.apache.spark.streaming.Time">Time</a> </div>
     </div><div class="entry">
       <div class="name">isNullAt</div>
       <div class="occurrences"><a href="../org/apache/spark/sql/api/java/Row.html" class="extype" name="org.apache.spark.sql.api.java.Row">Row</a> </div>
+    </div><div class="entry">
+      <div class="name">isNullable</div>
+      <div class="occurrences"><a href="../org/apache/spark/sql/api/java/types/StructField.html" class="extype" name="org.apache.spark.sql.api.java.types.StructField">StructField</a> </div>
     </div><div class="entry">
       <div class="name">isRDD</div>
       <div class="occurrences"><a href="../org/apache/spark/storage/BlockId.html" class="extype" name="org.apache.spark.storage.BlockId">BlockId</a> </div>

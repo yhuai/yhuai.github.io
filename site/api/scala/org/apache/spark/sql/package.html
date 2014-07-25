@@ -149,7 +149,6 @@ any <code>null</code> value.
 <code>keyType: <a href="#DataType=org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.DataType">DataType</a></code> and <code>valueType: <a href="#DataType=org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.DataType">DataType</a></code>.
 The field of <code>keyType</code> is used to specify the type of keys in the map.
 The field of <code>valueType</code> is used to specify the type of values in the map.
-For a <a href="#MapType=org.apache.spark.sql.catalyst.types.MapType" class="extmbr" name="org.apache.spark.sql.MapType">MapType</a> column, keys and values should not contain any <code>null</code> value.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
@@ -211,7 +210,7 @@ The entry point for running relational queries using Spark.</p>
       </h4>
       <p class="comment cmt">:: AlphaComponent ::
 An RDD of <a href="#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a> objects that has an associated schema.</p>
-    </li><li name="org.apache.spark.sql.StructField" visbl="pub" data-isabs="false" fullComment="yes" group="dataType">
+    </li><li name="org.apache.spark.sql.StructField" visbl="pub" data-isabs="false" fullComment="yes" group="field">
       <a id="StructField=org.apache.spark.sql.catalyst.types.StructField"></a>
       <a id="StructField:StructField"></a>
       <h4 class="signature">
@@ -311,7 +310,7 @@ A <a href="#StructType=org.apache.spark.sql.catalyst.types.StructType" class="ex
         <span class="name">ByteType</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.types.ByteType">sql.catalyst.types.ByteType</span>.type</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>The data type representing <code>Byte</code> values
+      <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>The data type representing <code>Byte</code> values.
 </p></div></div>
     </li><li name="org.apache.spark.sql.package#DecimalType" visbl="pub" data-isabs="false" fullComment="yes" group="dataType">
       <a id="DecimalType:org.apache.spark.sql.catalyst.types.DecimalType.type"></a>
@@ -410,7 +409,10 @@ A <a href="#StructType=org.apache.spark.sql.catalyst.types.StructType" class="ex
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>A <a href="#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a> object can be constructed by providing field values. Example:</p><pre><span class="kw">import</span> org.apache.spark.sql._
 
-Row(value1, value2, value3, ...)</pre><p>A value of a row can be accessed through both generic access by ordinal,
+<span class="cmt">// Create a Row from values.</span>
+Row(value1, value2, value3, ...)
+<span class="cmt">// Create a Row from a Seq of values.</span>
+Row.fromSeq(<span class="std">Seq</span>(value1, value2, ...))</pre><p>A value of a row can be accessed through both generic access by ordinal,
 which will incur boxing overhead for primitives, as well as native primitive access.
 An example of generic access by ordinal:</p><pre><span class="kw">import</span> org.apache.spark.sql._
 
@@ -420,8 +422,8 @@ An example of generic access by ordinal:</p><pre><span class="kw">import</span> 
 <span class="cmt">// firstValue: Any = 1</span>
 <span class="kw">val</span> fourthValue = row(<span class="num">3</span>)
 <span class="cmt">// fourthValue: Any = null</span></pre><p>For native primitive access, it is invalid to use the native primitive interface to retrieve
-a value that is null, instead a user must check <code>isNullAt</code> before attempting to retrieve a value
-that might be null.
+a value that is null, instead a user must check <code>isNullAt</code> before attempting to retrieve a
+value that might be null.
 An example of native primitive access:</p><pre><span class="cmt">// using the row from the previous example.</span>
 <span class="kw">val</span> firstValue = row.getInt(<span class="num">0</span>)
 <span class="cmt">// firstValue: Int = 1</span>
@@ -543,7 +545,7 @@ Example:</p><pre><span class="kw">import</span> org.apache.spark.sql._
         <span class="name">TimestampType</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.types.TimestampType">sql.catalyst.types.TimestampType</span>.type</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>The data type representing <code>java.sql.Timestamp</code> values
+      <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>The data type representing <code>java.sql.Timestamp</code> values.
 </p></div></div>
     </li><li name="org.apache.spark.sql.api" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="api"></a>
@@ -644,6 +646,9 @@ An execution engine for relational query plans that runs on top Spark and return
         <div id="groupedMembers">
         <div class="group" name="dataType">
               <h3>Data types</h3>
+              
+            </div><div class="group" name="field">
+              <h3>Field</h3>
               
             </div><div class="group" name="row">
               <h3>Row</h3>

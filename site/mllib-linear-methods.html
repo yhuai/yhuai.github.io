@@ -284,10 +284,10 @@ L(\wv;\x,y) :=  \log(1+\exp( -y \wv^T \x)).
 <p>Logistic regression algorithm outputs a logistic regression model, which makes predictions by
 applying the logistic function
 <code>\[
-\mathrm{logit}(z) = \frac{1}{1 + e^{-z}}
+\mathrm{f}(z) = \frac{1}{1 + e^{-z}}
 \]</code>
-$\wv^T \x$.
-By default, if $\mathrm{logit}(\wv^T x) &gt; 0.5$, the outcome is positive, or negative otherwise.
+where $z = \wv^T \x$.
+By default, if $\mathrm{f}(\wv^T x) &gt; 0.5$, the outcome is positive, or negative otherwise.
 For the same reason mentioned above, quite often in practice, this default threshold is not a good choice.
 The threshold should be determined via model evaluation.</p>
 
@@ -371,7 +371,82 @@ algorithm for 200 iterations.</p>
     <p>All of MLlib’s methods use Java-friendly types, so you can import and call them there the same
 way you do in Scala. The only caveat is that the methods take Scala RDD objects, while the
 Spark Java API uses a separate <code>JavaRDD</code> class. You can convert a Java RDD to a Scala one by
-calling <code>.rdd()</code> on your <code>JavaRDD</code> object.</p>
+calling <code>.rdd()</code> on your <code>JavaRDD</code> object. A standalone application example
+that is equivalent to the provided example in Scala is given bellow:</p>
+
+    <div class="highlight"><pre><code class="java"><span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">scala.Tuple2</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.function.Function</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.classification.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.evaluation.BinaryClassificationMetrics</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Vector</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.regression.LabeledPoint</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.util.MLUtils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.SparkConf</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.SparkContext</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SVMClassifier</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">SparkConf</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SparkConf</span><span class="o">().</span><span class="na">setAppName</span><span class="o">(</span><span class="s">&quot;SVM Classifier Example&quot;</span><span class="o">);</span>
+    <span class="n">SparkContext</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;data/mllib/sample_libsvm_data.txt&quot;</span><span class="o">;</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">LabeledPoint</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">MLUtils</span><span class="o">.</span><span class="na">loadLibSVMFile</span><span class="o">(</span><span class="n">sc</span><span class="o">,</span> <span class="n">path</span><span class="o">).</span><span class="na">toJavaRDD</span><span class="o">();</span>
+
+    <span class="c1">// Split initial RDD into two... [60% training data, 40% testing data].</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">LabeledPoint</span><span class="o">&gt;</span> <span class="n">training</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">sample</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="mf">0.6</span><span class="o">,</span> <span class="mi">11L</span><span class="o">);</span>
+    <span class="n">training</span><span class="o">.</span><span class="na">cache</span><span class="o">();</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">LabeledPoint</span><span class="o">&gt;</span> <span class="n">test</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">subtract</span><span class="o">(</span><span class="n">training</span><span class="o">);</span>
+    
+    <span class="c1">// Run training algorithm to build the model.</span>
+    <span class="kt">int</span> <span class="n">numIterations</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="n">SVMModel</span> <span class="n">model</span> <span class="o">=</span> <span class="n">SVMWithSGD</span><span class="o">.</span><span class="na">train</span><span class="o">(</span><span class="n">training</span><span class="o">.</span><span class="na">rdd</span><span class="o">(),</span> <span class="n">numIterations</span><span class="o">);</span>
+    
+    <span class="c1">// Clear the default threshold.</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">clearThreshold</span><span class="o">();</span>
+
+    <span class="c1">// Compute raw scores on the test set.</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">scoreAndLabels</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
+      <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">LabeledPoint</span><span class="o">,</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">call</span><span class="o">(</span><span class="n">LabeledPoint</span> <span class="n">p</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">Double</span> <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">predict</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">features</span><span class="o">());</span>
+          <span class="k">return</span> <span class="k">new</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;(</span><span class="n">score</span><span class="o">,</span> <span class="n">p</span><span class="o">.</span><span class="na">label</span><span class="o">());</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">);</span>
+    
+    <span class="c1">// Get evaluation metrics.</span>
+    <span class="n">BinaryClassificationMetrics</span> <span class="n">metrics</span> <span class="o">=</span> 
+      <span class="k">new</span> <span class="nf">BinaryClassificationMetrics</span><span class="o">(</span><span class="n">JavaRDD</span><span class="o">.</span><span class="na">toRDD</span><span class="o">(</span><span class="n">scoreAndLabels</span><span class="o">));</span>
+    <span class="kt">double</span> <span class="n">auROC</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="na">areaUnderROC</span><span class="o">();</span>
+    
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Area under ROC = &quot;</span> <span class="o">+</span> <span class="n">auROC</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+    <p>The <code>SVMWithSGD.train()</code> method by default performs L2 regularization with the
+regularization parameter set to 1.0. If we want to configure this algorithm, we
+can customize <code>SVMWithSGD</code> further by creating a new object directly and
+calling setter methods. All other MLlib algorithms support customization in
+this way as well. For example, the following code produces an L1 regularized
+variant of SVMs with regularization parameter set to 0.1, and runs the training
+algorithm for 200 iterations.</p>
+
+    <div class="highlight"><pre><code class="java"><span class="kn">import</span> <span class="nn">org.apache.spark.mllib.optimization.L1Updater</span><span class="o">;</span>
+
+<span class="n">SVMWithSGD</span> <span class="n">svmAlg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVMWithSGD</span><span class="o">();</span>
+<span class="n">svmAlg</span><span class="o">.</span><span class="na">optimizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">setNumIterations</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">setRegParam</span><span class="o">(</span><span class="mf">0.1</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">setUpdater</span><span class="o">(</span><span class="k">new</span> <span class="n">L1Updater</span><span class="o">());</span>
+<span class="kd">final</span> <span class="n">SVMModel</span> <span class="n">modelL1</span> <span class="o">=</span> <span class="n">svmAlg</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">training</span><span class="o">.</span><span class="na">rdd</span><span class="o">());</span></code></pre></div>
+
+    <p>In order to run the above standalone application using Spark framework make
+sure that you follow the instructions provided at section <a href="quick-start.html">Standalone
+Applications</a> of the quick-start guide. What is more, you
+should include to your build file <em>spark-mllib</em> as a dependency.</p>
   </div>
 
 <div data-lang="python">
@@ -464,7 +539,70 @@ and <a href="api/scala/index.html#org.apache.spark.mllib.regression.LassoWithSGD
     <p>All of MLlib’s methods use Java-friendly types, so you can import and call them there the same
 way you do in Scala. The only caveat is that the methods take Scala RDD objects, while the
 Spark Java API uses a separate <code>JavaRDD</code> class. You can convert a Java RDD to a Scala one by
-calling <code>.rdd()</code> on your <code>JavaRDD</code> object.</p>
+calling <code>.rdd()</code> on your <code>JavaRDD</code> object. The corresponding Java example to
+the Scala snippet provided, is presented bellow:</p>
+
+    <div class="highlight"><pre><code class="java"><span class="kn">import</span> <span class="nn">scala.Tuple2</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.function.Function</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Vector</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Vectors</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.regression.LabeledPoint</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.regression.LinearRegressionModel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.regression.LinearRegressionWithSGD</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.SparkConf</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinearRegression</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">SparkConf</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SparkConf</span><span class="o">().</span><span class="na">setAppName</span><span class="o">(</span><span class="s">&quot;Linear Regression Example&quot;</span><span class="o">);</span>
+    <span class="n">JavaSparkContext</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JavaSparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">);</span>
+    
+    <span class="c1">// Load and parse the data</span>
+    <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;data/mllib/ridge-data/lpsa.data&quot;</span><span class="o">;</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">textFile</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">LabeledPoint</span><span class="o">&gt;</span> <span class="n">parsedData</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
+      <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">LabeledPoint</span><span class="o">&gt;()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">LabeledPoint</span> <span class="nf">call</span><span class="o">(</span><span class="n">String</span> <span class="n">line</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">String</span><span class="o">[]</span> <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">);</span>
+          <span class="n">String</span><span class="o">[]</span> <span class="n">features</span> <span class="o">=</span> <span class="n">parts</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">split</span><span class="o">(</span><span class="s">&quot; &quot;</span><span class="o">);</span>
+          <span class="kt">double</span><span class="o">[]</span> <span class="n">v</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="n">features</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+          <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">features</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="n">v</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">features</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+          <span class="k">return</span> <span class="k">new</span> <span class="nf">LabeledPoint</span><span class="o">(</span><span class="n">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">parts</span><span class="o">[</span><span class="mi">0</span><span class="o">]),</span> <span class="n">Vectors</span><span class="o">.</span><span class="na">dense</span><span class="o">(</span><span class="n">v</span><span class="o">));</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">);</span>
+
+    <span class="c1">// Building the model</span>
+    <span class="kt">int</span> <span class="n">numIterations</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="n">LinearRegressionModel</span> <span class="n">model</span> <span class="o">=</span> 
+      <span class="n">LinearRegressionWithSGD</span><span class="o">.</span><span class="na">train</span><span class="o">(</span><span class="n">JavaRDD</span><span class="o">.</span><span class="na">toRDD</span><span class="o">(</span><span class="n">parsedData</span><span class="o">),</span> <span class="n">numIterations</span><span class="o">);</span>
+
+    <span class="c1">// Evaluate model on training examples and compute training error</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;&gt;</span> <span class="n">valuesAndPreds</span> <span class="o">=</span> <span class="n">parsedData</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
+      <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">LabeledPoint</span><span class="o">,</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">call</span><span class="o">(</span><span class="n">LabeledPoint</span> <span class="n">point</span><span class="o">)</span> <span class="o">{</span>
+          <span class="kt">double</span> <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">predict</span><span class="o">(</span><span class="n">point</span><span class="o">.</span><span class="na">features</span><span class="o">());</span>
+          <span class="k">return</span> <span class="k">new</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;(</span><span class="n">prediction</span><span class="o">,</span> <span class="n">point</span><span class="o">.</span><span class="na">label</span><span class="o">());</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">);</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">MSE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JavaDoubleRDD</span><span class="o">(</span><span class="n">valuesAndPreds</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
+      <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">&gt;()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">Object</span> <span class="nf">call</span><span class="o">(</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">pair</span><span class="o">)</span> <span class="o">{</span>
+          <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="n">pair</span><span class="o">.</span><span class="na">_1</span><span class="o">()</span> <span class="o">-</span> <span class="n">pair</span><span class="o">.</span><span class="na">_2</span><span class="o">(),</span> <span class="mf">2.0</span><span class="o">);</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">).</span><span class="na">rdd</span><span class="o">()).</span><span class="na">mean</span><span class="o">();</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;training Mean Squared Error = &quot;</span> <span class="o">+</span> <span class="n">MSE</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+    <p>In order to run the above standalone application using Spark framework make
+sure that you follow the instructions provided at section <a href="quick-start.html">Standalone
+Applications</a> of the quick-start guide. What is more, you
+should include to your build file <em>spark-mllib</em> as a dependency.</p>
   </div>
 
 <div data-lang="python">

@@ -84,7 +84,7 @@ Stores all the configuration options for tree construction</p></div><dl class="a
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.apache.spark.mllib.tree.configuration.Strategy#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(algo:org.apache.spark.mllib.tree.configuration.Algo.Algo,impurity:org.apache.spark.mllib.tree.impurity.Impurity,maxDepth:Int,maxBins:Int,quantileCalculationStrategy:org.apache.spark.mllib.tree.configuration.QuantileStrategy.QuantileStrategy,categoricalFeaturesInfo:Map[Int,Int],maxMemoryInMB:Int):org.apache.spark.mllib.tree.configuration.Strategy"></a>
+      <a id="&lt;init&gt;(algo:org.apache.spark.mllib.tree.configuration.Algo.Algo,impurity:org.apache.spark.mllib.tree.impurity.Impurity,maxDepth:Int,numClassesForClassification:Int,maxBins:Int,quantileCalculationStrategy:org.apache.spark.mllib.tree.configuration.QuantileStrategy.QuantileStrategy,categoricalFeaturesInfo:Map[Int,Int],maxMemoryInMB:Int):org.apache.spark.mllib.tree.configuration.Strategy"></a>
       <a id="&lt;init&gt;:Strategy"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,10 +92,11 @@ Stores all the configuration options for tree construction</p></div><dl class="a
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Strategy</span><span class="params">(<span name="algo">algo: <a href="Algo$.html#Algo=org.apache.spark.mllib.tree.configuration.Algo.Value" class="extmbr" name="org.apache.spark.mllib.tree.configuration.Algo.Algo">Algo.Algo</a></span>, <span name="impurity">impurity: <a href="../impurity/Impurity.html" class="extype" name="org.apache.spark.mllib.tree.impurity.Impurity">Impurity</a></span>, <span name="maxDepth">maxDepth: <span class="extype" name="scala.Int">Int</span></span>, <span name="maxBins">maxBins: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">100</span></span>, <span name="quantileCalculationStrategy">quantileCalculationStrategy: <a href="QuantileStrategy$.html#QuantileStrategy=org.apache.spark.mllib.tree.configuration.QuantileStrategy.Value" class="extmbr" name="org.apache.spark.mllib.tree.configuration.QuantileStrategy.QuantileStrategy">QuantileStrategy.QuantileStrategy</a> = <span class="defval" name="org.apache.spark.mllib.tree.configuration.QuantileStrategy.Sort">...</span></span>, <span name="categoricalFeaturesInfo">categoricalFeaturesInfo: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>] = <span class="defval" name="scala.this.Predef.Map.apply[Int, Int]()">...</span></span>, <span name="maxMemoryInMB">maxMemoryInMB: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">128</span></span>)</span>
+        <span class="name">Strategy</span><span class="params">(<span name="algo">algo: <a href="Algo$.html#Algo=org.apache.spark.mllib.tree.configuration.Algo.Value" class="extmbr" name="org.apache.spark.mllib.tree.configuration.Algo.Algo">Algo.Algo</a></span>, <span name="impurity">impurity: <a href="../impurity/Impurity.html" class="extype" name="org.apache.spark.mllib.tree.impurity.Impurity">Impurity</a></span>, <span name="maxDepth">maxDepth: <span class="extype" name="scala.Int">Int</span></span>, <span name="numClassesForClassification">numClassesForClassification: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">2</span></span>, <span name="maxBins">maxBins: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">100</span></span>, <span name="quantileCalculationStrategy">quantileCalculationStrategy: <a href="QuantileStrategy$.html#QuantileStrategy=org.apache.spark.mllib.tree.configuration.QuantileStrategy.Value" class="extmbr" name="org.apache.spark.mllib.tree.configuration.QuantileStrategy.QuantileStrategy">QuantileStrategy.QuantileStrategy</a> = <span class="defval" name="org.apache.spark.mllib.tree.configuration.QuantileStrategy.Sort">...</span></span>, <span name="categoricalFeaturesInfo">categoricalFeaturesInfo: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>] = <span class="defval" name="scala.this.Predef.Map.apply[Int, Int]()">...</span></span>, <span name="maxMemoryInMB">maxMemoryInMB: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">128</span></span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">algo</dt><dd class="cmt"><p>classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>maximum depth of the tree</p></dd><dt class="param">maxBins</dt><dd class="cmt"><p>maximum number of bins used for splitting features</p></dd><dt class="param">quantileCalculationStrategy</dt><dd class="cmt"><p>algorithm for calculating quantiles</p></dd><dt class="param">categoricalFeaturesInfo</dt><dd class="cmt"><p>A map storing information about the categorical variables and the
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">algo</dt><dd class="cmt"><p>classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>maximum depth of the tree</p></dd><dt class="param">numClassesForClassification</dt><dd class="cmt"><p>number of classes for classification. Default value is 2
+                                   leads to binary classification</p></dd><dt class="param">maxBins</dt><dd class="cmt"><p>maximum number of bins used for splitting features</p></dd><dt class="param">quantileCalculationStrategy</dt><dd class="cmt"><p>algorithm for calculating quantiles</p></dd><dt class="param">categoricalFeaturesInfo</dt><dd class="cmt"><p>A map storing information about the categorical variables and the
                                number of discrete values they take. For example, an entry (n -&gt;
                                k) implies the feature n is categorical with k categories 0,
                                1, 2, ... , k-1. It's important to note that features are
@@ -335,6 +336,32 @@ Stores all the configuration options for tree construction</p></div><dl class="a
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.spark.mllib.tree.configuration.Strategy#isMulticlassClassification" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isMulticlassClassification:Boolean"></a>
+      <a id="isMulticlassClassification:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isMulticlassClassification</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="org.apache.spark.mllib.tree.configuration.Strategy#isMulticlassWithCategoricalFeatures" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isMulticlassWithCategoricalFeatures:Boolean"></a>
+      <a id="isMulticlassWithCategoricalFeatures:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isMulticlassWithCategoricalFeatures</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li name="org.apache.spark.mllib.tree.configuration.Strategy#maxBins" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="maxBins:Int"></a>
       <a id="maxBins:Int"></a>
@@ -414,6 +441,20 @@ Stores all the configuration options for tree construction</p></div><dl class="a
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.apache.spark.mllib.tree.configuration.Strategy#numClassesForClassification" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="numClassesForClassification:Int"></a>
+      <a id="numClassesForClassification:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">numClassesForClassification</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">number of classes for classification.</p><div class="fullcomment"><div class="comment cmt"><p>number of classes for classification. Default value is 2
+                                   leads to binary classification</p></div></div>
     </li><li name="org.apache.spark.mllib.tree.configuration.Strategy#quantileCalculationStrategy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="quantileCalculationStrategy:org.apache.spark.mllib.tree.configuration.QuantileStrategy.QuantileStrategy"></a>
       <a id="quantileCalculationStrategy:QuantileStrategy.QuantileStrategy"></a>

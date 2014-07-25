@@ -114,10 +114,59 @@ to a new node later).
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="org.apache.spark.broadcast.Broadcast#doDestroy" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="doDestroy(blocking:Boolean):Unit"></a>
+      <a id="doDestroy(Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">doDestroy</span><span class="params">(<span name="blocking">blocking: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Actually destroy all data and metadata related to this broadcast variable.</p><div class="fullcomment"><div class="comment cmt"><p>Actually destroy all data and metadata related to this broadcast variable.
+Implementation of Broadcast class must define their own logic to destroy their own
+state.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="org.apache.spark.broadcast.Broadcast#doUnpersist" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="doUnpersist(blocking:Boolean):Unit"></a>
+      <a id="doUnpersist(Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">doUnpersist</span><span class="params">(<span name="blocking">blocking: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Actually unpersist the broadcasted value on the executors.</p><div class="fullcomment"><div class="comment cmt"><p>Actually unpersist the broadcasted value on the executors. Concrete implementations of
+Broadcast class must define their own logic to unpersist their own data.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="org.apache.spark.broadcast.Broadcast#getValue" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="getValue():T"></a>
+      <a id="getValue():T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getValue</span><span class="params">()</span><span class="result">: <span class="extype" name="org.apache.spark.broadcast.Broadcast.T">T</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Actually get the broadcasted value.</p><div class="fullcomment"><div class="comment cmt"><p>Actually get the broadcasted value. Concrete implementations of Broadcast class must
+define their own way to get the value.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li></ol>
+            </div>
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -196,6 +245,19 @@ to a new node later).
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.spark.broadcast.Broadcast#assertValid" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="assertValid():Unit"></a>
+      <a id="assertValid():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">assertValid</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Check if this broadcast is valid.</p><div class="fullcomment"><div class="comment cmt"><p>Check if this broadcast is valid. If not valid, exception is thrown.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>

@@ -58,22 +58,8 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="org.apache.spark.ui.jobs.ExecutorSummary" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ExecutorSummaryextendsAnyRef"></a>
-      <a id="ExecutorSummary:ExecutorSummary"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="ExecutorSummary.html"><span class="name">ExecutorSummary</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4>
-      <p class="comment cmt">:: DeveloperApi ::
-Class for reporting aggregated metrics for each executor in stage UI.</p>
-    </li><li name="org.apache.spark.ui.jobs.JobProgressListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="JobProgressListenerextendsSparkListener"></a>
+              <ol><li name="org.apache.spark.ui.jobs.JobProgressListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JobProgressListenerextendsSparkListenerwithLogging"></a>
       <a id="JobProgressListener:JobProgressListener"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -81,27 +67,11 @@ Class for reporting aggregated metrics for each executor in stage UI.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="JobProgressListener.html"><span class="name">JobProgressListener</span></a><span class="result"> extends <a href="../../scheduler/SparkListener.html" class="extype" name="org.apache.spark.scheduler.SparkListener">SparkListener</a></span>
+        <a href="JobProgressListener.html"><span class="name">JobProgressListener</span></a><span class="result"> extends <a href="../../scheduler/SparkListener.html" class="extype" name="org.apache.spark.scheduler.SparkListener">SparkListener</a> with <a href="../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></span>
       </span>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::
 Tracks task-level information to be displayed in the UI.</p>
-    </li><li name="org.apache.spark.ui.jobs.TaskUIData" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="TaskUIDataextendsProductwithSerializable"></a>
-      <a id="TaskUIData:TaskUIData"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="TaskUIData.html"><span class="name">TaskUIData</span></a><span class="params">(<span name="taskInfo">taskInfo: <a href="../../scheduler/TaskInfo.html" class="extype" name="org.apache.spark.scheduler.TaskInfo">TaskInfo</a></span>, <span name="taskMetrics">taskMetrics: <span class="extype" name="scala.Option">Option</span>[<a href="../../executor/TaskMetrics.html" class="extype" name="org.apache.spark.executor.TaskMetrics">TaskMetrics</a>] = <span class="symbol">scala.None</span></span>, <span name="errorMessage">errorMessage: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@<a href="../../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
-              
-        </dd></dl></div>
     </li></ol>
             </div>
 

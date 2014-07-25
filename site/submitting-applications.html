@@ -150,6 +150,7 @@ dependencies, and can support different cluster managers and deploy modes that S
   --class &lt;main-class&gt;
   --master &lt;master-url&gt; <span class="se">\</span>
   --deploy-mode &lt;deploy-mode&gt; <span class="se">\</span>
+  --conf &lt;key&gt;<span class="o">=</span>&lt;value&gt; <span class="se">\</span>
   ... <span class="c"># other options</span>
   &lt;application-jar&gt; <span class="se">\</span>
   <span class="o">[</span>application-arguments<span class="o">]</span></code></pre></div>
@@ -160,6 +161,7 @@ dependencies, and can support different cluster managers and deploy modes that S
   <li><code>--class</code>: The entry point for your application (e.g. <code>org.apache.spark.examples.SparkPi</code>)</li>
   <li><code>--master</code>: The <a href="#master-urls">master URL</a> for the cluster (e.g. <code>spark://23.195.26.187:7077</code>)</li>
   <li><code>--deploy-mode</code>: Whether to deploy your driver on the worker nodes (<code>cluster</code>) or locally as an external client (<code>client</code>) (default: <code>client</code>)*</li>
+  <li><code>--conf</code>: Arbitrary Spark configuration property in key=value format. For values that contain spaces wrap “key=value” in quotes (as shown).</li>
   <li><code>application-jar</code>: Path to a bundled jar including your application and all dependencies. The URL must be globally visible inside of your cluster, for instance, an <code>hdfs://</code> path or a <code>file://</code> path that is present on all nodes.</li>
   <li><code>application-arguments</code>: Arguments passed to the main method of your main class, if any</li>
 </ul>

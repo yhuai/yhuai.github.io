@@ -458,14 +458,13 @@ are stored here.</p>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">var</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
         <span class="name">shuffleReadMetrics</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="ShuffleReadMetrics.html" class="extype" name="org.apache.spark.executor.ShuffleReadMetrics">ShuffleReadMetrics</a>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">If this task reads from shuffle output, metrics on getting shuffle data will be collected here
-</p>
+      
     </li><li name="org.apache.spark.executor.TaskMetrics#shuffleWriteMetrics" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="shuffleWriteMetrics:Option[org.apache.spark.executor.ShuffleWriteMetrics]"></a>
       <a id="shuffleWriteMetrics:Option[ShuffleWriteMetrics]"></a>
@@ -507,6 +506,19 @@ here
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.apache.spark.executor.TaskMetrics#updateShuffleReadMetrics" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="updateShuffleReadMetrics(newMetrics:org.apache.spark.executor.ShuffleReadMetrics):Unit"></a>
+      <a id="updateShuffleReadMetrics(ShuffleReadMetrics):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateShuffleReadMetrics</span><span class="params">(<span name="newMetrics">newMetrics: <a href="ShuffleReadMetrics.html" class="extype" name="org.apache.spark.executor.ShuffleReadMetrics">ShuffleReadMetrics</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Adds the given ShuffleReadMetrics to any existing shuffle metrics for this task.</p>
     </li><li name="org.apache.spark.executor.TaskMetrics#updatedBlocks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="updatedBlocks:Option[Seq[(org.apache.spark.storage.BlockId,org.apache.spark.storage.BlockStatus)]]"></a>
       <a id="updatedBlocks:Option[Seq[(BlockId,BlockStatus)]]"></a>

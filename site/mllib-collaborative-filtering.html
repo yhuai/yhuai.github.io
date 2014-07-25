@@ -221,7 +221,83 @@ other signals), you can use the trainImplicit method to get better results.</p>
     <p>All of MLlib’s methods use Java-friendly types, so you can import and call them there the same
 way you do in Scala. The only caveat is that the methods take Scala RDD objects, while the
 Spark Java API uses a separate <code>JavaRDD</code> class. You can convert a Java RDD to a Scala one by
-calling <code>.rdd()</code> on your <code>JavaRDD</code> object.</p>
+calling <code>.rdd()</code> on your <code>JavaRDD</code> object. A standalone application example
+that is equivalent to the provided example in Scala is given bellow:</p>
+
+    <div class="highlight"><pre><code class="java"><span class="kn">import</span> <span class="nn">scala.Tuple2</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.function.Function</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.recommendation.ALS</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.recommendation.MatrixFactorizationModel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.recommendation.Rating</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.SparkConf</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CollaborativeFiltering</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">SparkConf</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SparkConf</span><span class="o">().</span><span class="na">setAppName</span><span class="o">(</span><span class="s">&quot;Collaborative Filtering Example&quot;</span><span class="o">);</span>
+    <span class="n">JavaSparkContext</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JavaSparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">);</span>
+
+    <span class="c1">// Load and parse the data</span>
+    <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;data/mllib/als/test.data&quot;</span><span class="o">;</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">textFile</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Rating</span><span class="o">&gt;</span> <span class="n">ratings</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
+      <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Rating</span><span class="o">&gt;()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">Rating</span> <span class="nf">call</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">String</span><span class="o">[]</span> <span class="n">sarray</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">);</span>
+          <span class="k">return</span> <span class="k">new</span> <span class="nf">Rating</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">sarray</span><span class="o">[</span><span class="mi">0</span><span class="o">]),</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">sarray</span><span class="o">[</span><span class="mi">1</span><span class="o">]),</span> 
+                            <span class="n">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">sarray</span><span class="o">[</span><span class="mi">2</span><span class="o">]));</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">);</span>
+
+    <span class="c1">// Build the recommendation model using ALS</span>
+    <span class="kt">int</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">numIterations</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+    <span class="n">MatrixFactorizationModel</span> <span class="n">model</span> <span class="o">=</span> <span class="n">ALS</span><span class="o">.</span><span class="na">train</span><span class="o">(</span><span class="n">JavaRDD</span><span class="o">.</span><span class="na">toRDD</span><span class="o">(</span><span class="n">ratings</span><span class="o">),</span> <span class="n">rank</span><span class="o">,</span> <span class="n">numIterations</span><span class="o">,</span> <span class="mf">0.01</span><span class="o">);</span> 
+
+    <span class="c1">// Evaluate the model on rating data</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">userProducts</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
+      <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Rating</span><span class="o">,</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">call</span><span class="o">(</span><span class="n">Rating</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
+          <span class="k">return</span> <span class="k">new</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;(</span><span class="n">r</span><span class="o">.</span><span class="na">user</span><span class="o">(),</span> <span class="n">r</span><span class="o">.</span><span class="na">product</span><span class="o">());</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">);</span>
+    <span class="n">JavaPairRDD</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">JavaPairRDD</span><span class="o">.</span><span class="na">fromJavaRDD</span><span class="o">(</span>
+      <span class="n">model</span><span class="o">.</span><span class="na">predict</span><span class="o">(</span><span class="n">JavaRDD</span><span class="o">.</span><span class="na">toRDD</span><span class="o">(</span><span class="n">userProducts</span><span class="o">)).</span><span class="na">toJavaRDD</span><span class="o">().</span><span class="na">map</span><span class="o">(</span>
+        <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Rating</span><span class="o">,</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;,</span> <span class="n">Double</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
+          <span class="kd">public</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">call</span><span class="o">(</span><span class="n">Rating</span> <span class="n">r</span><span class="o">){</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;,</span> <span class="n">Double</span><span class="o">&gt;(</span>
+              <span class="k">new</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">r</span><span class="o">.</span><span class="na">user</span><span class="o">(),</span> <span class="n">r</span><span class="o">.</span><span class="na">product</span><span class="o">()),</span> <span class="n">r</span><span class="o">.</span><span class="na">rating</span><span class="o">());</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">));</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;&gt;</span> <span class="n">ratesAndPreds</span> <span class="o">=</span> 
+      <span class="n">JavaPairRDD</span><span class="o">.</span><span class="na">fromJavaRDD</span><span class="o">(</span><span class="n">ratings</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
+        <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Rating</span><span class="o">,</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;,</span> <span class="n">Double</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
+          <span class="kd">public</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">call</span><span class="o">(</span><span class="n">Rating</span> <span class="n">r</span><span class="o">){</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;,</span> <span class="n">Double</span><span class="o">&gt;(</span>
+              <span class="k">new</span> <span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">r</span><span class="o">.</span><span class="na">user</span><span class="o">(),</span> <span class="n">r</span><span class="o">.</span><span class="na">product</span><span class="o">()),</span> <span class="n">r</span><span class="o">.</span><span class="na">rating</span><span class="o">());</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">)).</span><span class="na">join</span><span class="o">(</span><span class="n">predictions</span><span class="o">).</span><span class="na">values</span><span class="o">();</span>
+    <span class="kt">double</span> <span class="n">MSE</span> <span class="o">=</span> <span class="n">JavaDoubleRDD</span><span class="o">.</span><span class="na">fromRDD</span><span class="o">(</span><span class="n">ratesAndPreds</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
+      <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">&gt;()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">Object</span> <span class="nf">call</span><span class="o">(</span><span class="n">Tuple2</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">pair</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">Double</span> <span class="n">err</span> <span class="o">=</span> <span class="n">pair</span><span class="o">.</span><span class="na">_1</span><span class="o">()</span> <span class="o">-</span> <span class="n">pair</span><span class="o">.</span><span class="na">_2</span><span class="o">();</span>
+          <span class="k">return</span> <span class="n">err</span> <span class="o">*</span> <span class="n">err</span><span class="o">;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">).</span><span class="na">rdd</span><span class="o">()).</span><span class="na">mean</span><span class="o">();</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Mean Squared Error = &quot;</span> <span class="o">+</span> <span class="n">MSE</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+    <p>In order to run the above standalone application using Spark framework make
+sure that you follow the instructions provided at section <a href="quick-start.html">Standalone
+Applications</a> of the quick-start guide. What is more, you
+should include to your build file <em>spark-mllib</em> as a dependency.</p>
   </div>
 
 <div data-lang="python">

@@ -207,15 +207,17 @@ bins if the condition is not satisfied.</p>
 
 <p><strong>Categorical features</strong></p>
 
-<p>For <code>$M$</code> categorical features, one could come up with <code>$2^M-1$</code> split candidates. However, for
-binary classification, the number of split candidates can be reduced to <code>$M-1$</code> by ordering the
+<p>For <code>$M$</code> categorical feature values, one could come up with <code>$2^(M-1)-1$</code> split candidates. For
+binary classification, we can reduce the number of split candidates to <code>$M-1$</code> by ordering the
 categorical feature values by the proportion of labels falling in one of the two classes (see
 Section 9.2.4 in
 <a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">Elements of Statistical Machine Learning</a> for
 details). For example, for a binary classification problem with one categorical feature with three
 categories A, B and C with corresponding proportion of label 1 as 0.2, 0.6 and 0.4, the categorical
 features are ordered as A followed by C followed B or A, B, C. The two split candidates are A | C, B
-and A , B | C where | denotes the split.</p>
+and A , B | C where | denotes the split. A similar heuristic is used for multiclass classification
+when <code>$2^(M-1)-1$</code> is greater than the number of bins – the impurity for each categorical feature value
+is used for ordering.</p>
 
 <h3 id="stopping-rule">Stopping rule</h3>
 

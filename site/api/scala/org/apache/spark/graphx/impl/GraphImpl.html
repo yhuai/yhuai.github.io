@@ -596,7 +596,7 @@ provided for a particular vertex in the graph, the map function receives <code>N
              The table should contain at most one entry for each vertex.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.graphx.impl.GraphImpl">GraphImpl</a> → <a href="../Graph.html" class="extype" name="org.apache.spark.graphx.Graph">Graph</a></dd><div class="block">Example:
                <ol><li class="cmt"><p>This function is used to update the vertices with new values based on external data.
          For example we could add the out-degree to each vertex record:</p><pre><span class="kw">val</span> rawGraph: Graph[_, _] = Graph.textFile(<span class="lit">"webgraph"</span>)
-<span class="kw">val</span> outDeg: RDD[(VertexId, <span class="std">Int</span>)] = rawGraph.outDegrees()
+<span class="kw">val</span> outDeg: RDD[(VertexId, <span class="std">Int</span>)] = rawGraph.outDegrees
 <span class="kw">val</span> graph = rawGraph.outerJoinVertices(outDeg) {
   (vid, data, optDeg) <span class="kw">=&gt;</span> optDeg.getOrElse(<span class="num">0</span>)
 }</pre></li></ol>

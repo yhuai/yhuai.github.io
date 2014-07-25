@@ -1400,7 +1400,8 @@ subclasses of RDD.
         <span class="name">mapPartitions</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[<a href="package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitions.U">U</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitions.U">U</span>]</span>)</span><span class="result">: <a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitions.U">U</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Return a new RDD by applying a function to each partition of this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return a new RDD by applying a function to each partition of this RDD.
+      <p class="shortcomment cmt">Return a new RDD by applying a function to each partition of this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return a new RDD by applying a function to each partition of this RDD.</p><p><code>preservesPartitioning</code> indicates whether the input function preserves the partitioner, which
+should be <code>false</code> unless this is a pair RDD and the input function doesn't modify the keys.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#mapPartitionsWithContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mapPartitionsWithContext[U](f:(org.apache.spark.TaskContext,Iterator[T])=&gt;Iterator[U],preservesPartitioning:Boolean)(implicitevidence$8:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
@@ -1417,7 +1418,8 @@ subclasses of RDD.
       <p class="shortcomment cmt">:: DeveloperApi ::
 Return a new RDD by applying a function to each partition of this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
 Return a new RDD by applying a function to each partition of this RDD. This is a variant of
-mapPartitions that also passes the TaskContext into the closure.
+mapPartitions that also passes the TaskContext into the closure.</p><p><code>preservesPartitioning</code> indicates whether the input function preserves the partitioner, which
+should be <code>false</code> unless this is a pair RDD and the input function doesn't modify the keys.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@<a href="../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
@@ -1436,7 +1438,8 @@ mapPartitions that also passes the TaskContext into the closure.
       </h4>
       <p class="shortcomment cmt">Return a new RDD by applying a function to each partition of this RDD, while tracking the index
 of the original partition.</p><div class="fullcomment"><div class="comment cmt"><p>Return a new RDD by applying a function to each partition of this RDD, while tracking the index
-of the original partition.
+of the original partition.</p><p><code>preservesPartitioning</code> indicates whether the input function preserves the partitioner, which
+should be <code>false</code> unless this is a pair RDD and the input function doesn't modify the keys.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#max" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="max()(implicitord:Ordering[T]):T"></a>
@@ -1861,7 +1864,7 @@ be the target of an <code>insertInto</code>.
       </h4>
       <p class="shortcomment cmt">Save this RDD as a text file, using string representations of elements.</p><div class="fullcomment"><div class="comment cmt"><p>Save this RDD as a text file, using string representations of elements.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
-    </li><li name="org.apache.spark.sql.SchemaRDDLike#schema" visbl="pub" data-isabs="false" fullComment="yes" group="schema">
+    </li><li name="org.apache.spark.sql.SchemaRDD#schema" visbl="pub" data-isabs="false" fullComment="no" group="schema">
       <a id="schema:org.apache.spark.sql.StructType"></a>
       <a id="schema:StructType"></a>
       <h4 class="signature">
@@ -1873,8 +1876,7 @@ be the target of an <code>insertInto</code>.
         <span class="name">schema</span><span class="result">: <a href="package.html#StructType=org.apache.spark.sql.catalyst.types.StructType" class="extmbr" name="org.apache.spark.sql.StructType">StructType</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Returns the schema of this SchemaRDD (represented by a <a href="package.html#StructType=org.apache.spark.sql.catalyst.types.StructType" class="extmbr" name="org.apache.spark.sql.StructType">StructType</a>).</p><div class="fullcomment"><div class="comment cmt"><p>Returns the schema of this SchemaRDD (represented by a <a href="package.html#StructType=org.apache.spark.sql.catalyst.types.StructType" class="extmbr" name="org.apache.spark.sql.StructType">StructType</a>).
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchemaRDDLike</dd></dl></div>
+      <p class="shortcomment cmt">Returns the schema of this SchemaRDD (represented by a <a href="package.html#StructType=org.apache.spark.sql.catalyst.types.StructType" class="extmbr" name="org.apache.spark.sql.StructType">StructType</a>).</p>
     </li><li name="org.apache.spark.sql.SchemaRDDLike#schemaString" visbl="pub" data-isabs="false" fullComment="yes" group="schema">
       <a id="schemaString:String"></a>
       <a id="schemaString:String"></a>

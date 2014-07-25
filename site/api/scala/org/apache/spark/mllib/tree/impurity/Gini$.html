@@ -183,24 +183,26 @@ during binary classification.
       </span>
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::
-information calculation for regression</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
-information calculation for regression</p></div><dl class="paramcmts block"><dt class="param">count</dt><dd class="cmt"><p>number of instances</p></dd><dt class="param">sum</dt><dd class="cmt"><p>sum of labels</p></dd><dt class="param">sumSquares</dt><dd class="cmt"><p>summation of squares of the labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.tree.impurity.Gini">Gini</a> → <a href="Impurity.html" class="extype" name="org.apache.spark.mllib.tree.impurity.Impurity">Impurity</a></dd></dl></div>
+variance calculation</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
+variance calculation</p></div><dl class="paramcmts block"><dt class="param">count</dt><dd class="cmt"><p>number of instances</p></dd><dt class="param">sum</dt><dd class="cmt"><p>sum of labels</p></dd><dt class="param">sumSquares</dt><dd class="cmt"><p>summation of squares of the labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.tree.impurity.Gini">Gini</a> → <a href="Impurity.html" class="extype" name="org.apache.spark.mllib.tree.impurity.Impurity">Impurity</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="org.apache.spark.mllib.tree.impurity.Gini#calculate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="calculate(c0:Double,c1:Double):Double"></a>
-      <a id="calculate(Double,Double):Double"></a>
+      <a id="calculate(counts:Array[Double],totalCount:Double):Double"></a>
+      <a id="calculate(Array[Double],Double):Double"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">calculate</span><span class="params">(<span name="c0">c0: <span class="extype" name="scala.Double">Double</span></span>, <span name="c1">c1: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+        <span class="name">calculate</span><span class="params">(<span name="counts">counts: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="totalCount">totalCount: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::
-Gini coefficient calculation</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
-Gini coefficient calculation</p></div><dl class="paramcmts block"><dt class="param">c0</dt><dd class="cmt"><p>count of instances with label 0</p></dd><dt class="param">c1</dt><dd class="cmt"><p>count of instances with label 1</p></dd><dt>returns</dt><dd class="cmt"><p>Gini coefficient value
+information calculation for multiclass classification</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
+information calculation for multiclass classification</p></div><dl class="paramcmts block"><dt class="param">counts</dt><dd class="cmt"><p>Array[Double] with counts for each label</p></dd><dt class="param">totalCount</dt><dd class="cmt"><p>sum of counts for all labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.tree.impurity.Gini">Gini</a> → <a href="Impurity.html" class="extype" name="org.apache.spark.mllib.tree.impurity.Impurity">Impurity</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               

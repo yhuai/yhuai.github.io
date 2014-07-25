@@ -180,9 +180,54 @@ say, less than $1000$, but many rows, which we call <em>tall-and-skinny</em>.</p
 <span class="k">val</span> <span class="n">s</span><span class="k">:</span> <span class="kt">Vector</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">s</span> <span class="c1">// The singular values are stored in a local dense vector.</span>
 <span class="k">val</span> <span class="n">V</span><span class="k">:</span> <span class="kt">Matrix</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">V</span> <span class="c1">// The V factor is a local dense matrix.</span></code></pre></div>
 
+    <p>Same code applies to <code>IndexedRowMatrix</code>.
+The only difference that the <code>U</code> matrix becomes an <code>IndexedRowMatrix</code>.</p>
   </div>
-Same code applies to `IndexedRowMatrix`.
-The only difference that the `U` matrix becomes an `IndexedRowMatrix`.
+<div data-lang="java">
+    <p>In order to run the following standalone application using Spark framework make
+sure that you follow the instructions provided at section <a href="quick-start.html">Standalone
+Applications</a> of the quick-start guide. What is more, you
+should include to your build file <em>spark-mllib</em> as a dependency.</p>
+
+    <div class="highlight"><pre><code class="java"><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.distributed.RowMatrix</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Matrix</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.SingularValueDecomposition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Vector</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Vectors</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.rdd.RDD</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.SparkConf</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.SparkContext</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SVD</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">SparkConf</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SparkConf</span><span class="o">().</span><span class="na">setAppName</span><span class="o">(</span><span class="s">&quot;SVD Example&quot;</span><span class="o">);</span>
+    <span class="n">SparkContext</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">);</span>
+     
+    <span class="kt">double</span><span class="o">[][]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Vector</span><span class="o">&gt;</span> <span class="n">rowsList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Vector</span><span class="o">&gt;();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+      <span class="n">Vector</span> <span class="n">currentRow</span> <span class="o">=</span> <span class="n">Vectors</span><span class="o">.</span><span class="na">dense</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+      <span class="n">rowsList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">currentRow</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Vector</span><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">JavaSparkContext</span><span class="o">.</span><span class="na">fromSparkContext</span><span class="o">(</span><span class="n">sc</span><span class="o">).</span><span class="na">parallelize</span><span class="o">(</span><span class="n">rowsList</span><span class="o">);</span>
+
+    <span class="c1">// Create a RowMatrix from JavaRDD&lt;Vector&gt;.</span>
+    <span class="n">RowMatrix</span> <span class="n">mat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RowMatrix</span><span class="o">(</span><span class="n">rows</span><span class="o">.</span><span class="na">rdd</span><span class="o">());</span>
+
+    <span class="c1">// Compute the top 4 singular values and corresponding singular vectors.</span>
+    <span class="n">SingularValueDecomposition</span><span class="o">&lt;</span><span class="n">RowMatrix</span><span class="o">,</span> <span class="n">Matrix</span><span class="o">&gt;</span> <span class="n">svd</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="na">computeSVD</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="mf">1.0</span><span class="n">E</span><span class="o">-</span><span class="mi">9</span><span class="n">d</span><span class="o">);</span>
+    <span class="n">RowMatrix</span> <span class="n">U</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="na">U</span><span class="o">();</span>
+    <span class="n">Vector</span> <span class="n">s</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="na">s</span><span class="o">();</span>
+    <span class="n">Matrix</span> <span class="n">V</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="na">V</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+    <p>Same code applies to <code>IndexedRowMatrix</code>.
+The only difference that the <code>U</code> matrix becomes an <code>IndexedRowMatrix</code>.</p>
+  </div>
 </div>
 
 <h2 id="principal-component-analysis-pca">Principal component analysis (PCA)</h2>
@@ -212,6 +257,51 @@ The number of columns should be small, e.g, less than 1000.</p>
 <span class="c1">// Project the rows to the linear space spanned by the top 10 principal components.</span>
 <span class="k">val</span> <span class="n">projected</span><span class="k">:</span> <span class="kt">RowMatrix</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">multiply</span><span class="o">(</span><span class="n">pc</span><span class="o">)</span></code></pre></div>
 
+  </div>
+
+<div data-lang="java">
+
+    <p>The following code demonstrates how to compute principal components on a tall-and-skinny <code>RowMatrix</code>
+and use them to project the vectors into a low-dimensional space.
+The number of columns should be small, e.g, less than 1000.</p>
+
+    <div class="highlight"><pre><code class="java"><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.distributed.RowMatrix</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Matrix</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Vector</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Vectors</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.rdd.RDD</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.SparkConf</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.SparkContext</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PCA</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">SparkConf</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SparkConf</span><span class="o">().</span><span class="na">setAppName</span><span class="o">(</span><span class="s">&quot;PCA Example&quot;</span><span class="o">);</span>
+    <span class="n">SparkContext</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">);</span>
+     
+    <span class="kt">double</span><span class="o">[][]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Vector</span><span class="o">&gt;</span> <span class="n">rowsList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Vector</span><span class="o">&gt;();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+      <span class="n">Vector</span> <span class="n">currentRow</span> <span class="o">=</span> <span class="n">Vectors</span><span class="o">.</span><span class="na">dense</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+      <span class="n">rowsList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">currentRow</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Vector</span><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">JavaSparkContext</span><span class="o">.</span><span class="na">fromSparkContext</span><span class="o">(</span><span class="n">sc</span><span class="o">).</span><span class="na">parallelize</span><span class="o">(</span><span class="n">rowsList</span><span class="o">);</span>
+
+    <span class="c1">// Create a RowMatrix from JavaRDD&lt;Vector&gt;.</span>
+    <span class="n">RowMatrix</span> <span class="n">mat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RowMatrix</span><span class="o">(</span><span class="n">rows</span><span class="o">.</span><span class="na">rdd</span><span class="o">());</span>
+
+    <span class="c1">// Compute the top 3 principal components.</span>
+    <span class="n">Matrix</span> <span class="n">pc</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="na">computePrincipalComponents</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+    <span class="n">RowMatrix</span> <span class="n">projected</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="na">multiply</span><span class="o">(</span><span class="n">pc</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+    <p>In order to run the above standalone application using Spark framework make
+sure that you follow the instructions provided at section <a href="quick-start.html">Standalone
+Applications</a> of the quick-start guide. What is more, you
+should include to your build file <em>spark-mllib</em> as a dependency.</p>
   </div>
 </div>
 

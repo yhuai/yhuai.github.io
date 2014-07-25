@@ -30,6 +30,7 @@ pyspark.mllib.util	pyspark.mllib.util-module.html
 pyspark.mllib.util._test	pyspark.mllib.util-module.html#_test
 pyspark.rdd	pyspark.rdd-module.html
 pyspark.rdd._test	pyspark.rdd-module.html#_test
+pyspark.rdd.portable_hash	pyspark.rdd-module.html#portable_hash
 pyspark.rdd._spark_stack_depth	pyspark.rdd-module.html#_spark_stack_depth
 pyspark.rdd._extract_concise_traceback	pyspark.rdd-module.html#_extract_concise_traceback
 pyspark.resultiterable	pyspark.resultiterable-module.html
@@ -72,6 +73,7 @@ pyspark.conf.SparkConf.setAppName	pyspark.conf.SparkConf-class.html#setAppName
 pyspark.conf.SparkConf.setExecutorEnv	pyspark.conf.SparkConf-class.html#setExecutorEnv
 pyspark.conf.SparkConf.get	pyspark.conf.SparkConf-class.html#get
 pyspark.conf.SparkConf.toDebugString	pyspark.conf.SparkConf-class.html#toDebugString
+pyspark.conf.SparkConf.setIfMissing	pyspark.conf.SparkConf-class.html#setIfMissing
 pyspark.conf.SparkConf.setSparkHome	pyspark.conf.SparkConf-class.html#setSparkHome
 pyspark.conf.SparkConf.setAll	pyspark.conf.SparkConf-class.html#setAll
 pyspark.context.SparkContext	pyspark.context.SparkContext-class.html

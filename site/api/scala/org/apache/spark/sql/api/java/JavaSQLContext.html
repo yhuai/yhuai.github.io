@@ -54,7 +54,7 @@
         <div id="order">
               <span class="filtertype">Ordering</span>
               <ol>
-                <li class="group out"><span>Grouped</span></li>
+                
                 <li class="alpha in"><span>Alphabetic</span></li>
                 <li class="inherit out"><span>By inheritance</span></li>
               </ol>
@@ -183,6 +183,27 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#applySchema" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="applySchema(rowRDD:org.apache.spark.api.java.JavaRDD[org.apache.spark.sql.api.java.Row],schema:org.apache.spark.sql.api.java.types.StructType):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
+      <a id="applySchema(JavaRDD[Row],types.StructType):JavaSchemaRDD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">applySchema</span><span class="params">(<span name="rowRDD">rowRDD: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<a href="Row.html" class="extype" name="org.apache.spark.sql.api.java.Row">Row</a>]</span>, <span name="schema">schema: <a href="types/StructType.html" class="extype" name="org.apache.spark.sql.api.java.types.StructType">types.StructType</a></span>)</span><span class="result">: <a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">:: DeveloperApi ::
+Creates a JavaSchemaRDD from an RDD containing Rows by applying a schema to this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
+Creates a JavaSchemaRDD from an RDD containing Rows by applying a schema to this RDD.
+It is important to make sure that the structure of every Row of the provided RDD matches the
+provided schema. Otherwise, there will be runtime exception.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#applySchema" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="applySchema(rdd:org.apache.spark.api.java.JavaRDD[_],beanClass:Class[_]):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
       <a id="applySchema(JavaRDD[_],Class[_]):JavaSchemaRDD"></a>
@@ -352,7 +373,28 @@ sqlCtx.sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#jsonFile" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
+    </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#jsonFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jsonFile(path:String,schema:org.apache.spark.sql.api.java.types.StructType):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
+      <a id="jsonFile(String,types.StructType):JavaSchemaRDD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jsonFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="schema">schema: <a href="types/StructType.html" class="extype" name="org.apache.spark.sql.api.java.types.StructType">types.StructType</a></span>)</span><span class="result">: <a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">:: Experimental ::
+Loads a JSON file (one object per line) and applies the given schema,
+returning the result as a JavaSchemaRDD.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
+Loads a JSON file (one object per line) and applies the given schema,
+returning the result as a JavaSchemaRDD.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#jsonFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="jsonFile(path:String):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
       <a id="jsonFile(String):JavaSchemaRDD"></a>
       <h4 class="signature">
@@ -364,10 +406,31 @@ sqlCtx.sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</
         <span class="name">jsonFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Loads a JSON file (one object per line), returning the result as a <a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a JSON file (one object per line), returning the result as a <a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a>.
+      <p class="shortcomment cmt">Loads a JSON file (one object per line), returning the result as a JavaSchemaRDD.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a JSON file (one object per line), returning the result as a JavaSchemaRDD.
 It goes through the entire dataset once to determine the schema.
 </p></div></div>
-    </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
+    </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jsonRDD(json:org.apache.spark.api.java.JavaRDD[String],schema:org.apache.spark.sql.api.java.types.StructType):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
+      <a id="jsonRDD(JavaRDD[String],types.StructType):JavaSchemaRDD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jsonRDD</span><span class="params">(<span name="json">json: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="schema">schema: <a href="types/StructType.html" class="extype" name="org.apache.spark.sql.api.java.types.StructType">types.StructType</a></span>)</span><span class="result">: <a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">:: Experimental ::
+Loads an RDD[String] storing JSON objects (one object per record) and applies the given schema,
+returning the result as a JavaSchemaRDD.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
+Loads an RDD[String] storing JSON objects (one object per record) and applies the given schema,
+returning the result as a JavaSchemaRDD.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="jsonRDD(json:org.apache.spark.api.java.JavaRDD[String]):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
       <a id="jsonRDD(JavaRDD[String]):JavaSchemaRDD"></a>
       <h4 class="signature">
@@ -380,8 +443,8 @@ It goes through the entire dataset once to determine the schema.
       </span>
       </h4>
       <p class="shortcomment cmt">Loads an RDD[String] storing JSON objects (one object per record), returning the result as a
-<a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads an RDD[String] storing JSON objects (one object per record), returning the result as a
-<a href="JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a>.
+[JavaSchemaRDD.</p><div class="fullcomment"><div class="comment cmt"><p>Loads an RDD[String] storing JSON objects (one object per record), returning the result as a
+[JavaSchemaRDD.
 It goes through the entire dataset once to determine the schema.
 </p></div></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -579,10 +642,7 @@ during the lifetime of this instance of SQLContext.
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="userf">
-              <h3>userf</h3>
-              
-            </div><div class="group" name="Ungrouped">
+        <div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>
               
             </div>

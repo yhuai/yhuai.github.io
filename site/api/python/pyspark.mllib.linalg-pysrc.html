@@ -309,15 +309,16 @@
 <a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
 <a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">"["</tt> <tt class="py-op">+</tt> <tt class="py-string">","</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="pyspark.rdd.RDD.join" class="py-name" href="#" onclick="return doclink('link-28', 'join', 'link-17');">join</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">v</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">v</tt> <tt class="py-keyword">in</tt> <tt class="py-name">vector</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">"]"</tt> </tt>
 </div></div><a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line"> </tt>
-<a name="_test"></a><div id="_test-def"><a name="L250"></a><tt class="py-lineno">250</tt> <a class="py-toggle" href="#" id="_test-toggle" onclick="return toggle('_test');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pyspark.mllib.linalg-module.html#_test">_test</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="_test-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_test-expanded"><a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">doctest</tt> </tt>
-<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-name">failure_count</tt><tt class="py-op">,</tt> <tt class="py-name">test_count</tt><tt class="py-op">)</tt> <tt class="py-op">=</tt> <tt class="py-name">doctest</tt><tt class="py-op">.</tt><tt class="py-name">testmod</tt><tt class="py-op">(</tt><tt class="py-name">optionflags</tt><tt class="py-op">=</tt><tt class="py-name">doctest</tt><tt class="py-op">.</tt><tt class="py-name">ELLIPSIS</tt><tt class="py-op">)</tt> </tt>
-<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">failure_count</tt><tt class="py-op">:</tt> </tt>
-<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">        <tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line"> </tt>
-<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
-<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">    <tt class="py-name">_test</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="_test"></a><div id="_test-def"><a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line"> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt> <a class="py-toggle" href="#" id="_test-toggle" onclick="return toggle('_test');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pyspark.mllib.linalg-module.html#_test">_test</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_test-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_test-expanded"><a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">doctest</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-name">failure_count</tt><tt class="py-op">,</tt> <tt class="py-name">test_count</tt><tt class="py-op">)</tt> <tt class="py-op">=</tt> <tt class="py-name">doctest</tt><tt class="py-op">.</tt><tt class="py-name">testmod</tt><tt class="py-op">(</tt><tt class="py-name">optionflags</tt><tt class="py-op">=</tt><tt class="py-name">doctest</tt><tt class="py-op">.</tt><tt class="py-name">ELLIPSIS</tt><tt class="py-op">)</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">failure_count</tt><tt class="py-op">:</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">        <tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line"> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">    <tt class="py-name">_test</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -355,7 +356,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Jul 16 10:56:38 2014
+    Generated by Epydoc 3.0.1 on Thu Jul 24 22:54:39 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

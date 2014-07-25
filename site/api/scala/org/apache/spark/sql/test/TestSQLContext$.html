@@ -258,39 +258,39 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="org.apache.spark.sql">org.apache.spark.sql</a>] </dd><dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.SQLContext#applySchema" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
-      <a id="applySchema[A](rdd:org.apache.spark.rdd.RDD[A],schema:org.apache.spark.sql.StructType,f:A=&gt;org.apache.spark.sql.Row):org.apache.spark.sql.SchemaRDD"></a>
-      <a id="applySchema[A](RDD[A],StructType,(A)⇒Row):SchemaRDD"></a>
+      <a id="applySchema(rowRDD:org.apache.spark.rdd.RDD[org.apache.spark.sql.Row],schema:org.apache.spark.sql.StructType):org.apache.spark.sql.SchemaRDD"></a>
+      <a id="applySchema(RDD[Row],StructType):SchemaRDD"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">applySchema</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="rdd">rdd: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.sql.SQLContext.applySchema.A">A</span>]</span>, <span name="schema">schema: <a href="../package.html#StructType=org.apache.spark.sql.catalyst.types.StructType" class="extmbr" name="org.apache.spark.sql.StructType">StructType</a></span>, <span name="f">f: (<span class="extype" name="org.apache.spark.sql.SQLContext.applySchema.A">A</span>) ⇒ <a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a></span>)</span><span class="result">: <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
+        <span class="name">applySchema</span><span class="params">(<span name="rowRDD">rowRDD: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>]</span>, <span name="schema">schema: <a href="../package.html#StructType=org.apache.spark.sql.catalyst.types.StructType" class="extmbr" name="org.apache.spark.sql.StructType">StructType</a></span>)</span><span class="result">: <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Creates a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> from an <span class="extype" name="RDD">RDD</span> by applying a schema to this RDD and using a function
-that will be applied to each partition of the RDD to convert RDD records to <a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> from an <span class="extype" name="RDD">RDD</span> by applying a schema to this RDD and using a function
-that will be applied to each partition of the RDD to convert RDD records to <a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>s.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
-    </li><li name="org.apache.spark.sql.SQLContext#applySchemaToPartitions" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
-      <a id="applySchemaToPartitions[A](rdd:org.apache.spark.rdd.RDD[A],schema:org.apache.spark.sql.StructType,f:Iterator[A]=&gt;Iterator[org.apache.spark.sql.Row]):org.apache.spark.sql.SchemaRDD"></a>
-      <a id="applySchemaToPartitions[A](RDD[A],StructType,(Iterator[A])⇒Iterator[Row]):SchemaRDD"></a>
+      <p class="shortcomment cmt">:: DeveloperApi ::
+Creates a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> from an <span class="extype" name="RDD">RDD</span> containing <a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>s by applying a schema to this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
+Creates a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> from an <span class="extype" name="RDD">RDD</span> containing <a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>s by applying a schema to this RDD.
+It is important to make sure that the structure of every <a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a> of the provided RDD matches
+the provided schema. Otherwise, there will be runtime exception.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#approxCountDistinct" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="approxCountDistinct(e:org.apache.spark.sql.catalyst.expressions.Expression,rsd:Double):org.apache.spark.sql.catalyst.expressions.ApproxCountDistinct"></a>
+      <a id="approxCountDistinct(Expression,Double):ApproxCountDistinct"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">applySchemaToPartitions</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="rdd">rdd: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.sql.SQLContext.applySchemaToPartitions.A">A</span>]</span>, <span name="schema">schema: <a href="../package.html#StructType=org.apache.spark.sql.catalyst.types.StructType" class="extmbr" name="org.apache.spark.sql.StructType">StructType</a></span>, <span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.sql.SQLContext.applySchemaToPartitions.A">A</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>]</span>)</span><span class="result">: <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
+        <span class="name">approxCountDistinct</span><span class="params">(<span name="e">e: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>, <span name="rsd">rsd: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ApproxCountDistinct">ApproxCountDistinct</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Creates a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> from an <span class="extype" name="RDD">RDD</span> by applying a schema to this RDD and using a function
-that will be applied to each partition of the RDD to convert RDD records to <a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a> from an <span class="extype" name="RDD">RDD</span> by applying a schema to this RDD and using a function
-that will be applied to each partition of the RDD to convert RDD records to <a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>s.
-Similar to <code>RDD.mapPartitions</code><code>, this function can be used to improve performance where there
-is other setup work that can be amortized and used repeatedly for all of the
-elements in a partition.</code></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -304,6 +304,62 @@ elements in a partition.</code></p></div><dl class="attributes block"> <dt>Defin
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLContext#asJavaDataType" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asJavaDataType(scalaDataType:org.apache.spark.sql.DataType):org.apache.spark.sql.api.java.types.DataType"></a>
+      <a id="asJavaDataType(DataType):api.java.types.DataType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asJavaDataType</span><span class="params">(<span name="scalaDataType">scalaDataType: <a href="../package.html#DataType=org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.DataType">DataType</a></span>)</span><span class="result">: <a href="../api/java/types/DataType.html" class="extype" name="org.apache.spark.sql.api.java.types.DataType">api.java.types.DataType</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the equivalent DataType in Java for the given DataType in Scala.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the equivalent DataType in Java for the given DataType in Scala.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="org.apache.spark.sql">org.apache.spark.sql</a>] </dd><dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLContext#asJavaStructField" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asJavaStructField(scalaStructField:org.apache.spark.sql.StructField):org.apache.spark.sql.api.java.types.StructField"></a>
+      <a id="asJavaStructField(StructField):api.java.types.StructField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asJavaStructField</span><span class="params">(<span name="scalaStructField">scalaStructField: <a href="../package.html#StructField=org.apache.spark.sql.catalyst.types.StructField" class="extmbr" name="org.apache.spark.sql.StructField">StructField</a></span>)</span><span class="result">: <a href="../api/java/types/StructField.html" class="extype" name="org.apache.spark.sql.api.java.types.StructField">api.java.types.StructField</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the equivalent StructField in Scala for the given StructField in Java.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the equivalent StructField in Scala for the given StructField in Java.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLContext#asScalaDataType" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asScalaDataType(javaDataType:org.apache.spark.sql.api.java.types.DataType):org.apache.spark.sql.DataType"></a>
+      <a id="asScalaDataType(api.java.types.DataType):DataType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asScalaDataType</span><span class="params">(<span name="javaDataType">javaDataType: <a href="../api/java/types/DataType.html" class="extype" name="org.apache.spark.sql.api.java.types.DataType">api.java.types.DataType</a></span>)</span><span class="result">: <a href="../package.html#DataType=org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.DataType">DataType</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the equivalent DataType in Scala for the given DataType in Java.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the equivalent DataType in Scala for the given DataType in Java.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="org.apache.spark.sql">org.apache.spark.sql</a>] </dd><dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.SQLContext#asScalaStructField" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asScalaStructField(javaStructField:org.apache.spark.sql.api.java.types.StructField):org.apache.spark.sql.StructField"></a>
+      <a id="asScalaStructField(api.java.types.StructField):StructField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asScalaStructField</span><span class="params">(<span name="javaStructField">javaStructField: <a href="../api/java/types/StructField.html" class="extype" name="org.apache.spark.sql.api.java.types.StructField">api.java.types.StructField</a></span>)</span><span class="result">: <a href="../package.html#StructField=org.apache.spark.sql.catalyst.types.StructField" class="extmbr" name="org.apache.spark.sql.StructField">StructField</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the equivalent StructField in Scala for the given StructField in Java.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the equivalent StructField in Scala for the given StructField in Java.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#avg" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="avg(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.Average"></a>
       <a id="avg(Expression):Average"></a>
@@ -765,10 +821,15 @@ sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></d
         <span class="name">jsonFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="schema">schema: <a href="../package.html#StructType=org.apache.spark.sql.catalyst.types.StructType" class="extmbr" name="org.apache.spark.sql.StructType">StructType</a></span>)</span><span class="result">: <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Loads a JSON file (one object per line) and applies the given schema,
-returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a JSON file (one object per line) and applies the given schema,
+      <p class="shortcomment cmt">:: Experimental ::
+Loads a JSON file (one object per line) and applies the given schema,
+returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
+Loads a JSON file (one object per line) and applies the given schema,
 returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="org.apache.spark.sql.SQLContext#jsonFile" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
       <a id="jsonFile(path:String):org.apache.spark.sql.SchemaRDD"></a>
       <a id="jsonFile(String):SchemaRDD"></a>
@@ -814,10 +875,15 @@ It goes through the entire dataset once to determine the schema.
         <span class="name">jsonRDD</span><span class="params">(<span name="json">json: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="schema">schema: <a href="../package.html#StructType=org.apache.spark.sql.catalyst.types.StructType" class="extmbr" name="org.apache.spark.sql.StructType">StructType</a></span>)</span><span class="result">: <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Loads an RDD[String] storing JSON objects (one object per record) and applies the given schema,
-returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads an RDD[String] storing JSON objects (one object per record) and applies the given schema,
+      <p class="shortcomment cmt">:: Experimental ::
+Loads an RDD[String] storing JSON objects (one object per record) and applies the given schema,
+returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
+Loads an RDD[String] storing JSON objects (one object per record) and applies the given schema,
 returning the result as a <a href="../SchemaRDD.html" class="extype" name="org.apache.spark.sql.SchemaRDD">SchemaRDD</a>.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="org.apache.spark.sql.SQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
       <a id="jsonRDD(json:org.apache.spark.rdd.RDD[String]):org.apache.spark.sql.SchemaRDD"></a>
       <a id="jsonRDD(RDD[String]):SchemaRDD"></a>
@@ -895,19 +961,6 @@ them directly is not recommended.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
-    </li><li name="org.apache.spark.sql.SQLContext#makeCustomRDDScan" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="makeCustomRDDScan[A](rdd:org.apache.spark.rdd.RDD[A],schema:org.apache.spark.sql.StructType,f:Iterator[A]=&gt;Iterator[org.apache.spark.sql.Row]):org.apache.spark.sql.catalyst.plans.logical.LogicalPlan"></a>
-      <a id="makeCustomRDDScan[A](RDD[A],StructType,(Iterator[A])⇒Iterator[Row]):LogicalPlan"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">makeCustomRDDScan</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="rdd">rdd: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.sql.SQLContext.makeCustomRDDScan.A">A</span>]</span>, <span name="schema">schema: <a href="../package.html#StructType=org.apache.spark.sql.catalyst.types.StructType" class="extmbr" name="org.apache.spark.sql.StructType">StructType</a></span>, <span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.sql.SQLContext.makeCustomRDDScan.A">A</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<a href="../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="org.apache.spark.sql">org.apache.spark.sql</a>] </dd><dt>Definition Classes</dt><dd><a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#max" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="max(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.Max"></a>
       <a id="max(Expression):Max"></a>
