@@ -540,6 +540,19 @@ The variable will be sent to each cluster only once.
 to using the <code>add</code> method.</p><div class="fullcomment"><div class="comment cmt"><p>Create an <a href="../../Accumulator.html" class="extype" name="org.apache.spark.Accumulator">org.apache.spark.Accumulator</a> double variable, which tasks can &quot;add&quot; values
 to using the <code>add</code> method. Only the master can access the accumulator's <code>value</code>.
 </p></div></div>
+    </li><li name="org.apache.spark.api.java.JavaSparkContext#emptyRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="emptyRDD[T]:org.apache.spark.api.java.JavaRDD[T]"></a>
+      <a id="emptyRDD[T]:JavaRDD[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">emptyRDD</span><span class="tparams">[<span name="T">T</span>]</span><span class="result">: <a href="JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="org.apache.spark.api.java.JavaSparkContext.emptyRDD.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get an RDD that has no partitions or elements.</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -1325,6 +1338,19 @@ Hadoop-supported file system URI, and return it as an RDD of Strings.</p>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JavaSparkContextVarargsWorkaround</dd></dl></div>
+    </li><li name="org.apache.spark.api.java.JavaSparkContext#version" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="version:String"></a>
+      <a id="version:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">version</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The version of Spark on which this application is running.</p>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

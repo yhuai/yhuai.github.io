@@ -35,7 +35,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">CoGroupedRDD</span><span class="tparams">[<span name="K">K</span>]</span><span class="result"> extends <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">CoGroupedRDD</span><span class="tparams">[<span name="K">K</span>]</span><span class="result"> extends <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       
@@ -48,7 +48,7 @@ instantiating this directly.
               
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])], <a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])], <a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -150,14 +150,14 @@ instantiating this directly.
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#++" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="++(other:org.apache.spark.rdd.RDD[T]):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="++(RDD[(K,Seq[Seq[_]])]):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="++(RDD[(K,Array[Iterable[_]])]):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $plus$plus" class="name">++</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span title="gt4s: $plus$plus" class="name">++</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return the union of this RDD and another one.</p><div class="fullcomment"><div class="comment cmt"><p>Return the union of this RDD and another one. Any identical elements will appear multiple
@@ -191,14 +191,14 @@ times (use <code>.distinct()</code> to eliminate them).
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#aggregate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="aggregate[U](zeroValue:U)(seqOp:(U,T)=&gt;U,combOp:(U,U)=&gt;U)(implicitevidence$32:scala.reflect.ClassTag[U]):U"></a>
-      <a id="aggregate[U](U)((U,(K,Seq[Seq[_]]))⇒U,(U,U)⇒U)(ClassTag[U]):U"></a>
+      <a id="aggregate[U](U)((U,(K,Array[Iterable[_]]))⇒U,(U,U)⇒U)(ClassTag[U]):U"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">aggregate</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="zeroValue">zeroValue: <span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span></span>)</span><span class="params">(<span name="seqOp">seqOp: (<span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span>, (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span></span>, <span name="combOp">combOp: (<span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span>, <span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span></span>
+        <span class="name">aggregate</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="zeroValue">zeroValue: <span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span></span>)</span><span class="params">(<span name="seqOp">seqOp: (<span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span>, (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span></span>, <span name="combOp">combOp: (<span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span>, <span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD.aggregate.U">U</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Aggregate the elements of each partition, and then the results for all the partitions, using
@@ -237,14 +237,14 @@ allocation.
       <p class="shortcomment cmt">Persist this RDD with the default storage level (<code>MEMORY_ONLY</code>).</p><div class="fullcomment"><div class="comment cmt"><p>Persist this RDD with the default storage level (<code>MEMORY_ONLY</code>).</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#cartesian" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="cartesian[U](other:org.apache.spark.rdd.RDD[U])(implicitevidence$5:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[(T,U)]"></a>
-      <a id="cartesian[U](RDD[U])(ClassTag[U]):RDD[((K,Seq[Seq[_]]),U)]"></a>
+      <a id="cartesian[U](RDD[U])(ClassTag[U]):RDD[((K,Array[Iterable[_]]),U)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cartesian</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.cartesian.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.cartesian.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.cartesian.U">U</span>)]</span>
+        <span class="name">cartesian</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.cartesian.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.cartesian.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.cartesian.U">U</span>)]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return the Cartesian product of this RDD and another one, that is, the RDD of all pairs of
@@ -307,14 +307,14 @@ logic. See <a href="UnionRDD.html" class="extype" name="org.apache.spark.rdd.Uni
         </dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#coalesce" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="coalesce(numPartitions:Int,shuffle:Boolean)(implicitord:Ordering[T]):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="coalesce(Int,Boolean)(Ordering[(K,Seq[Seq[_]])]):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="coalesce(Int,Boolean)(Ordering[(K,Array[Iterable[_]])]):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">coalesce</span><span class="params">(<span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>, <span name="shuffle">shuffle: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">coalesce</span><span class="params">(<span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>, <span name="shuffle">shuffle: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a new RDD that is reduced into <code>numPartitions</code> partitions.</p><div class="fullcomment"><div class="comment cmt"><p>Return a new RDD that is reduced into <code>numPartitions</code> partitions.</p><p>This results in a narrow dependency, e.g. if you go from 1000 partitions
@@ -332,42 +332,42 @@ data distributed using a hash partitioner.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#collect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="collect[U](f:PartialFunction[T,U])(implicitevidence$31:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
-      <a id="collect[U](PartialFunction[(K,Seq[Seq[_]]),U])(ClassTag[U]):RDD[U]"></a>
+      <a id="collect[U](PartialFunction[(K,Array[Iterable[_]]),U])(ClassTag[U]):RDD[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">collect</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.collect.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.collect.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.collect.U">U</span>]</span>
+        <span class="name">collect</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.collect.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.collect.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.collect.U">U</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an RDD that contains all matching values by applying <code>f</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Return an RDD that contains all matching values by applying <code>f</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#collect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="collect():Array[T]"></a>
-      <a id="collect():Array[(K,Seq[Seq[_]])]"></a>
+      <a id="collect():Array[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">collect</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">collect</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an array that contains all of the elements in this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return an array that contains all of the elements in this RDD.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.CoGroupedRDD#compute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="compute(s:org.apache.spark.Partition,context:org.apache.spark.TaskContext):Iterator[(K,CoGroupedRDD.this.CoGroupCombiner)]"></a>
-      <a id="compute(Partition,TaskContext):Iterator[(K,CoGroupCombiner)]"></a>
+      <a id="compute(s:org.apache.spark.Partition,context:org.apache.spark.TaskContext):Iterator[(K,Array[Iterable[_]])]"></a>
+      <a id="compute(Partition,TaskContext):Iterator[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">compute</span><span class="params">(<span name="s">s: <a href="../Partition.html" class="extype" name="org.apache.spark.Partition">Partition</a></span>, <span name="context">context: <a href="../TaskContext.html" class="extype" name="org.apache.spark.TaskContext">TaskContext</a></span>)</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.CoGroupCombiner">CoGroupCombiner</span>)]</span>
+        <span class="name">compute</span><span class="params">(<span name="s">s: <a href="../Partition.html" class="extype" name="org.apache.spark.Partition">Partition</a></span>, <span name="context">context: <a href="../TaskContext.html" class="extype" name="org.apache.spark.TaskContext">TaskContext</a></span>)</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::
@@ -468,14 +468,14 @@ and increase accuracy when the cardinality is small.
         </dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#countByValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="countByValue()(implicitord:Ordering[T]):scala.collection.Map[T,Long]"></a>
-      <a id="countByValue()(Ordering[(K,Seq[Seq[_]])]):Map[(K,Seq[Seq[_]]),Long]"></a>
+      <a id="countByValue()(Ordering[(K,Array[Iterable[_]])]):Map[(K,Array[Iterable[_]]),Long]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">countByValue</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <span class="extype" name="scala.collection.Map">Map</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <span class="extype" name="scala.Long">Long</span>]</span>
+        <span class="name">countByValue</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <span class="extype" name="scala.collection.Map">Map</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <span class="extype" name="scala.Long">Long</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return the count of each unique value in this RDD as a map of (value, count) pairs.</p><div class="fullcomment"><div class="comment cmt"><p>Return the count of each unique value in this RDD as a map of (value, count) pairs. The final
@@ -483,14 +483,14 @@ combine step happens locally on the master, equivalent to running a single reduc
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#countByValueApprox" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="countByValueApprox(timeout:Long,confidence:Double)(implicitord:Ordering[T]):org.apache.spark.partial.PartialResult[scala.collection.Map[T,org.apache.spark.partial.BoundedDouble]]"></a>
-      <a id="countByValueApprox(Long,Double)(Ordering[(K,Seq[Seq[_]])]):PartialResult[Map[(K,Seq[Seq[_]]),BoundedDouble]]"></a>
+      <a id="countByValueApprox(Long,Double)(Ordering[(K,Array[Iterable[_]])]):PartialResult[Map[(K,Array[Iterable[_]]),BoundedDouble]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">countByValueApprox</span><span class="params">(<span name="timeout">timeout: <span class="extype" name="scala.Long">Long</span></span>, <span name="confidence">confidence: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.95</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="../partial/PartialResult.html" class="extype" name="org.apache.spark.partial.PartialResult">PartialResult</a>[<span class="extype" name="scala.collection.Map">Map</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <a href="../partial/BoundedDouble.html" class="extype" name="org.apache.spark.partial.BoundedDouble">BoundedDouble</a>]]</span>
+        <span class="name">countByValueApprox</span><span class="params">(<span name="timeout">timeout: <span class="extype" name="scala.Long">Long</span></span>, <span name="confidence">confidence: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.95</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="../partial/PartialResult.html" class="extype" name="org.apache.spark.partial.PartialResult">PartialResult</a>[<span class="extype" name="scala.collection.Map">Map</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <a href="../partial/BoundedDouble.html" class="extype" name="org.apache.spark.partial.BoundedDouble">BoundedDouble</a>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
@@ -518,28 +518,28 @@ RDD is checkpointed or not.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#distinct" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="distinct():org.apache.spark.rdd.RDD[T]"></a>
-      <a id="distinct():RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="distinct():RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">distinct</span><span class="params">()</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">distinct</span><span class="params">()</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a new RDD containing the distinct elements in this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return a new RDD containing the distinct elements in this RDD.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#distinct" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="distinct(numPartitions:Int)(implicitord:Ordering[T]):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="distinct(Int)(Ordering[(K,Seq[Seq[_]])]):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="distinct(Int)(Ordering[(K,Array[Iterable[_]])]):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">distinct</span><span class="params">(<span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">distinct</span><span class="params">(<span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a new RDD containing the distinct elements in this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return a new RDD containing the distinct elements in this RDD.
@@ -572,14 +572,14 @@ RDD is checkpointed or not.
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#filter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="filter(f:T=&gt;Boolean):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="filter(((K,Seq[Seq[_]]))⇒Boolean):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="filter(((K,Array[Iterable[_]]))⇒Boolean):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">filter</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">filter</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a new RDD containing only the elements that satisfy a predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Return a new RDD containing only the elements that satisfy a predicate.
@@ -605,14 +605,14 @@ RDD is checkpointed or not.
         </dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#first" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="first():T"></a>
-      <a id="first():(K,Seq[Seq[_]])"></a>
+      <a id="first():(K,Array[Iterable[_]])"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">first</span><span class="params">()</span><span class="result">: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])</span>
+        <span class="name">first</span><span class="params">()</span><span class="result">: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return the first element in this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return the first element in this RDD.
@@ -632,14 +632,14 @@ RDD is checkpointed or not.
       <p class="shortcomment cmt">Returns the first parent RDD</p><div class="fullcomment"><div class="comment cmt"><p>Returns the first parent RDD</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="org.apache.spark">org.apache.spark</a>] </dd><dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#flatMap" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="flatMap[U](f:T=&gt;TraversableOnce[U])(implicitevidence$4:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
-      <a id="flatMap[U](((K,Seq[Seq[_]]))⇒TraversableOnce[U])(ClassTag[U]):RDD[U]"></a>
+      <a id="flatMap[U](((K,Array[Iterable[_]]))⇒TraversableOnce[U])(ClassTag[U]):RDD[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">flatMap</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMap.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMap.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMap.U">U</span>]</span>
+        <span class="name">flatMap</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMap.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMap.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMap.U">U</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt"> Return a new RDD by first applying a function to all elements of this
@@ -648,14 +648,14 @@ RDD is checkpointed or not.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#fold" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fold(zeroValue:T)(op:(T,T)=&gt;T):T"></a>
-      <a id="fold((K,Seq[Seq[_]]))(((K,Seq[Seq[_]]),(K,Seq[Seq[_]]))⇒(K,Seq[Seq[_]])):(K,Seq[Seq[_]])"></a>
+      <a id="fold((K,Array[Iterable[_]]))(((K,Array[Iterable[_]]),(K,Array[Iterable[_]]))⇒(K,Array[Iterable[_]])):(K,Array[Iterable[_]])"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fold</span><span class="params">(<span name="zeroValue">zeroValue: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])</span>)</span><span class="params">(<span name="op">op: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])</span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])</span>
+        <span class="name">fold</span><span class="params">(<span name="zeroValue">zeroValue: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])</span>)</span><span class="params">(<span name="op">op: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])</span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Aggregate the elements of each partition, and then the results for all the partitions, using a
@@ -666,28 +666,28 @@ modify t2.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#foreach" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="foreach(f:T=&gt;Unit):Unit"></a>
-      <a id="foreach(((K,Seq[Seq[_]]))⇒Unit):Unit"></a>
+      <a id="foreach(((K,Array[Iterable[_]]))⇒Unit):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">foreach</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">foreach</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Applies a function f to all elements of this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Applies a function f to all elements of this RDD.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#foreachPartition" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="foreachPartition(f:Iterator[T]=&gt;Unit):Unit"></a>
-      <a id="foreachPartition((Iterator[(K,Seq[Seq[_]])])⇒Unit):Unit"></a>
+      <a id="foreachPartition((Iterator[(K,Array[Iterable[_]])])⇒Unit):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">foreachPartition</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">foreachPartition</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Applies a function f to each partition of this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Applies a function f to each partition of this RDD.
@@ -779,28 +779,28 @@ be called once, so it is safe to implement a time-consuming computation in it.
       <p class="shortcomment cmt">Get the RDD's current storage level, or StorageLevel.</p><div class="fullcomment"><div class="comment cmt"><p>Get the RDD's current storage level, or StorageLevel.NONE if none is set.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#glom" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="glom():org.apache.spark.rdd.RDD[Array[T]]"></a>
-      <a id="glom():RDD[Array[(K,Seq[Seq[_]])]]"></a>
+      <a id="glom():RDD[Array[(K,Array[Iterable[_]])]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">glom</span><span class="params">()</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]]</span>
+        <span class="name">glom</span><span class="params">()</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an RDD created by coalescing all elements within each partition into an array.</p><div class="fullcomment"><div class="comment cmt"><p>Return an RDD created by coalescing all elements within each partition into an array.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#groupBy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="groupBy[K](f:T=&gt;K,p:org.apache.spark.Partitioner)(implicitkt:scala.reflect.ClassTag[K],implicitord:Ordering[K]):org.apache.spark.rdd.RDD[(K,Iterable[T])]"></a>
-      <a id="groupBy[K](((K,Seq[Seq[_]]))⇒K,Partitioner)(ClassTag[K],Ordering[K]):RDD[(K,Iterable[(K,Seq[Seq[_]])])]"></a>
+      <a id="groupBy[K](((K,Array[Iterable[_]]))⇒K,Partitioner)(ClassTag[K],Ordering[K]):RDD[(K,Iterable[(K,Array[Iterable[_]])])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">groupBy</span><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span></span>, <span name="p">p: <a href="../Partitioner.html" class="extype" name="org.apache.spark.Partitioner">Partitioner</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="kt">kt: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>]</span>, <span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>, <span class="extype" name="scala.Iterable">Iterable</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])])]</span>
+        <span class="name">groupBy</span><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span></span>, <span name="p">p: <a href="../Partitioner.html" class="extype" name="org.apache.spark.Partitioner">Partitioner</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="kt">kt: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>]</span>, <span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>, <span class="extype" name="scala.Iterable">Iterable</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an RDD of grouped items.</p><div class="fullcomment"><div class="comment cmt"><p>Return an RDD of grouped items. Each group consists of a key and a sequence of elements
@@ -810,14 +810,14 @@ or <a href="PairRDDFunctions.html#reduceByKey(func:(V,V)=&gt;V):org.apache.spark
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#groupBy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="groupBy[K](f:T=&gt;K,numPartitions:Int)(implicitkt:scala.reflect.ClassTag[K]):org.apache.spark.rdd.RDD[(K,Iterable[T])]"></a>
-      <a id="groupBy[K](((K,Seq[Seq[_]]))⇒K,Int)(ClassTag[K]):RDD[(K,Iterable[(K,Seq[Seq[_]])])]"></a>
+      <a id="groupBy[K](((K,Array[Iterable[_]]))⇒K,Int)(ClassTag[K]):RDD[(K,Iterable[(K,Array[Iterable[_]])])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">groupBy</span><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="kt">kt: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>, <span class="extype" name="scala.Iterable">Iterable</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])])]</span>
+        <span class="name">groupBy</span><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="kt">kt: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>, <span class="extype" name="scala.Iterable">Iterable</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an RDD of grouped elements.</p><div class="fullcomment"><div class="comment cmt"><p>Return an RDD of grouped elements. Each group consists of a key and a sequence of elements
@@ -827,14 +827,14 @@ or <a href="PairRDDFunctions.html#reduceByKey(func:(V,V)=&gt;V):org.apache.spark
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#groupBy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="groupBy[K](f:T=&gt;K)(implicitkt:scala.reflect.ClassTag[K]):org.apache.spark.rdd.RDD[(K,Iterable[T])]"></a>
-      <a id="groupBy[K](((K,Seq[Seq[_]]))⇒K)(ClassTag[K]):RDD[(K,Iterable[(K,Seq[Seq[_]])])]"></a>
+      <a id="groupBy[K](((K,Array[Iterable[_]]))⇒K)(ClassTag[K]):RDD[(K,Iterable[(K,Array[Iterable[_]])])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">groupBy</span><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="kt">kt: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>, <span class="extype" name="scala.Iterable">Iterable</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])])]</span>
+        <span class="name">groupBy</span><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="kt">kt: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.RDD.groupBy.K">K</span>, <span class="extype" name="scala.Iterable">Iterable</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an RDD of grouped items.</p><div class="fullcomment"><div class="comment cmt"><p>Return an RDD of grouped items. Each group consists of a key and a sequence of elements
@@ -870,14 +870,14 @@ or <a href="PairRDDFunctions.html#reduceByKey(func:(V,V)=&gt;V):org.apache.spark
       <p class="shortcomment cmt">A unique ID for this RDD (within its SparkContext).</p><div class="fullcomment"><div class="comment cmt"><p>A unique ID for this RDD (within its SparkContext).</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#intersection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="intersection(other:org.apache.spark.rdd.RDD[T],numPartitions:Int):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="intersection(RDD[(K,Seq[Seq[_]])],Int):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="intersection(RDD[(K,Array[Iterable[_]])],Int):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">intersection</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">intersection</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return the intersection of this RDD and another one.</p><div class="fullcomment"><div class="comment cmt"><p>Return the intersection of this RDD and another one. The output will not contain any duplicate
@@ -886,14 +886,14 @@ elements, even if the input RDDs did.  Performs a hash partition across the clus
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#intersection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="intersection(other:org.apache.spark.rdd.RDD[T],partitioner:org.apache.spark.Partitioner)(implicitord:Ordering[T]):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="intersection(RDD[(K,Seq[Seq[_]])],Partitioner)(Ordering[(K,Seq[Seq[_]])]):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="intersection(RDD[(K,Array[Iterable[_]])],Partitioner)(Ordering[(K,Array[Iterable[_]])]):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">intersection</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>, <span name="partitioner">partitioner: <a href="../Partitioner.html" class="extype" name="org.apache.spark.Partitioner">Partitioner</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">intersection</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>, <span name="partitioner">partitioner: <a href="../Partitioner.html" class="extype" name="org.apache.spark.Partitioner">Partitioner</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return the intersection of this RDD and another one.</p><div class="fullcomment"><div class="comment cmt"><p>Return the intersection of this RDD and another one. The output will not contain any duplicate
@@ -902,14 +902,14 @@ elements, even if the input RDDs did.</p><p>Note that this method performs a shu
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#intersection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="intersection(other:org.apache.spark.rdd.RDD[T]):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="intersection(RDD[(K,Seq[Seq[_]])]):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="intersection(RDD[(K,Array[Iterable[_]])]):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">intersection</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">intersection</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return the intersection of this RDD and another one.</p><div class="fullcomment"><div class="comment cmt"><p>Return the intersection of this RDD and another one. The output will not contain any duplicate
@@ -958,14 +958,14 @@ elements, even if the input RDDs did.</p><p>Note that this method performs a shu
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#iterator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="iterator(split:org.apache.spark.Partition,context:org.apache.spark.TaskContext):Iterator[T]"></a>
-      <a id="iterator(Partition,TaskContext):Iterator[(K,Seq[Seq[_]])]"></a>
+      <a id="iterator(Partition,TaskContext):Iterator[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">iterator</span><span class="params">(<span name="split">split: <a href="../Partition.html" class="extype" name="org.apache.spark.Partition">Partition</a></span>, <span name="context">context: <a href="../TaskContext.html" class="extype" name="org.apache.spark.TaskContext">TaskContext</a></span>)</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">iterator</span><span class="params">(<span name="split">split: <a href="../Partition.html" class="extype" name="org.apache.spark.Partition">Partition</a></span>, <span name="context">context: <a href="../TaskContext.html" class="extype" name="org.apache.spark.TaskContext">TaskContext</a></span>)</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Internal method to this RDD; will read from cache if applicable, or otherwise compute it.</p><div class="fullcomment"><div class="comment cmt"><p>Internal method to this RDD; will read from cache if applicable, or otherwise compute it.
@@ -974,14 +974,14 @@ subclasses of RDD.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#keyBy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="keyBy[K](f:T=&gt;K):org.apache.spark.rdd.RDD[(K,T)]"></a>
-      <a id="keyBy[K](((K,Seq[Seq[_]]))⇒K):RDD[(K,(K,Seq[Seq[_]]))]"></a>
+      <a id="keyBy[K](((K,Array[Iterable[_]]))⇒K):RDD[(K,(K,Array[Iterable[_]]))]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">keyBy</span><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.keyBy.K">K</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.RDD.keyBy.K">K</span>, (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]))]</span>
+        <span class="name">keyBy</span><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.keyBy.K">K</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.RDD.keyBy.K">K</span>, (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]))]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Creates tuples of the elements in this RDD by applying <code>f</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Creates tuples of the elements in this RDD by applying <code>f</code>.
@@ -1131,28 +1131,28 @@ subclasses of RDD.
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#map" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="map[U](f:T=&gt;U)(implicitevidence$3:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
-      <a id="map[U](((K,Seq[Seq[_]]))⇒U)(ClassTag[U]):RDD[U]"></a>
+      <a id="map[U](((K,Array[Iterable[_]]))⇒U)(ClassTag[U]):RDD[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">map</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.map.U">U</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.map.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.map.U">U</span>]</span>
+        <span class="name">map</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.map.U">U</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.map.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.map.U">U</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a new RDD by applying a function to all elements of this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return a new RDD by applying a function to all elements of this RDD.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#mapPartitions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mapPartitions[U](f:Iterator[T]=&gt;Iterator[U],preservesPartitioning:Boolean)(implicitevidence$6:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
-      <a id="mapPartitions[U]((Iterator[(K,Seq[Seq[_]])])⇒Iterator[U],Boolean)(ClassTag[U]):RDD[U]"></a>
+      <a id="mapPartitions[U]((Iterator[(K,Array[Iterable[_]])])⇒Iterator[U],Boolean)(ClassTag[U]):RDD[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">mapPartitions</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitions.U">U</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitions.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitions.U">U</span>]</span>
+        <span class="name">mapPartitions</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitions.U">U</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitions.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitions.U">U</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a new RDD by applying a function to each partition of this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return a new RDD by applying a function to each partition of this RDD.</p><p><code>preservesPartitioning</code> indicates whether the input function preserves the partitioner, which
@@ -1160,14 +1160,14 @@ should be <code>false</code> unless this is a pair RDD and the input function do
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#mapPartitionsWithContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mapPartitionsWithContext[U](f:(org.apache.spark.TaskContext,Iterator[T])=&gt;Iterator[U],preservesPartitioning:Boolean)(implicitevidence$8:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
-      <a id="mapPartitionsWithContext[U]((TaskContext,Iterator[(K,Seq[Seq[_]])])⇒Iterator[U],Boolean)(ClassTag[U]):RDD[U]"></a>
+      <a id="mapPartitionsWithContext[U]((TaskContext,Iterator[(K,Array[Iterable[_]])])⇒Iterator[U],Boolean)(ClassTag[U]):RDD[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">mapPartitionsWithContext</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: (<a href="../TaskContext.html" class="extype" name="org.apache.spark.TaskContext">TaskContext</a>, <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithContext.U">U</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithContext.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithContext.U">U</span>]</span>
+        <span class="name">mapPartitionsWithContext</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: (<a href="../TaskContext.html" class="extype" name="org.apache.spark.TaskContext">TaskContext</a>, <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithContext.U">U</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithContext.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithContext.U">U</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::
@@ -1181,14 +1181,14 @@ should be <code>false</code> unless this is a pair RDD and the input function do
         </dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#mapPartitionsWithIndex" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mapPartitionsWithIndex[U](f:(Int,Iterator[T])=&gt;Iterator[U],preservesPartitioning:Boolean)(implicitevidence$7:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
-      <a id="mapPartitionsWithIndex[U]((Int,Iterator[(K,Seq[Seq[_]])])⇒Iterator[U],Boolean)(ClassTag[U]):RDD[U]"></a>
+      <a id="mapPartitionsWithIndex[U]((Int,Iterator[(K,Array[Iterable[_]])])⇒Iterator[U],Boolean)(ClassTag[U]):RDD[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">mapPartitionsWithIndex</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithIndex.U">U</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithIndex.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithIndex.U">U</span>]</span>
+        <span class="name">mapPartitionsWithIndex</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithIndex.U">U</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithIndex.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithIndex.U">U</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a new RDD by applying a function to each partition of this RDD, while tracking the index
@@ -1198,28 +1198,28 @@ should be <code>false</code> unless this is a pair RDD and the input function do
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#max" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="max()(implicitord:Ordering[T]):T"></a>
-      <a id="max()(Ordering[(K,Seq[Seq[_]])]):(K,Seq[Seq[_]])"></a>
+      <a id="max()(Ordering[(K,Array[Iterable[_]])]):(K,Array[Iterable[_]])"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">max</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])</span>
+        <span class="name">max</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Returns the max of this RDD as defined by the implicit Ordering[T].</p><div class="fullcomment"><div class="comment cmt"><p>Returns the max of this RDD as defined by the implicit Ordering[T].</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the maximum element of the RDD
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#min" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="min()(implicitord:Ordering[T]):T"></a>
-      <a id="min()(Ordering[(K,Seq[Seq[_]])]):(K,Seq[Seq[_]])"></a>
+      <a id="min()(Ordering[(K,Array[Iterable[_]])]):(K,Array[Iterable[_]])"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">min</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])</span>
+        <span class="name">min</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Returns the min of this RDD as defined by the implicit Ordering[T].</p><div class="fullcomment"><div class="comment cmt"><p>Returns the min of this RDD as defined by the implicit Ordering[T].</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the minimum element of the RDD
@@ -1337,14 +1337,14 @@ have a storage level set yet..
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#pipe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pipe(command:Seq[String],env:scala.collection.Map[String,String],printPipeContext:(String=&gt;Unit)=&gt;Unit,printRDDElement:(T,String=&gt;Unit)=&gt;Unit,separateWorkingDir:Boolean):org.apache.spark.rdd.RDD[String]"></a>
-      <a id="pipe(Seq[String],Map[String,String],((String)⇒Unit)⇒Unit,((K,Seq[Seq[_]]),(String)⇒Unit)⇒Unit,Boolean):RDD[String]"></a>
+      <a id="pipe(Seq[String],Map[String,String],((String)⇒Unit)⇒Unit,((K,Array[Iterable[_]]),(String)⇒Unit)⇒Unit,Boolean):RDD[String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">pipe</span><span class="params">(<span name="command">command: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="env">env: <span class="extype" name="scala.collection.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map()</span></span>, <span name="printPipeContext">printPipeContext: ((<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">null</span></span>, <span name="printRDDElement">printRDDElement: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">null</span></span>, <span name="separateWorkingDir">separateWorkingDir: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">pipe</span><span class="params">(<span name="command">command: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="env">env: <span class="extype" name="scala.collection.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map()</span></span>, <span name="printPipeContext">printPipeContext: ((<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">null</span></span>, <span name="printRDDElement">printRDDElement: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">null</span></span>, <span name="separateWorkingDir">separateWorkingDir: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an RDD created by piping elements to a forked external process.</p><div class="fullcomment"><div class="comment cmt"><p>Return an RDD created by piping elements to a forked external process.
@@ -1405,14 +1405,14 @@ RDD is checkpointed.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#randomSplit" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="randomSplit(weights:Array[Double],seed:Long):Array[org.apache.spark.rdd.RDD[T]]"></a>
-      <a id="randomSplit(Array[Double],Long):Array[RDD[(K,Seq[Seq[_]])]]"></a>
+      <a id="randomSplit(Array[Double],Long):Array[RDD[(K,Array[Iterable[_]])]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">randomSplit</span><span class="params">(<span name="weights">weights: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Utils.random.nextLong</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]]</span>
+        <span class="name">randomSplit</span><span class="params">(<span name="weights">weights: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Utils.random.nextLong</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Randomly splits this RDD with the provided weights.</p><div class="fullcomment"><div class="comment cmt"><p>Randomly splits this RDD with the provided weights.
@@ -1434,14 +1434,14 @@ RDD is checkpointed.
       <p class="shortcomment cmt">parent RDDs.</p>
     </li><li name="org.apache.spark.rdd.RDD#reduce" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reduce(f:(T,T)=&gt;T):T"></a>
-      <a id="reduce(((K,Seq[Seq[_]]),(K,Seq[Seq[_]]))⇒(K,Seq[Seq[_]])):(K,Seq[Seq[_]])"></a>
+      <a id="reduce(((K,Array[Iterable[_]]),(K,Array[Iterable[_]]))⇒(K,Array[Iterable[_]])):(K,Array[Iterable[_]])"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">reduce</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])</span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])</span>
+        <span class="name">reduce</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])</span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Reduces the elements of this RDD using the specified commutative and
@@ -1450,14 +1450,14 @@ associative binary operator.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#repartition" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="repartition(numPartitions:Int)(implicitord:Ordering[T]):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="repartition(Int)(Ordering[(K,Seq[Seq[_]])]):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="repartition(Int)(Ordering[(K,Array[Iterable[_]])]):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">repartition</span><span class="params">(<span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">repartition</span><span class="params">(<span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a new RDD that has exactly numPartitions partitions.</p><div class="fullcomment"><div class="comment cmt"><p>Return a new RDD that has exactly numPartitions partitions.</p><p>Can increase or decrease the level of parallelism in this RDD. Internally, this uses
@@ -1466,14 +1466,14 @@ which can avoid performing a shuffle.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#sample" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sample(withReplacement:Boolean,fraction:Double,seed:Long):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="sample(Boolean,Double,Long):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="sample(Boolean,Double,Long):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sample</span><span class="params">(<span name="withReplacement">withReplacement: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="fraction">fraction: <span class="extype" name="scala.Double">Double</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Utils.random.nextLong</a></span></span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">sample</span><span class="params">(<span name="withReplacement">withReplacement: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="fraction">fraction: <span class="extype" name="scala.Double">Double</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Utils.random.nextLong</a></span></span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a sampled subset of this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return a sampled subset of this RDD.
@@ -1548,14 +1548,14 @@ which can avoid performing a shuffle.
       <p class="shortcomment cmt">Set a serializer for this RDD's shuffle, or null to use the default (spark.</p><div class="fullcomment"><div class="comment cmt"><p>Set a serializer for this RDD's shuffle, or null to use the default (spark.serializer)</p></div></div>
     </li><li name="org.apache.spark.rdd.RDD#sortBy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sortBy[K](f:T=&gt;K,ascending:Boolean,numPartitions:Int)(implicitord:Ordering[K],implicitctag:scala.reflect.ClassTag[K]):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="sortBy[K](((K,Seq[Seq[_]]))⇒K,Boolean,Int)(Ordering[K],ClassTag[K]):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="sortBy[K](((K,Array[Iterable[_]]))⇒K,Boolean,Int)(Ordering[K],ClassTag[K]):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sortBy</span><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.sortBy.K">K</span></span>, <span name="ascending">ascending: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="RDD.html#partitions:Array[org.apache.spark.Partition]">this.partitions.size</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.apache.spark.rdd.RDD.sortBy.K">K</span>]</span>, <span name="ctag">ctag: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.sortBy.K">K</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">sortBy</span><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.sortBy.K">K</span></span>, <span name="ascending">ascending: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="RDD.html#partitions:Array[org.apache.spark.Partition]">this.partitions.size</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.apache.spark.rdd.RDD.sortBy.K">K</span>]</span>, <span name="ctag">ctag: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.sortBy.K">K</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return this RDD sorted by the given key function.</p><div class="fullcomment"><div class="comment cmt"><p>Return this RDD sorted by the given key function.
@@ -1575,42 +1575,42 @@ which can avoid performing a shuffle.
       <p class="shortcomment cmt">The SparkContext that created this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>The SparkContext that created this RDD.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#subtract" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="subtract(other:org.apache.spark.rdd.RDD[T],p:org.apache.spark.Partitioner)(implicitord:Ordering[T]):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="subtract(RDD[(K,Seq[Seq[_]])],Partitioner)(Ordering[(K,Seq[Seq[_]])]):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="subtract(RDD[(K,Array[Iterable[_]])],Partitioner)(Ordering[(K,Array[Iterable[_]])]):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">subtract</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>, <span name="p">p: <a href="../Partitioner.html" class="extype" name="org.apache.spark.Partitioner">Partitioner</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">subtract</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>, <span name="p">p: <a href="../Partitioner.html" class="extype" name="org.apache.spark.Partitioner">Partitioner</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an RDD with the elements from <code>this</code> that are not in <code>other</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Return an RDD with the elements from <code>this</code> that are not in <code>other</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#subtract" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="subtract(other:org.apache.spark.rdd.RDD[T],numPartitions:Int):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="subtract(RDD[(K,Seq[Seq[_]])],Int):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="subtract(RDD[(K,Array[Iterable[_]])],Int):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">subtract</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">subtract</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an RDD with the elements from <code>this</code> that are not in <code>other</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Return an RDD with the elements from <code>this</code> that are not in <code>other</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#subtract" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="subtract(other:org.apache.spark.rdd.RDD[T]):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="subtract(RDD[(K,Seq[Seq[_]])]):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="subtract(RDD[(K,Array[Iterable[_]])]):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">subtract</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">subtract</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an RDD with the elements from <code>this</code> that are not in <code>other</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Return an RDD with the elements from <code>this</code> that are not in <code>other</code>.</p><p>Uses <code>this</code> partitioner/partition size, because even if <code>other</code> is huge, the resulting
@@ -1631,14 +1631,14 @@ RDD will be &lt;= us.
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#take" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="take(num:Int):Array[T]"></a>
-      <a id="take(Int):Array[(K,Seq[Seq[_]])]"></a>
+      <a id="take(Int):Array[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">take</span><span class="params">(<span name="num">num: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">take</span><span class="params">(<span name="num">num: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Take the first num elements of the RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Take the first num elements of the RDD. It works by first scanning one partition, and use the
@@ -1647,14 +1647,14 @@ the limit.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#takeOrdered" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="takeOrdered(num:Int)(implicitord:Ordering[T]):Array[T]"></a>
-      <a id="takeOrdered(Int)(Ordering[(K,Seq[Seq[_]])]):Array[(K,Seq[Seq[_]])]"></a>
+      <a id="takeOrdered(Int)(Ordering[(K,Array[Iterable[_]])]):Array[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">takeOrdered</span><span class="params">(<span name="num">num: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">takeOrdered</span><span class="params">(<span name="num">num: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Returns the first K (smallest) elements from this RDD as defined by the specified
@@ -1668,14 +1668,14 @@ sc.parallelize(<span class="std">Seq</span>(<span class="num">2</span>, <span cl
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#takeSample" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="takeSample(withReplacement:Boolean,num:Int,seed:Long):Array[T]"></a>
-      <a id="takeSample(Boolean,Int,Long):Array[(K,Seq[Seq[_]])]"></a>
+      <a id="takeSample(Boolean,Int,Long):Array[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">takeSample</span><span class="params">(<span name="withReplacement">withReplacement: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="num">num: <span class="extype" name="scala.Int">Int</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Utils.random.nextLong</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">takeSample</span><span class="params">(<span name="withReplacement">withReplacement: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="num">num: <span class="extype" name="scala.Int">Int</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Utils.random.nextLong</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a fixed-size sampled subset of this RDD in an array
@@ -1697,27 +1697,27 @@ sc.parallelize(<span class="std">Seq</span>(<span class="num">2</span>, <span cl
       <p class="shortcomment cmt">A description of this RDD and its recursive dependencies for debugging.</p><div class="fullcomment"><div class="comment cmt"><p>A description of this RDD and its recursive dependencies for debugging.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#toJavaRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toJavaRDD():org.apache.spark.api.java.JavaRDD[T]"></a>
-      <a id="toJavaRDD():JavaRDD[(K,Seq[Seq[_]])]"></a>
+      <a id="toJavaRDD():JavaRDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toJavaRDD</span><span class="params">()</span><span class="result">: <a href="../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">toJavaRDD</span><span class="params">()</span><span class="result">: <a href="../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#toLocalIterator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toLocalIterator:Iterator[T]"></a>
-      <a id="toLocalIterator:Iterator[(K,Seq[Seq[_]])]"></a>
+      <a id="toLocalIterator:Iterator[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toLocalIterator</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">toLocalIterator</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an iterator that contains all of the elements in this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return an iterator that contains all of the elements in this RDD.</p><p>The iterator will consume as much memory as the largest partition in this RDD.
@@ -1737,14 +1737,14 @@ sc.parallelize(<span class="std">Seq</span>(<span class="num">2</span>, <span cl
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a> → AnyRef → Any</dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#top" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="top(num:Int)(implicitord:Ordering[T]):Array[T]"></a>
-      <a id="top(Int)(Ordering[(K,Seq[Seq[_]])]):Array[(K,Seq[Seq[_]])]"></a>
+      <a id="top(Int)(Ordering[(K,Array[Iterable[_]])]):Array[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">top</span><span class="params">(<span name="num">num: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">top</span><span class="params">(<span name="num">num: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ord">ord: <span class="extype" name="scala.Ordering">Ordering</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Returns the top K (largest) elements from this RDD as defined by the specified
@@ -1757,14 +1757,14 @@ sc.parallelize(<span class="std">Seq</span>(<span class="num">2</span>, <span cl
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#union" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="union(other:org.apache.spark.rdd.RDD[T]):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="union(RDD[(K,Seq[Seq[_]])]):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="union(RDD[(K,Array[Iterable[_]])]):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">union</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name">union</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return the union of this RDD and another one.</p><div class="fullcomment"><div class="comment cmt"><p>Return the union of this RDD and another one. Any identical elements will appear multiple
@@ -1844,14 +1844,14 @@ times (use <code>.distinct()</code> to eliminate them).
         </dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#zip" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="zip[U](other:org.apache.spark.rdd.RDD[U])(implicitevidence$12:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[(T,U)]"></a>
-      <a id="zip[U](RDD[U])(ClassTag[U]):RDD[((K,Seq[Seq[_]]),U)]"></a>
+      <a id="zip[U](RDD[U])(ClassTag[U]):RDD[((K,Array[Iterable[_]]),U)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zip</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zip.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zip.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.zip.U">U</span>)]</span>
+        <span class="name">zip</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="other">other: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zip.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zip.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.zip.U">U</span>)]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Zips this RDD with another one, returning key-value pairs with the first element in each RDD,
@@ -1862,79 +1862,79 @@ a map on the other).
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#zipPartitions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="zipPartitions[B,C,D,V](rdd2:org.apache.spark.rdd.RDD[B],rdd3:org.apache.spark.rdd.RDD[C],rdd4:org.apache.spark.rdd.RDD[D])(f:(Iterator[T],Iterator[B],Iterator[C],Iterator[D])=&gt;Iterator[V])(implicitevidence$27:scala.reflect.ClassTag[B],implicitevidence$28:scala.reflect.ClassTag[C],implicitevidence$29:scala.reflect.ClassTag[D],implicitevidence$30:scala.reflect.ClassTag[V]):org.apache.spark.rdd.RDD[V]"></a>
-      <a id="zipPartitions[B,C,D,V](RDD[B],RDD[C],RDD[D])((Iterator[(K,Seq[Seq[_]])],Iterator[B],Iterator[C],Iterator[D])⇒Iterator[V])(ClassTag[B],ClassTag[C],ClassTag[D],ClassTag[V]):RDD[V]"></a>
+      <a id="zipPartitions[B,C,D,V](RDD[B],RDD[C],RDD[D])((Iterator[(K,Array[Iterable[_]])],Iterator[B],Iterator[C],Iterator[D])⇒Iterator[V])(ClassTag[B],ClassTag[C],ClassTag[D],ClassTag[V]):RDD[V]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="rdd3">rdd3: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="rdd4">rdd4: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]</span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="arg2">arg2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]</span>, <span name="arg3">arg3: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
+        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="rdd3">rdd3: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="rdd4">rdd4: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]</span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="arg2">arg2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]</span>, <span name="arg3">arg3: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#zipPartitions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="zipPartitions[B,C,D,V](rdd2:org.apache.spark.rdd.RDD[B],rdd3:org.apache.spark.rdd.RDD[C],rdd4:org.apache.spark.rdd.RDD[D],preservesPartitioning:Boolean)(f:(Iterator[T],Iterator[B],Iterator[C],Iterator[D])=&gt;Iterator[V])(implicitevidence$23:scala.reflect.ClassTag[B],implicitevidence$24:scala.reflect.ClassTag[C],implicitevidence$25:scala.reflect.ClassTag[D],implicitevidence$26:scala.reflect.ClassTag[V]):org.apache.spark.rdd.RDD[V]"></a>
-      <a id="zipPartitions[B,C,D,V](RDD[B],RDD[C],RDD[D],Boolean)((Iterator[(K,Seq[Seq[_]])],Iterator[B],Iterator[C],Iterator[D])⇒Iterator[V])(ClassTag[B],ClassTag[C],ClassTag[D],ClassTag[V]):RDD[V]"></a>
+      <a id="zipPartitions[B,C,D,V](RDD[B],RDD[C],RDD[D],Boolean)((Iterator[(K,Array[Iterable[_]])],Iterator[B],Iterator[C],Iterator[D])⇒Iterator[V])(ClassTag[B],ClassTag[C],ClassTag[D],ClassTag[V]):RDD[V]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="rdd3">rdd3: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="rdd4">rdd4: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="arg2">arg2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]</span>, <span name="arg3">arg3: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
+        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="rdd3">rdd3: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="rdd4">rdd4: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="arg2">arg2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.D">D</span>]</span>, <span name="arg3">arg3: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#zipPartitions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="zipPartitions[B,C,V](rdd2:org.apache.spark.rdd.RDD[B],rdd3:org.apache.spark.rdd.RDD[C])(f:(Iterator[T],Iterator[B],Iterator[C])=&gt;Iterator[V])(implicitevidence$20:scala.reflect.ClassTag[B],implicitevidence$21:scala.reflect.ClassTag[C],implicitevidence$22:scala.reflect.ClassTag[V]):org.apache.spark.rdd.RDD[V]"></a>
-      <a id="zipPartitions[B,C,V](RDD[B],RDD[C])((Iterator[(K,Seq[Seq[_]])],Iterator[B],Iterator[C])⇒Iterator[V])(ClassTag[B],ClassTag[C],ClassTag[V]):RDD[V]"></a>
+      <a id="zipPartitions[B,C,V](RDD[B],RDD[C])((Iterator[(K,Array[Iterable[_]])],Iterator[B],Iterator[C])⇒Iterator[V])(ClassTag[B],ClassTag[C],ClassTag[V]):RDD[V]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="C">C</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="rdd3">rdd3: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="arg2">arg2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
+        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="C">C</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="rdd3">rdd3: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="arg2">arg2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#zipPartitions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="zipPartitions[B,C,V](rdd2:org.apache.spark.rdd.RDD[B],rdd3:org.apache.spark.rdd.RDD[C],preservesPartitioning:Boolean)(f:(Iterator[T],Iterator[B],Iterator[C])=&gt;Iterator[V])(implicitevidence$17:scala.reflect.ClassTag[B],implicitevidence$18:scala.reflect.ClassTag[C],implicitevidence$19:scala.reflect.ClassTag[V]):org.apache.spark.rdd.RDD[V]"></a>
-      <a id="zipPartitions[B,C,V](RDD[B],RDD[C],Boolean)((Iterator[(K,Seq[Seq[_]])],Iterator[B],Iterator[C])⇒Iterator[V])(ClassTag[B],ClassTag[C],ClassTag[V]):RDD[V]"></a>
+      <a id="zipPartitions[B,C,V](RDD[B],RDD[C],Boolean)((Iterator[(K,Array[Iterable[_]])],Iterator[B],Iterator[C])⇒Iterator[V])(ClassTag[B],ClassTag[C],ClassTag[V]):RDD[V]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="C">C</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="rdd3">rdd3: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="arg2">arg2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
+        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="C">C</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="rdd3">rdd3: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.C">C</span>]</span>, <span name="arg2">arg2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#zipPartitions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="zipPartitions[B,V](rdd2:org.apache.spark.rdd.RDD[B])(f:(Iterator[T],Iterator[B])=&gt;Iterator[V])(implicitevidence$15:scala.reflect.ClassTag[B],implicitevidence$16:scala.reflect.ClassTag[V]):org.apache.spark.rdd.RDD[V]"></a>
-      <a id="zipPartitions[B,V](RDD[B])((Iterator[(K,Seq[Seq[_]])],Iterator[B])⇒Iterator[V])(ClassTag[B],ClassTag[V]):RDD[V]"></a>
+      <a id="zipPartitions[B,V](RDD[B])((Iterator[(K,Array[Iterable[_]])],Iterator[B])⇒Iterator[V])(ClassTag[B],ClassTag[V]):RDD[V]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
+        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#zipPartitions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="zipPartitions[B,V](rdd2:org.apache.spark.rdd.RDD[B],preservesPartitioning:Boolean)(f:(Iterator[T],Iterator[B])=&gt;Iterator[V])(implicitevidence$13:scala.reflect.ClassTag[B],implicitevidence$14:scala.reflect.ClassTag[V]):org.apache.spark.rdd.RDD[V]"></a>
-      <a id="zipPartitions[B,V](RDD[B],Boolean)((Iterator[(K,Seq[Seq[_]])],Iterator[B])⇒Iterator[V])(ClassTag[B],ClassTag[V]):RDD[V]"></a>
+      <a id="zipPartitions[B,V](RDD[B],Boolean)((Iterator[(K,Array[Iterable[_]])],Iterator[B])⇒Iterator[V])(ClassTag[B],ClassTag[V]):RDD[V]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
+        <span class="name">zipPartitions</span><span class="tparams">[<span name="B">B</span>, <span name="V">V</span>]</span><span class="params">(<span name="rdd2">rdd2: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])], <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.B">B</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.zipPartitions.V">V</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Zip this RDD's partitions with one (or more) RDD(s) and return a new RDD by
@@ -1945,14 +1945,14 @@ of elements in each partition.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#zipWithIndex" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="zipWithIndex():org.apache.spark.rdd.RDD[(T,Long)]"></a>
-      <a id="zipWithIndex():RDD[((K,Seq[Seq[_]]),Long)]"></a>
+      <a id="zipWithIndex():RDD[((K,Array[Iterable[_]]),Long)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zipWithIndex</span><span class="params">()</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <span class="extype" name="scala.Long">Long</span>)]</span>
+        <span class="name">zipWithIndex</span><span class="params">()</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <span class="extype" name="scala.Long">Long</span>)]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Zips this RDD with its element indices.</p><div class="fullcomment"><div class="comment cmt"><p>Zips this RDD with its element indices. The ordering is first based on the partition index
@@ -1963,14 +1963,14 @@ This method needs to trigger a spark job when this RDD contains more than one pa
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#zipWithUniqueId" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="zipWithUniqueId():org.apache.spark.rdd.RDD[(T,Long)]"></a>
-      <a id="zipWithUniqueId():RDD[((K,Seq[Seq[_]]),Long)]"></a>
+      <a id="zipWithUniqueId():RDD[((K,Array[Iterable[_]]),Long)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zipWithUniqueId</span><span class="params">()</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <span class="extype" name="scala.Long">Long</span>)]</span>
+        <span class="name">zipWithUniqueId</span><span class="params">()</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <span class="extype" name="scala.Long">Long</span>)]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Zips this RDD with generated unique Long ids.</p><div class="fullcomment"><div class="comment cmt"><p>Zips this RDD with generated unique Long ids. Items in the kth partition will get ids k, n+k,
@@ -1986,14 +1986,14 @@ won't trigger a spark job, which is different from <a href="RDD.html#zipWithInde
               <h3>Deprecated Value Members</h3>
               <ol><li name="org.apache.spark.rdd.RDD#filterWith" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="filterWith[A](constructA:Int=&gt;A)(p:(T,A)=&gt;Boolean):org.apache.spark.rdd.RDD[T]"></a>
-      <a id="filterWith[A]((Int)⇒A)(((K,Seq[Seq[_]]),A)⇒Boolean):RDD[(K,Seq[Seq[_]])]"></a>
+      <a id="filterWith[A]((Int)⇒A)(((K,Array[Iterable[_]]),A)⇒Boolean):RDD[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 1.0.0) use mapPartitionsWithIndex and filter">filterWith</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="constructA">constructA: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.filterWith.A">A</span></span>)</span><span class="params">(<span name="p">p: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.filterWith.A">A</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 1.0.0) use mapPartitionsWithIndex and filter">filterWith</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="constructA">constructA: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.filterWith.A">A</span></span>)</span><span class="params">(<span name="p">p: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.filterWith.A">A</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Filters this RDD with p, where p takes an additional parameter of type A.</p><div class="fullcomment"><div class="comment cmt"><p>Filters this RDD with p, where p takes an additional parameter of type A.  This
@@ -2005,14 +2005,14 @@ partition with the index of that partition.
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.0.0)</i> use mapPartitionsWithIndex and filter</p></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#flatMapWith" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="flatMapWith[A,U](constructA:Int=&gt;A,preservesPartitioning:Boolean)(f:(T,A)=&gt;Seq[U])(implicitevidence$11:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
-      <a id="flatMapWith[A,U]((Int)⇒A,Boolean)(((K,Seq[Seq[_]]),A)⇒Seq[U])(ClassTag[U]):RDD[U]"></a>
+      <a id="flatMapWith[A,U]((Int)⇒A,Boolean)(((K,Array[Iterable[_]]),A)⇒Seq[U])(ClassTag[U]):RDD[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 1.0.0) use mapPartitionsWithIndex and flatMap">flatMapWith</span><span class="tparams">[<span name="A">A</span>, <span name="U">U</span>]</span><span class="params">(<span name="constructA">constructA: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.flatMapWith.A">A</span></span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.flatMapWith.A">A</span>) ⇒ <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMapWith.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMapWith.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMapWith.U">U</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 1.0.0) use mapPartitionsWithIndex and flatMap">flatMapWith</span><span class="tparams">[<span name="A">A</span>, <span name="U">U</span>]</span><span class="params">(<span name="constructA">constructA: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.flatMapWith.A">A</span></span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.flatMapWith.A">A</span>) ⇒ <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMapWith.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMapWith.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.flatMapWith.U">U</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">FlatMaps f over this RDD, where f takes an additional parameter of type A.</p><div class="fullcomment"><div class="comment cmt"><p>FlatMaps f over this RDD, where f takes an additional parameter of type A.  This
@@ -2024,14 +2024,14 @@ partition with the index of that partition.
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.0.0)</i> use mapPartitionsWithIndex and flatMap</p></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#foreachWith" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="foreachWith[A](constructA:Int=&gt;A)(f:(T,A)=&gt;Unit):Unit"></a>
-      <a id="foreachWith[A]((Int)⇒A)(((K,Seq[Seq[_]]),A)⇒Unit):Unit"></a>
+      <a id="foreachWith[A]((Int)⇒A)(((K,Array[Iterable[_]]),A)⇒Unit):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 1.0.0) use mapPartitionsWithIndex and foreach">foreachWith</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="constructA">constructA: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.foreachWith.A">A</span></span>)</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.foreachWith.A">A</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name deprecated" title="Deprecated: (Since version 1.0.0) use mapPartitionsWithIndex and foreach">foreachWith</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="constructA">constructA: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.foreachWith.A">A</span></span>)</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.foreachWith.A">A</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Applies f to each element of this RDD, where f takes an additional parameter of type A.</p><div class="fullcomment"><div class="comment cmt"><p>Applies f to each element of this RDD, where f takes an additional parameter of type A.
@@ -2043,14 +2043,14 @@ partition with the index of that partition.
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.0.0)</i> use mapPartitionsWithIndex and foreach</p></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#mapPartitionsWithSplit" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mapPartitionsWithSplit[U](f:(Int,Iterator[T])=&gt;Iterator[U],preservesPartitioning:Boolean)(implicitevidence$9:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
-      <a id="mapPartitionsWithSplit[U]((Int,Iterator[(K,Seq[Seq[_]])])⇒Iterator[U],Boolean)(ClassTag[U]):RDD[U]"></a>
+      <a id="mapPartitionsWithSplit[U]((Int,Iterator[(K,Array[Iterable[_]])])⇒Iterator[U],Boolean)(ClassTag[U]):RDD[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.7.0) use mapPartitionsWithIndex">mapPartitionsWithSplit</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithSplit.U">U</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithSplit.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithSplit.U">U</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 0.7.0) use mapPartitionsWithIndex">mapPartitionsWithSplit</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithSplit.U">U</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithSplit.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapPartitionsWithSplit.U">U</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return a new RDD by applying a function to each partition of this RDD, while tracking the index
@@ -2062,14 +2062,14 @@ of the original partition.
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.7.0)</i> use mapPartitionsWithIndex</p></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#mapWith" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mapWith[A,U](constructA:Int=&gt;A,preservesPartitioning:Boolean)(f:(T,A)=&gt;U)(implicitevidence$10:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
-      <a id="mapWith[A,U]((Int)⇒A,Boolean)(((K,Seq[Seq[_]]),A)⇒U)(ClassTag[U]):RDD[U]"></a>
+      <a id="mapWith[A,U]((Int)⇒A,Boolean)(((K,Array[Iterable[_]]),A)⇒U)(ClassTag[U]):RDD[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 1.0.0) use mapPartitionsWithIndex">mapWith</span><span class="tparams">[<span name="A">A</span>, <span name="U">U</span>]</span><span class="params">(<span name="constructA">constructA: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.mapWith.A">A</span></span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.mapWith.A">A</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.mapWith.U">U</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapWith.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapWith.U">U</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 1.0.0) use mapPartitionsWithIndex">mapWith</span><span class="tparams">[<span name="A">A</span>, <span name="U">U</span>]</span><span class="params">(<span name="constructA">constructA: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.mapWith.A">A</span></span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span name="f">f: ((<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]]), <span class="extype" name="org.apache.spark.rdd.RDD.mapWith.A">A</span>) ⇒ <span class="extype" name="org.apache.spark.rdd.RDD.mapWith.U">U</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.RDD.mapWith.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.RDD.mapWith.U">U</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Maps f over this RDD, where f takes an additional parameter of type A.</p><div class="fullcomment"><div class="comment cmt"><p>Maps f over this RDD, where f takes an additional parameter of type A.  This
@@ -2081,14 +2081,14 @@ partition with the index of that partition.
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.0.0)</i> use mapPartitionsWithIndex</p></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#toArray" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toArray():Array[T]"></a>
-      <a id="toArray():Array[(K,Seq[Seq[_]])]"></a>
+      <a id="toArray():Array[(K,Array[Iterable[_]])]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 1.0.0) use collect">toArray</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 1.0.0) use collect">toArray</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Return an array that contains all of the elements in this RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Return an array that contains all of the elements in this RDD.
@@ -2102,7 +2102,7 @@ partition with the index of that partition.
 
         <div id="inheritedMembers">
         <div class="parent" name="org.apache.spark.rdd.RDD">
-              <h3>Inherited from <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[_]])]</h3>
+              <h3>Inherited from <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.CoGroupedRDD.K">K</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Iterable">Iterable</span>[_]])]</h3>
             </div><div class="parent" name="org.apache.spark.Logging">
               <h3>Inherited from <a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></h3>
             </div><div class="parent" name="scala.Serializable">

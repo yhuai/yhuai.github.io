@@ -342,7 +342,7 @@ the provided schema. Otherwise, there will be runtime exception.
               
         </dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#approxCountDistinct" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="approxCountDistinct(e:&lt;?&gt;,rsd:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.ApproxCountDistinct"></a>
+      <a id="approxCountDistinct(e:org.apache.spark.sql.catalyst.expressions.Expression,rsd:Double):org.apache.spark.sql.catalyst.expressions.ApproxCountDistinct"></a>
       <a id="approxCountDistinct(Expression,Double):ApproxCountDistinct"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -424,7 +424,7 @@ the provided schema. Otherwise, there will be runtime exception.
       <p class="shortcomment cmt">Returns the equivalent StructField in Scala for the given StructField in Java.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the equivalent StructField in Scala for the given StructField in Java.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#avg" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="avg(e:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.Average"></a>
+      <a id="avg(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.Average"></a>
       <a id="avg(Expression):Average"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -560,7 +560,7 @@ the provided schema. Otherwise, there will be runtime exception.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#count" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="count(e:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.Count"></a>
+      <a id="count(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.Count"></a>
       <a id="count(Expression):Count"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -573,7 +573,7 @@ the provided schema. Otherwise, there will be runtime exception.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#countDistinct" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="countDistinct(e:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.CountDistinct"></a>
+      <a id="countDistinct(e:org.apache.spark.sql.catalyst.expressions.Expression*):org.apache.spark.sql.catalyst.expressions.CountDistinct"></a>
       <a id="countDistinct(Expression*):CountDistinct"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -766,7 +766,7 @@ sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></d
               
         </dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#first" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="first(e:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.First"></a>
+      <a id="first(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.First"></a>
       <a id="first(Expression):First"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1215,7 +1215,7 @@ them directly is not recommended.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#lower" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="lower(e:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.Lower"></a>
+      <a id="lower(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.Lower"></a>
       <a id="lower(Expression):Lower"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1228,7 +1228,7 @@ them directly is not recommended.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#max" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="max(e:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.Max"></a>
+      <a id="max(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.Max"></a>
       <a id="max(Expression):Max"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1254,7 +1254,7 @@ them directly is not recommended.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.hive.test.TestHiveContext">TestHiveContext</a> → <a href="../LocalHiveContext.html" class="extype" name="org.apache.spark.sql.hive.LocalHiveContext">LocalHiveContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#min" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="min(e:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.Min"></a>
+      <a id="min(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.Min"></a>
       <a id="min(Expression):Min"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1581,7 +1581,7 @@ in the sequence is one row.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#sum" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sum(e:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.Sum"></a>
+      <a id="sum(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.Sum"></a>
       <a id="sum(Expression):Sum"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1594,7 +1594,7 @@ in the sequence is one row.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpressionConversions</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#sumDistinct" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sumDistinct(e:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.SumDistinct"></a>
+      <a id="sumDistinct(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.SumDistinct"></a>
       <a id="sumDistinct(Expression):SumDistinct"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1713,7 +1713,7 @@ demand when a query are run against it.
       </h4>
       <p class="shortcomment cmt">Removes the specified table from the in-memory cache.</p><div class="fullcomment"><div class="comment cmt"><p>Removes the specified table from the in-memory cache.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions#upper" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="upper(e:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.Upper"></a>
+      <a id="upper(e:org.apache.spark.sql.catalyst.expressions.Expression):org.apache.spark.sql.catalyst.expressions.Upper"></a>
       <a id="upper(Expression):Upper"></a>
       <h4 class="signature">
       <span class="modifier_kind">

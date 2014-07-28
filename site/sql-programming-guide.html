@@ -131,7 +131,24 @@
       <li><a href="#hive-tables">Hive Tables</a></li>
     </ul>
   </li>
-  <li><a href="#writing-language-integrated-relational-queries">Writing Language-Integrated Relational Queries</a></li>
+  <li><a href="#writing-language-integrated-relational-queries">Writing Language-Integrated Relational Queries</a>    <ul>
+      <li><a href="#running-the-thrift-jdbc-server">Running the Thrift JDBC server</a>        <ul>
+          <li><a href="#migration-guide-for-shark-users">Migration Guide for Shark Users</a>            <ul>
+              <li><a href="#reducer-number">Reducer number</a></li>
+              <li><a href="#caching">Caching</a></li>
+            </ul>
+          </li>
+          <li><a href="#compatibility-with-apache-hive">Compatibility with Apache Hive</a>            <ul>
+              <li><a href="#deploying-in-exising-hive-warehouses">Deploying in Exising Hive Warehouses</a></li>
+              <li><a href="#supported-hive-features">Supported Hive Features</a></li>
+              <li><a href="#unsupported-hive-functionality">Unsupported Hive Functionality</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#running-the-spark-sql-cli">Running the Spark SQL CLI</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h1 id="overview">Overview</h1>
@@ -257,7 +274,7 @@ registered as a table.  Tables can be used in subsequent SQL statements.</p>
 <span class="k">import</span> <span class="nn">sqlContext.createSchemaRDD</span>
 
 <span class="c1">// Define the schema using a case class.</span>
-<span class="c1">// Note: Case classes in Scala 2.10 can support only up to 22 fields. To work around this limit, </span>
+<span class="c1">// Note: Case classes in Scala 2.10 can support only up to 22 fields. To work around this limit,</span>
 <span class="c1">// you can use custom classes that implement the Product interface.</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
 
@@ -669,6 +686,218 @@ evaluated by the SQL execution engine.  A full list of the functions supported c
 <a href="api/scala/index.html#org.apache.spark.sql.SchemaRDD">ScalaDoc</a>.</p>
 
 <!-- TODO: Include the table of operations here. -->
+
+<h2 id="running-the-thrift-jdbc-server">Running the Thrift JDBC server</h2>
+
+<p>The Thrift JDBC server implemented here corresponds to the [<code>HiveServer2</code>]
+(https://cwiki.apache.org/confluence/display/Hive/Setting+Up+HiveServer2) in Hive 0.12. You can test
+the JDBC server with the beeline script comes with either Spark or Hive 0.12.  In order to use Hive
+you must first run ‘<code>sbt/sbt -Phive-thriftserver assembly/assembly</code>’ (or use <code>-Phive-thriftserver</code>
+for maven).</p>
+
+<p>To start the JDBC server, run the following in the Spark directory:</p>
+
+<pre><code>./sbin/start-thriftserver.sh
+</code></pre>
+
+<p>The default port the server listens on is 10000.  To listen on customized host and port, please set
+the <code>HIVE_SERVER2_THRIFT_PORT</code> and <code>HIVE_SERVER2_THRIFT_BIND_HOST</code> environment variables. You may
+run <code>./sbin/start-thriftserver.sh --help</code> for a complete list of all available options.  Now you can
+use beeline to test the Thrift JDBC server:</p>
+
+<pre><code>./bin/beeline
+</code></pre>
+
+<p>Connect to the JDBC server in beeline with:</p>
+
+<pre><code>beeline&gt; !connect jdbc:hive2://localhost:10000
+</code></pre>
+
+<p>Beeline will ask you for a username and password. In non-secure mode, simply enter the username on
+your machine and a blank password. For secure mode, please follow the instructions given in the
+<a href="https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients">beeline documentation</a></p>
+
+<p>Configuration of Hive is done by placing your <code>hive-site.xml</code> file in <code>conf/</code>.</p>
+
+<p>You may also use the beeline script comes with Hive.</p>
+
+<h3 id="migration-guide-for-shark-users">Migration Guide for Shark Users</h3>
+
+<h4 id="reducer-number">Reducer number</h4>
+
+<p>In Shark, default reducer number is 1 and is controlled by the property <code>mapred.reduce.tasks</code>. Spark
+SQL deprecates this property by a new property <code>spark.sql.shuffle.partitions</code>, whose default value
+is 200. Users may customize this property via <code>SET</code>:</p>
+
+<p><code>
+SET spark.sql.shuffle.partitions=10;
+SELECT page, count(*) c FROM logs_last_month_cached
+GROUP BY page ORDER BY c DESC LIMIT 10;
+</code></p>
+
+<p>You may also put this property in <code>hive-site.xml</code> to override the default value.</p>
+
+<p>For now, the <code>mapred.reduce.tasks</code> property is still recognized, and is converted to
+<code>spark.sql.shuffle.partitions</code> automatically.</p>
+
+<h4 id="caching">Caching</h4>
+
+<p>The <code>shark.cache</code> table property no longer exists, and tables whose name end with <code>_cached</code> are no
+longer automcatically cached. Instead, we provide <code>CACHE TABLE</code> and <code>UNCACHE TABLE</code> statements to
+let user control table caching explicitly:</p>
+
+<p><code>
+CACHE TABLE logs_last_month;
+UNCACHE TABLE logs_last_month;
+</code></p>
+
+<p><strong>NOTE</strong> <code>CACHE TABLE tbl</code> is lazy, it only marks table <code>tbl</code> as “need to by cached if necessary”,
+but doesn’t actually cache it until a query that touches <code>tbl</code> is executed. To force the table to be
+cached, you may simply count the table immediately after executing <code>CACHE TABLE</code>:</p>
+
+<p><code>
+CACHE TABLE logs_last_month;
+SELECT COUNT(1) FROM logs_last_month;
+</code></p>
+
+<p>Several caching related features are not supported yet:</p>
+
+<ul>
+  <li>User defined partition level cache eviction policy</li>
+  <li>RDD reloading</li>
+  <li>In-memory cache write through policy</li>
+</ul>
+
+<h3 id="compatibility-with-apache-hive">Compatibility with Apache Hive</h3>
+
+<h4 id="deploying-in-exising-hive-warehouses">Deploying in Exising Hive Warehouses</h4>
+
+<p>Spark SQL Thrift JDBC server is designed to be “out of the box” compatible with existing Hive
+installations. You do not need to modify your existing Hive Metastore or change the data placement
+or partitioning of your tables.</p>
+
+<h4 id="supported-hive-features">Supported Hive Features</h4>
+
+<p>Spark SQL supports the vast majority of Hive features, such as:</p>
+
+<ul>
+  <li>Hive query statements, including:</li>
+  <li><code>SELECT</code></li>
+  <li>`GROUP BY</li>
+  <li><code>ORDER BY</code></li>
+  <li><code>CLUSTER BY</code></li>
+  <li><code>SORT BY</code></li>
+  <li>All Hive operators, including:</li>
+  <li>Relational operators (<code>=</code>, <code>⇔</code>, <code>==</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, etc)</li>
+  <li>Arthimatic operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, etc)</li>
+  <li>Logical operators (<code>AND</code>, <code>&amp;&amp;</code>, <code>OR</code>, <code>||</code>, etc)</li>
+  <li>Complex type constructors</li>
+  <li>Mathemtatical functions (<code>sign</code>, <code>ln</code>, <code>cos</code>, etc)</li>
+  <li>String functions (<code>instr</code>, <code>length</code>, <code>printf</code>, etc)</li>
+  <li>User defined functions (UDF)</li>
+  <li>User defined aggregation functions (UDAF)</li>
+  <li>User defined serialization formats (SerDe’s)</li>
+  <li>Joins</li>
+  <li><code>JOIN</code></li>
+  <li><code>{LEFT|RIGHT|FULL} OUTER JOIN</code></li>
+  <li><code>LEFT SEMI JOIN</code></li>
+  <li><code>CROSS JOIN</code></li>
+  <li>Unions</li>
+  <li>Sub queries</li>
+  <li><code>SELECT col FROM ( SELECT a + b AS col from t1) t2</code></li>
+  <li>Sampling</li>
+  <li>Explain</li>
+  <li>Partitioned tables</li>
+  <li>All Hive DDL Functions, including:</li>
+  <li><code>CREATE TABLE</code></li>
+  <li><code>CREATE TABLE AS SELECT</code></li>
+  <li><code>ALTER TABLE</code></li>
+  <li>Most Hive Data types, including:</li>
+  <li><code>TINYINT</code></li>
+  <li><code>SMALLINT</code></li>
+  <li><code>INT</code></li>
+  <li><code>BIGINT</code></li>
+  <li><code>BOOLEAN</code></li>
+  <li><code>FLOAT</code></li>
+  <li><code>DOUBLE</code></li>
+  <li><code>STRING</code></li>
+  <li><code>BINARY</code></li>
+  <li><code>TIMESTAMP</code></li>
+  <li><code>ARRAY&lt;&gt;</code></li>
+  <li><code>MAP&lt;&gt;</code></li>
+  <li><code>STRUCT&lt;&gt;</code></li>
+</ul>
+
+<h4 id="unsupported-hive-functionality">Unsupported Hive Functionality</h4>
+
+<p>Below is a list of Hive features that we don’t support yet. Most of these features are rarely used
+in Hive deployments.</p>
+
+<p><strong>Major Hive Features</strong></p>
+
+<ul>
+  <li>Tables with buckets: bucket is the hash partitioning within a Hive table partition. Spark SQL
+doesn’t support buckets yet.</li>
+</ul>
+
+<p><strong>Esoteric Hive Features</strong></p>
+
+<ul>
+  <li>Tables with partitions using different input formats: In Spark SQL, all table partitions need to
+have the same input format.</li>
+  <li>Non-equi outer join: For the uncommon use case of using outer joins with non-equi join conditions
+(e.g. condition “<code>key &lt; 10</code>”), Spark SQL will output wrong result for the <code>NULL</code> tuple.</li>
+  <li><code>UNIONTYPE</code></li>
+  <li>Unique join</li>
+  <li>Single query multi insert</li>
+  <li>Column statistics collecting: Spark SQL does not piggyback scans to collect column statistics at
+the moment.</li>
+</ul>
+
+<p><strong>Hive Input/Output Formats</strong></p>
+
+<ul>
+  <li>File format for CLI: For results showing back to the CLI, Spark SQL only supports TextOutputFormat.</li>
+  <li>Hadoop archive</li>
+</ul>
+
+<p><strong>Hive Optimizations</strong></p>
+
+<p>A handful of Hive optimizations are not yet included in Spark. Some of these (such as indexes) are
+not necessary due to Spark SQL’s in-memory computational model. Others are slotted for future
+releases of Spark SQL.</p>
+
+<ul>
+  <li>Block level bitmap indexes and virtual columns (used to build indexes)</li>
+  <li>Automatically convert a join to map join: For joining a large table with multiple small tables,
+Hive automatically converts the join into a map join. We are adding this auto conversion in the
+next release.</li>
+  <li>Automatically determine the number of reducers for joins and groupbys: Currently in Spark SQL, you
+need to control the degree of parallelism post-shuffle using “SET
+spark.sql.shuffle.partitions=[num_tasks];”. We are going to add auto-setting of parallelism in the
+next release.</li>
+  <li>Meta-data only query: For queries that can be answered by using only meta data, Spark SQL still
+launches tasks to compute the result.</li>
+  <li>Skew data flag: Spark SQL does not follow the skew data flags in Hive.</li>
+  <li><code>STREAMTABLE</code> hint in join: Spark SQL does not follow the <code>STREAMTABLE</code> hint.</li>
+  <li>Merge multiple small files for query results: if the result output contains multiple small files,
+Hive can optionally merge the small files into fewer large files to avoid overflowing the HDFS
+metadata. Spark SQL does not support that.</li>
+</ul>
+
+<h2 id="running-the-spark-sql-cli">Running the Spark SQL CLI</h2>
+
+<p>The Spark SQL CLI is a convenient tool to run the Hive metastore service in local mode and execute
+queries input from command line. Note: the Spark SQL CLI cannot talk to the Thrift JDBC server.</p>
+
+<p>To start the Spark SQL CLI, run the following in the Spark directory:</p>
+
+<pre><code>./bin/spark-sql
+</code></pre>
+
+<p>Configuration of Hive is done by placing your <code>hive-site.xml</code> file in <code>conf/</code>.
+You may run <code>./bin/spark-sql --help</code> for a complete list of all available
+options.</p>
 
 
         </div> <!-- /container -->

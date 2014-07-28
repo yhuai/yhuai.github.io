@@ -1582,6 +1582,19 @@ which can avoid performing a shuffle.
       </span>
       </h4>
       <p class="shortcomment cmt">Set a serializer for this RDD's shuffle, or null to use the default (spark.</p><div class="fullcomment"><div class="comment cmt"><p>Set a serializer for this RDD's shuffle, or null to use the default (spark.serializer)</p></div></div>
+    </li><li name="org.apache.spark.rdd.ShuffledRDD#setSortOrder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setSortOrder(sortOrder:org.apache.spark.rdd.SortOrder.SortOrder):org.apache.spark.rdd.ShuffledRDD[K,V,C,P]"></a>
+      <a id="setSortOrder(SortOrder.SortOrder):ShuffledRDD[K,V,C,P]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setSortOrder</span><span class="params">(<span name="sortOrder">sortOrder: <span class="extype" name="org.apache.spark.rdd.SortOrder.SortOrder">SortOrder.SortOrder</span></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.rdd.ShuffledRDD">ShuffledRDD</a>[<span class="extype" name="org.apache.spark.rdd.ShuffledRDD.K">K</span>, <span class="extype" name="org.apache.spark.rdd.ShuffledRDD.V">V</span>, <span class="extype" name="org.apache.spark.rdd.ShuffledRDD.C">C</span>, <span class="extype" name="org.apache.spark.rdd.ShuffledRDD.P">P</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set sort order for RDD's sorting.</p>
     </li><li name="org.apache.spark.rdd.RDD#sortBy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sortBy[K](f:T=&gt;K,ascending:Boolean,numPartitions:Int)(implicitord:Ordering[K],implicitctag:scala.reflect.ClassTag[K]):org.apache.spark.rdd.RDD[T]"></a>
       <a id="sortBy[K]((P)⇒K,Boolean,Int)(Ordering[K],ClassTag[K]):RDD[P]"></a>
