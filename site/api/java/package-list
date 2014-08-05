@@ -3,9 +3,7 @@ org.apache.spark.annotation
 org.apache.spark.api.java
 org.apache.spark.api.java.function
 org.apache.spark.broadcast
-org.apache.spark.input
 org.apache.spark.io
-org.apache.spark.metrics
 org.apache.spark.mllib.classification
 org.apache.spark.mllib.clustering
 org.apache.spark.mllib.evaluation
@@ -14,7 +12,6 @@ org.apache.spark.mllib.linalg
 org.apache.spark.mllib.linalg.distributed
 org.apache.spark.mllib.optimization
 org.apache.spark.mllib.random
-org.apache.spark.mllib.rdd
 org.apache.spark.mllib.recommendation
 org.apache.spark.mllib.regression
 org.apache.spark.mllib.stat
@@ -29,14 +26,11 @@ org.apache.spark.scheduler
 org.apache.spark.serializer
 org.apache.spark.sql
 org.apache.spark.sql.api.java
-org.apache.spark.sql.columnar
-org.apache.spark.sql.columnar.compression
 org.apache.spark.sql.execution
 org.apache.spark.sql.hive
 org.apache.spark.sql.hive.api.java
 org.apache.spark.sql.hive.execution
 org.apache.spark.sql.hive.test
-org.apache.spark.sql.json
 org.apache.spark.sql.parquet
 org.apache.spark.sql.test
 org.apache.spark.storage
@@ -50,9 +44,7 @@ org.apache.spark.streaming.mqtt
 org.apache.spark.streaming.receiver
 org.apache.spark.streaming.scheduler
 org.apache.spark.streaming.twitter
-org.apache.spark.streaming.util
 org.apache.spark.streaming.zeromq
-org.apache.spark.ui
 org.apache.spark.ui.env
 org.apache.spark.ui.exec
 org.apache.spark.ui.jobs

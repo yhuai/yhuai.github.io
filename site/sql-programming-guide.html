@@ -290,7 +290,8 @@ registered as a table.  Tables can be used in subsequent SQL statements.</p>
 <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
 
     <p>In cases that case classes cannot be defined ahead of time (for example,
-dynamically parsing text files and then projecting parsed fields),
+the structure of records is encoded in a string or a text dataset will be parsed
+and fields will be projected differently for different users),
 a <code>SchemaRDD</code> can be created programmatically with three steps.</p>
 
     <ol>
@@ -309,17 +310,19 @@ by <code>SQLContext</code>.</li>
 <span class="c1">// Create an RDD</span>
 <span class="k">val</span> <span class="n">people</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="o">)</span>
 
+<span class="c1">// The schema is encoded in a string</span>
+<span class="k">val</span> <span class="n">schemaString</span> <span class="k">=</span> <span class="s">&quot;name age&quot;</span>
+
 <span class="c1">// Import Spark SQL data types and Row.</span>
 <span class="k">import</span> <span class="nn">org.apache.spark.sql._</span>
 
-<span class="c1">// Define the schema that will be applied to the RDD.</span>
+<span class="c1">// Generate the schema based on the string of schema</span>
 <span class="k">val</span> <span class="n">schema</span> <span class="k">=</span>
   <span class="nc">StructType</span><span class="o">(</span>
-    <span class="nc">StructField</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="nc">StringType</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span> <span class="o">::</span>
-    <span class="nc">StructField</span><span class="o">(</span><span class="s">&quot;age&quot;</span><span class="o">,</span> <span class="nc">IntegerType</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span> <span class="o">::</span> <span class="nc">Nil</span><span class="o">)</span>
+    <span class="n">schemaString</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&quot; &quot;</span><span class="o">).</span><span class="n">map</span><span class="o">(</span><span class="n">fieldName</span> <span class="k">=&gt;</span> <span class="nc">StructField</span><span class="o">(</span><span class="n">fieldName</span><span class="o">,</span> <span class="nc">StringType</span><span class="o">,</span> <span class="kc">true</span><span class="o">)))</span>
 
 <span class="c1">// Convert records of the RDD (people) to Rows.</span>
-<span class="k">val</span> <span class="n">rowRDD</span> <span class="k">=</span> <span class="n">people</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">)).</span><span class="n">map</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="nc">Row</span><span class="o">(</span><span class="n">p</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">p</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="n">trim</span><span class="o">.</span><span class="n">toInt</span><span class="o">))</span>
+<span class="k">val</span> <span class="n">rowRDD</span> <span class="k">=</span> <span class="n">people</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">)).</span><span class="n">map</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="nc">Row</span><span class="o">(</span><span class="n">p</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">p</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="n">trim</span><span class="o">))</span>
 
 <span class="c1">// Apply the schema to the RDD.</span>
 <span class="k">val</span> <span class="n">peopleSchemaRDD</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">applySchema</span><span class="o">(</span><span class="n">rowRDD</span><span class="o">,</span> <span class="n">schema</span><span class="o">)</span>
@@ -328,11 +331,11 @@ by <code>SQLContext</code>.</li>
 <span class="n">peopleSchemaRDD</span><span class="o">.</span><span class="n">registerTempTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">)</span>
 
 <span class="c1">// SQL statements can be run by using the sql methods provided by sqlContext.</span>
-<span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">results</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people&quot;</span><span class="o">)</span>
 
 <span class="c1">// The results of SQL queries are SchemaRDDs and support all the normal RDD operations.</span>
 <span class="c1">// The columns of a row in the result can be accessed by ordinal.</span>
-<span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
+<span class="n">results</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
 
   </div>
 
@@ -400,7 +403,8 @@ for the JavaBean.</p>
 <span class="o">}).</span><span class="na">collect</span><span class="o">();</span></code></pre></div>
 
     <p>In cases that JavaBean classes cannot be defined ahead of time (for example,
-dynamically parsing text files and then projecting parsed fields),
+the structure of records is encoded in a string or a text dataset will be parsed and
+fields will be projected differently for different users),
 a <code>SchemaRDD</code> can be created programmatically with three steps.</p>
 
     <ol>
@@ -417,6 +421,7 @@ by <code>JavaSQLContext</code>.</li>
 <span class="kn">import</span> <span class="nn">org.apache.spark.sql.api.java.DataType</span>
 <span class="c1">// Import StructType and StructField</span>
 <span class="kn">import</span> <span class="nn">org.apache.spark.sql.api.java.StructType</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.sql.api.java.StructField</span>
 <span class="c1">// Import Row.</span>
 <span class="kn">import</span> <span class="nn">org.apache.spark.sql.api.java.Row</span>
 
@@ -426,32 +431,37 @@ by <code>JavaSQLContext</code>.</li>
 <span class="c1">// Load a text file and convert each line to a JavaBean.</span>
 <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">people</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">textFile</span><span class="o">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="o">);</span>
 
-<span class="c1">// Define the schema that will be applied to the RDD.</span>
-<span class="n">List</span><span class="o">&lt;</span><span class="n">StructField</span><span class="o">&gt;</span> <span class="n">fields</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">StructField</span><span class="o">&gt;(</span><span class="mi">2</span><span class="o">);</span>
-    <span class="n">fields</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">DataType</span><span class="o">.</span><span class="na">createStructField</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="n">DataType</span><span class="o">.</span><span class="na">StringType</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
-    <span class="n">fields</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">DataType</span><span class="o">.</span><span class="na">createStructField</span><span class="o">(</span><span class="s">&quot;age&quot;</span><span class="o">,</span> <span class="n">DataType</span><span class="o">.</span><span class="na">IntegerType</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+<span class="c1">// The schema is encoded in a string</span>
+<span class="n">String</span> <span class="n">schemaString</span> <span class="o">=</span> <span class="s">&quot;name age&quot;</span><span class="o">;</span>
+
+<span class="c1">// Generate the schema based on the string of schema</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">StructField</span><span class="o">&gt;</span> <span class="n">fields</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">StructField</span><span class="o">&gt;();</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="nl">fieldName:</span> <span class="n">schemaString</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&quot; &quot;</span><span class="o">))</span> <span class="o">{</span>
+  <span class="n">fields</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">DataType</span><span class="o">.</span><span class="na">createStructField</span><span class="o">(</span><span class="n">fieldName</span><span class="o">,</span> <span class="n">DataType</span><span class="o">.</span><span class="na">StringType</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+<span class="o">}</span>
 <span class="n">StructType</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">DataType</span><span class="o">.</span><span class="na">createStructType</span><span class="o">(</span><span class="n">fields</span><span class="o">);</span>
 
 <span class="c1">// Convert records of the RDD (people) to Rows.</span>
 <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">&gt;</span> <span class="n">rowRDD</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
-  <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Row</span><span class="o">&gt;()</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">Row</span> <span class="nf">call</span><span class="o">(</span><span class="n">Person</span> <span class="n">person</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="n">Row</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="n">person</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+  <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Row</span><span class="o">&gt;()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Row</span> <span class="nf">call</span><span class="o">(</span><span class="n">String</span> <span class="n">record</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+      <span class="n">String</span><span class="o">[]</span> <span class="n">fields</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">);</span>
+      <span class="k">return</span> <span class="n">Row</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">fields</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">fields</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">trim</span><span class="o">());</span>
     <span class="o">}</span>
   <span class="o">});</span>
 
 <span class="c1">// Apply the schema to the RDD.</span>
-<span class="n">JavaSchemaRDD</span> <span class="n">peopleSchemaRDD</span> <span class="o">=</span> <span class="n">javaSqlCtx</span><span class="o">.</span><span class="na">applySchema</span><span class="o">(</span><span class="n">rowRDD</span><span class="o">,</span> <span class="n">schema</span><span class="o">);</span>
+<span class="n">JavaSchemaRDD</span> <span class="n">peopleSchemaRDD</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">applySchema</span><span class="o">(</span><span class="n">rowRDD</span><span class="o">,</span> <span class="n">schema</span><span class="o">);</span>
 
 <span class="c1">// Register the SchemaRDD as a table.</span>
-<span class="n">peopleSchemaRDD</span><span class="o">.</span><span class="na">registerTempTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">)</span>
+<span class="n">peopleSchemaRDD</span><span class="o">.</span><span class="na">registerTempTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">);</span>
 
 <span class="c1">// SQL can be run over RDDs that have been registered as tables.</span>
-<span class="n">JavaSchemaRDD</span> <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
+<span class="n">JavaSchemaRDD</span> <span class="n">results</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people&quot;</span><span class="o">);</span>
 
 <span class="c1">// The results of SQL queries are SchemaRDDs and support all the normal RDD operations.</span>
 <span class="c1">// The columns of a row in the result can be accessed by ordinal.</span>
-<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">teenagerNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">names</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
   <span class="kd">public</span> <span class="n">String</span> <span class="nf">call</span><span class="o">(</span><span class="n">Row</span> <span class="n">row</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">return</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
   <span class="o">}</span>
@@ -489,7 +499,10 @@ can be used in subsequent SQL statements.</p>
 <span class="k">for</span> <span class="n">teenName</span> <span class="ow">in</span> <span class="n">teenNames</span><span class="o">.</span><span class="n">collect</span><span class="p">():</span>
   <span class="k">print</span> <span class="n">teenName</span></code></pre></div>
 
-    <p>Alternatively, a <code>SchemaRDD</code> can be created programmatically with three steps.</p>
+    <p>For some cases (for example, the structure of records is encoded in a string or
+a text dataset will be parsed and fields will be projected differently for
+different users), it is desired to create <code>SchemaRDD</code> with a programmatically way.
+It can be done with three steps.</p>
 
     <ol>
       <li>Create an RDD of tuples or lists from the original RDD;</li>
@@ -509,12 +522,17 @@ tuples or lists in the RDD created in the step 1.</li>
 <span class="c"># Load a text file and convert each line to a tuple.</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="p">)</span>
 <span class="n">parts</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">))</span>
-<span class="n">people</span> <span class="o">=</span> <span class="n">parts</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+<span class="n">people</span> <span class="o">=</span> <span class="n">parts</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
 
-<span class="c"># Define the schema that will be applied to the RDD.</span>
-<span class="n">schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">([</span>
-  <span class="n">StructField</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span> <span class="bp">True</span><span class="p">),</span>
-  <span class="n">StructField</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">(),</span> <span class="bp">True</span><span class="p">)])</span>
+<span class="c"># The schema is encoded in a string.</span>
+<span class="n">schemaString</span> <span class="o">=</span> <span class="s">&quot;name age&quot;</span>
+
+<span class="c"># Generate the schema based on the string of schema.</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">schemaString</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+  <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">StructField</span><span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span> <span class="bp">True</span><span class="p">))</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
 
 <span class="c"># Apply the schema to the RDD.</span>
 <span class="n">schemaPeople</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">applySchema</span><span class="p">(</span><span class="n">people</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
@@ -523,12 +541,12 @@ tuples or lists in the RDD created in the step 1.</li>
 <span class="n">schemaPeople</span><span class="o">.</span><span class="n">registerTempTable</span><span class="p">(</span><span class="s">&quot;people&quot;</span><span class="p">)</span>
 
 <span class="c"># SQL can be run over SchemaRDDs that have been registered as a table.</span>
-<span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM people&quot;</span><span class="p">)</span>
 
 <span class="c"># The results of SQL queries are RDDs and support all the normal RDD operations.</span>
-<span class="n">teenNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">teenName</span> <span class="ow">in</span> <span class="n">teenNames</span><span class="o">.</span><span class="n">collect</span><span class="p">():</span>
-  <span class="k">print</span> <span class="n">teenName</span></code></pre></div>
+<span class="n">names</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="o">.</span><span class="n">collect</span><span class="p">():</span>
+  <span class="k">print</span> <span class="n">name</span></code></pre></div>
 
   </div>
 
@@ -1163,7 +1181,7 @@ You can access them by doing </p>
 <tr>
   <td> <b>ByteType</b> </td>
   <td>
-  int <br />
+  int or long <br />
   <b>Note:</b> Numbers will be converted to 1-byte signed integer numbers at runtime.
   Please make sure that numbers are within the range of -128 to 127.
   </td>
@@ -1174,7 +1192,7 @@ You can access them by doing </p>
 <tr>
   <td> <b>ShortType</b> </td>
   <td>
-  int <br />
+  int or long <br />
   <b>Note:</b> Numbers will be converted to 2-byte signed integer numbers at runtime.
   Please make sure that numbers are within the range of -32768 to 32767.
   </td>
@@ -1184,7 +1202,7 @@ You can access them by doing </p>
 </tr>
 <tr>
   <td> <b>IntegerType</b> </td>
-  <td> int </td>
+  <td> int or long </td>
   <td>
   IntegerType()
   </td>
@@ -1196,7 +1214,7 @@ You can access them by doing </p>
   <b>Note:</b> Numbers will be converted to 8-byte signed integer numbers at runtime.
   Please make sure that numbers are within the range of
   -9223372036854775808 to 9223372036854775807.
-  Otherwise, please use DecimalType.
+  Otherwise, please convert data to decimal.Decimal and use DecimalType.
   </td>
   <td>
   LongType()
@@ -1273,7 +1291,7 @@ You can access them by doing </p>
 </tr>
 <tr>
   <td> <b>StructType</b> </td>
-  <td> tuple or list </td>
+  <td> list or tuple </td>
   <td> 
   StructType(<i>fields</i>)<br />
   <b>Note:</b> <i>fields</i> is a Seq of StructFields. Also, two fields with the same
