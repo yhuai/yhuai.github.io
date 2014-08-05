@@ -131,24 +131,24 @@
       <li><a href="#hive-tables">Hive Tables</a></li>
     </ul>
   </li>
-  <li><a href="#writing-language-integrated-relational-queries">Writing Language-Integrated Relational Queries</a>    <ul>
-      <li><a href="#running-the-thrift-jdbc-server">Running the Thrift JDBC server</a>        <ul>
-          <li><a href="#migration-guide-for-shark-users">Migration Guide for Shark Users</a>            <ul>
-              <li><a href="#reducer-number">Reducer number</a></li>
-              <li><a href="#caching">Caching</a></li>
-            </ul>
-          </li>
-          <li><a href="#compatibility-with-apache-hive">Compatibility with Apache Hive</a>            <ul>
-              <li><a href="#deploying-in-exising-hive-warehouses">Deploying in Exising Hive Warehouses</a></li>
-              <li><a href="#supported-hive-features">Supported Hive Features</a></li>
-              <li><a href="#unsupported-hive-functionality">Unsupported Hive Functionality</a></li>
-            </ul>
-          </li>
+  <li><a href="#writing-language-integrated-relational-queries">Writing Language-Integrated Relational Queries</a></li>
+  <li><a href="#spark-sql-data-types">Spark SQL Data Types</a></li>
+  <li><a href="#running-the-thrift-jdbc-server">Running the Thrift JDBC server</a>    <ul>
+      <li><a href="#migration-guide-for-shark-users">Migration Guide for Shark Users</a>        <ul>
+          <li><a href="#reducer-number">Reducer number</a></li>
+          <li><a href="#caching">Caching</a></li>
         </ul>
       </li>
-      <li><a href="#running-the-spark-sql-cli">Running the Spark SQL CLI</a></li>
+      <li><a href="#compatibility-with-apache-hive">Compatibility with Apache Hive</a>        <ul>
+          <li><a href="#deploying-in-exising-hive-warehouses">Deploying in Exising Hive Warehouses</a></li>
+          <li><a href="#supported-hive-features">Supported Hive Features</a></li>
+          <li><a href="#unsupported-hive-functionality">Unsupported Hive Functionality</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
+  <li><a href="#running-the-spark-sql-cli">Running the Spark SQL CLI</a></li>
+  <li><a href="#cached-tables">Cached tables</a></li>
 </ul>
 
 <h1 id="overview">Overview</h1>
@@ -280,7 +280,40 @@ registered as a table.  Tables can be used in subsequent SQL statements.</p>
 
 <span class="c1">// Create an RDD of Person objects and register it as a table.</span>
 <span class="k">val</span> <span class="n">people</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="o">).</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">)).</span><span class="n">map</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">p</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">p</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="n">trim</span><span class="o">.</span><span class="n">toInt</span><span class="o">))</span>
-<span class="n">people</span><span class="o">.</span><span class="n">registerAsTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">)</span>
+<span class="n">people</span><span class="o">.</span><span class="n">registerTempTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">)</span>
+
+<span class="c1">// SQL statements can be run by using the sql methods provided by sqlContext.</span>
+<span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
+
+<span class="c1">// The results of SQL queries are SchemaRDDs and support all the normal RDD operations.</span>
+<span class="c1">// The columns of a row in the result can be accessed by ordinal.</span>
+<span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
+
+    <p>Another way to turns an RDD to table is to use <code>applySchema</code>. Here is an example.</p>
+
+    <div class="highlight"><pre><code class="scala"><span class="c1">// sc is an existing SparkContext.</span>
+<span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
+
+<span class="c1">// Create an RDD</span>
+<span class="k">val</span> <span class="n">people</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="o">)</span>
+
+<span class="c1">// Import Spark SQL data types and Row.</span>
+<span class="k">import</span> <span class="nn">org.apache.spark.sql._</span>
+
+<span class="c1">// Define the schema that will be applied to the RDD.</span>
+<span class="k">val</span> <span class="n">schema</span> <span class="k">=</span>
+  <span class="nc">StructType</span><span class="o">(</span>
+    <span class="nc">StructField</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="nc">StringType</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span> <span class="o">::</span>
+    <span class="nc">StructField</span><span class="o">(</span><span class="s">&quot;age&quot;</span><span class="o">,</span> <span class="nc">IntegerType</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span> <span class="o">::</span> <span class="nc">Nil</span><span class="o">)</span>
+
+<span class="c1">// Convert records of the RDD (people) to rows.</span>
+<span class="k">val</span> <span class="n">rowRDD</span> <span class="k">=</span> <span class="n">people</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">)).</span><span class="n">map</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="nc">Row</span><span class="o">(</span><span class="n">p</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">p</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="n">trim</span><span class="o">.</span><span class="n">toInt</span><span class="o">))</span>
+
+<span class="c1">// Apply the schema to the RDD.</span>
+<span class="k">val</span> <span class="n">peopleSchemaRDD</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">applySchema</span><span class="o">(</span><span class="n">rowRDD</span><span class="o">,</span> <span class="n">schema</span><span class="o">)</span>
+
+<span class="c1">// Register the SchemaRDD as a table.</span>
+<span class="n">peopleSchemaRDD</span><span class="o">.</span><span class="n">registerTempTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">)</span>
 
 <span class="c1">// SQL statements can be run by using the sql methods provided by sqlContext.</span>
 <span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
@@ -323,7 +356,7 @@ class that implements Serializable and has getters and setters for all of its fi
 for the JavaBean.</p>
 
     <div class="highlight"><pre><code class="java"><span class="c1">// sc is an existing JavaSparkContext.</span>
-<span class="n">JavaSQLContext</span> <span class="n">sqlContext</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">JavaSQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
+<span class="n">JavaSQLContext</span> <span class="n">sqlContext</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">JavaSQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">);</span>
 
 <span class="c1">// Load a text file and convert each line to a JavaBean.</span>
 <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">people</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">textFile</span><span class="o">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="o">).</span><span class="na">map</span><span class="o">(</span>
@@ -341,7 +374,53 @@ for the JavaBean.</p>
 
 <span class="c1">// Apply a schema to an RDD of JavaBeans and register it as a table.</span>
 <span class="n">JavaSchemaRDD</span> <span class="n">schemaPeople</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">applySchema</span><span class="o">(</span><span class="n">people</span><span class="o">,</span> <span class="n">Person</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-<span class="n">schemaPeople</span><span class="o">.</span><span class="na">registerAsTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">);</span>
+<span class="n">schemaPeople</span><span class="o">.</span><span class="na">registerTempTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">);</span>
+
+<span class="c1">// SQL can be run over RDDs that have been registered as tables.</span>
+<span class="n">JavaSchemaRDD</span> <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
+
+<span class="c1">// The results of SQL queries are SchemaRDDs and support all the normal RDD operations.</span>
+<span class="c1">// The columns of a row in the result can be accessed by ordinal.</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">teenagerNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">call</span><span class="o">(</span><span class="n">Row</span> <span class="n">row</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}).</span><span class="na">collect</span><span class="o">();</span></code></pre></div>
+
+    <p>Another way to turns an RDD to table is to use <code>applySchema</code>. Here is an example.</p>
+
+    <div class="highlight"><pre><code class="java"><span class="c1">// Import factory methods provided by DataType.</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.sql.api.java.DataType</span>
+<span class="c1">// Import StructType and StructField</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.sql.api.java.StructType</span>
+<span class="c1">// Import Row.</span>
+<span class="kn">import</span> <span class="nn">org.apache.spark.sql.api.java.Row</span>
+
+<span class="c1">// sc is an existing JavaSparkContext.</span>
+<span class="n">JavaSQLContext</span> <span class="n">sqlContext</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">JavaSQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">);</span>
+
+<span class="c1">// Load a text file and convert each line to a JavaBean.</span>
+<span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">people</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">textFile</span><span class="o">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="o">);</span>
+
+<span class="c1">// Define the schema that will be applied to the RDD.</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">StructField</span><span class="o">&gt;</span> <span class="n">fields</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">StructField</span><span class="o">&gt;(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">fields</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">DataType</span><span class="o">.</span><span class="na">createStructField</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="n">DataType</span><span class="o">.</span><span class="na">StringType</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+    <span class="n">fields</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">DataType</span><span class="o">.</span><span class="na">createStructField</span><span class="o">(</span><span class="s">&quot;age&quot;</span><span class="o">,</span> <span class="n">DataType</span><span class="o">.</span><span class="na">IntegerType</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+<span class="n">StructType</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">DataType</span><span class="o">.</span><span class="na">createStructType</span><span class="o">(</span><span class="n">fields</span><span class="o">);</span>
+
+<span class="c1">// Convert records of the RDD (people) to rows.</span>
+<span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">&gt;</span> <span class="n">rowRDD</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
+  <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Row</span><span class="o">&gt;()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Row</span> <span class="nf">call</span><span class="o">(</span><span class="n">Person</span> <span class="n">person</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">Row</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="n">person</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+    <span class="o">}</span>
+  <span class="o">});</span>
+
+<span class="c1">// Apply the schema to the RDD.</span>
+<span class="n">JavaSchemaRDD</span> <span class="n">peopleSchemaRDD</span> <span class="o">=</span> <span class="n">javaSqlCtx</span><span class="o">.</span><span class="na">applySchema</span><span class="o">(</span><span class="n">rowRDD</span><span class="o">,</span> <span class="n">schema</span><span class="o">);</span>
+
+<span class="c1">// Register the SchemaRDD as a table.</span>
+<span class="n">peopleSchemaRDD</span><span class="o">.</span><span class="na">registerTempTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">)</span>
 
 <span class="c1">// SQL can be run over RDDs that have been registered as tables.</span>
 <span class="n">JavaSchemaRDD</span> <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
@@ -376,7 +455,39 @@ can be used in subsequent SQL statements.</p>
 <span class="c"># In future versions of PySpark we would like to add support for registering RDDs with other</span>
 <span class="c"># datatypes as tables</span>
 <span class="n">schemaPeople</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">inferSchema</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
-<span class="n">schemaPeople</span><span class="o">.</span><span class="n">registerAsTable</span><span class="p">(</span><span class="s">&quot;people&quot;</span><span class="p">)</span>
+<span class="n">schemaPeople</span><span class="o">.</span><span class="n">registerTempTable</span><span class="p">(</span><span class="s">&quot;people&quot;</span><span class="p">)</span>
+
+<span class="c"># SQL can be run over SchemaRDDs that have been registered as a table.</span>
+<span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="p">)</span>
+
+<span class="c"># The results of SQL queries are RDDs and support all the normal RDD operations.</span>
+<span class="n">teenNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">teenName</span> <span class="ow">in</span> <span class="n">teenNames</span><span class="o">.</span><span class="n">collect</span><span class="p">():</span>
+  <span class="k">print</span> <span class="n">teenName</span></code></pre></div>
+
+    <p>Another way to turns an RDD to table is to use <code>applySchema</code>. Here is an example.</p>
+
+    <div class="highlight"><pre><code class="python"><span class="c"># Import SQLContext and data types</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c"># sc is an existing SparkContext.</span>
+<span class="n">sqlContext</span> <span class="o">=</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+
+<span class="c"># Load a text file and convert each line to a tuple.</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="s">&quot;examples/src/main/resources/people.txt&quot;</span><span class="p">)</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">))</span>
+<span class="n">people</span> <span class="o">=</span> <span class="n">parts</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+
+<span class="c"># Define the schema that will be applied to the RDD.</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">([</span>
+  <span class="n">StructField</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span> <span class="bp">True</span><span class="p">),</span>
+  <span class="n">StructField</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">(),</span> <span class="bp">True</span><span class="p">)])</span>
+
+<span class="c"># Apply the schema to the RDD.</span>
+<span class="n">schemaPeople</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">applySchema</span><span class="p">(</span><span class="n">people</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
+
+<span class="c"># Register the SchemaRDD as a table.</span>
+<span class="n">schemaPeople</span><span class="o">.</span><span class="n">registerTempTable</span><span class="p">(</span><span class="s">&quot;people&quot;</span><span class="p">)</span>
 
 <span class="c"># SQL can be run over SchemaRDDs that have been registered as a table.</span>
 <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="p">)</span>
@@ -418,7 +529,7 @@ of the original data.  Using the data from the above example:</p>
 <span class="k">val</span> <span class="n">parquetFile</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">parquetFile</span><span class="o">(</span><span class="s">&quot;people.parquet&quot;</span><span class="o">)</span>
 
 <span class="c1">//Parquet files can also be registered as tables and then used in SQL statements.</span>
-<span class="n">parquetFile</span><span class="o">.</span><span class="n">registerAsTable</span><span class="o">(</span><span class="s">&quot;parquetFile&quot;</span><span class="o">)</span>
+<span class="n">parquetFile</span><span class="o">.</span><span class="n">registerTempTable</span><span class="o">(</span><span class="s">&quot;parquetFile&quot;</span><span class="o">)</span>
 <span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM parquetFile WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
 <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
 
@@ -438,7 +549,7 @@ of the original data.  Using the data from the above example:</p>
 <span class="n">JavaSchemaRDD</span> <span class="n">parquetFile</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">parquetFile</span><span class="o">(</span><span class="s">&quot;people.parquet&quot;</span><span class="o">);</span>
 
 <span class="c1">//Parquet files can also be registered as tables and then used in SQL statements.</span>
-<span class="n">parquetFile</span><span class="o">.</span><span class="na">registerAsTable</span><span class="o">(</span><span class="s">&quot;parquetFile&quot;</span><span class="o">);</span>
+<span class="n">parquetFile</span><span class="o">.</span><span class="na">registerTempTable</span><span class="o">(</span><span class="s">&quot;parquetFile&quot;</span><span class="o">);</span>
 <span class="n">JavaSchemaRDD</span> <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM parquetFile WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">);</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">teenagerNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
   <span class="kd">public</span> <span class="n">String</span> <span class="nf">call</span><span class="o">(</span><span class="n">Row</span> <span class="n">row</span><span class="o">)</span> <span class="o">{</span>
@@ -462,7 +573,7 @@ of the original data.  Using the data from the above example:</p>
 <span class="n">parquetFile</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">parquetFile</span><span class="p">(</span><span class="s">&quot;people.parquet&quot;</span><span class="p">)</span>
 
 <span class="c"># Parquet files can also be registered as tables and then used in SQL statements.</span>
-<span class="n">parquetFile</span><span class="o">.</span><span class="n">registerAsTable</span><span class="p">(</span><span class="s">&quot;parquetFile&quot;</span><span class="p">);</span>
+<span class="n">parquetFile</span><span class="o">.</span><span class="n">registerTempTable</span><span class="p">(</span><span class="s">&quot;parquetFile&quot;</span><span class="p">);</span>
 <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM parquetFile WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="p">)</span>
 <span class="n">teenNames</span> <span class="o">=</span> <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">teenName</span> <span class="ow">in</span> <span class="n">teenNames</span><span class="o">.</span><span class="n">collect</span><span class="p">():</span>
@@ -500,7 +611,7 @@ This conversion can be done using one of two methods in a SQLContext:</p>
 <span class="c1">//  |-- name: StringType</span>
 
 <span class="c1">// Register this SchemaRDD as a table.</span>
-<span class="n">people</span><span class="o">.</span><span class="n">registerAsTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">)</span>
+<span class="n">people</span><span class="o">.</span><span class="n">registerTempTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">)</span>
 
 <span class="c1">// SQL statements can be run by using the sql methods provided by sqlContext.</span>
 <span class="k">val</span> <span class="n">teenagers</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">)</span>
@@ -538,7 +649,7 @@ This conversion can be done using one of two methods in a JavaSQLContext :</p>
 <span class="c1">//  |-- name: StringType</span>
 
 <span class="c1">// Register this JavaSchemaRDD as a table.</span>
-<span class="n">people</span><span class="o">.</span><span class="na">registerAsTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">);</span>
+<span class="n">people</span><span class="o">.</span><span class="na">registerTempTable</span><span class="o">(</span><span class="s">&quot;people&quot;</span><span class="o">);</span>
 
 <span class="c1">// SQL statements can be run by using the sql methods provided by sqlContext.</span>
 <span class="n">JavaSchemaRDD</span> <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="o">);</span>
@@ -578,7 +689,7 @@ This conversion can be done using one of two methods in a SQLContext:</p>
 <span class="c">#  |-- name: StringType</span>
 
 <span class="c"># Register this SchemaRDD as a table.</span>
-<span class="n">people</span><span class="o">.</span><span class="n">registerAsTable</span><span class="p">(</span><span class="s">&quot;people&quot;</span><span class="p">)</span>
+<span class="n">people</span><span class="o">.</span><span class="n">registerTempTable</span><span class="p">(</span><span class="s">&quot;people&quot;</span><span class="p">)</span>
 
 <span class="c"># SQL statements can be run by using the sql methods provided by sqlContext.</span>
 <span class="n">teenagers</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span><span class="p">)</span>
@@ -610,18 +721,18 @@ on all of the worker nodes, as they will need access to the Hive serialization a
 
     <p>When working with Hive one must construct a <code>HiveContext</code>, which inherits from <code>SQLContext</code>, and
 adds support for finding tables in in the MetaStore and writing queries using HiveQL. Users who do
-not have an existing Hive deployment can also experiment with the <code>LocalHiveContext</code>,
-which is similar to <code>HiveContext</code>, but creates a local copy of the <code>metastore</code> and <code>warehouse</code>
-automatically.</p>
+not have an existing Hive deployment can still create a HiveContext.  When not configured by the
+hive-site.xml, the context automatically creates <code>metastore_db</code> and <code>warehouse</code> in the current
+directory.</p>
 
     <div class="highlight"><pre><code class="scala"><span class="c1">// sc is an existing SparkContext.</span>
 <span class="k">val</span> <span class="n">hiveContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">hive</span><span class="o">.</span><span class="nc">HiveContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
 
-<span class="n">hiveContext</span><span class="o">.</span><span class="n">hql</span><span class="o">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span><span class="o">)</span>
-<span class="n">hiveContext</span><span class="o">.</span><span class="n">hql</span><span class="o">(</span><span class="s">&quot;LOAD DATA LOCAL INPATH &#39;examples/src/main/resources/kv1.txt&#39; INTO TABLE src&quot;</span><span class="o">)</span>
+<span class="n">hiveContext</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span><span class="o">)</span>
+<span class="n">hiveContext</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;LOAD DATA LOCAL INPATH &#39;examples/src/main/resources/kv1.txt&#39; INTO TABLE src&quot;</span><span class="o">)</span>
 
 <span class="c1">// Queries are expressed in HiveQL</span>
-<span class="n">hiveContext</span><span class="o">.</span><span class="n">hql</span><span class="o">(</span><span class="s">&quot;FROM src SELECT key, value&quot;</span><span class="o">).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
+<span class="n">hiveContext</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;FROM src SELECT key, value&quot;</span><span class="o">).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
 
   </div>
 
@@ -635,11 +746,11 @@ expressed in HiveQL.</p>
     <div class="highlight"><pre><code class="java"><span class="c1">// sc is an existing JavaSparkContext.</span>
 <span class="n">JavaHiveContext</span> <span class="n">hiveContext</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">hive</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">HiveContext</span><span class="o">(</span><span class="n">sc</span><span class="o">);</span>
 
-<span class="n">hiveContext</span><span class="o">.</span><span class="na">hql</span><span class="o">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span><span class="o">);</span>
-<span class="n">hiveContext</span><span class="o">.</span><span class="na">hql</span><span class="o">(</span><span class="s">&quot;LOAD DATA LOCAL INPATH &#39;examples/src/main/resources/kv1.txt&#39; INTO TABLE src&quot;</span><span class="o">);</span>
+<span class="n">hiveContext</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span><span class="o">);</span>
+<span class="n">hiveContext</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;LOAD DATA LOCAL INPATH &#39;examples/src/main/resources/kv1.txt&#39; INTO TABLE src&quot;</span><span class="o">);</span>
 
 <span class="c1">// Queries are expressed in HiveQL.</span>
-<span class="n">Row</span><span class="o">[]</span> <span class="n">results</span> <span class="o">=</span> <span class="n">hiveContext</span><span class="o">.</span><span class="na">hql</span><span class="o">(</span><span class="s">&quot;FROM src SELECT key, value&quot;</span><span class="o">).</span><span class="na">collect</span><span class="o">();</span></code></pre></div>
+<span class="n">Row</span><span class="o">[]</span> <span class="n">results</span> <span class="o">=</span> <span class="n">hiveContext</span><span class="o">.</span><span class="na">sql</span><span class="o">(</span><span class="s">&quot;FROM src SELECT key, value&quot;</span><span class="o">).</span><span class="na">collect</span><span class="o">();</span></code></pre></div>
 
   </div>
 
@@ -654,11 +765,11 @@ expressed in HiveQL.</p>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">HiveContext</span>
 <span class="n">hiveContext</span> <span class="o">=</span> <span class="n">HiveContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
 
-<span class="n">hiveContext</span><span class="o">.</span><span class="n">hql</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span><span class="p">)</span>
-<span class="n">hiveContext</span><span class="o">.</span><span class="n">hql</span><span class="p">(</span><span class="s">&quot;LOAD DATA LOCAL INPATH &#39;examples/src/main/resources/kv1.txt&#39; INTO TABLE src&quot;</span><span class="p">)</span>
+<span class="n">hiveContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span><span class="p">)</span>
+<span class="n">hiveContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;LOAD DATA LOCAL INPATH &#39;examples/src/main/resources/kv1.txt&#39; INTO TABLE src&quot;</span><span class="p">)</span>
 
 <span class="c"># Queries can be expressed in HiveQL.</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">hiveContext</span><span class="o">.</span><span class="n">hql</span><span class="p">(</span><span class="s">&quot;FROM src SELECT key, value&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span></code></pre></div>
+<span class="n">results</span> <span class="o">=</span> <span class="n">hiveContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;FROM src SELECT key, value&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span></code></pre></div>
 
   </div>
 </div>
@@ -687,7 +798,470 @@ evaluated by the SQL execution engine.  A full list of the functions supported c
 
 <!-- TODO: Include the table of operations here. -->
 
-<h2 id="running-the-thrift-jdbc-server">Running the Thrift JDBC server</h2>
+<h1 id="spark-sql-data-types">Spark SQL Data Types</h1>
+
+<ul>
+  <li>Numeric types
+    <ul>
+      <li><code>ByteType</code>: Represents 1-byte signed integer numbers.
+  The range of numbers is from <code>-128</code> to <code>127</code>.</li>
+      <li><code>ShortType</code>: Represents 2-byte signed integer numbers.
+  The range of numbers is from <code>-32768</code> to <code>32767</code>.</li>
+      <li><code>IntegerType</code>: Represents 4-byte signed integer numbers.
+  The range of numbers is from <code>-2147483648</code> to <code>2147483647</code>.</li>
+      <li><code>LongType</code>: Represents 8-byte signed integer numbers.
+  The range of numbers is from <code>-9223372036854775808</code> to <code>9223372036854775807</code>.</li>
+      <li><code>FloatType</code>: Represents 4-byte single-precision floating point numbers.</li>
+      <li><code>DoubleType</code>: Represents 8-byte double-precision floating point numbers.</li>
+      <li><code>DecimalType</code>: </li>
+    </ul>
+  </li>
+  <li>String type
+    <ul>
+      <li><code>StringType</code>: Represents character string values.</li>
+    </ul>
+  </li>
+  <li>Binary type
+    <ul>
+      <li><code>BinaryType</code>: Represents byte sequence values.</li>
+    </ul>
+  </li>
+  <li>Boolean type
+    <ul>
+      <li><code>BooleanType</code>: Represents boolean values.</li>
+    </ul>
+  </li>
+  <li>Datetime type
+    <ul>
+      <li><code>TimestampType</code>: Represents values comprising values of fields year, month, day,
+  hour, minute, and second.</li>
+    </ul>
+  </li>
+  <li>Complex types
+    <ul>
+      <li><code>ArrayType(elementType, containsNull)</code>: Represents values comprising a sequence of
+  elements with the type of <code>elementType</code>. <code>containsNull</code> is used to indicate if
+  elements in a <code>ArrayType</code> value can have <code>null</code> values.</li>
+      <li><code>MapType(keyType, valueType, valueContainsNull)</code>:
+  Represents values comprising a set of key-value pairs. The data type of keys are
+  described by <code>keyType</code> and the data type of values are described by <code>valueType</code>.
+  For a <code>MapType</code> value, keys are not allowed to have <code>null</code> values. <code>valueContainsNull</code>
+  is used to indicate if values of a <code>MapType</code> value can have <code>null</code> values.</li>
+      <li><code>StructType(fields)</code>: Represents values with the structure described by
+  a sequence of <code>StructField</code>s (<code>fields</code>).
+        <ul>
+          <li><code>StructField(name, dataType, nullable)</code>: Represents a field in a <code>StructType</code>.
+  The name of a field is indicated by <code>name</code>. The data type of a field is indicated
+  by <code>dataType</code>. <code>nullable</code> is used to indicate if values of this fields can have
+  <code>null</code> values.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="codetabs">
+<div data-lang="scala">
+
+    <p>All data types of Spark SQL are located in the package <code>org.apache.spark.sql</code>.
+You can access them by doing </p>
+
+    <div class="highlight"><pre><code class="scala"><span class="k">import</span>  <span class="nn">org.apache.spark.sql._</span></code></pre></div>
+
+    <table class="table">
+<tr>
+  <th style="width:20%">Data type</th>
+  <th style="width:40%">Value type in Scala</th>
+  <th>API to access or create a data type</th></tr>
+<tr>
+  <td> <b>ByteType</b> </td>
+  <td> Byte </td>
+  <td>
+  ByteType
+  </td>
+</tr>
+<tr>
+  <td> <b>ShortType</b> </td>
+  <td> Short </td>
+  <td>
+  ShortType
+  </td>
+</tr>
+<tr>
+  <td> <b>IntegerType</b> </td>
+  <td> Int </td>
+  <td>
+  IntegerType
+  </td>
+</tr>
+<tr>
+  <td> <b>LongType</b> </td>
+  <td> Long </td>
+  <td>
+  LongType
+  </td>
+</tr>
+<tr>
+  <td> <b>FloatType</b> </td>
+  <td> Float </td>
+  <td>
+  FloatType
+  </td>
+</tr>
+<tr>
+  <td> <b>DoubleType</b> </td>
+  <td> Double </td>
+  <td>
+  DoubleType
+  </td>
+</tr>
+<tr>
+  <td> <b>DecimalType</b> </td>
+  <td> scala.math.sql.BigDecimal </td>
+  <td>
+  DecimalType
+  </td>
+</tr>
+<tr>
+  <td> <b>StringType</b> </td>
+  <td> String </td>
+  <td>
+  StringType
+  </td>
+</tr>
+<tr>
+  <td> <b>BinaryType</b> </td>
+  <td> Array[Byte] </td>
+  <td>
+  BinaryType
+  </td>
+</tr>
+<tr>
+  <td> <b>BooleanType</b> </td>
+  <td> Boolean </td>
+  <td>
+  BooleanType
+  </td>
+</tr>
+<tr>
+  <td> <b>TimestampType</b> </td>
+  <td> java.sql.Timestamp </td>
+  <td>
+  TimestampType
+  </td>
+</tr>
+<tr>
+  <td> <b>ArrayType</b> </td>
+  <td> scala.collection.Seq </td>
+  <td>
+  ArrayType(<i>elementType</i>, [<i>containsNull</i>])<br />
+  <b>Note:</b> The default value of <i>containsNull</i> is <i>false</i>.
+  </td>
+</tr>
+<tr>
+  <td> <b>MapType</b> </td>
+  <td> scala.collection.Map </td>
+  <td>
+  MapType(<i>keyType</i>, <i>valueType</i>, [<i>valueContainsNull</i>])<br />
+  <b>Note:</b> The default value of <i>valueContainsNull</i> is <i>true</i>.
+  </td>
+</tr>
+<tr>
+  <td> <b>StructType</b> </td>
+  <td> org.apache.spark.sql.Row </td>
+  <td> 
+  StructType(<i>fields</i>)<br />
+  <b>Note:</b> <i>fields</i> is a Seq of StructFields. Also, two fields with the same
+  name are not allowed.
+  </td>
+</tr>
+<tr>
+  <td> <b>StructField</b> </td>
+  <td> The value type in Scala of the data type of this field
+  (For example, Int for a StructField with the data type IntegerType) </td>
+  <td>
+  StructField(<i>name</i>, <i>dataType</i>, <i>nullable</i>)
+  </td>
+</tr>
+</table>
+
+  </div>
+
+<div data-lang="java">
+
+    <p>All data types of Spark SQL are located in the package of
+<code>org.apache.spark.sql.api.java</code>. To access or create a data type,
+please use factory methods provided in 
+<code>org.apache.spark.sql.api.java.DataType</code>.</p>
+
+    <table class="table">
+<tr>
+  <th style="width:20%">Data type</th>
+  <th style="width:40%">Value type in Java</th>
+  <th>API to access or create a data type</th></tr>
+<tr>
+  <td> <b>ByteType</b> </td>
+  <td> byte or Byte </td>
+  <td>
+  DataType.ByteType
+  </td>
+</tr>
+<tr>
+  <td> <b>ShortType</b> </td>
+  <td> short or Short </td>
+  <td>
+  DataType.ShortType
+  </td>
+</tr>
+<tr>
+  <td> <b>IntegerType</b> </td>
+  <td> int or Integer </td>
+  <td>
+  DataType.IntegerType
+  </td>
+</tr>
+<tr>
+  <td> <b>LongType</b> </td>
+  <td> long or Long </td>
+  <td>
+  DataType.LongType
+  </td>
+</tr>
+<tr>
+  <td> <b>FloatType</b> </td>
+  <td> float or Float </td>
+  <td>
+  DataType.FloatType
+  </td>
+</tr>
+<tr>
+  <td> <b>DoubleType</b> </td>
+  <td> double or Double </td>
+  <td>
+  DataType.DoubleType
+  </td>
+</tr>
+<tr>
+  <td> <b>DecimalType</b> </td>
+  <td> java.math.BigDecimal </td>
+  <td>
+  DataType.DecimalType
+  </td>
+</tr>
+<tr>
+  <td> <b>StringType</b> </td>
+  <td> String </td>
+  <td>
+  DataType.StringType
+  </td>
+</tr>
+<tr>
+  <td> <b>BinaryType</b> </td>
+  <td> byte[] </td>
+  <td>
+  DataType.BinaryType
+  </td>
+</tr>
+<tr>
+  <td> <b>BooleanType</b> </td>
+  <td> boolean or Boolean </td>
+  <td>
+  DataType.BooleanType
+  </td>
+</tr>
+<tr>
+  <td> <b>TimestampType</b> </td>
+  <td> java.sql.Timestamp </td>
+  <td>
+  DataType.TimestampType
+  </td>
+</tr>
+<tr>
+  <td> <b>ArrayType</b> </td>
+  <td> java.util.List </td>
+  <td>
+  DataType.createArrayType(<i>elementType</i>)<br />
+  <b>Note:</b> The value of <i>containsNull</i> will be <i>false</i><br />
+  DataType.createArrayType(<i>elementType</i>, <i>containsNull</i>).
+  </td>
+</tr>
+<tr>
+  <td> <b>MapType</b> </td>
+  <td> java.util.Map </td>
+  <td>
+  DataType.createMapType(<i>keyType</i>, <i>valueType</i>)<br />
+  <b>Note:</b> The value of <i>valueContainsNull</i> will be <i>true</i>.<br />
+  DataType.createMapType(<i>keyType</i>, <i>valueType</i>, <i>valueContainsNull</i>)<br />
+  </td>
+</tr>
+<tr>
+  <td> <b>StructType</b> </td>
+  <td> org.apache.spark.sql.api.java </td>
+  <td> 
+  DataType.createStructType(<i>fields</i>)<br />
+  <b>Note:</b> <i>fields</i> is a List or an array of StructFields.
+  Also, two fields with the same name are not allowed.
+  </td>
+</tr>
+<tr>
+  <td> <b>StructField</b> </td>
+  <td> The value type in Java of the data type of this field
+  (For example, int for a StructField with the data type IntegerType) </td>
+  <td>
+  DataType.createStructField(<i>name</i>, <i>dataType</i>, <i>nullable</i>)
+  </td>
+</tr>
+</table>
+
+  </div>
+
+<div data-lang="python">
+
+    <p>All data types of Spark SQL are located in the package of <code>pyspark.sql</code>.
+You can access them by doing </p>
+
+    <div class="highlight"><pre><code class="python"><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="o">*</span></code></pre></div>
+
+    <table class="table">
+<tr>
+  <th style="width:20%">Data type</th>
+  <th style="width:40%">Value type in Python</th>
+  <th>API to access or create a data type</th></tr>
+<tr>
+  <td> <b>ByteType</b> </td>
+  <td>
+  int <br />
+  <b>Note:</b> Numbers will be converted to 1-byte signed integer numbers at runtime.
+  Please make sure that numbers are within the range of -128 to 127.
+  </td>
+  <td>
+  ByteType()
+  </td>
+</tr>
+<tr>
+  <td> <b>ShortType</b> </td>
+  <td>
+  int <br />
+  <b>Note:</b> Numbers will be converted to 2-byte signed integer numbers at runtime.
+  Please make sure that numbers are within the range of -32768 to 32767.
+  </td>
+  <td>
+  ShortType()
+  </td>
+</tr>
+<tr>
+  <td> <b>IntegerType</b> </td>
+  <td> int </td>
+  <td>
+  IntegerType()
+  </td>
+</tr>
+<tr>
+  <td> <b>LongType</b> </td>
+  <td>
+  long <br />
+  <b>Note:</b> Numbers will be converted to 8-byte signed integer numbers at runtime.
+  Please make sure that numbers are within the range of
+  -9223372036854775808 to 9223372036854775807.
+  Otherwise, please use DecimalType.
+  </td>
+  <td>
+  LongType()
+  </td>
+</tr>
+<tr>
+  <td> <b>FloatType</b> </td>
+  <td>
+  float <br />
+  <b>Note:</b> Numbers will be converted to 4-byte single-precision floating
+  point numbers at runtime.
+  </td>
+  <td>
+  FloatType()
+  </td>
+</tr>
+<tr>
+  <td> <b>DoubleType</b> </td>
+  <td> float </td>
+  <td>
+  DoubleType()
+  </td>
+</tr>
+<tr>
+  <td> <b>DecimalType</b> </td>
+  <td> decimal.Decimal </td>
+  <td>
+  DecimalType()
+  </td>
+</tr>
+<tr>
+  <td> <b>StringType</b> </td>
+  <td> string </td>
+  <td>
+  StringType()
+  </td>
+</tr>
+<tr>
+  <td> <b>BinaryType</b> </td>
+  <td> bytearray </td>
+  <td>
+  BinaryType()
+  </td>
+</tr>
+<tr>
+  <td> <b>BooleanType</b> </td>
+  <td> bool </td>
+  <td>
+  BooleanType()
+  </td>
+</tr>
+<tr>
+  <td> <b>TimestampType</b> </td>
+  <td> datetime.datetime </td>
+  <td>
+  TimestampType()
+  </td>
+</tr>
+<tr>
+  <td> <b>ArrayType</b> </td>
+  <td> list, tuple, or array </td>
+  <td>
+  ArrayType(<i>elementType</i>, [<i>containsNull</i>])<br />
+  <b>Note:</b> The default value of <i>containsNull</i> is <i>False</i>.
+  </td>
+</tr>
+<tr>
+  <td> <b>MapType</b> </td>
+  <td> dict </td>
+  <td>
+  MapType(<i>keyType</i>, <i>valueType</i>, [<i>valueContainsNull</i>])<br />
+  <b>Note:</b> The default value of <i>valueContainsNull</i> is <i>True</i>.
+  </td>
+</tr>
+<tr>
+  <td> <b>StructType</b> </td>
+  <td> tuple or list </td>
+  <td> 
+  StructType(<i>fields</i>)<br />
+  <b>Note:</b> <i>fields</i> is a Seq of StructFields. Also, two fields with the same
+  name are not allowed.
+  </td>
+</tr>
+<tr>
+  <td> <b>StructField</b> </td>
+  <td> The value type in Python of the data type of this field
+  (For example, Int for a StructField with the data type IntegerType) </td>
+  <td>
+  StructField(<i>name</i>, <i>dataType</i>, <i>nullable</i>)
+  </td>
+</tr>
+</table>
+
+  </div>
+
+</div>
+
+<h1 id="running-the-thrift-jdbc-server">Running the Thrift JDBC server</h1>
 
 <p>The Thrift JDBC server implemented here corresponds to the [<code>HiveServer2</code>]
 (https://cwiki.apache.org/confluence/display/Hive/Setting+Up+HiveServer2) in Hive 0.12. You can test
@@ -721,9 +1295,9 @@ your machine and a blank password. For secure mode, please follow the instructio
 
 <p>You may also use the beeline script comes with Hive.</p>
 
-<h3 id="migration-guide-for-shark-users">Migration Guide for Shark Users</h3>
+<h2 id="migration-guide-for-shark-users">Migration Guide for Shark Users</h2>
 
-<h4 id="reducer-number">Reducer number</h4>
+<h3 id="reducer-number">Reducer number</h3>
 
 <p>In Shark, default reducer number is 1 and is controlled by the property <code>mapred.reduce.tasks</code>. Spark
 SQL deprecates this property by a new property <code>spark.sql.shuffle.partitions</code>, whose default value
@@ -740,7 +1314,7 @@ GROUP BY page ORDER BY c DESC LIMIT 10;
 <p>For now, the <code>mapred.reduce.tasks</code> property is still recognized, and is converted to
 <code>spark.sql.shuffle.partitions</code> automatically.</p>
 
-<h4 id="caching">Caching</h4>
+<h3 id="caching">Caching</h3>
 
 <p>The <code>shark.cache</code> table property no longer exists, and tables whose name end with <code>_cached</code> are no
 longer automcatically cached. Instead, we provide <code>CACHE TABLE</code> and <code>UNCACHE TABLE</code> statements to
@@ -768,15 +1342,15 @@ SELECT COUNT(1) FROM logs_last_month;
   <li>In-memory cache write through policy</li>
 </ul>
 
-<h3 id="compatibility-with-apache-hive">Compatibility with Apache Hive</h3>
+<h2 id="compatibility-with-apache-hive">Compatibility with Apache Hive</h2>
 
-<h4 id="deploying-in-exising-hive-warehouses">Deploying in Exising Hive Warehouses</h4>
+<h3 id="deploying-in-exising-hive-warehouses">Deploying in Exising Hive Warehouses</h3>
 
 <p>Spark SQL Thrift JDBC server is designed to be “out of the box” compatible with existing Hive
 installations. You do not need to modify your existing Hive Metastore or change the data placement
 or partitioning of your tables.</p>
 
-<h4 id="supported-hive-features">Supported Hive Features</h4>
+<h3 id="supported-hive-features">Supported Hive Features</h3>
 
 <p>Spark SQL supports the vast majority of Hive features, such as:</p>
 
@@ -828,7 +1402,7 @@ or partitioning of your tables.</p>
   <li><code>STRUCT&lt;&gt;</code></li>
 </ul>
 
-<h4 id="unsupported-hive-functionality">Unsupported Hive Functionality</h4>
+<h3 id="unsupported-hive-functionality">Unsupported Hive Functionality</h3>
 
 <p>Below is a list of Hive features that we don’t support yet. Most of these features are rarely used
 in Hive deployments.</p>
@@ -885,7 +1459,7 @@ Hive can optionally merge the small files into fewer large files to avoid overfl
 metadata. Spark SQL does not support that.</li>
 </ul>
 
-<h2 id="running-the-spark-sql-cli">Running the Spark SQL CLI</h2>
+<h1 id="running-the-spark-sql-cli">Running the Spark SQL CLI</h1>
 
 <p>The Spark SQL CLI is a convenient tool to run the Hive metastore service in local mode and execute
 queries input from command line. Note: the Spark SQL CLI cannot talk to the Thrift JDBC server.</p>
@@ -898,6 +1472,16 @@ queries input from command line. Note: the Spark SQL CLI cannot talk to the Thri
 <p>Configuration of Hive is done by placing your <code>hive-site.xml</code> file in <code>conf/</code>.
 You may run <code>./bin/spark-sql --help</code> for a complete list of all available
 options.</p>
+
+<h1 id="cached-tables">Cached tables</h1>
+
+<p>Spark SQL can cache tables using an in-memory columnar format by calling <code>cacheTable("tableName")</code>.
+Then Spark SQL will scan only required columns and will automatically tune compression to minimize
+memory usage and GC pressure. You can call <code>uncacheTable("tableName")</code> to remove the table from memory.</p>
+
+<p>Note that if you just call <code>cache</code> rather than <code>cacheTable</code>, tables will <em>not</em> be cached in
+in-memory columnar format. So we strongly recommend using <code>cacheTable</code> whenever you want to
+cache tables.</p>
 
 
         </div> <!-- /container -->

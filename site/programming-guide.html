@@ -130,15 +130,7 @@
   </li>
   <li><a href="#resilient-distributed-datasets-rdds">Resilient Distributed Datasets (RDDs)</a>    <ul>
       <li><a href="#parallelized-collections">Parallelized Collections</a></li>
-      <li><a href="#external-datasets">External Datasets</a>        <ul>
-          <li><a href="#sequencefile-and-hadoop-inputformats">SequenceFile and Hadoop InputFormats</a>            <ul>
-              <li><a href="#writable-support">Writable Support</a></li>
-              <li><a href="#loading-sequencefiles">Loading SequenceFiles</a></li>
-              <li><a href="#loading-other-hadoop-inputformats">Loading Other Hadoop InputFormats</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
+      <li><a href="#external-datasets">External Datasets</a></li>
       <li><a href="#rdd-operations">RDD Operations</a>        <ul>
           <li><a href="#basics">Basics</a></li>
           <li><a href="#passing-functions-to-spark">Passing Functions to Spark</a></li>
@@ -543,18 +535,18 @@ We describe operations on distributed datasets later on.</p>
         <p><code>RDD.saveAsPickleFile</code> and <code>SparkContext.pickleFile</code> support saving an RDD in a simple format consisting of pickled Python objects. Batching is used on pickle serialization, with default batch size 10.</p>
       </li>
       <li>
-        <p>Details on reading <code>SequenceFile</code> and arbitrary Hadoop <code>InputFormat</code> are given below.</p>
+        <p>SequenceFile and Hadoop Input/Output Formats</p>
       </li>
     </ul>
 
-    <h3 id="sequencefile-and-hadoop-inputformats">SequenceFile and Hadoop InputFormats</h3>
-
     <p><strong>Note</strong> this feature is currently marked <code>Experimental</code> and is intended for advanced users. It may be replaced in future with read/write support based on SparkSQL, in which case SparkSQL is the preferred approach.</p>
 
-    <h4 id="writable-support">Writable Support</h4>
+    <p><strong>Writable Support</strong></p>
 
-    <p>PySpark SequenceFile support loads an RDD within Java, and pickles the resulting Java objects using
-<a href="https://github.com/irmen/Pyrolite/">Pyrolite</a>. The following Writables are automatically converted:</p>
+    <p>PySpark SequenceFile support loads an RDD of key-value pairs within Java, converts Writables to base Java types, and pickles the 
+resulting Java objects using <a href="https://github.com/irmen/Pyrolite/">Pyrolite</a>. When saving an RDD of key-value pairs to SequenceFile, 
+PySpark does the reverse. It unpickles Python objects into Java objects and then converts them to Writables. The following 
+Writables are automatically converted:</p>
 
     <table class="table">
 <tr><th>Writable Type</th><th>Python Type</th></tr>
@@ -565,30 +557,28 @@ We describe operations on distributed datasets later on.</p>
 <tr><td>BooleanWritable</td><td>bool</td></tr>
 <tr><td>BytesWritable</td><td>bytearray</td></tr>
 <tr><td>NullWritable</td><td>None</td></tr>
-<tr><td>ArrayWritable</td><td>list of primitives, or tuple of objects</td></tr>
 <tr><td>MapWritable</td><td>dict</td></tr>
-<tr><td>Custom Class conforming to Java Bean conventions</td>
-    <td>dict of public properties (via JavaBean getters and setters) + __class__ for the class type</td></tr>
 </table>
 
-    <h4 id="loading-sequencefiles">Loading SequenceFiles</h4>
+    <p>Arrays are not handled out-of-the-box. Users need to specify custom <code>ArrayWritable</code> subtypes when reading or writing. When writing, 
+users also need to specify custom converters that convert arrays to custom <code>ArrayWritable</code> subtypes. When reading, the default 
+converter will convert custom <code>ArrayWritable</code> subtypes to Java <code>Object[]</code>, which then get pickled to Python tuples. To get 
+Python <code>array.array</code> for arrays of primitive types, users need to specify custom converters.</p>
 
-    <p>Similarly to text files, SequenceFiles can be loaded by specifying the path. The key and value
+    <p><strong>Saving and Loading SequenceFiles</strong></p>
+
+    <p>Similarly to text files, SequenceFiles can be saved and loaded by specifying the path. The key and value
 classes can be specified, but for standard Writables this is not required.</p>
 
-    <div class="highlight"><pre><code class="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">sequenceFile</span><span class="p">(</span><span class="s">&quot;path/to/sequencefile/of/doubles&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">rdd</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>         <span class="c"># this example has DoubleWritable keys and Text values</span>
-<span class="p">[(</span><span class="mf">1.0</span><span class="p">,</span> <span class="s">u&#39;aa&#39;</span><span class="p">),</span>
- <span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="s">u&#39;bb&#39;</span><span class="p">),</span>
- <span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="s">u&#39;aa&#39;</span><span class="p">),</span>
- <span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="s">u&#39;cc&#39;</span><span class="p">),</span>
- <span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="s">u&#39;bb&#39;</span><span class="p">),</span>
- <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="s">u&#39;aa&#39;</span><span class="p">)]</span></code></pre></div>
+    <div class="highlight"><pre><code class="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;a&quot;</span> <span class="o">*</span> <span class="n">x</span> <span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">rdd</span><span class="o">.</span><span class="n">saveAsSequenceFile</span><span class="p">(</span><span class="s">&quot;path/to/file&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">sequenceFile</span><span class="p">(</span><span class="s">&quot;path/to/file&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">())</span>
+<span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s">u&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">u&#39;aa&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">u&#39;aaa&#39;</span><span class="p">)]</span></code></pre></div>
 
-    <h4 id="loading-other-hadoop-inputformats">Loading Other Hadoop InputFormats</h4>
+    <p><strong>Saving and Loading Other Hadoop Input/Output Formats</strong></p>
 
-    <p>PySpark can also read any Hadoop InputFormat, for both ‘new’ and ‘old’ Hadoop APIs. If required,
-a Hadoop configuration can be passed in as a Python dict. Here is an example using the
+    <p>PySpark can also read any Hadoop InputFormat or write any Hadoop OutputFormat, for both ‘new’ and ‘old’ Hadoop MapReduce APIs. 
+If required, a Hadoop configuration can be passed in as a Python dict. Here is an example using the
 Elasticsearch ESInputFormat:</p>
 
     <div class="highlight"><pre><code class="python"><span class="err">$</span> <span class="n">SPARK_CLASSPATH</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">elasticsearch</span><span class="o">-</span><span class="n">hadoop</span><span class="o">.</span><span class="n">jar</span> <span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">pyspark</span>
@@ -605,8 +595,7 @@ Elasticsearch ESInputFormat:</p>
 the key and value classes can easily be converted according to the above table,
 then this approach should work well for such cases.</p>
 
-    <p>If you have custom serialized binary data (such as loading data from Cassandra / HBase) or custom
-classes that don’t conform to the JavaBean requirements, then you will first need to 
+    <p>If you have custom serialized binary data (such as loading data from Cassandra / HBase), then you will first need to 
 transform that data on the Scala/Java side to something which can be handled by Pyrolite’s pickler.
 A <a href="api/scala/index.html#org.apache.spark.api.python.Converter">Converter</a> trait is provided 
 for this. Simply extend this trait and implement your transformation code in the <code>convert</code> 
@@ -614,11 +603,8 @@ method. Remember to ensure that this class, along with any dependencies required
 classpath.</p>
 
     <p>See the <a href="https://github.com/apache/spark/tree/master/examples/src/main/python">Python examples</a> and 
-the <a href="https://github.com/apache/spark/tree/master/examples/src/main/scala/pythonconverters">Converter examples</a> 
-for examples of using HBase and Cassandra <code>InputFormat</code>.</p>
-
-    <p>Future support for writing data out as <code>SequenceFileOutputFormat</code> and other <code>OutputFormats</code>, 
-is forthcoming.</p>
+the <a href="https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/pythonconverters">Converter examples</a> 
+for examples of using Cassandra / HBase <code>InputFormat</code> and <code>OutputFormat</code> with custom converters.</p>
 
   </div>
 

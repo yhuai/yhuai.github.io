@@ -60,7 +60,7 @@ an RDD has been registered as a table, it can be used in the FROM clause of SQL 
 <span class="kw">val</span> rdd = sc.parallelize((<span class="num">1</span> to <span class="num">100</span>).map(i <span class="kw">=&gt;</span> Record(i, s<span class="lit">"val_$i"</span>)))
 <span class="cmt">// Any RDD containing case classes can be registered as a table.  The schema of the table is</span>
 <span class="cmt">// automatically inferred using scala reflection.</span>
-rdd.registerAsTable(<span class="lit">"records"</span>)
+rdd.registerTempTable(<span class="lit">"records"</span>)
 
 <span class="kw">val</span> results: SchemaRDD = sql(<span class="lit">"SELECT * FROM records"</span>)</pre><h4> Language Integrated Queries </h4><pre><span class="kw">case</span> <span class="kw">class</span> Record(key: <span class="std">Int</span>, value: <span class="std">String</span>)
 
@@ -78,7 +78,7 @@ rdd.where('key === <span class="num">1</span>).orderBy('value.asc).select('key).
               
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="org.apache.spark.sql.SchemaRDDLike">SchemaRDDLike</span>, <a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>], <a href="../Logging.html" class="extype" name="org.apache.spark.Logging">spark.Logging</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="org.apache.spark.sql.SchemaRDDLike">SchemaRDDLike</span>, <a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>], <a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -1309,6 +1309,19 @@ subclasses of RDD.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <a id="logName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
     </li><li name="org.apache.spark.Logging#logTrace" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logTrace(msg:=&gt;String,throwable:Throwable):Unit"></a>
       <a id="logTrace(⇒String,Throwable):Unit"></a>
@@ -1733,16 +1746,16 @@ more difficult.  Instead end users should perform RDD operations on a SchemaRDD 
 associative binary operator.</p><div class="fullcomment"><div class="comment cmt"><p>Reduces the elements of this RDD using the specified commutative and
 associative binary operator.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
-    </li><li name="org.apache.spark.sql.SchemaRDDLike#registerAsTable" visbl="pub" data-isabs="false" fullComment="yes" group="schema">
-      <a id="registerAsTable(tableName:String):Unit"></a>
-      <a id="registerAsTable(String):Unit"></a>
+    </li><li name="org.apache.spark.sql.SchemaRDDLike#registerTempTable" visbl="pub" data-isabs="false" fullComment="yes" group="schema">
+      <a id="registerTempTable(tableName:String):Unit"></a>
+      <a id="registerTempTable(String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">registerAsTable</span><span class="params">(<span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">registerTempTable</span><span class="params">(<span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Registers this RDD as a temporary table using the given name.</p><div class="fullcomment"><div class="comment cmt"><p>Registers this RDD as a temporary table using the given name.  The lifetime of this temporary
@@ -2572,6 +2585,22 @@ partition with the index of that partition.
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.0.0)</i> use mapPartitionsWithIndex</p></dd></dl></div>
+    </li><li name="org.apache.spark.sql.SchemaRDDLike#registerAsTable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerAsTable(tableName:String):Unit"></a>
+      <a id="registerAsTable(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 1.1) Use registerTempTable instead of registerAsTable.">registerAsTable</span><span class="params">(<span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchemaRDDLike</dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.1)</i> Use registerTempTable instead of registerAsTable.</p></dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#toArray" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toArray():Array[T]"></a>
       <a id="toArray():Array[Row]"></a>
@@ -2599,7 +2628,7 @@ partition with the index of that partition.
             </div><div class="parent" name="org.apache.spark.rdd.RDD">
               <h3>Inherited from <a href="../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>]</h3>
             </div><div class="parent" name="org.apache.spark.Logging">
-              <h3>Inherited from <a href="../Logging.html" class="extype" name="org.apache.spark.Logging">spark.Logging</a></h3>
+              <h3>Inherited from <a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></h3>
             </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">

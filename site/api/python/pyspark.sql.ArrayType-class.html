@@ -61,14 +61,19 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class ArrayType</h1><p class="nomargin-top"><span class="codelink"><a href="pyspark.sql-pysrc.html#ArrayType">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-object --+
-         |
-        <strong class="uidshort">ArrayType</strong>
+object --+    
+         |    
+  DataType --+
+             |
+            <strong class="uidshort">ArrayType</strong>
 </pre>
 
 <hr />
 <p>Spark SQL ArrayType</p>
-  <p>The data type representing list values.</p>
+  <p>The data type representing list values. An ArrayType object comprises 
+  two fields, elementType (a DataType) and containsNull (a bool). The field
+  of elementType is used to specify the type of array elements. The field 
+  of containsNull is used to specify if the array has None values.</p>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -86,7 +91,7 @@ object --+
         <tr>
           <td><span class="summary-sig"><a href="pyspark.sql.ArrayType-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">elementType</span>,
-        <span class="summary-sig-arg">containsNull</span>)</span><br />
+        <span class="summary-sig-arg">containsNull</span>=<span class="summary-sig-default">False</span>)</span><br />
       Creates an ArrayType</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyspark.sql-pysrc.html#ArrayType.__init__">source&nbsp;code</a></span>
@@ -103,27 +108,10 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="__eq__"></a><span class="summary-sig-name">__eq__</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">other</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyspark.sql.ArrayType-class.html#__str__" class="summary-sig-name">__str__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      str(x)</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyspark.sql-pysrc.html#ArrayType.__eq__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="__ne__"></a><span class="summary-sig-name">__ne__</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">other</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyspark.sql-pysrc.html#ArrayType.__ne__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyspark.sql-pysrc.html#ArrayType.__str__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -133,18 +121,21 @@ object --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>DataType</code></b>:
+      <code>__eq__</code>,
+      <code>__hash__</code>,
+      <code>__ne__</code>,
+      <code>__repr__</code>
+      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
       <code>__getattribute__</code>,
-      <code>__hash__</code>,
       <code>__new__</code>,
       <code>__reduce__</code>,
       <code>__reduce_ex__</code>,
-      <code>__repr__</code>,
       <code>__setattr__</code>,
       <code>__sizeof__</code>,
-      <code>__str__</code>,
       <code>__subclasshook__</code>
       </p>
     </td>
@@ -184,7 +175,7 @@ object --+
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">elementType</span>,
-        <span class="sig-arg">containsNull</span>)</span>
+        <span class="sig-arg">containsNull</span>=<span class="sig-default">False</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -194,15 +185,39 @@ object --+
   
   <p>Creates an ArrayType</p>
   <p>:param elementType: the data type of elements. :param containsNull: 
-  indicates whether the list contains null values. :return:</p>
+  indicates whether the list contains None values.</p>
 <pre class="py-doctest">
-<span class="py-prompt">&gt;&gt;&gt; </span>ArrayType(StringType, True) == ArrayType(StringType, False)
-<span class="py-output">False</span>
-<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>ArrayType(StringType, True) == ArrayType(StringType, True)
-<span class="py-output">True</span></pre>
+<span class="py-prompt">&gt;&gt;&gt; </span>ArrayType(StringType) == ArrayType(StringType, False)
+<span class="py-output">True</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>ArrayType(StringType, True) == ArrayType(StringType)
+<span class="py-output">False</span></pre>
   <dl class="fields">
     <dt>Overrides:
         object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__str__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__str__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Informal representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.sql-pysrc.html#ArrayType.__str__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>str(x)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__str__
+        <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
 </td></tr></table>
@@ -239,7 +254,7 @@ object --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Jul 27 17:21:23 2014
+    Generated by Epydoc 3.0.1 on Mon Aug  4 17:24:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -39,10 +39,9 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>SQLConf holds mutable config parameters and hints.  These can be set and
-queried either by passing SET commands into Spark SQL's DSL
-functions (sql(), hql(), etc.), or by programmatically using setters and
-getters of this class.</p><p>SQLConf is thread-safe (internally synchronized so safe to be used in multiple threads).
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A trait that enables the setting and getting of mutable config parameters/hints.</p><p>In the presence of a SQLContext, these can be set and queried by passing SET commands
+into Spark SQL's query functions (i.e. sql()). Otherwise, users of this trait can
+modify the hints by programmatically calling the setters and getters of this trait.</p><p>SQLConf is thread-safe (internally synchronized, so safe to be used in multiple threads).
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -402,7 +401,20 @@ getters of this class.</p><p>SQLConf is thread-safe (internally synchronized so 
         <span class="name">set</span><span class="params">(<span name="props">props: <span class="extype" name="java.util.Properties">Properties</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">********************** SQLConf functionality methods ************</p>
+    </li><li name="org.apache.spark.sql.SQLConf#settings" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="settings:java.util.Map[String,String]"></a>
+      <a id="settings:Map[String,String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">settings</span><span class="result">: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="org.apache.spark">org.apache.spark</a>] </dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

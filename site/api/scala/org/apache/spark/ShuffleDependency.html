@@ -40,7 +40,9 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>:: DeveloperApi ::
-Represents a dependency on the output of a shuffle stage.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+Represents a dependency on the output of a shuffle stage. Note that in the case of shuffle,
+the RDD is transient since we don't need it on the executor side.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
         </dd></dl><div class="toggleContainer block">
@@ -84,7 +86,7 @@ Represents a dependency on the output of a shuffle stage.</p></div><dl class="at
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.apache.spark.ShuffleDependency#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(rdd:org.apache.spark.rdd.RDD[_&lt;:Product2[K,V]],partitioner:org.apache.spark.Partitioner,serializer:Option[org.apache.spark.serializer.Serializer],keyOrdering:Option[Ordering[K]],aggregator:Option[org.apache.spark.Aggregator[K,V,C]],mapSideCombine:Boolean,sortOrder:Option[org.apache.spark.rdd.SortOrder.SortOrder]):org.apache.spark.ShuffleDependency[K,V,C]"></a>
+      <a id="&lt;init&gt;(_rdd:org.apache.spark.rdd.RDD[_&lt;:Product2[K,V]],partitioner:org.apache.spark.Partitioner,serializer:Option[org.apache.spark.serializer.Serializer],keyOrdering:Option[Ordering[K]],aggregator:Option[org.apache.spark.Aggregator[K,V,C]],mapSideCombine:Boolean):org.apache.spark.ShuffleDependency[K,V,C]"></a>
       <a id="&lt;init&gt;:ShuffleDependency[K,V,C]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,10 +94,10 @@ Represents a dependency on the output of a shuffle stage.</p></div><dl class="at
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">ShuffleDependency</span><span class="params">(<span name="rdd">rdd: <a href="rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[_ &lt;: <span class="extype" name="scala.Product2">Product2</span>[<span class="extype" name="org.apache.spark.ShuffleDependency.K">K</span>, <span class="extype" name="org.apache.spark.ShuffleDependency.V">V</span>]]</span>, <span name="partitioner">partitioner: <a href="Partitioner.html" class="extype" name="org.apache.spark.Partitioner">Partitioner</a></span>, <span name="serializer">serializer: <span class="extype" name="scala.Option">Option</span>[<a href="serializer/Serializer.html" class="extype" name="org.apache.spark.serializer.Serializer">Serializer</a>] = <span class="symbol">scala.None</span></span>, <span name="keyOrdering">keyOrdering: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.apache.spark.ShuffleDependency.K">K</span>]] = <span class="symbol">scala.None</span></span>, <span name="aggregator">aggregator: <span class="extype" name="scala.Option">Option</span>[<a href="Aggregator.html" class="extype" name="org.apache.spark.Aggregator">Aggregator</a>[<span class="extype" name="org.apache.spark.ShuffleDependency.K">K</span>, <span class="extype" name="org.apache.spark.ShuffleDependency.V">V</span>, <span class="extype" name="org.apache.spark.ShuffleDependency.C">C</span>]] = <span class="symbol">scala.None</span></span>, <span name="mapSideCombine">mapSideCombine: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="sortOrder">sortOrder: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.rdd.SortOrder.SortOrder">SortOrder</span>] = <span class="symbol">scala.None</span></span>)</span>
+        <span class="name">ShuffleDependency</span><span class="params">(<span name="_rdd">_rdd: <a href="rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[_ &lt;: <span class="extype" name="scala.Product2">Product2</span>[<span class="extype" name="org.apache.spark.ShuffleDependency.K">K</span>, <span class="extype" name="org.apache.spark.ShuffleDependency.V">V</span>]]</span>, <span name="partitioner">partitioner: <a href="Partitioner.html" class="extype" name="org.apache.spark.Partitioner">Partitioner</a></span>, <span name="serializer">serializer: <span class="extype" name="scala.Option">Option</span>[<a href="serializer/Serializer.html" class="extype" name="org.apache.spark.serializer.Serializer">Serializer</a>] = <span class="symbol">scala.None</span></span>, <span name="keyOrdering">keyOrdering: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.apache.spark.ShuffleDependency.K">K</span>]] = <span class="symbol">scala.None</span></span>, <span name="aggregator">aggregator: <span class="extype" name="scala.Option">Option</span>[<a href="Aggregator.html" class="extype" name="org.apache.spark.Aggregator">Aggregator</a>[<span class="extype" name="org.apache.spark.ShuffleDependency.K">K</span>, <span class="extype" name="org.apache.spark.ShuffleDependency.V">V</span>, <span class="extype" name="org.apache.spark.ShuffleDependency.C">C</span>]] = <span class="symbol">scala.None</span></span>, <span name="mapSideCombine">mapSideCombine: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">rdd</dt><dd class="cmt"><p>the parent RDD</p></dd><dt class="param">partitioner</dt><dd class="cmt"><p>partitioner used to partition the shuffle output</p></dd><dt class="param">serializer</dt><dd class="cmt"><p><a href="serializer/Serializer.html" class="extype" name="org.apache.spark.serializer.Serializer">Serializer</a> to use. If set to None,
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">_rdd</dt><dd class="cmt"><p>the parent RDD</p></dd><dt class="param">partitioner</dt><dd class="cmt"><p>partitioner used to partition the shuffle output</p></dd><dt class="param">serializer</dt><dd class="cmt"><p><a href="serializer/Serializer.html" class="extype" name="org.apache.spark.serializer.Serializer">Serializer</a> to use. If set to None,
                   the default serializer, as specified by <code>spark.serializer</code> config option, will
                   be used.
 </p></dd></dl></div>
@@ -380,6 +382,19 @@ Represents a dependency on the output of a shuffle stage.</p></div><dl class="at
       </span>
       </h4>
       <p class="shortcomment cmt">partitioner used to partition the shuffle output</p>
+    </li><li name="org.apache.spark.ShuffleDependency#rdd" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="rdd:org.apache.spark.rdd.RDD[Product2[K,V]]"></a>
+      <a id="rdd:RDD[Product2[K,V]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rdd</span><span class="result">: <a href="rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Product2">Product2</span>[<span class="extype" name="org.apache.spark.ShuffleDependency.K">K</span>, <span class="extype" name="org.apache.spark.ShuffleDependency.V">V</span>]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.ShuffleDependency">ShuffleDependency</a> → <a href="Dependency.html" class="extype" name="org.apache.spark.Dependency">Dependency</a></dd></dl></div>
     </li><li name="org.apache.spark.ShuffleDependency#serializer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="serializer:Option[org.apache.spark.serializer.Serializer]"></a>
       <a id="serializer:Option[Serializer]"></a>
@@ -419,19 +434,6 @@ Represents a dependency on the output of a shuffle stage.</p></div><dl class="at
       </span>
       <span class="symbol">
         <span class="name">shuffleId</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="org.apache.spark.ShuffleDependency#sortOrder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="sortOrder:Option[org.apache.spark.rdd.SortOrder.SortOrder]"></a>
-      <a id="sortOrder:Option[SortOrder]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sortOrder</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.rdd.SortOrder.SortOrder">SortOrder</span>]</span>
       </span>
       </h4>
       

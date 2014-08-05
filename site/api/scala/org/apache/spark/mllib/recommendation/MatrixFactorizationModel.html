@@ -384,6 +384,45 @@ unless a user or product is missing in the training set.
       </span>
       </h4>
       <p class="shortcomment cmt">Rank for the features in this model.</p>
+    </li><li name="org.apache.spark.mllib.recommendation.MatrixFactorizationModel#recommendProducts" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="recommendProducts(user:Int,num:Int):Array[org.apache.spark.mllib.recommendation.Rating]"></a>
+      <a id="recommendProducts(Int,Int):Array[Rating]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">recommendProducts</span><span class="params">(<span name="user">user: <span class="extype" name="scala.Int">Int</span></span>, <span name="num">num: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="Rating.html" class="extype" name="org.apache.spark.mllib.recommendation.Rating">Rating</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Recommends products to a user.</p><div class="fullcomment"><div class="comment cmt"><p>Recommends products to a user.
+</p></div><dl class="paramcmts block"><dt class="param">user</dt><dd class="cmt"><p>the user to recommend products to</p></dd><dt class="param">num</dt><dd class="cmt"><p>how many products to return. The number returned may be less than this.</p></dd><dt>returns</dt><dd class="cmt"><p><a href="Rating.html" class="extype" name="org.apache.spark.mllib.recommendation.Rating">Rating</a> objects, each of which contains the given user ID, a product ID, and a
+ &quot;score&quot; in the rating field. Each represents one recommended product, and they are sorted
+ by score, decreasing. The first returned is the one predicted to be most strongly
+ recommended to the user. The score is an opaque value that indicates how strongly
+ recommended the product is.
+</p></dd></dl></div>
+    </li><li name="org.apache.spark.mllib.recommendation.MatrixFactorizationModel#recommendUsers" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="recommendUsers(product:Int,num:Int):Array[org.apache.spark.mllib.recommendation.Rating]"></a>
+      <a id="recommendUsers(Int,Int):Array[Rating]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">recommendUsers</span><span class="params">(<span name="product">product: <span class="extype" name="scala.Int">Int</span></span>, <span name="num">num: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="Rating.html" class="extype" name="org.apache.spark.mllib.recommendation.Rating">Rating</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Recommends users to a product.</p><div class="fullcomment"><div class="comment cmt"><p>Recommends users to a product. That is, this returns users who are most likely to be
+interested in a product.
+</p></div><dl class="paramcmts block"><dt class="param">product</dt><dd class="cmt"><p>the product to recommend users to</p></dd><dt class="param">num</dt><dd class="cmt"><p>how many users to return. The number returned may be less than this.</p></dd><dt>returns</dt><dd class="cmt"><p><a href="Rating.html" class="extype" name="org.apache.spark.mllib.recommendation.Rating">Rating</a> objects, each of which contains a user ID, the given product ID, and a
+ &quot;score&quot; in the rating field. Each represents one recommended user, and they are sorted
+ by score, decreasing. The first returned is the one predicted to be most strongly
+ recommended to the product. The score is an opaque value that indicates how strongly
+ recommended the user is.
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

@@ -1303,16 +1303,16 @@ more difficult.  Instead end users should perform RDD operations on a SchemaRDD 
 operator.</p><div class="fullcomment"><div class="comment cmt"><p>Reduces the elements of this RDD using the specified commutative and associative binary
 operator.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../api/java/JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a></dd></dl></div>
-    </li><li name="org.apache.spark.sql.SchemaRDDLike#registerAsTable" visbl="pub" data-isabs="false" fullComment="yes" group="schema">
-      <a id="registerAsTable(tableName:String):Unit"></a>
-      <a id="registerAsTable(String):Unit"></a>
+    </li><li name="org.apache.spark.sql.SchemaRDDLike#registerTempTable" visbl="pub" data-isabs="false" fullComment="yes" group="schema">
+      <a id="registerTempTable(tableName:String):Unit"></a>
+      <a id="registerTempTable(String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">registerAsTable</span><span class="params">(<span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">registerTempTable</span><span class="params">(<span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Registers this RDD as a temporary table using the given name.</p><div class="fullcomment"><div class="comment cmt"><p>Registers this RDD as a temporary table using the given name.  The lifetime of this temporary
@@ -1416,15 +1416,15 @@ be the target of an <code>insertInto</code>.
       <p class="shortcomment cmt">Save this RDD as a text file, using string representations of elements.</p><div class="fullcomment"><div class="comment cmt"><p>Save this RDD as a text file, using string representations of elements.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../api/java/JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.api.java.JavaSchemaRDD#schema" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="schema:org.apache.spark.sql.api.java.types.StructType"></a>
-      <a id="schema:types.StructType"></a>
+      <a id="schema:org.apache.spark.sql.api.java.StructType"></a>
+      <a id="schema:StructType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">schema</span><span class="result">: <a href="types/StructType.html" class="extype" name="org.apache.spark.sql.api.java.types.StructType">types.StructType</a></span>
+        <span class="name">schema</span><span class="result">: <a href="StructType.html" class="extype" name="org.apache.spark.sql.api.java.StructType">StructType</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Returns the schema of this JavaSchemaRDD (represented by a StructType).</p>
@@ -1830,7 +1830,23 @@ won't trigger a spark job, which is different from <a href="../../../rdd/RDD.htm
 
         <div id="values" class="values members">
               <h3>Deprecated Value Members</h3>
-              <ol><li name="org.apache.spark.api.java.JavaRDDLike#splits" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="org.apache.spark.sql.SchemaRDDLike#registerAsTable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerAsTable(tableName:String):Unit"></a>
+      <a id="registerAsTable(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 1.1) Use registerTempTable instead of registerAsTable.">registerAsTable</span><span class="params">(<span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchemaRDDLike</dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.1)</i> Use registerTempTable instead of registerAsTable.</p></dd></dl></div>
+    </li><li name="org.apache.spark.api.java.JavaRDDLike#splits" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="splits:java.util.List[org.apache.spark.Partition]"></a>
       <a id="splits:List[Partition]"></a>
       <h4 class="signature">

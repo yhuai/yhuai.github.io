@@ -241,9 +241,8 @@
       </h4>
       <p class="shortcomment cmt">Returns an array of optimal splits for all nodes at a given level.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an array of optimal splits for all nodes at a given level. Splits the task into
 multiple groups if the level-wise training task could lead to memory overflow.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a> used as training data
-             for DecisionTree</p></dd><dt class="param">parentImpurities</dt><dd class="cmt"><p>Impurities for all parent nodes for the current level</p></dd><dt class="param">strategy</dt><dd class="cmt"><p><a href="configuration/Strategy.html" class="extype" name="org.apache.spark.mllib.tree.configuration.Strategy">org.apache.spark.mllib.tree.configuration.Strategy</a> instance containing
-               parameters for construction the DecisionTree</p></dd><dt class="param">level</dt><dd class="cmt"><p>Level of the tree</p></dd><dt class="param">filters</dt><dd class="cmt"><p>Filters for all nodes at a given level</p></dd><dt class="param">splits</dt><dd class="cmt"><p>possible splits for all features</p></dd><dt class="param">bins</dt><dd class="cmt"><p>possible bins for all features</p></dd><dt class="param">maxLevelForSingleGroup</dt><dd class="cmt"><p>the deepest level for single-group level-wise computation.</p></dd><dt>returns</dt><dd class="cmt"><p>array of splits with best splits for all nodes at a given level.
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>Training data: RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a></p></dd><dt class="param">parentImpurities</dt><dd class="cmt"><p>Impurities for all parent nodes for the current level</p></dd><dt class="param">strategy</dt><dd class="cmt"><p><a href="configuration/Strategy.html" class="extype" name="org.apache.spark.mllib.tree.configuration.Strategy">org.apache.spark.mllib.tree.configuration.Strategy</a> instance containing
+                parameters for constructing the DecisionTree</p></dd><dt class="param">level</dt><dd class="cmt"><p>Level of the tree</p></dd><dt class="param">filters</dt><dd class="cmt"><p>Filters for all nodes at a given level</p></dd><dt class="param">splits</dt><dd class="cmt"><p>possible splits for all features</p></dd><dt class="param">bins</dt><dd class="cmt"><p>possible bins for all features</p></dd><dt class="param">maxLevelForSingleGroup</dt><dd class="cmt"><p>the deepest level for single-group level-wise computation.</p></dd><dt>returns</dt><dd class="cmt"><p>array of splits with best splits for all nodes at a given level.
 </p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="package.html" class="extype" name="org.apache.spark.mllib.tree">org.apache.spark.mllib.tree</a>] </dd></dl></div>
     </li><li name="org.apache.spark.mllib.tree.DecisionTree#findSplitsBins" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="findSplitsBins(input:org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint],strategy:org.apache.spark.mllib.tree.configuration.Strategy):(Array[Array[org.apache.spark.mllib.tree.model.Split]],Array[Array[org.apache.spark.mllib.tree.model.Bin]])"></a>
@@ -257,11 +256,26 @@ multiple groups if the level-wise training task could lead to memory overflow.
         <span class="name">findSplitsBins</span><span class="params">(<span name="input">input: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>, <span name="strategy">strategy: <a href="configuration/Strategy.html" class="extype" name="org.apache.spark.mllib.tree.configuration.Strategy">Strategy</a></span>)</span><span class="result">: (<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<a href="model/Split.html" class="extype" name="org.apache.spark.mllib.tree.model.Split">Split</a>]], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="org.apache.spark.mllib.tree.model.Bin">Bin</span>]])</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Returns split and bins for decision tree calculation.</p><div class="fullcomment"><div class="comment cmt"><p>Returns split and bins for decision tree calculation.</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a> used as training data
-             for DecisionTree</p></dd><dt class="param">strategy</dt><dd class="cmt"><p><a href="configuration/Strategy.html" class="extype" name="org.apache.spark.mllib.tree.configuration.Strategy">org.apache.spark.mllib.tree.configuration.Strategy</a> instance containing
-               parameters for construction the DecisionTree</p></dd><dt>returns</dt><dd class="cmt"><p>a tuple of (splits,bins) where splits is an Array of [org.apache.spark.mllib.tree
-        .model.Split] of size (numFeatures, numSplits-1) and bins is an Array of [org.apache
-        .spark.mllib.tree.model.Bin] of size (numFeatures, numSplits1)
+      <p class="shortcomment cmt">Returns splits and bins for decision tree calculation.</p><div class="fullcomment"><div class="comment cmt"><p>Returns splits and bins for decision tree calculation.
+Continuous and categorical features are handled differently.</p><p>Continuous features:
+  For each feature, there are numBins - 1 possible splits representing the possible binary
+  decisions at each node in the tree.</p><p>Categorical features:
+  For each feature, there is 1 bin per split.
+  Splits and bins are handled in 2 ways:
+  (a) For multiclass classification with a low-arity feature
+      (i.e., if isMulticlass &amp;&amp; isSpaceSufficientForAllCategoricalSplits),
+      the feature is split based on subsets of categories.
+      There are 2^(maxFeatureValue - 1) - 1 splits.
+  (b) For regression and binary classification,
+      and for multiclass classification with a high-arity feature,
+      there is one split per category.</p><p>Categorical case (a) features are called unordered features.
+Other cases are called ordered features.
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>Training data: RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a></p></dd><dt class="param">strategy</dt><dd class="cmt"><p><a href="configuration/Strategy.html" class="extype" name="org.apache.spark.mllib.tree.configuration.Strategy">org.apache.spark.mllib.tree.configuration.Strategy</a> instance containing
+                parameters for construction the DecisionTree</p></dd><dt>returns</dt><dd class="cmt"><p>A tuple of (splits,bins).
+        Splits is an Array of <a href="model/Split.html" class="extype" name="org.apache.spark.mllib.tree.model.Split">org.apache.spark.mllib.tree.model.Split</a>
+         of size (numFeatures, numBins - 1).
+        Bins is an Array of <span class="extype" name="org.apache.spark.mllib.tree.model.Bin">org.apache.spark.mllib.tree.model.Bin</span>
+         of size (numFeatures, numBins).
 </p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="package.html" class="extype" name="org.apache.spark.mllib.tree">org.apache.spark.mllib.tree</a>] </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
@@ -406,6 +420,19 @@ multiple groups if the level-wise training task could lead to memory overflow.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <a id="logName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
     </li><li name="org.apache.spark.Logging#logTrace" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logTrace(msg:=&gt;String,throwable:Throwable):Unit"></a>
       <a id="logTrace(⇒String,Throwable):Unit"></a>
@@ -541,12 +568,14 @@ multiple groups if the level-wise training task could lead to memory overflow.
 regression. For the binary classification, the label for each instance should either be 0 or
 1 to denote the two classes. The method also supports categorical features inputs where the
 number of categories can specified using the categoricalFeaturesInfo option.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a> used as
-             training data for DecisionTree</p></dd><dt class="param">algo</dt><dd class="cmt"><p>classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>maximum depth of the tree</p></dd><dt class="param">numClassesForClassification</dt><dd class="cmt"><p>number of classes for classification. Default value of 2.</p></dd><dt class="param">maxBins</dt><dd class="cmt"><p>maximum number of bins used for splitting features</p></dd><dt class="param">quantileCalculationStrategy</dt><dd class="cmt"><p>algorithm for calculating quantiles</p></dd><dt class="param">categoricalFeaturesInfo</dt><dd class="cmt"><p>A map storing information about the categorical variables and
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>Training dataset: RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a>.
+             For classification, labels should take values {0, 1, ..., numClasses-1}.
+             For regression, labels are real numbers.</p></dd><dt class="param">algo</dt><dd class="cmt"><p>classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>Maximum depth of the tree.
+                E.g., depth 0 means 1 leaf node; depth 1 means 1 internal node + 2 leaf nodes.</p></dd><dt class="param">numClassesForClassification</dt><dd class="cmt"><p>number of classes for classification. Default value of 2.</p></dd><dt class="param">maxBins</dt><dd class="cmt"><p>maximum number of bins used for splitting features</p></dd><dt class="param">quantileCalculationStrategy</dt><dd class="cmt"><p>algorithm for calculating quantiles</p></dd><dt class="param">categoricalFeaturesInfo</dt><dd class="cmt"><p>A map storing information about the categorical variables and
                                the number of discrete values they take. For example,
                                an entry (n -&gt; k) implies the feature n is categorical with k
                                categories 0, 1, 2, ... , k-1. It's important to note that
-                               features are zero-indexed.</p></dd><dt>returns</dt><dd class="cmt"><p>a DecisionTreeModel that can be used for prediction
+                               features are zero-indexed.</p></dd><dt>returns</dt><dd class="cmt"><p>DecisionTreeModel that can be used for prediction
 </p></dd></dl></div>
     </li><li name="org.apache.spark.mllib.tree.DecisionTree#train" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="train(input:org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint],algo:org.apache.spark.mllib.tree.configuration.Algo.Algo,impurity:org.apache.spark.mllib.tree.impurity.Impurity,maxDepth:Int,numClassesForClassification:Int):org.apache.spark.mllib.tree.model.DecisionTreeModel"></a>
@@ -565,8 +594,10 @@ number of categories can specified using the categoricalFeaturesInfo option.
 (label, features) pairs. The method supports binary classification and regression. For the
 binary classification, the label for each instance should either be 0 or 1 to denote the two
 classes.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a> used as
-             training data</p></dd><dt class="param">algo</dt><dd class="cmt"><p>algorithm, classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>impurity criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>maxDepth maximum depth of the tree</p></dd><dt class="param">numClassesForClassification</dt><dd class="cmt"><p>number of classes for classification. Default value of 2.</p></dd><dt>returns</dt><dd class="cmt"><p>a DecisionTreeModel that can be used for prediction
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>Training dataset: RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a>.
+             For classification, labels should take values {0, 1, ..., numClasses-1}.
+             For regression, labels are real numbers.</p></dd><dt class="param">algo</dt><dd class="cmt"><p>algorithm, classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>impurity criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>Maximum depth of the tree.
+                E.g., depth 0 means 1 leaf node; depth 1 means 1 internal node + 2 leaf nodes.</p></dd><dt class="param">numClassesForClassification</dt><dd class="cmt"><p>number of classes for classification. Default value of 2.</p></dd><dt>returns</dt><dd class="cmt"><p>DecisionTreeModel that can be used for prediction
 </p></dd></dl></div>
     </li><li name="org.apache.spark.mllib.tree.DecisionTree#train" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="train(input:org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint],algo:org.apache.spark.mllib.tree.configuration.Algo.Algo,impurity:org.apache.spark.mllib.tree.impurity.Impurity,maxDepth:Int):org.apache.spark.mllib.tree.model.DecisionTreeModel"></a>
@@ -585,8 +616,10 @@ classes.
 (label, features) pairs. The method supports binary classification and regression. For the
 binary classification, the label for each instance should either be 0 or 1 to denote the two
 classes.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a> used as
-             training data</p></dd><dt class="param">algo</dt><dd class="cmt"><p>algorithm, classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>impurity criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>maxDepth maximum depth of the tree</p></dd><dt>returns</dt><dd class="cmt"><p>a DecisionTreeModel that can be used for prediction
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>Training dataset: RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a>.
+             For classification, labels should take values {0, 1, ..., numClasses-1}.
+             For regression, labels are real numbers.</p></dd><dt class="param">algo</dt><dd class="cmt"><p>algorithm, classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>impurity criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>Maximum depth of the tree.
+                E.g., depth 0 means 1 leaf node; depth 1 means 1 internal node + 2 leaf nodes.</p></dd><dt>returns</dt><dd class="cmt"><p>DecisionTreeModel that can be used for prediction
 </p></dd></dl></div>
     </li><li name="org.apache.spark.mllib.tree.DecisionTree#train" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="train(input:org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint],strategy:org.apache.spark.mllib.tree.configuration.Strategy):org.apache.spark.mllib.tree.model.DecisionTreeModel"></a>
@@ -600,15 +633,13 @@ classes.
         <span class="name">train</span><span class="params">(<span name="input">input: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>, <span name="strategy">strategy: <a href="configuration/Strategy.html" class="extype" name="org.apache.spark.mllib.tree.configuration.Strategy">Strategy</a></span>)</span><span class="result">: <a href="model/DecisionTreeModel.html" class="extype" name="org.apache.spark.mllib.tree.model.DecisionTreeModel">DecisionTreeModel</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Method to train a decision tree model where the instances are represented as an RDD of
-(label, features) pairs.</p><div class="fullcomment"><div class="comment cmt"><p>Method to train a decision tree model where the instances are represented as an RDD of
-(label, features) pairs. The method supports binary classification and regression. For the
-binary classification, the label for each instance should either be 0 or 1 to denote the two
-classes. The parameters for the algorithm are specified using the strategy parameter.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a> used as training data
-             for DecisionTree</p></dd><dt class="param">strategy</dt><dd class="cmt"><p>The configuration parameters for the tree algorithm which specify the type
+      <p class="shortcomment cmt">Method to train a decision tree model.</p><div class="fullcomment"><div class="comment cmt"><p>Method to train a decision tree model.
+The method supports binary and multiclass classification and regression.
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>Training dataset: RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a>.
+             For classification, labels should take values {0, 1, ..., numClasses-1}.
+             For regression, labels are real numbers.</p></dd><dt class="param">strategy</dt><dd class="cmt"><p>The configuration parameters for the tree algorithm which specify the type
                 of algorithm (classification, regression, etc.), feature type (continuous,
-                categorical), depth of the tree, quantile calculation strategy, etc.</p></dd><dt>returns</dt><dd class="cmt"><p>a DecisionTreeModel that can be used for prediction
+                categorical), depth of the tree, quantile calculation strategy, etc.</p></dd><dt>returns</dt><dd class="cmt"><p>DecisionTreeModel that can be used for prediction
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>

@@ -42,6 +42,9 @@
           <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="JavaRDDLike.html" class="extype" name="org.apache.spark.api.java.JavaRDDLike">JavaRDDLike</a>[(<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="org.apache.spark.api.java.JavaPairRDD.V">V</span>), <a href="" class="extype" name="org.apache.spark.api.java.JavaPairRDD">JavaPairRDD</a>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="org.apache.spark.api.java.JavaPairRDD.V">V</span>]], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+          <span class="toggle">Known Subclasses</span>
+          <div class="subClasses hiddenContent"><a href="JavaHadoopRDD.html" class="extype" name="org.apache.spark.api.java.JavaHadoopRDD">JavaHadoopRDD</a>, <a href="JavaNewHadoopRDD.html" class="extype" name="org.apache.spark.api.java.JavaNewHadoopRDD">JavaNewHadoopRDD</a></div>
         </div></div>
         
 
@@ -2007,6 +2010,78 @@ partition the output RDD.
       </span>
       </h4>
       <p class="shortcomment cmt">Return a sampled subset of this RDD.</p>
+    </li><li name="org.apache.spark.api.java.JavaPairRDD#sampleByKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sampleByKey(withReplacement:Boolean,fractions:java.util.Map[K,Double]):org.apache.spark.api.java.JavaPairRDD[K,V]"></a>
+      <a id="sampleByKey(Boolean,Map[K,Double]):JavaPairRDD[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sampleByKey</span><span class="params">(<span name="withReplacement">withReplacement: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="fractions">fractions: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="scala.Double">Double</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.api.java.JavaPairRDD">JavaPairRDD</a>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="org.apache.spark.api.java.JavaPairRDD.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return a subset of this RDD sampled by key (via stratified sampling).</p><div class="fullcomment"><div class="comment cmt"><p>Return a subset of this RDD sampled by key (via stratified sampling).</p><p>Create a sample of this RDD using variable sampling rates for different keys as specified by
+<code>fractions</code>, a key to sampling rate map.</p><p>Produce a sample of size that's approximately equal to the sum of
+math.ceil(numItems * samplingRate) over all key values with one pass over the RDD via
+simple random sampling.</p><p>Use Utils.random.nextLong as the default seed for the random number generator
+</p></div></div>
+    </li><li name="org.apache.spark.api.java.JavaPairRDD#sampleByKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sampleByKey(withReplacement:Boolean,fractions:java.util.Map[K,Double],seed:Long):org.apache.spark.api.java.JavaPairRDD[K,V]"></a>
+      <a id="sampleByKey(Boolean,Map[K,Double],Long):JavaPairRDD[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sampleByKey</span><span class="params">(<span name="withReplacement">withReplacement: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="fractions">fractions: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="scala.Double">Double</span>]</span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.api.java.JavaPairRDD">JavaPairRDD</a>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="org.apache.spark.api.java.JavaPairRDD.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return a subset of this RDD sampled by key (via stratified sampling).</p><div class="fullcomment"><div class="comment cmt"><p>Return a subset of this RDD sampled by key (via stratified sampling).</p><p>Create a sample of this RDD using variable sampling rates for different keys as specified by
+<code>fractions</code>, a key to sampling rate map.</p><p>Produce a sample of size that's approximately equal to the sum of
+math.ceil(numItems * samplingRate) over all key values with one pass over the RDD via
+simple random sampling.
+</p></div></div>
+    </li><li name="org.apache.spark.api.java.JavaPairRDD#sampleByKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sampleByKey(withReplacement:Boolean,fractions:java.util.Map[K,Double],exact:Boolean):org.apache.spark.api.java.JavaPairRDD[K,V]"></a>
+      <a id="sampleByKey(Boolean,Map[K,Double],Boolean):JavaPairRDD[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sampleByKey</span><span class="params">(<span name="withReplacement">withReplacement: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="fractions">fractions: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="scala.Double">Double</span>]</span>, <span name="exact">exact: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.api.java.JavaPairRDD">JavaPairRDD</a>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="org.apache.spark.api.java.JavaPairRDD.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return a subset of this RDD sampled by key (via stratified sampling).</p><div class="fullcomment"><div class="comment cmt"><p>Return a subset of this RDD sampled by key (via stratified sampling).</p><p>Create a sample of this RDD using variable sampling rates for different keys as specified by
+<code>fractions</code>, a key to sampling rate map.</p><p>If <code>exact</code> is set to false, create the sample via simple random sampling, with one pass
+over the RDD, to produce a sample of size that's approximately equal to the sum of
+math.ceil(numItems * samplingRate) over all key values; otherwise, use additional passes over
+the RDD to create a sample size that's exactly equal to the sum of
+math.ceil(numItems * samplingRate) over all key values.</p><p>Use Utils.random.nextLong as the default seed for the random number generator
+</p></div></div>
+    </li><li name="org.apache.spark.api.java.JavaPairRDD#sampleByKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sampleByKey(withReplacement:Boolean,fractions:java.util.Map[K,Double],exact:Boolean,seed:Long):org.apache.spark.api.java.JavaPairRDD[K,V]"></a>
+      <a id="sampleByKey(Boolean,Map[K,Double],Boolean,Long):JavaPairRDD[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sampleByKey</span><span class="params">(<span name="withReplacement">withReplacement: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="fractions">fractions: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="scala.Double">Double</span>]</span>, <span name="exact">exact: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.api.java.JavaPairRDD">JavaPairRDD</a>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="org.apache.spark.api.java.JavaPairRDD.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return a subset of this RDD sampled by key (via stratified sampling).</p><div class="fullcomment"><div class="comment cmt"><p>Return a subset of this RDD sampled by key (via stratified sampling).</p><p>Create a sample of this RDD using variable sampling rates for different keys as specified by
+<code>fractions</code>, a key to sampling rate map.</p><p>If <code>exact</code> is set to false, create the sample via simple random sampling, with one pass
+over the RDD, to produce a sample of size that's approximately equal to the sum of
+math.ceil(numItems * samplingRate) over all key values; otherwise, use additional passes over
+the RDD to create a sample size that's exactly equal to the sum of
+math.ceil(numItems * samplingRate) over all key values.
+</p></div></div>
     </li><li name="org.apache.spark.api.java.JavaPairRDD#saveAsHadoopDataset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveAsHadoopDataset(conf:org.apache.hadoop.mapred.JobConf):Unit"></a>
       <a id="saveAsHadoopDataset(JobConf):Unit"></a>
@@ -2203,6 +2278,23 @@ order of the keys).
       </span>
       <span class="symbol">
         <span class="name">sortByKey</span><span class="params">(<span name="comp">comp: <span class="extype" name="java.util.Comparator">Comparator</span>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.api.java.JavaPairRDD">JavaPairRDD</a>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="org.apache.spark.api.java.JavaPairRDD.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Sort the RDD by key, so that each partition contains a sorted range of the elements.</p><div class="fullcomment"><div class="comment cmt"><p>Sort the RDD by key, so that each partition contains a sorted range of the elements. Calling
+<code>collect</code> or <code>save</code> on the resulting RDD will return or output an ordered list of records
+(in the <code>save</code> case, they will be written to multiple <code>part-X</code> files in the filesystem, in
+order of the keys).
+</p></div></div>
+    </li><li name="org.apache.spark.api.java.JavaPairRDD#sortByKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sortByKey(ascending:Boolean,numPartitions:Int):org.apache.spark.api.java.JavaPairRDD[K,V]"></a>
+      <a id="sortByKey(Boolean,Int):JavaPairRDD[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sortByKey</span><span class="params">(<span name="ascending">ascending: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.api.java.JavaPairRDD">JavaPairRDD</a>[<span class="extype" name="org.apache.spark.api.java.JavaPairRDD.K">K</span>, <span class="extype" name="org.apache.spark.api.java.JavaPairRDD.V">V</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Sort the RDD by key, so that each partition contains a sorted range of the elements.</p><div class="fullcomment"><div class="comment cmt"><p>Sort the RDD by key, so that each partition contains a sorted range of the elements. Calling

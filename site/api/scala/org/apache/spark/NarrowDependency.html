@@ -40,8 +40,8 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>:: DeveloperApi ::
-Base class for dependencies where each partition of the parent RDD is used by at most one
-partition of the child RDD.  Narrow dependencies allow for pipelined execution.
+Base class for dependencies where each partition of the child RDD depends on a small number
+of partitions of the parent RDD. Narrow dependencies allow for pipelined execution.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
@@ -89,7 +89,7 @@ partition of the child RDD.  Narrow dependencies allow for pipelined execution.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.apache.spark.NarrowDependency#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(rdd:org.apache.spark.rdd.RDD[T]):org.apache.spark.NarrowDependency[T]"></a>
+      <a id="&lt;init&gt;(_rdd:org.apache.spark.rdd.RDD[T]):org.apache.spark.NarrowDependency[T]"></a>
       <a id="&lt;init&gt;:NarrowDependency[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -97,7 +97,7 @@ partition of the child RDD.  Narrow dependencies allow for pipelined execution.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">NarrowDependency</span><span class="params">(<span name="rdd">rdd: <a href="rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.NarrowDependency.T">T</span>]</span>)</span>
+        <span class="name">NarrowDependency</span><span class="params">(<span name="_rdd">_rdd: <a href="rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.NarrowDependency.T">T</span>]</span>)</span>
       </span>
       </h4>
       
@@ -347,6 +347,19 @@ partition of the child RDD.  Narrow dependencies allow for pipelined execution.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.apache.spark.NarrowDependency#rdd" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="rdd:org.apache.spark.rdd.RDD[T]"></a>
+      <a id="rdd:RDD[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rdd</span><span class="result">: <a href="rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.NarrowDependency.T">T</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.NarrowDependency">NarrowDependency</a> → <a href="Dependency.html" class="extype" name="org.apache.spark.Dependency">Dependency</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

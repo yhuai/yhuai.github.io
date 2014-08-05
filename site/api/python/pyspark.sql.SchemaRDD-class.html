@@ -79,6 +79,9 @@ object --+
   operated on directly, as it's underlying implementation is an RDD 
   composed of Java objects. Instead it is converted to a PythonRDD in the 
   JVM, on which Python operations can be done.</p>
+  <p>This class receives raw tuples from Java but assigns a class to it in 
+  all its data-collection methods (mapPartitionsWithIndex, collect, take, 
+  etc) so that PySpark sees them as Row objects with named fields.</p>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -131,9 +134,26 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="pyspark.sql.SchemaRDD-class.html#registerAsTable" class="summary-sig-name">registerAsTable</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="pyspark.sql.SchemaRDD-class.html#registerTempTable" class="summary-sig-name">registerTempTable</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">name</span>)</span><br />
       Registers this RDD as a temporary table using the given name.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyspark.sql-pysrc.html#SchemaRDD.registerTempTable">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="registerAsTable"></a><span class="summary-sig-name">registerAsTable</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span></td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyspark.sql-pysrc.html#SchemaRDD.registerAsTable">source&nbsp;code</a></span>
             
@@ -256,6 +276,43 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="pyspark.sql.SchemaRDD-class.html#collect" class="summary-sig-name">collect</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return a list that contains all of the rows in this RDD.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyspark.sql-pysrc.html#SchemaRDD.collect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyspark.sql.SchemaRDD-class.html#mapPartitionsWithIndex" class="summary-sig-name">mapPartitionsWithIndex</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">f</span>,
+        <span class="summary-sig-arg">preservesPartitioning</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Return a new RDD by applying a function to each partition of this 
+      RDD, while tracking the index of the original partition.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyspark.sql-pysrc.html#SchemaRDD.mapPartitionsWithIndex">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="pyspark.sql.SchemaRDD-class.html#cache" class="summary-sig-name">cache</a>(<span class="summary-sig-arg">self</span>)</span><br />
       Persist this RDD with the default storage level 
       (<code>MEMORY_ONLY_SER</code>).</td>
@@ -293,7 +350,8 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="pyspark.sql.SchemaRDD-class.html#unpersist" class="summary-sig-name">unpersist</a>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyspark.sql.SchemaRDD-class.html#unpersist" class="summary-sig-name">unpersist</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">blocking</span>=<span class="summary-sig-default">True</span>)</span><br />
       Mark the RDD as non-persistent, and remove all blocks for it from 
       memory and disk.</td>
           <td align="right" valign="top">
@@ -457,7 +515,6 @@ object --+
       <code><a href="pyspark.rdd.RDD-class.html#aggregateByKey">aggregateByKey</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#cartesian">cartesian</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#cogroup">cogroup</a></code>,
-      <code><a href="pyspark.rdd.RDD-class.html#collect">collect</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#collectAsMap">collectAsMap</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#combineByKey">combineByKey</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#context">context</a></code>,
@@ -484,7 +541,6 @@ object --+
       <code><a href="pyspark.rdd.RDD-class.html#leftOuterJoin">leftOuterJoin</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#map">map</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#mapPartitions">mapPartitions</a></code>,
-      <code><a href="pyspark.rdd.RDD-class.html#mapPartitionsWithIndex">mapPartitionsWithIndex</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#mapPartitionsWithSplit">mapPartitionsWithSplit</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#mapValues">mapValues</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#max">max</a></code>,
@@ -501,7 +557,12 @@ object --+
       <code><a href="pyspark.rdd.RDD-class.html#sampleByKey">sampleByKey</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#sampleStdev">sampleStdev</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#sampleVariance">sampleVariance</a></code>,
+      <code><a href="pyspark.rdd.RDD-class.html#saveAsHadoopDataset">saveAsHadoopDataset</a></code>,
+      <code><a href="pyspark.rdd.RDD-class.html#saveAsHadoopFile">saveAsHadoopFile</a></code>,
+      <code><a href="pyspark.rdd.RDD-class.html#saveAsNewAPIHadoopDataset">saveAsNewAPIHadoopDataset</a></code>,
+      <code><a href="pyspark.rdd.RDD-class.html#saveAsNewAPIHadoopFile">saveAsNewAPIHadoopFile</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#saveAsPickleFile">saveAsPickleFile</a></code>,
+      <code><a href="pyspark.rdd.RDD-class.html#saveAsSequenceFile">saveAsSequenceFile</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#saveAsTextFile">saveAsTextFile</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#setName">setName</a></code>,
       <code><a href="pyspark.rdd.RDD-class.html#sortBy">sortBy</a></code>,
@@ -620,18 +681,18 @@ object --+
   </dl>
 </td></tr></table>
 </div>
-<a name="registerAsTable"></a>
+<a name="registerTempTable"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">registerAsTable</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">registerTempTable</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">name</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="pyspark.sql-pysrc.html#SchemaRDD.registerAsTable">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="pyspark.sql-pysrc.html#SchemaRDD.registerTempTable">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -641,7 +702,7 @@ object --+
   was used to create this SchemaRDD.</p>
 <pre class="py-doctest">
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.inferSchema(rdd)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd.registerAsTable(<span class="py-string">&quot;test&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd.registerTempTable(<span class="py-string">&quot;test&quot;</span>)
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd2 = sqlCtx.sql(<span class="py-string">&quot;select * from test&quot;</span>)
 <span class="py-prompt">&gt;&gt;&gt; </span>sorted(srdd.collect()) == sorted(srdd2.collect())
 <span class="py-output">True</span></pre>
@@ -698,6 +759,60 @@ object --+
   <dl class="fields">
     <dt>Overrides:
         <a href="pyspark.rdd.RDD-class.html#count">rdd.RDD.count</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="collect"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">collect</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.sql-pysrc.html#SchemaRDD.collect">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a list that contains all of the rows in this RDD.</p>
+  <p>Each object in the list is on Row, the fields can be accessed as 
+  attributes.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pyspark.rdd.RDD-class.html#collect">rdd.RDD.collect</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="mapPartitionsWithIndex"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">mapPartitionsWithIndex</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">f</span>,
+        <span class="sig-arg">preservesPartitioning</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.sql-pysrc.html#SchemaRDD.mapPartitionsWithIndex">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a new RDD by applying a function to each partition of this RDD,
+  while tracking the index of the original partition.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>rdd = sc.parallelize([1, 2, 3, 4], 4)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">def</span> <span class="py-defname">f</span>(splitIndex, iterator): yield splitIndex
+<span class="py-prompt">&gt;&gt;&gt; </span>rdd.mapPartitionsWithIndex(f).sum()
+<span class="py-output">6</span></pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pyspark.rdd.RDD-class.html#mapPartitionsWithIndex">rdd.RDD.mapPartitionsWithIndex</a>
     </dt>
   </dl>
 </td></tr></table>
@@ -759,7 +874,8 @@ object --+
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">unpersist</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">unpersist</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">blocking</span>=<span class="sig-default">True</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="pyspark.sql-pysrc.html#SchemaRDD.unpersist">source&nbsp;code</a></span>&nbsp;
@@ -1031,7 +1147,7 @@ object --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Jul 27 17:21:23 2014
+    Generated by Epydoc 3.0.1 on Mon Aug  4 17:24:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

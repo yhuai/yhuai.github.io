@@ -458,6 +458,19 @@ updating the internal data structures concurrently.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <a id="logName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
     </li><li name="org.apache.spark.Logging#logTrace" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logTrace(msg:=&gt;String,throwable:Throwable):Unit"></a>
       <a id="logTrace(⇒String,Throwable):Unit"></a>
@@ -623,6 +636,20 @@ updating the internal data structures concurrently.
       </h4>
       <p class="shortcomment cmt">Called when environment properties have been updated
 </p><div class="fullcomment"><div class="comment cmt"><p>Called when environment properties have been updated
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.ui.jobs.JobProgressListener">JobProgressListener</a> → <a href="../../scheduler/SparkListener.html" class="extype" name="org.apache.spark.scheduler.SparkListener">SparkListener</a></dd></dl></div>
+    </li><li name="org.apache.spark.ui.jobs.JobProgressListener#onExecutorMetricsUpdate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onExecutorMetricsUpdate(executorMetricsUpdate:org.apache.spark.scheduler.SparkListenerExecutorMetricsUpdate):Unit"></a>
+      <a id="onExecutorMetricsUpdate(SparkListenerExecutorMetricsUpdate):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onExecutorMetricsUpdate</span><span class="params">(<span name="executorMetricsUpdate">executorMetricsUpdate: <a href="../../scheduler/SparkListenerExecutorMetricsUpdate.html" class="extype" name="org.apache.spark.scheduler.SparkListenerExecutorMetricsUpdate">SparkListenerExecutorMetricsUpdate</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Called when the driver receives task metrics from an executor in a heartbeat.</p><div class="fullcomment"><div class="comment cmt"><p>Called when the driver receives task metrics from an executor in a heartbeat.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.ui.jobs.JobProgressListener">JobProgressListener</a> → <a href="../../scheduler/SparkListener.html" class="extype" name="org.apache.spark.scheduler.SparkListener">SparkListener</a></dd></dl></div>
     </li><li name="org.apache.spark.scheduler.SparkListener#onJobEnd" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="onJobEnd(jobEnd:org.apache.spark.scheduler.SparkListenerJobEnd):Unit"></a>
@@ -820,6 +847,21 @@ not need to fetch the result remotely).
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.apache.spark.ui.jobs.JobProgressListener#updateAggregateMetrics" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="updateAggregateMetrics(stageData:org.apache.spark.ui.jobs.UIData.StageUIData,execId:String,taskMetrics:org.apache.spark.executor.TaskMetrics,oldMetrics:Option[org.apache.spark.executor.TaskMetrics]):Unit"></a>
+      <a id="updateAggregateMetrics(StageUIData,String,TaskMetrics,Option[TaskMetrics]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateAggregateMetrics</span><span class="params">(<span name="stageData">stageData: <span class="extype" name="org.apache.spark.ui.jobs.UIData.StageUIData">StageUIData</span></span>, <span name="execId">execId: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="taskMetrics">taskMetrics: <a href="../../executor/TaskMetrics.html" class="extype" name="org.apache.spark.executor.TaskMetrics">TaskMetrics</a></span>, <span name="oldMetrics">oldMetrics: <span class="extype" name="scala.Option">Option</span>[<a href="../../executor/TaskMetrics.html" class="extype" name="org.apache.spark.executor.TaskMetrics">TaskMetrics</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Upon receiving new metrics for a task, updates the per-stage and per-executor-per-stage
+aggregate metrics by calculating deltas between the currently recorded metrics and the new
+metrics.</p>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

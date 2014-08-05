@@ -58,10 +58,17 @@
 </b></center><br />
 <h1 class="epydoc">Class Hierarchy</h1>
 <ul class="nomargin-top">
+    <li> <strong class="uidlink">SocketServer.BaseServer</strong>:
+      <em class="summary">Base class for server classes.</em>
+    </li>
     <li> <strong class="uidlink">collections.Iterable</strong>
     </li>
     <li> <strong class="uidlink"><a href="pyspark.mllib.util.MLUtils-class.html">pyspark.mllib.util.MLUtils</a></strong>:
       <em class="summary">Helper methods to load, save and pre-process data used in MLlib.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="pyspark.mllib.random.RandomRDDGenerators-class.html">pyspark.mllib.random.RandomRDDGenerators</a></strong>:
+      <em class="summary">Generator methods for creating RDDs comprised of i.i.d samples from
+        some distribution.</em>
     </li>
     <li> <strong class="uidlink"><a href="pyspark.sql.SQLContext-class.html">pyspark.sql.SQLContext</a></strong>:
       <em class="summary">Main entry point for SparkSQL functionality.</em>
@@ -82,34 +89,20 @@
       <em class="summary">Helper object that defines how to accumulate values of a given 
         type.</em>
     </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.ArrayType-class.html">pyspark.sql.ArrayType</a></strong>:
-      <em class="summary">Spark SQL ArrayType</em>
-    </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.BinaryType-class.html">pyspark.sql.BinaryType</a></strong>:
-      <em class="summary">Spark SQL BinaryType</em>
-    </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.BooleanType-class.html">pyspark.sql.BooleanType</a></strong>:
-      <em class="summary">Spark SQL BooleanType</em>
-    </li>
     <li> <strong class="uidlink"><a href="pyspark.broadcast.Broadcast-class.html">pyspark.broadcast.Broadcast</a></strong>:
       <em class="summary">A broadcast variable created with <a 
         href="pyspark.context.SparkContext-class.html#broadcast" 
         class="link">SparkContext.broadcast()</a>.</em>
     </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.ByteType-class.html">pyspark.sql.ByteType</a></strong>:
-      <em class="summary">Spark SQL ByteType</em>
+    <li> <strong class="uidlink">pyspark.sql.DataType</strong>:
+      <em class="summary">Spark SQL DataType</em>
     </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.DecimalType-class.html">pyspark.sql.DecimalType</a></strong>:
-      <em class="summary">Spark SQL DecimalType</em>
+    <li> <strong class="uidlink"><a href="pyspark.mllib.tree.DecisionTree-class.html">pyspark.mllib.tree.DecisionTree</a></strong>:
+      <em class="summary">Learning algorithm for a decision tree model
+for classification or regression.</em>
     </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.DoubleType-class.html">pyspark.sql.DoubleType</a></strong>:
-      <em class="summary">Spark SQL DoubleType</em>
-    </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.FloatType-class.html">pyspark.sql.FloatType</a></strong>:
-      <em class="summary">Spark SQL FloatType</em>
-    </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.IntegerType-class.html">pyspark.sql.IntegerType</a></strong>:
-      <em class="summary">Spark SQL IntegerType</em>
+    <li> <strong class="uidlink"><a href="pyspark.mllib.tree.DecisionTreeModel-class.html">pyspark.mllib.tree.DecisionTreeModel</a></strong>:
+      <em class="summary">A decision tree model for classification or regression.</em>
     </li>
     <li> <strong class="uidlink"><a href="pyspark.mllib.clustering.KMeans-class.html">pyspark.mllib.clustering.KMeans</a></strong>
     </li>
@@ -127,12 +120,6 @@
     <li> <strong class="uidlink"><a href="pyspark.mllib.regression.LinearRegressionWithSGD-class.html">pyspark.mllib.regression.LinearRegressionWithSGD</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="pyspark.mllib.classification.LogisticRegressionWithSGD-class.html">pyspark.mllib.classification.LogisticRegressionWithSGD</a></strong>
-    </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.LongType-class.html">pyspark.sql.LongType</a></strong>:
-      <em class="summary">Spark SQL LongType</em>
-    </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.MapType-class.html">pyspark.sql.MapType</a></strong>:
-      <em class="summary">Spark SQL MapType</em>
     </li>
     <li> <strong class="uidlink"><a href="pyspark.mllib.recommendation.MatrixFactorizationModel-class.html">pyspark.mllib.recommendation.MatrixFactorizationModel</a></strong>:
       <em class="summary">A matrix factorisation model trained by regularized alternating 
@@ -153,9 +140,6 @@
     </li>
     <li> <strong class="uidlink">pyspark.serializers.Serializer</strong>
     </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.ShortType-class.html">pyspark.sql.ShortType</a></strong>:
-      <em class="summary">Spark SQL ShortType</em>
-    </li>
     <li> <strong class="uidlink"><a href="pyspark.conf.SparkConf-class.html">pyspark.conf.SparkConf</a></strong>:
       <em class="summary">Configuration for a Spark application.</em>
     </li>
@@ -172,28 +156,14 @@
     </li>
     <li> <strong class="uidlink"><a href="pyspark.statcounter.StatCounter-class.html">pyspark.statcounter.StatCounter</a></strong>
     </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.StringType-class.html">pyspark.sql.StringType</a></strong>:
-      <em class="summary">Spark SQL StringType</em>
-    </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.StructField-class.html">pyspark.sql.StructField</a></strong>:
-      <em class="summary">Spark SQL StructField</em>
-    </li>
-    <li> <strong class="uidlink"><a href="pyspark.sql.StructType-class.html">pyspark.sql.StructType</a></strong>:
-      <em class="summary">Spark SQL StructType</em>
+    <li> <strong class="uidlink"><a href="pyspark.mllib.stat.Statistics-class.html">pyspark.mllib.stat.Statistics</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="pyspark.mllib.linalg.Vectors-class.html">pyspark.mllib.linalg.Vectors</a></strong>:
       <em class="summary">Factory methods for working with vectors.</em>
     </li>
-    <li> <strong class="uidlink">dict</strong>:
-      <em class="summary">dict() -&gt; new empty dictionary
-dict(mapping) -&gt; new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -&gt; new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs
-    in the keyword argument list.</em>
+    <li> <strong class="uidlink">tuple</strong>:
+      <em class="summary">tuple() -&gt; empty tuple tuple(iterable) -&gt; tuple initialized 
+        from iterable's items</em>
     </li>
     <li> <strong class="uidlink">type</strong>:
       <em class="summary">type(object) -&gt; the object's type type(name, bases, dict) -&gt; 
@@ -233,7 +203,7 @@ dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Jul 27 17:21:23 2014
+    Generated by Epydoc 3.0.1 on Mon Aug  4 17:24:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

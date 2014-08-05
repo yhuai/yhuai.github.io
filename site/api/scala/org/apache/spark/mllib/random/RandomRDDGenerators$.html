@@ -40,7 +40,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>:: Experimental ::
-Generator methods for creating RDDs comprised of i.i.d samples from some distribution.
+Generator methods for creating RDDs comprised of i.i.d. samples from some distribution.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
@@ -298,8 +298,9 @@ Generator methods for creating RDDs comprised of i.i.d samples from some distrib
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples from the standard normal distribution.
-sc.defaultParallelism used for the number of partitions in the RDD.
+Generates an RDD comprised of i.i.d. samples from the standard normal distribution.
+sc.defaultParallelism used for the number of partitions in the RDD.</p><p>To transform the distribution in the generated RDD from standard normal to some other normal
+N(mean, sigma), use <code>RandomRDDGenerators.normalRDD(sc, n).map(v =&gt; mean + sigma * v)</code>.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples ~ N(0.0, 1.0).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
@@ -319,7 +320,8 @@ sc.defaultParallelism used for the number of partitions in the RDD.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples from the standard normal distribution.
+Generates an RDD comprised of i.i.d. samples from the standard normal distribution.</p><p>To transform the distribution in the generated RDD from standard normal to some other normal
+N(mean, sigma), use <code>RandomRDDGenerators.normalRDD(sc, n, p).map(v =&gt; mean + sigma * v)</code>.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples ~ N(0.0, 1.0).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
@@ -339,7 +341,8 @@ Generates an RDD comprised of i.i.d samples from the standard normal distributio
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples from the standard normal distribution.
+Generates an RDD comprised of i.i.d. samples from the standard normal distribution.</p><p>To transform the distribution in the generated RDD from standard normal to some other normal
+N(mean, sigma), use <code>RandomRDDGenerators.normalRDD(sc, n, p, seed).map(v =&gt; mean + sigma * v)</code>.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples ~ N(0.0, 1.0).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
@@ -359,10 +362,10 @@ Generates an RDD comprised of i.i.d samples from the standard normal distributio
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples drawn from the
+Generates an RDD[Vector] with vectors containing i.i.d. samples drawn from the
 standard normal distribution.
 sc.defaultParallelism used for the number of partitions in the RDD.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples ~ N(0.0, 1.0).
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples ~ N(0.0, 1.0).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
@@ -381,9 +384,9 @@ sc.defaultParallelism used for the number of partitions in the RDD.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples drawn from the
+Generates an RDD[Vector] with vectors containing i.i.d. samples drawn from the
 standard normal distribution.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples ~ N(0.0, 1.0).
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples ~ N(0.0, 1.0).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
@@ -402,9 +405,9 @@ standard normal distribution.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples drawn from the
+Generates an RDD[Vector] with vectors containing i.i.d. samples drawn from the
 standard normal distribution.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples ~ N(0.0, 1.0).
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples ~ N(0.0, 1.0).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
@@ -449,7 +452,7 @@ standard normal distribution.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples from the Poisson distribution with the input mean.
+Generates an RDD comprised of i.i.d. samples from the Poisson distribution with the input mean.
 sc.defaultParallelism used for the number of partitions in the RDD.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">mean</dt><dd class="cmt"><p>Mean, or lambda, for the Poisson distribution.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples ~ Pois(mean).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
@@ -470,7 +473,7 @@ sc.defaultParallelism used for the number of partitions in the RDD.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples from the Poisson distribution with the input mean.
+Generates an RDD comprised of i.i.d. samples from the Poisson distribution with the input mean.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">mean</dt><dd class="cmt"><p>Mean, or lambda, for the Poisson distribution.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples ~ Pois(mean).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
@@ -490,7 +493,7 @@ Generates an RDD comprised of i.i.d samples from the Poisson distribution with t
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples from the Poisson distribution with the input mean.
+Generates an RDD comprised of i.i.d. samples from the Poisson distribution with the input mean.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">mean</dt><dd class="cmt"><p>Mean, or lambda, for the Poisson distribution.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples ~ Pois(mean).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
@@ -510,10 +513,10 @@ Generates an RDD comprised of i.i.d samples from the Poisson distribution with t
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples drawn from the
+Generates an RDD[Vector] with vectors containing i.i.d. samples drawn from the
 Poisson distribution with the input mean.
 sc.defaultParallelism used for the number of partitions in the RDD.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">mean</dt><dd class="cmt"><p>Mean, or lambda, for the Poisson distribution.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples ~ Pois(mean).
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">mean</dt><dd class="cmt"><p>Mean, or lambda, for the Poisson distribution.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples ~ Pois(mean).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
@@ -532,9 +535,9 @@ sc.defaultParallelism used for the number of partitions in the RDD.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples drawn from the
+Generates an RDD[Vector] with vectors containing i.i.d. samples drawn from the
 Poisson distribution with the input mean.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">mean</dt><dd class="cmt"><p>Mean, or lambda, for the Poisson distribution.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples ~ Pois(mean).
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">mean</dt><dd class="cmt"><p>Mean, or lambda, for the Poisson distribution.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples ~ Pois(mean).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
@@ -553,28 +556,28 @@ Poisson distribution with the input mean.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples drawn from the
+Generates an RDD[Vector] with vectors containing i.i.d. samples drawn from the
 Poisson distribution with the input mean.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">mean</dt><dd class="cmt"><p>Mean, or lambda, for the Poisson distribution.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples ~ Pois(mean).
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">mean</dt><dd class="cmt"><p>Mean, or lambda, for the Poisson distribution.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples ~ Pois(mean).
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="org.apache.spark.mllib.random.RandomRDDGenerators#randomRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="randomRDD(sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.DistributionGenerator,size:Long):org.apache.spark.rdd.RDD[Double]"></a>
-      <a id="randomRDD(SparkContext,DistributionGenerator,Long):RDD[Double]"></a>
+      <a id="randomRDD[T](sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.RandomDataGenerator[T],size:Long)(implicitevidence$3:scala.reflect.ClassTag[T]):org.apache.spark.rdd.RDD[T]"></a>
+      <a id="randomRDD[T](SparkContext,RandomDataGenerator[T],Long)(ClassTag[T]):RDD[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">randomRDD</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></span>, <span name="size">size: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Double">Double</span>]</span>
+        <span class="name">randomRDD</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="org.apache.spark.mllib.random.RandomRDDGenerators.randomRDD.T">T</span>]</span>, <span name="size">size: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.mllib.random.RandomRDDGenerators.randomRDD.T">T</span>]</span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.mllib.random.RandomRDDGenerators.randomRDD.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples produced by the input DistributionGenerator.
+Generates an RDD comprised of i.i.d. samples produced by the input DistributionGenerator.
 sc.defaultParallelism used for the number of partitions in the RDD.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">generator</dt><dd class="cmt"><p>DistributionGenerator used to populate the RDD.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples produced by generator.
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
@@ -582,105 +585,105 @@ sc.defaultParallelism used for the number of partitions in the RDD.
               
         </dd></dl></div>
     </li><li name="org.apache.spark.mllib.random.RandomRDDGenerators#randomRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="randomRDD(sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.DistributionGenerator,size:Long,numPartitions:Int):org.apache.spark.rdd.RDD[Double]"></a>
-      <a id="randomRDD(SparkContext,DistributionGenerator,Long,Int):RDD[Double]"></a>
+      <a id="randomRDD[T](sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.RandomDataGenerator[T],size:Long,numPartitions:Int)(implicitevidence$2:scala.reflect.ClassTag[T]):org.apache.spark.rdd.RDD[T]"></a>
+      <a id="randomRDD[T](SparkContext,RandomDataGenerator[T],Long,Int)(ClassTag[T]):RDD[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">randomRDD</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></span>, <span name="size">size: <span class="extype" name="scala.Long">Long</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Double">Double</span>]</span>
+        <span class="name">randomRDD</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="org.apache.spark.mllib.random.RandomRDDGenerators.randomRDD.T">T</span>]</span>, <span name="size">size: <span class="extype" name="scala.Long">Long</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.mllib.random.RandomRDDGenerators.randomRDD.T">T</span>]</span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.mllib.random.RandomRDDGenerators.randomRDD.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples produced by the input DistributionGenerator.
+Generates an RDD comprised of i.i.d. samples produced by the input DistributionGenerator.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">generator</dt><dd class="cmt"><p>DistributionGenerator used to populate the RDD.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples produced by generator.
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="org.apache.spark.mllib.random.RandomRDDGenerators#randomRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="randomRDD(sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.DistributionGenerator,size:Long,numPartitions:Int,seed:Long):org.apache.spark.rdd.RDD[Double]"></a>
-      <a id="randomRDD(SparkContext,DistributionGenerator,Long,Int,Long):RDD[Double]"></a>
+      <a id="randomRDD[T](sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.RandomDataGenerator[T],size:Long,numPartitions:Int,seed:Long)(implicitevidence$1:scala.reflect.ClassTag[T]):org.apache.spark.rdd.RDD[T]"></a>
+      <a id="randomRDD[T](SparkContext,RandomDataGenerator[T],Long,Int,Long)(ClassTag[T]):RDD[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">randomRDD</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></span>, <span name="size">size: <span class="extype" name="scala.Long">Long</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Double">Double</span>]</span>
+        <span class="name">randomRDD</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="org.apache.spark.mllib.random.RandomRDDGenerators.randomRDD.T">T</span>]</span>, <span name="size">size: <span class="extype" name="scala.Long">Long</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.mllib.random.RandomRDDGenerators.randomRDD.T">T</span>]</span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.mllib.random.RandomRDDGenerators.randomRDD.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples produced by the input DistributionGenerator.
+Generates an RDD comprised of i.i.d. samples produced by the input DistributionGenerator.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">generator</dt><dd class="cmt"><p>DistributionGenerator used to populate the RDD.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples produced by generator.
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="org.apache.spark.mllib.random.RandomRDDGenerators#randomVectorRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="randomVectorRDD(sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.DistributionGenerator,numRows:Long,numCols:Int):org.apache.spark.rdd.RDD[org.apache.spark.mllib.linalg.Vector]"></a>
-      <a id="randomVectorRDD(SparkContext,DistributionGenerator,Long,Int):RDD[Vector]"></a>
+      <a id="randomVectorRDD(sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.RandomDataGenerator[Double],numRows:Long,numCols:Int):org.apache.spark.rdd.RDD[org.apache.spark.mllib.linalg.Vector]"></a>
+      <a id="randomVectorRDD(SparkContext,RandomDataGenerator[Double],Long,Int):RDD[Vector]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">randomVectorRDD</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></span>, <span name="numRows">numRows: <span class="extype" name="scala.Long">Long</span></span>, <span name="numCols">numCols: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../linalg/Vector.html" class="extype" name="org.apache.spark.mllib.linalg.Vector">Vector</a>]</span>
+        <span class="name">randomVectorRDD</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="numRows">numRows: <span class="extype" name="scala.Long">Long</span></span>, <span name="numCols">numCols: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../linalg/Vector.html" class="extype" name="org.apache.spark.mllib.linalg.Vector">Vector</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples produced by the
+Generates an RDD[Vector] with vectors containing i.i.d. samples produced by the
 input DistributionGenerator.
 sc.defaultParallelism used for the number of partitions in the RDD.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">generator</dt><dd class="cmt"><p>DistributionGenerator used to populate the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples produced by generator.
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">generator</dt><dd class="cmt"><p>DistributionGenerator used to populate the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples produced by generator.
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="org.apache.spark.mllib.random.RandomRDDGenerators#randomVectorRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="randomVectorRDD(sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.DistributionGenerator,numRows:Long,numCols:Int,numPartitions:Int):org.apache.spark.rdd.RDD[org.apache.spark.mllib.linalg.Vector]"></a>
-      <a id="randomVectorRDD(SparkContext,DistributionGenerator,Long,Int,Int):RDD[Vector]"></a>
+      <a id="randomVectorRDD(sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.RandomDataGenerator[Double],numRows:Long,numCols:Int,numPartitions:Int):org.apache.spark.rdd.RDD[org.apache.spark.mllib.linalg.Vector]"></a>
+      <a id="randomVectorRDD(SparkContext,RandomDataGenerator[Double],Long,Int,Int):RDD[Vector]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">randomVectorRDD</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></span>, <span name="numRows">numRows: <span class="extype" name="scala.Long">Long</span></span>, <span name="numCols">numCols: <span class="extype" name="scala.Int">Int</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../linalg/Vector.html" class="extype" name="org.apache.spark.mllib.linalg.Vector">Vector</a>]</span>
+        <span class="name">randomVectorRDD</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="numRows">numRows: <span class="extype" name="scala.Long">Long</span></span>, <span name="numCols">numCols: <span class="extype" name="scala.Int">Int</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../linalg/Vector.html" class="extype" name="org.apache.spark.mllib.linalg.Vector">Vector</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples produced by the
+Generates an RDD[Vector] with vectors containing i.i.d. samples produced by the
 input DistributionGenerator.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">generator</dt><dd class="cmt"><p>DistributionGenerator used to populate the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples produced by generator.
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">generator</dt><dd class="cmt"><p>DistributionGenerator used to populate the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples produced by generator.
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="org.apache.spark.mllib.random.RandomRDDGenerators#randomVectorRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="randomVectorRDD(sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.DistributionGenerator,numRows:Long,numCols:Int,numPartitions:Int,seed:Long):org.apache.spark.rdd.RDD[org.apache.spark.mllib.linalg.Vector]"></a>
-      <a id="randomVectorRDD(SparkContext,DistributionGenerator,Long,Int,Int,Long):RDD[Vector]"></a>
+      <a id="randomVectorRDD(sc:org.apache.spark.SparkContext,generator:org.apache.spark.mllib.random.RandomDataGenerator[Double],numRows:Long,numCols:Int,numPartitions:Int,seed:Long):org.apache.spark.rdd.RDD[org.apache.spark.mllib.linalg.Vector]"></a>
+      <a id="randomVectorRDD(SparkContext,RandomDataGenerator[Double],Long,Int,Int,Long):RDD[Vector]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">randomVectorRDD</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></span>, <span name="numRows">numRows: <span class="extype" name="scala.Long">Long</span></span>, <span name="numCols">numCols: <span class="extype" name="scala.Int">Int</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../linalg/Vector.html" class="extype" name="org.apache.spark.mllib.linalg.Vector">Vector</a>]</span>
+        <span class="name">randomVectorRDD</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="generator">generator: <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="numRows">numRows: <span class="extype" name="scala.Long">Long</span></span>, <span name="numCols">numCols: <span class="extype" name="scala.Int">Int</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../linalg/Vector.html" class="extype" name="org.apache.spark.mllib.linalg.Vector">Vector</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples produced by the
+Generates an RDD[Vector] with vectors containing i.i.d. samples produced by the
 input DistributionGenerator.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">generator</dt><dd class="cmt"><p>DistributionGenerator used to populate the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples produced by generator.
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">generator</dt><dd class="cmt"><p>DistributionGenerator used to populate the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples produced by generator.
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
@@ -725,8 +728,9 @@ input DistributionGenerator.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples from the uniform distribution on [0.0, 1.0].
-sc.defaultParallelism used for the number of partitions in the RDD.
+Generates an RDD comprised of i.i.d. samples from the uniform distribution on [0.0, 1.0].
+sc.defaultParallelism used for the number of partitions in the RDD.</p><p>To transform the distribution in the generated RDD from U[0.0, 1.0] to U[a, b], use
+<code>RandomRDDGenerators.uniformRDD(sc, n).map(v =&gt; a + (b - a) * v)</code>.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples ~ U[0.0, 1.0].
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
@@ -746,7 +750,8 @@ sc.defaultParallelism used for the number of partitions in the RDD.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples from the uniform distribution on [0.0, 1.0].
+Generates an RDD comprised of i.i.d. samples from the uniform distribution on [0.0, 1.0].</p><p>To transform the distribution in the generated RDD from U[0.0, 1.0] to U[a, b], use
+<code>RandomRDDGenerators.uniformRDD(sc, n, p).map(v =&gt; a + (b - a) * v)</code>.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples ~ U[0.0, 1.0].
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
@@ -766,7 +771,8 @@ Generates an RDD comprised of i.i.d samples from the uniform distribution on [0.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD comprised of i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD comprised of i.i.d samples from the uniform distribution on [0.0, 1.0].
+Generates an RDD comprised of i.i.d. samples from the uniform distribution on [0.0, 1.0].</p><p>To transform the distribution in the generated RDD from U[0.0, 1.0] to U[a, b], use
+<code>RandomRDDGenerators.uniformRDD(sc, n, p, seed).map(v =&gt; a + (b - a) * v)</code>.
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">size</dt><dd class="cmt"><p>Size of the RDD.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Double] comprised of i.i.d. samples ~ U[0.0, 1.0].
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
@@ -786,10 +792,10 @@ Generates an RDD comprised of i.i.d samples from the uniform distribution on [0.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples drawn from the
+Generates an RDD[Vector] with vectors containing i.i.d. samples drawn from the
 uniform distribution on [0.0 1.0].
 sc.defaultParallelism used for the number of partitions in the RDD.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples ~ U[0.0, 1.0].
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples ~ U[0.0, 1.0].
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
@@ -808,9 +814,9 @@ sc.defaultParallelism used for the number of partitions in the RDD.
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples drawn from the
+Generates an RDD[Vector] with vectors containing i.i.d. samples drawn from the
 uniform distribution on [0.0 1.0].
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples ~ U[0.0, 1.0].
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d. samples ~ U[0.0, 1.0].
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
@@ -829,7 +835,7 @@ uniform distribution on [0.0 1.0].
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
 Generates an RDD[Vector] with vectors containing i.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
-Generates an RDD[Vector] with vectors containing i.i.d samples drawn from the
+Generates an RDD[Vector] with vectors containing i.i.d. samples drawn from the
 uniform distribution on [0.0 1.0].
 </p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext used to create the RDD.</p></dd><dt class="param">numRows</dt><dd class="cmt"><p>Number of Vectors in the RDD.</p></dd><dt class="param">numCols</dt><dd class="cmt"><p>Number of elements in each Vector.</p></dd><dt class="param">numPartitions</dt><dd class="cmt"><p>Number of partitions in the RDD.</p></dd><dt class="param">seed</dt><dd class="cmt"><p>Seed for the RNG that generates the seed for the generator in each partition.</p></dd><dt>returns</dt><dd class="cmt"><p>RDD[Vector] with vectors containing i.i.d samples ~ U[0.0, 1.0].
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>

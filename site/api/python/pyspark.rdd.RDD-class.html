@@ -1011,6 +1011,125 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="pyspark.rdd.RDD-class.html#saveAsNewAPIHadoopDataset" class="summary-sig-name">saveAsNewAPIHadoopDataset</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">conf</span>,
+        <span class="summary-sig-arg">keyConverter</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">valueConverter</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Output a Python RDD of key-value pairs (of form <code>RDD[(K, 
+      V)]</code>) to any Hadoop file system, using the new Hadoop 
+      OutputFormat API (mapreduce package).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyspark.rdd-pysrc.html#RDD.saveAsNewAPIHadoopDataset">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyspark.rdd.RDD-class.html#saveAsNewAPIHadoopFile" class="summary-sig-name">saveAsNewAPIHadoopFile</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>,
+        <span class="summary-sig-arg">outputFormatClass</span>,
+        <span class="summary-sig-arg">keyClass</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">valueClass</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">keyConverter</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">valueConverter</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">conf</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Output a Python RDD of key-value pairs (of form <code>RDD[(K, 
+      V)]</code>) to any Hadoop file system, using the new Hadoop 
+      OutputFormat API (mapreduce package).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyspark.rdd-pysrc.html#RDD.saveAsNewAPIHadoopFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyspark.rdd.RDD-class.html#saveAsHadoopDataset" class="summary-sig-name">saveAsHadoopDataset</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">conf</span>,
+        <span class="summary-sig-arg">keyConverter</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">valueConverter</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Output a Python RDD of key-value pairs (of form <code>RDD[(K, 
+      V)]</code>) to any Hadoop file system, using the old Hadoop 
+      OutputFormat API (mapred package).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyspark.rdd-pysrc.html#RDD.saveAsHadoopDataset">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyspark.rdd.RDD-class.html#saveAsHadoopFile" class="summary-sig-name">saveAsHadoopFile</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>,
+        <span class="summary-sig-arg">outputFormatClass</span>,
+        <span class="summary-sig-arg">keyClass</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">valueClass</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">keyConverter</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">valueConverter</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">conf</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">compressionCodecClass</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Output a Python RDD of key-value pairs (of form <code>RDD[(K, 
+      V)]</code>) to any Hadoop file system, using the old Hadoop 
+      OutputFormat API (mapred package).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyspark.rdd-pysrc.html#RDD.saveAsHadoopFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyspark.rdd.RDD-class.html#saveAsSequenceFile" class="summary-sig-name">saveAsSequenceFile</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>,
+        <span class="summary-sig-arg">compressionCodecClass</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Output a Python RDD of key-value pairs (of form <code>RDD[(K, 
+      V)]</code>) to any Hadoop file system, using the <code 
+      class="link">org.apache.hadoop.io.Writable</code> types that we 
+      convert from the RDD's key and value types.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyspark.rdd-pysrc.html#RDD.saveAsSequenceFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="pyspark.rdd.RDD-class.html#saveAsPickleFile" class="summary-sig-name">saveAsPickleFile</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">path</span>,
         <span class="summary-sig-arg">batchSize</span>=<span class="summary-sig-default">10</span>)</span><br />
@@ -2709,6 +2828,205 @@ object --+
   </dl>
 </td></tr></table>
 </div>
+<a name="saveAsNewAPIHadoopDataset"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">saveAsNewAPIHadoopDataset</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">conf</span>,
+        <span class="sig-arg">keyConverter</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">valueConverter</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.rdd-pysrc.html#RDD.saveAsNewAPIHadoopDataset">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Output a Python RDD of key-value pairs (of form <code>RDD[(K, 
+  V)]</code>) to any Hadoop file system, using the new Hadoop OutputFormat 
+  API (mapreduce package). Keys/values are converted for output using 
+  either user specified converters or, by default, <code 
+  class="link">org.apache.spark.api.python.JavaToWritableConverter</code>.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>conf</code></strong> - Hadoop job configuration, passed in as a dict</li>
+        <li><strong class="pname"><code>keyConverter</code></strong> - (None by default)</li>
+        <li><strong class="pname"><code>valueConverter</code></strong> - (None by default)</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="saveAsNewAPIHadoopFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">saveAsNewAPIHadoopFile</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">path</span>,
+        <span class="sig-arg">outputFormatClass</span>,
+        <span class="sig-arg">keyClass</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">valueClass</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">keyConverter</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">valueConverter</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">conf</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.rdd-pysrc.html#RDD.saveAsNewAPIHadoopFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Output a Python RDD of key-value pairs (of form <code>RDD[(K, 
+  V)]</code>) to any Hadoop file system, using the new Hadoop OutputFormat 
+  API (mapreduce package). Key and value types will be inferred if not 
+  specified. Keys and values are converted for output using either user 
+  specified converters or <code 
+  class="link">org.apache.spark.api.python.JavaToWritableConverter</code>. 
+  The <code>conf</code> is applied on top of the base Hadoop conf 
+  associated with the SparkContext of this RDD to create a merged Hadoop 
+  MapReduce job configuration for saving the data.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>path</code></strong> - path to Hadoop file</li>
+        <li><strong class="pname"><code>outputFormatClass</code></strong> - fully qualified classname of Hadoop OutputFormat (e.g. 
+          &quot;org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat&quot;)</li>
+        <li><strong class="pname"><code>keyClass</code></strong> - fully qualified classname of key Writable class (e.g. 
+          &quot;org.apache.hadoop.io.IntWritable&quot;, None by default)</li>
+        <li><strong class="pname"><code>valueClass</code></strong> - fully qualified classname of value Writable class (e.g. 
+          &quot;org.apache.hadoop.io.Text&quot;, None by default)</li>
+        <li><strong class="pname"><code>keyConverter</code></strong> - (None by default)</li>
+        <li><strong class="pname"><code>valueConverter</code></strong> - (None by default)</li>
+        <li><strong class="pname"><code>conf</code></strong> - Hadoop job configuration, passed in as a dict (None by default)</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="saveAsHadoopDataset"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">saveAsHadoopDataset</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">conf</span>,
+        <span class="sig-arg">keyConverter</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">valueConverter</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.rdd-pysrc.html#RDD.saveAsHadoopDataset">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Output a Python RDD of key-value pairs (of form <code>RDD[(K, 
+  V)]</code>) to any Hadoop file system, using the old Hadoop OutputFormat 
+  API (mapred package). Keys/values are converted for output using either 
+  user specified converters or, by default, <code 
+  class="link">org.apache.spark.api.python.JavaToWritableConverter</code>.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>conf</code></strong> - Hadoop job configuration, passed in as a dict</li>
+        <li><strong class="pname"><code>keyConverter</code></strong> - (None by default)</li>
+        <li><strong class="pname"><code>valueConverter</code></strong> - (None by default)</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="saveAsHadoopFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">saveAsHadoopFile</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">path</span>,
+        <span class="sig-arg">outputFormatClass</span>,
+        <span class="sig-arg">keyClass</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">valueClass</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">keyConverter</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">valueConverter</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">conf</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">compressionCodecClass</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.rdd-pysrc.html#RDD.saveAsHadoopFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Output a Python RDD of key-value pairs (of form <code>RDD[(K, 
+  V)]</code>) to any Hadoop file system, using the old Hadoop OutputFormat 
+  API (mapred package). Key and value types will be inferred if not 
+  specified. Keys and values are converted for output using either user 
+  specified converters or <code 
+  class="link">org.apache.spark.api.python.JavaToWritableConverter</code>. 
+  The <code>conf</code> is applied on top of the base Hadoop conf 
+  associated with the SparkContext of this RDD to create a merged Hadoop 
+  MapReduce job configuration for saving the data.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>path</code></strong> - path to Hadoop file</li>
+        <li><strong class="pname"><code>outputFormatClass</code></strong> - fully qualified classname of Hadoop OutputFormat (e.g. 
+          &quot;org.apache.hadoop.mapred.SequenceFileOutputFormat&quot;)</li>
+        <li><strong class="pname"><code>keyClass</code></strong> - fully qualified classname of key Writable class (e.g. 
+          &quot;org.apache.hadoop.io.IntWritable&quot;, None by default)</li>
+        <li><strong class="pname"><code>valueClass</code></strong> - fully qualified classname of value Writable class (e.g. 
+          &quot;org.apache.hadoop.io.Text&quot;, None by default)</li>
+        <li><strong class="pname"><code>keyConverter</code></strong> - (None by default)</li>
+        <li><strong class="pname"><code>valueConverter</code></strong> - (None by default)</li>
+        <li><strong class="pname"><code>conf</code></strong> - (None by default)</li>
+        <li><strong class="pname"><code>compressionCodecClass</code></strong> - (None by default)</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="saveAsSequenceFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">saveAsSequenceFile</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">path</span>,
+        <span class="sig-arg">compressionCodecClass</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.rdd-pysrc.html#RDD.saveAsSequenceFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Output a Python RDD of key-value pairs (of form <code>RDD[(K, 
+  V)]</code>) to any Hadoop file system, using the <code 
+  class="link">org.apache.hadoop.io.Writable</code> types that we convert 
+  from the RDD's key and value types. The mechanism is as follows:</p>
+  <ol start="1">
+    <li>
+      Pyrolite is used to convert pickled Python RDD into RDD of Java 
+      objects.
+    </li>
+    <li>
+      Keys and values of this Java RDD are converted to Writables and 
+      written out.
+    </li>
+  </ol>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>path</code></strong> - path to sequence file</li>
+        <li><strong class="pname"><code>compressionCodecClass</code></strong> - (None by default)</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
 <a name="saveAsPickleFile"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -3570,7 +3888,7 @@ object --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Jul 27 17:21:23 2014
+    Generated by Epydoc 3.0.1 on Mon Aug  4 17:24:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

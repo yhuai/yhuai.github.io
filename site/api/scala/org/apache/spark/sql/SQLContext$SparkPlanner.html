@@ -119,7 +119,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">Strategy</span><span class="result"> extends <span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span></span>
+        <span class="name">Strategy</span><span class="result"> extends <a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>QueryPlanner</dd></dl></div>
@@ -234,6 +234,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SparkStrategies</dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkStrategies.HashAggregation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HashAggregation"></a>
+      <a id="HashAggregation:HashAggregation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <span class="name">HashAggregation</span><span class="result"> extends <a href="#StrategyextendsLogging" class="extmbr" name="org.apache.spark.sql.SQLContext.SparkPlanner.Strategy">Strategy</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SparkStrategies</dd></dl></div>
     </li><li name="org.apache.spark.sql.execution.SparkStrategies.HashJoin" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="HashJoin"></a>
       <a id="HashJoin:HashJoin"></a>
@@ -248,7 +261,14 @@
       </h4>
       <p class="shortcomment cmt">Uses the ExtractEquiJoinKeys pattern to find joins where at least some of the predicates can be
 evaluated by matching hash keys.</p><div class="fullcomment"><div class="comment cmt"><p>Uses the ExtractEquiJoinKeys pattern to find joins where at least some of the predicates can be
-evaluated by matching hash keys.
+evaluated by matching hash keys.</p><p>This strategy applies a simple optimization based on the estimates of the physical sizes of
+the two join sides.  When planning a <a href="execution/BroadcastHashJoin.html" class="extype" name="org.apache.spark.sql.execution.BroadcastHashJoin">execution.BroadcastHashJoin</a>, if one side has an
+estimated physical size smaller than the user-settable threshold
+<a href="SQLConf$.html#AUTO_BROADCASTJOIN_THRESHOLD:String" class="extmbr" name="org.apache.spark.sql.SQLConf#AUTO_BROADCASTJOIN_THRESHOLD">org.apache.spark.sql.SQLConf.AUTO_BROADCASTJOIN_THRESHOLD</a>, the planner would mark it as the
+<i>build</i> relation and mark the other relation as the <i>stream</i> side.  The build table will be
+<i>broadcasted</i> to all of the executors involved in the join, as a
+<a href="../broadcast/Broadcast.html" class="extype" name="org.apache.spark.broadcast.Broadcast">org.apache.spark.broadcast.Broadcast</a> object.  If both estimates exceed the threshold, they
+will instead be used to decide the build side in a <a href="execution/ShuffledHashJoin.html" class="extype" name="org.apache.spark.sql.execution.ShuffledHashJoin">execution.ShuffledHashJoin</a>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>SparkStrategies</dd></dl></div>
     </li><li name="org.apache.spark.sql.execution.SparkStrategies.InMemoryScans" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="InMemoryScans"></a>
@@ -286,19 +306,6 @@ evaluated by matching hash keys.
       </span>
       <span class="symbol">
         <span class="name">ParquetOperations</span><span class="result"> extends <a href="#StrategyextendsLogging" class="extmbr" name="org.apache.spark.sql.SQLContext.SparkPlanner.Strategy">Strategy</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SparkStrategies</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.SparkStrategies.PartialAggregation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="PartialAggregation"></a>
-      <a id="PartialAggregation:PartialAggregation"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <span class="name">PartialAggregation</span><span class="result"> extends <a href="#StrategyextendsLogging" class="extmbr" name="org.apache.spark.sql.SQLContext.SparkPlanner.Strategy">Strategy</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SparkStrategies</dd></dl></div>
@@ -360,19 +367,19 @@ evaluated by matching hash keys.
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.SparkStrategies#convertToCatalyst" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="convertToCatalyst(a:Any):Any"></a>
-      <a id="convertToCatalyst(Any):Any"></a>
+    </li><li name="org.apache.spark.sql.SQLContext.SparkPlanner#codegenEnabled" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="codegenEnabled:Boolean"></a>
+      <a id="codegenEnabled:Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">convertToCatalyst</span><span class="params">(<span name="a">a: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
+        <span class="name">codegenEnabled</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SparkStrategies</dd></dl></div>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>

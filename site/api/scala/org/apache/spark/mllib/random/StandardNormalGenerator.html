@@ -35,7 +35,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">StandardNormalGenerator</span><span class="result"> extends <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></span>
+        <span class="name">StandardNormalGenerator</span><span class="result"> extends <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       </h4>
       
@@ -46,7 +46,7 @@ Generates i.i.d. samples from the standard normal distribution.
               
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="../../util/random/Pseudorandom.html" class="extype" name="org.apache.spark.util.random.Pseudorandom">Pseudorandom</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="scala.Double">Double</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="../../util/random/Pseudorandom.html" class="extype" name="org.apache.spark.util.random.Pseudorandom">Pseudorandom</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -64,7 +64,7 @@ Generates i.i.d. samples from the standard normal distribution.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.apache.spark.mllib.random.StandardNormalGenerator"><span>StandardNormalGenerator</span></li><li class="in" name="org.apache.spark.mllib.random.DistributionGenerator"><span>DistributionGenerator</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.util.random.Pseudorandom"><span>Pseudorandom</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.apache.spark.mllib.random.StandardNormalGenerator"><span>StandardNormalGenerator</span></li><li class="in" name="org.apache.spark.mllib.random.RandomDataGenerator"><span>RandomDataGenerator</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.util.random.Pseudorandom"><span>Pseudorandom</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -215,10 +215,10 @@ Generates i.i.d. samples from the standard normal distribution.
         <span class="name">copy</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.apache.spark.mllib.random.StandardNormalGenerator">StandardNormalGenerator</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Returns a copy of the DistributionGenerator with a new instance of the rng object used in the
-class when applicable for non-locking concurrent usage.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a copy of the DistributionGenerator with a new instance of the rng object used in the
+      <p class="shortcomment cmt">Returns a copy of the RandomDataGenerator with a new instance of the rng object used in the
+class when applicable for non-locking concurrent usage.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a copy of the RandomDataGenerator with a new instance of the rng object used in the
 class when applicable for non-locking concurrent usage.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.random.StandardNormalGenerator">StandardNormalGenerator</a> → <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.random.StandardNormalGenerator">StandardNormalGenerator</a> → <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -328,8 +328,8 @@ class when applicable for non-locking concurrent usage.
         <span class="name">nextValue</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Returns an i.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an i.i.d. sample as a Double from an underlying distribution.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.random.StandardNormalGenerator">StandardNormalGenerator</a> → <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></dd></dl></div>
+      <p class="shortcomment cmt">Returns an i.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an i.i.d. sample as a generic type from an underlying distribution.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.random.StandardNormalGenerator">StandardNormalGenerator</a> → <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a></dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
@@ -461,8 +461,8 @@ class when applicable for non-locking concurrent usage.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="org.apache.spark.mllib.random.DistributionGenerator">
-              <h3>Inherited from <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></h3>
+        <div class="parent" name="org.apache.spark.mllib.random.RandomDataGenerator">
+              <h3>Inherited from <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="scala.Double">Double</span>]</h3>
             </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">

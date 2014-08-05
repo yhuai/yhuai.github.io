@@ -35,7 +35,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">SparkLogicalPlan</span><span class="params">(<span name="alreadyPlanned">alreadyPlanned: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;SparkLogicalPlan&quot;</span></span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.BaseRelation">BaseRelation</span> with <span class="extype" name="org.apache.spark.sql.catalyst.analysis.MultiInstanceRelation">MultiInstanceRelation</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">SparkLogicalPlan</span><span class="params">(<span name="alreadyPlanned">alreadyPlanned: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>)</span><span class="params">(<span name="sqlContext">sqlContext: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span> with <span class="extype" name="org.apache.spark.sql.catalyst.analysis.MultiInstanceRelation">MultiInstanceRelation</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -50,7 +50,7 @@ linking.
               
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="org.apache.spark.sql.catalyst.analysis.MultiInstanceRelation">MultiInstanceRelation</span>, <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.BaseRelation">BaseRelation</span>, <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LeafNode">catalyst.plans.logical.LeafNode</span>, <span class="extype" name="org.apache.spark.sql.catalyst.trees.LeafNode">catalyst.trees.LeafNode</span>[<span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span>], <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span>, <span class="extype" name="org.apache.spark.sql.catalyst.plans.QueryPlan">QueryPlan</span>[<span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span>], <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[<span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="org.apache.spark.sql.catalyst.analysis.MultiInstanceRelation">MultiInstanceRelation</span>, <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span>, <span class="extype" name="org.apache.spark.sql.catalyst.plans.QueryPlan">QueryPlan</span>[<span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span>], <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[<span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -68,7 +68,7 @@ linking.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.apache.spark.sql.execution.SparkLogicalPlan"><span>SparkLogicalPlan</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="org.apache.spark.sql.catalyst.analysis.MultiInstanceRelation"><span>MultiInstanceRelation</span></li><li class="in" name="org.apache.spark.sql.catalyst.plans.logical.BaseRelation"><span>BaseRelation</span></li><li class="in" name="org.apache.spark.sql.catalyst.plans.logical.LeafNode"><span>LeafNode</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.LeafNode"><span>LeafNode</span></li><li class="in" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan"><span>LogicalPlan</span></li><li class="in" name="org.apache.spark.sql.catalyst.plans.QueryPlan"><span>QueryPlan</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.TreeNode"><span>TreeNode</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.apache.spark.sql.execution.SparkLogicalPlan"><span>SparkLogicalPlan</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="org.apache.spark.sql.catalyst.analysis.MultiInstanceRelation"><span>MultiInstanceRelation</span></li><li class="in" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan"><span>LogicalPlan</span></li><li class="in" name="org.apache.spark.sql.catalyst.plans.QueryPlan"><span>QueryPlan</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.TreeNode"><span>TreeNode</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -89,7 +89,7 @@ linking.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.apache.spark.sql.execution.SparkLogicalPlan#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(alreadyPlanned:org.apache.spark.sql.execution.SparkPlan,tableName:String):org.apache.spark.sql.execution.SparkLogicalPlan"></a>
+      <a id="&lt;init&gt;(alreadyPlanned:org.apache.spark.sql.execution.SparkPlan)(sqlContext:org.apache.spark.sql.SQLContext):org.apache.spark.sql.execution.SparkLogicalPlan"></a>
       <a id="&lt;init&gt;:SparkLogicalPlan"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -97,14 +97,30 @@ linking.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">SparkLogicalPlan</span><span class="params">(<span name="alreadyPlanned">alreadyPlanned: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>, <span name="tableName">tableName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;SparkLogicalPlan&quot;</span></span>)</span>
+        <span class="name">SparkLogicalPlan</span><span class="params">(<span name="alreadyPlanned">alreadyPlanned: <a href="SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></span>)</span><span class="params">(<span name="sqlContext">sqlContext: <a href="../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>)</span>
       </span>
       </h4>
       
     </li></ol>
             </div>
 
-        
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.Statistics" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="StatisticsextendsProductwithSerializable"></a>
+      <a id="Statistics:(LogicalPlan.this)#Statistics"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Statistics</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LogicalPlan</dd></dl></div>
+    </li></ol>
+            </div>
 
         
 
@@ -252,7 +268,7 @@ linking.
         <span class="name">children</span><span class="result">: <span class="extype" name="scala.collection.immutable.Nil">Nil</span>.type</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.SparkLogicalPlan">SparkLogicalPlan</a> → LeafNode → TreeNode</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.SparkLogicalPlan">SparkLogicalPlan</a> → TreeNode</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan#childrenResolved" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="childrenResolved:Boolean"></a>
       <a id="childrenResolved:Boolean"></a>
@@ -641,7 +657,7 @@ linking.
         <span class="name">references</span><span class="result">: <span class="extype" name="scala.collection.immutable.Set">Set</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.SparkLogicalPlan">SparkLogicalPlan</a> → LeafNode → LogicalPlan</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.SparkLogicalPlan">SparkLogicalPlan</a> → LogicalPlan</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan#resolve" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resolve(name:&lt;?&gt;):Option[org.apache.spark.sql.catalyst.expressions.NamedExpression]"></a>
       <a id="resolve(String):Option[NamedExpression]"></a>
@@ -720,6 +736,19 @@ linking.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkLogicalPlan#statistics" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="statistics:SparkLogicalPlan.this.Statistics"></a>
+      <a id="statistics:Statistics"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">statistics</span><span class="result">: <a href="#StatisticsextendsProductwithSerializable" class="extmbr" name="org.apache.spark.sql.execution.SparkLogicalPlan.Statistics">Statistics</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.SparkLogicalPlan">SparkLogicalPlan</a> → LogicalPlan</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#stringArgs" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="stringArgs:Iterator[Any]"></a>
       <a id="stringArgs:Iterator[Any]"></a>
@@ -746,19 +775,6 @@ linking.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.apache.spark.sql.execution.SparkLogicalPlan#tableName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="tableName:String"></a>
-      <a id="tableName:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">tableName</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.execution.SparkLogicalPlan">SparkLogicalPlan</a> → BaseRelation</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
@@ -991,12 +1007,6 @@ linking.
               <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
             </div><div class="parent" name="org.apache.spark.sql.catalyst.analysis.MultiInstanceRelation">
               <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.analysis.MultiInstanceRelation">MultiInstanceRelation</span></h3>
-            </div><div class="parent" name="org.apache.spark.sql.catalyst.plans.logical.BaseRelation">
-              <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.BaseRelation">BaseRelation</span></h3>
-            </div><div class="parent" name="org.apache.spark.sql.catalyst.plans.logical.LeafNode">
-              <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LeafNode">catalyst.plans.logical.LeafNode</span></h3>
-            </div><div class="parent" name="org.apache.spark.sql.catalyst.trees.LeafNode">
-              <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.trees.LeafNode">catalyst.trees.LeafNode</span>[<span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span>]</h3>
             </div><div class="parent" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">
               <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.plans.logical.LogicalPlan">LogicalPlan</span></h3>
             </div><div class="parent" name="org.apache.spark.sql.catalyst.plans.QueryPlan">

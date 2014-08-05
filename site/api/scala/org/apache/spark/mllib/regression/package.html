@@ -194,6 +194,35 @@ GeneralizedLinearAlgorithm.</p>
       </span>
       </h4>
       <p class="comment cmt">Train a regression model with L2-regularization using Stochastic Gradient Descent.</p>
+    </li><li name="org.apache.spark.mllib.regression.StreamingLinearAlgorithm" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="StreamingLinearAlgorithm[M&lt;:org.apache.spark.mllib.regression.GeneralizedLinearModel,A&lt;:org.apache.spark.mllib.regression.GeneralizedLinearAlgorithm[M]]extendsLogging"></a>
+      <a id="StreamingLinearAlgorithm[M&lt;:GeneralizedLinearModel,A&lt;:GeneralizedLinearAlgorithm[M]]:StreamingLinearAlgorithm[M,A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="StreamingLinearAlgorithm.html"><span class="name">StreamingLinearAlgorithm</span></a><span class="tparams">[<span name="M">M &lt;: <a href="GeneralizedLinearModel.html" class="extype" name="org.apache.spark.mllib.regression.GeneralizedLinearModel">GeneralizedLinearModel</a></span>, <span name="A">A &lt;: <a href="GeneralizedLinearAlgorithm.html" class="extype" name="org.apache.spark.mllib.regression.GeneralizedLinearAlgorithm">GeneralizedLinearAlgorithm</a>[<span class="extype" name="org.apache.spark.mllib.regression.StreamingLinearAlgorithm.M">M</span>]</span>]</span><span class="result"> extends <a href="../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">:: DeveloperApi ::
+StreamingLinearAlgorithm implements methods for continuously
+training a generalized linear model model on streaming data,
+and using it for prediction on (possibly different) streaming data.</p>
+    </li><li name="org.apache.spark.mllib.regression.StreamingLinearRegressionWithSGD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StreamingLinearRegressionWithSGDextendsStreamingLinearAlgorithm[org.apache.spark.mllib.regression.LinearRegressionModel,org.apache.spark.mllib.regression.LinearRegressionWithSGD]withSerializable"></a>
+      <a id="StreamingLinearRegressionWithSGD:StreamingLinearRegressionWithSGD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="StreamingLinearRegressionWithSGD.html"><span class="name">StreamingLinearRegressionWithSGD</span></a><span class="result"> extends <a href="StreamingLinearAlgorithm.html" class="extype" name="org.apache.spark.mllib.regression.StreamingLinearAlgorithm">StreamingLinearAlgorithm</a>[<a href="LinearRegressionModel.html" class="extype" name="org.apache.spark.mllib.regression.LinearRegressionModel">LinearRegressionModel</a>, <a href="LinearRegressionWithSGD.html" class="extype" name="org.apache.spark.mllib.regression.LinearRegressionWithSGD">LinearRegressionWithSGD</a>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Train or predict a linear regression model on streaming data.</p>
     </li></ol>
             </div>
 

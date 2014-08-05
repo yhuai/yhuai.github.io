@@ -40,7 +40,8 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>:: DeveloperApi ::
-Storage information for each BlockManager.
+Storage information for each BlockManager.</p><p>This class assumes BlockId and BlockStatus are immutable, such that the consumers of this
+class cannot mutate the source of the information. Accesses are not thread-safe.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
@@ -85,7 +86,7 @@ Storage information for each BlockManager.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.apache.spark.storage.StorageStatus#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(blockManagerId:org.apache.spark.storage.BlockManagerId,maxMem:Long,blocks:scala.collection.mutable.Map[org.apache.spark.storage.BlockId,org.apache.spark.storage.BlockStatus]):org.apache.spark.storage.StorageStatus"></a>
+      <a id="&lt;init&gt;(bmid:org.apache.spark.storage.BlockManagerId,maxMem:Long,initialBlocks:scala.collection.Map[org.apache.spark.storage.BlockId,org.apache.spark.storage.BlockStatus]):org.apache.spark.storage.StorageStatus"></a>
       <a id="&lt;init&gt;:StorageStatus"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -93,7 +94,20 @@ Storage information for each BlockManager.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">StorageStatus</span><span class="params">(<span name="blockManagerId">blockManagerId: <a href="BlockManagerId.html" class="extype" name="org.apache.spark.storage.BlockManagerId">BlockManagerId</a></span>, <span name="maxMem">maxMem: <span class="extype" name="scala.Long">Long</span></span>, <span name="blocks">blocks: <span class="extype" name="scala.collection.mutable.Map">Map</span>[<a href="BlockId.html" class="extype" name="org.apache.spark.storage.BlockId">BlockId</a>, <a href="BlockStatus.html" class="extype" name="org.apache.spark.storage.BlockStatus">BlockStatus</a>] = <span class="defval" name="scala.collection.mutable.Map.empty[org.apache.spark.storage.BlockId, org.apache.spark.storage.BlockStatus]">...</span></span>)</span>
+        <span class="name">StorageStatus</span><span class="params">(<span name="bmid">bmid: <a href="BlockManagerId.html" class="extype" name="org.apache.spark.storage.BlockManagerId">BlockManagerId</a></span>, <span name="maxMem">maxMem: <span class="extype" name="scala.Long">Long</span></span>, <span name="initialBlocks">initialBlocks: <span class="extype" name="scala.collection.Map">Map</span>[<a href="BlockId.html" class="extype" name="org.apache.spark.storage.BlockId">BlockId</a>, <a href="BlockStatus.html" class="extype" name="org.apache.spark.storage.BlockStatus">BlockStatus</a>]</span>)</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a storage status with an initial set of blocks, leaving the source unmodified.</p>
+    </li><li name="org.apache.spark.storage.StorageStatus#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(blockManagerId:org.apache.spark.storage.BlockManagerId,maxMem:Long):org.apache.spark.storage.StorageStatus"></a>
+      <a id="&lt;init&gt;:StorageStatus"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">StorageStatus</span><span class="params">(<span name="blockManagerId">blockManagerId: <a href="BlockManagerId.html" class="extype" name="org.apache.spark.storage.BlockManagerId">BlockManagerId</a></span>, <span name="maxMem">maxMem: <span class="extype" name="scala.Long">Long</span></span>)</span>
       </span>
       </h4>
       
@@ -197,19 +211,22 @@ Storage information for each BlockManager.
       </span>
       </h4>
       
-    </li><li name="org.apache.spark.storage.StorageStatus#blocks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="blocks:scala.collection.mutable.Map[org.apache.spark.storage.BlockId,org.apache.spark.storage.BlockStatus]"></a>
+    </li><li name="org.apache.spark.storage.StorageStatus#blocks" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="blocks:scala.collection.Map[org.apache.spark.storage.BlockId,org.apache.spark.storage.BlockStatus]"></a>
       <a id="blocks:Map[BlockId,BlockStatus]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">blocks</span><span class="result">: <span class="extype" name="scala.collection.mutable.Map">Map</span>[<a href="BlockId.html" class="extype" name="org.apache.spark.storage.BlockId">BlockId</a>, <a href="BlockStatus.html" class="extype" name="org.apache.spark.storage.BlockStatus">BlockStatus</a>]</span>
+        <span class="name">blocks</span><span class="result">: <span class="extype" name="scala.collection.Map">Map</span>[<a href="BlockId.html" class="extype" name="org.apache.spark.storage.BlockId">BlockId</a>, <a href="BlockStatus.html" class="extype" name="org.apache.spark.storage.BlockStatus">BlockStatus</a>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Return the blocks stored in this block manager.</p><div class="fullcomment"><div class="comment cmt"><p>Return the blocks stored in this block manager.</p><p>Note that this is somewhat expensive, as it involves cloning the underlying maps and then
+concatenating them together. Much faster alternatives exist for common operations such as
+contains, get, and size.
+</p></div></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -229,6 +246,21 @@ Storage information for each BlockManager.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="org.apache.spark.storage.StorageStatus#containsBlock" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="containsBlock(blockId:org.apache.spark.storage.BlockId):Boolean"></a>
+      <a id="containsBlock(BlockId):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">containsBlock</span><span class="params">(<span name="blockId">blockId: <a href="BlockId.html" class="extype" name="org.apache.spark.storage.BlockId">BlockId</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return whether the given block is stored in this block manager in O(1) time.</p><div class="fullcomment"><div class="comment cmt"><p>Return whether the given block is stored in this block manager in O(1) time.
+Note that this is much faster than <code>this.blocks.contains</code>, which is O(blocks) time.
+</p></div></div>
     </li><li name="org.apache.spark.storage.StorageStatus#diskUsed" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="diskUsed:Long"></a>
       <a id="diskUsed:Long"></a>
@@ -241,20 +273,20 @@ Storage information for each BlockManager.
         <span class="name">diskUsed</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
       </span>
       </h4>
-      
-    </li><li name="org.apache.spark.storage.StorageStatus#diskUsedByRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="diskUsedByRDD(rddId:Int):Long"></a>
-      <a id="diskUsedByRDD(Int):Long"></a>
+      <p class="shortcomment cmt">Return the disk space used by this block manager.</p>
+    </li><li name="org.apache.spark.storage.StorageStatus#diskUsedByRdd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="diskUsedByRdd(rddId:Int):Long"></a>
+      <a id="diskUsedByRdd(Int):Long"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">diskUsedByRDD</span><span class="params">(<span name="rddId">rddId: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+        <span class="name">diskUsedByRdd</span><span class="params">(<span name="rddId">rddId: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Return the disk space used by the given RDD in this block manager in O(1) time.</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -300,6 +332,21 @@ Storage information for each BlockManager.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="org.apache.spark.storage.StorageStatus#getBlock" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBlock(blockId:org.apache.spark.storage.BlockId):Option[org.apache.spark.storage.BlockStatus]"></a>
+      <a id="getBlock(BlockId):Option[BlockStatus]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getBlock</span><span class="params">(<span name="blockId">blockId: <a href="BlockId.html" class="extype" name="org.apache.spark.storage.BlockId">BlockId</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="BlockStatus.html" class="extype" name="org.apache.spark.storage.BlockStatus">BlockStatus</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return the given block stored in this block manager in O(1) time.</p><div class="fullcomment"><div class="comment cmt"><p>Return the given block stored in this block manager in O(1) time.
+Note that this is much faster than <code>this.blocks.get</code>, which is O(blocks) time.
+</p></div></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -364,7 +411,7 @@ Storage information for each BlockManager.
         <span class="name">memRemaining</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Return the memory remaining in this block manager.</p>
     </li><li name="org.apache.spark.storage.StorageStatus#memUsed" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="memUsed:Long"></a>
       <a id="memUsed:Long"></a>
@@ -377,20 +424,20 @@ Storage information for each BlockManager.
         <span class="name">memUsed</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
       </span>
       </h4>
-      
-    </li><li name="org.apache.spark.storage.StorageStatus#memUsedByRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="memUsedByRDD(rddId:Int):Long"></a>
-      <a id="memUsedByRDD(Int):Long"></a>
+      <p class="shortcomment cmt">Return the memory used by this block manager.</p>
+    </li><li name="org.apache.spark.storage.StorageStatus#memUsedByRdd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="memUsedByRdd(rddId:Int):Long"></a>
+      <a id="memUsedByRdd(Int):Long"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">memUsedByRDD</span><span class="params">(<span name="rddId">rddId: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+        <span class="name">memUsedByRdd</span><span class="params">(<span name="rddId">rddId: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Return the memory used by the given RDD in this block manager in O(1) time.</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -430,19 +477,120 @@ Storage information for each BlockManager.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.apache.spark.storage.StorageStatus#rddBlocks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="rddBlocks:scala.collection.mutable.Map[org.apache.spark.storage.RDDBlockId,org.apache.spark.storage.BlockStatus]"></a>
-      <a id="rddBlocks:Map[RDDBlockId,BlockStatus]"></a>
+    </li><li name="org.apache.spark.storage.StorageStatus#numBlocks" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="numBlocks:Int"></a>
+      <a id="numBlocks:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">rddBlocks</span><span class="result">: <span class="extype" name="scala.collection.mutable.Map">Map</span>[<a href="RDDBlockId.html" class="extype" name="org.apache.spark.storage.RDDBlockId">RDDBlockId</a>, <a href="BlockStatus.html" class="extype" name="org.apache.spark.storage.BlockStatus">BlockStatus</a>]</span>
+        <span class="name">numBlocks</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Return the number of blocks stored in this block manager in O(RDDs) time.</p><div class="fullcomment"><div class="comment cmt"><p>Return the number of blocks stored in this block manager in O(RDDs) time.
+Note that this is much faster than <code>this.blocks.size</code>, which is O(blocks) time.
+</p></div></div>
+    </li><li name="org.apache.spark.storage.StorageStatus#numRddBlocks" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="numRddBlocks:Int"></a>
+      <a id="numRddBlocks:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">numRddBlocks</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return the number of RDD blocks stored in this block manager in O(RDDs) time.</p><div class="fullcomment"><div class="comment cmt"><p>Return the number of RDD blocks stored in this block manager in O(RDDs) time.
+Note that this is much faster than <code>this.rddBlocks.size</code>, which is O(RDD blocks) time.
+</p></div></div>
+    </li><li name="org.apache.spark.storage.StorageStatus#numRddBlocksById" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="numRddBlocksById(rddId:Int):Int"></a>
+      <a id="numRddBlocksById(Int):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">numRddBlocksById</span><span class="params">(<span name="rddId">rddId: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return the number of blocks that belong to the given RDD in O(1) time.</p><div class="fullcomment"><div class="comment cmt"><p>Return the number of blocks that belong to the given RDD in O(1) time.
+Note that this is much faster than <code>this.rddBlocksById(rddId).size</code>, which is
+O(blocks in this RDD) time.
+</p></div></div>
+    </li><li name="org.apache.spark.storage.StorageStatus#offHeapUsed" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="offHeapUsed:Long"></a>
+      <a id="offHeapUsed:Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">offHeapUsed</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return the off-heap space used by this block manager.</p>
+    </li><li name="org.apache.spark.storage.StorageStatus#offHeapUsedByRdd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="offHeapUsedByRdd(rddId:Int):Long"></a>
+      <a id="offHeapUsedByRdd(Int):Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">offHeapUsedByRdd</span><span class="params">(<span name="rddId">rddId: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return the off-heap space used by the given RDD in this block manager in O(1) time.</p>
+    </li><li name="org.apache.spark.storage.StorageStatus#rddBlocks" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="rddBlocks:scala.collection.Map[org.apache.spark.storage.BlockId,org.apache.spark.storage.BlockStatus]"></a>
+      <a id="rddBlocks:Map[BlockId,BlockStatus]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rddBlocks</span><span class="result">: <span class="extype" name="scala.collection.Map">Map</span>[<a href="BlockId.html" class="extype" name="org.apache.spark.storage.BlockId">BlockId</a>, <a href="BlockStatus.html" class="extype" name="org.apache.spark.storage.BlockStatus">BlockStatus</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return the RDD blocks stored in this block manager.</p><div class="fullcomment"><div class="comment cmt"><p>Return the RDD blocks stored in this block manager.</p><p>Note that this is somewhat expensive, as it involves cloning the underlying maps and then
+concatenating them together. Much faster alternatives exist for common operations such as
+getting the memory, disk, and off-heap memory sizes occupied by this RDD.
+</p></div></div>
+    </li><li name="org.apache.spark.storage.StorageStatus#rddBlocksById" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="rddBlocksById(rddId:Int):scala.collection.Map[org.apache.spark.storage.BlockId,org.apache.spark.storage.BlockStatus]"></a>
+      <a id="rddBlocksById(Int):Map[BlockId,BlockStatus]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rddBlocksById</span><span class="params">(<span name="rddId">rddId: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.collection.Map">Map</span>[<a href="BlockId.html" class="extype" name="org.apache.spark.storage.BlockId">BlockId</a>, <a href="BlockStatus.html" class="extype" name="org.apache.spark.storage.BlockStatus">BlockStatus</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return the blocks that belong to the given RDD stored in this block manager.</p>
+    </li><li name="org.apache.spark.storage.StorageStatus#rddStorageLevel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="rddStorageLevel(rddId:Int):Option[org.apache.spark.storage.StorageLevel]"></a>
+      <a id="rddStorageLevel(Int):Option[StorageLevel]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rddStorageLevel</span><span class="params">(<span name="rddId">rddId: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="StorageLevel.html" class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return the storage level, if any, used by the given RDD in this block manager.</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

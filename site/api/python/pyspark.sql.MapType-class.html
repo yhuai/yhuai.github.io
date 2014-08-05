@@ -61,14 +61,24 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class MapType</h1><p class="nomargin-top"><span class="codelink"><a href="pyspark.sql-pysrc.html#MapType">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-object --+
-         |
-        <strong class="uidshort">MapType</strong>
+object --+    
+         |    
+  DataType --+
+             |
+            <strong class="uidshort">MapType</strong>
 </pre>
 
 <hr />
 <p>Spark SQL MapType</p>
-  <p>The data type representing dict values.</p>
+  <p>The data type representing dict values. A MapType object comprises 
+  three fields, keyType (a DataType), valueType (a DataType) and 
+  valueContainsNull (a bool).</p>
+  <p>The field of keyType is used to specify the type of keys in the map. 
+  The field of valueType is used to specify the type of values in the map. 
+  The field of valueContainsNull is used to specify if values of this map 
+  has None values.</p>
+  <p>For values of a MapType column, keys are not allowed to have None 
+  values.</p>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -86,7 +96,8 @@ object --+
         <tr>
           <td><span class="summary-sig"><a href="pyspark.sql.MapType-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">keyType</span>,
-        <span class="summary-sig-arg">valueType</span>)</span><br />
+        <span class="summary-sig-arg">valueType</span>,
+        <span class="summary-sig-arg">valueContainsNull</span>=<span class="summary-sig-default">True</span>)</span><br />
       Creates a MapType :param keyType: the data type of keys.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyspark.sql-pysrc.html#MapType.__init__">source&nbsp;code</a></span>
@@ -103,27 +114,10 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="__eq__"></a><span class="summary-sig-name">__eq__</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">other</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyspark.sql.MapType-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      repr(x)</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyspark.sql-pysrc.html#MapType.__eq__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="__ne__"></a><span class="summary-sig-name">__ne__</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">other</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyspark.sql-pysrc.html#MapType.__ne__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyspark.sql-pysrc.html#MapType.__repr__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -133,15 +127,18 @@ object --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>DataType</code></b>:
+      <code>__eq__</code>,
+      <code>__hash__</code>,
+      <code>__ne__</code>
+      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
       <code>__getattribute__</code>,
-      <code>__hash__</code>,
       <code>__new__</code>,
       <code>__reduce__</code>,
       <code>__reduce_ex__</code>,
-      <code>__repr__</code>,
       <code>__setattr__</code>,
       <code>__sizeof__</code>,
       <code>__str__</code>,
@@ -184,7 +181,8 @@ object --+
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">keyType</span>,
-        <span class="sig-arg">valueType</span>)</span>
+        <span class="sig-arg">valueType</span>,
+        <span class="sig-arg">valueContainsNull</span>=<span class="sig-default">True</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -193,15 +191,42 @@ object --+
   </tr></table>
   
   <p>Creates a MapType :param keyType: the data type of keys. :param 
-  valueType: the data type of values. :return:</p>
+  valueType: the data type of values. :param valueContainsNull: indicates 
+  whether values contains null values.</p>
 <pre class="py-doctest">
-<span class="py-prompt">&gt;&gt;&gt; </span>MapType(StringType, IntegerType) == MapType(StringType, IntegerType)
+<span class="py-prompt">&gt;&gt;&gt; </span>(MapType(StringType, IntegerType)
+<span class="py-more">... </span>       == MapType(StringType, IntegerType, True))
 <span class="py-output">True</span>
-<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>MapType(StringType, IntegerType) == MapType(StringType, FloatType)
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>(MapType(StringType, IntegerType, False)
+<span class="py-more">... </span>       == MapType(StringType, FloatType))
 <span class="py-output">False</span></pre>
   <dl class="fields">
     <dt>Overrides:
         object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.sql-pysrc.html#MapType.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>repr(x)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
+        <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
 </td></tr></table>
@@ -238,7 +263,7 @@ object --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Jul 27 17:21:23 2014
+    Generated by Epydoc 3.0.1 on Mon Aug  4 17:24:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

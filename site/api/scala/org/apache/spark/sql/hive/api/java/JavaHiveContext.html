@@ -42,7 +42,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The entry point for executing Spark SQL queries from a Java program.
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../../../api/java/JavaSQLContext.html" class="extype" name="org.apache.spark.sql.api.java.JavaSQLContext">JavaSQLContext</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../../../api/java/JavaSQLContext.html" class="extype" name="org.apache.spark.sql.api.java.JavaSQLContext">JavaSQLContext</a>, <span class="extype" name="org.apache.spark.sql.api.java.UDFRegistration">api.java.UDFRegistration</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -51,7 +51,7 @@
         <div id="order">
               <span class="filtertype">Ordering</span>
               <ol>
-                
+                <li class="group out"><span>Grouped</span></li>
                 <li class="alpha in"><span>Alphabetic</span></li>
                 <li class="inherit out"><span>By inheritance</span></li>
               </ol>
@@ -60,7 +60,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.apache.spark.sql.hive.api.java.JavaHiveContext"><span>JavaHiveContext</span></li><li class="in" name="org.apache.spark.sql.api.java.JavaSQLContext"><span>JavaSQLContext</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.apache.spark.sql.hive.api.java.JavaHiveContext"><span>JavaHiveContext</span></li><li class="in" name="org.apache.spark.sql.api.java.JavaSQLContext"><span>JavaSQLContext</span></li><li class="in" name="org.apache.spark.sql.api.java.UDFRegistration"><span>UDFRegistration</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -168,15 +168,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#applySchema" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="applySchema(rowRDD:org.apache.spark.api.java.JavaRDD[org.apache.spark.sql.api.java.Row],schema:org.apache.spark.sql.api.java.types.StructType):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
-      <a id="applySchema(JavaRDD[api.java.Row],api.java.types.StructType):JavaSchemaRDD"></a>
+      <a id="applySchema(rowRDD:org.apache.spark.api.java.JavaRDD[org.apache.spark.sql.api.java.Row],schema:org.apache.spark.sql.api.java.StructType):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
+      <a id="applySchema(JavaRDD[api.java.Row],api.java.StructType):JavaSchemaRDD"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">applySchema</span><span class="params">(<span name="rowRDD">rowRDD: <a href="../../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<a href="../../../api/java/Row.html" class="extype" name="org.apache.spark.sql.api.java.Row">api.java.Row</a>]</span>, <span name="schema">schema: <a href="../../../api/java/types/StructType.html" class="extype" name="org.apache.spark.sql.api.java.types.StructType">api.java.types.StructType</a></span>)</span><span class="result">: <a href="../../../api/java/JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
+        <span class="name">applySchema</span><span class="params">(<span name="rowRDD">rowRDD: <a href="../../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<a href="../../../api/java/Row.html" class="extype" name="org.apache.spark.sql.api.java.Row">api.java.Row</a>]</span>, <span name="schema">schema: <a href="../../../api/java/StructType.html" class="extype" name="org.apache.spark.sql.api.java.StructType">api.java.StructType</a></span>)</span><span class="result">: <a href="../../../api/java/JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::
@@ -252,7 +252,7 @@ a table.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental
 Creates an empty parquet file with the schema of class <code>beanClass</code>, which can be registered as
 a table. This registered table can be used as the target of future <code>insertInto</code> operations.</p><pre>JavaSQLContext sqlCtx = <span class="kw">new</span> JavaSQLContext(...)
 
-sqlCtx.createParquetFile(Person.<span class="kw">class</span>, <span class="lit">"path/to/file.parquet"</span>).registerAsTable(<span class="lit">"people"</span>)
+sqlCtx.createParquetFile(Person.<span class="kw">class</span>, <span class="lit">"path/to/file.parquet"</span>).registerTempTable(<span class="lit">"people"</span>)
 sqlCtx.sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</pre></div><dl class="paramcmts block"><dt class="param">beanClass</dt><dd class="cmt"><p>A java bean class object that will be used to determine the schema of the
                  parquet file.</p></dd><dt class="param">path</dt><dd class="cmt"><p>The path where the directory containing parquet metadata should be created.
             Data inserted into this table will also be stored at this location.</p></dd><dt class="param">allowExisting</dt><dd class="cmt"><p>When false, an exception will be thrown if this directory already exists.</p></dd><dt class="param">conf</dt><dd class="cmt"><p>A Hadoop configuration object that can be used to specific options to the parquet
@@ -345,7 +345,7 @@ sqlCtx.sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.hive.api.java.JavaHiveContext#hql" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="org.apache.spark.sql.hive.api.java.JavaHiveContext#hql" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hql(hqlQuery:String):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
       <a id="hql(String):JavaSchemaRDD"></a>
       <h4 class="signature">
@@ -357,7 +357,11 @@ sqlCtx.sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</
         <span class="name">hql</span><span class="params">(<span name="hqlQuery">hqlQuery: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../api/java/JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Executes a query expressed in HiveQL, returning the result as a JavaSchemaRDD.</p>
+      <p class="shortcomment cmt">DEPRECATED: Use sql(.</p><div class="fullcomment"><div class="comment cmt"><p>DEPRECATED: Use sql(...) Instead
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+        </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -372,15 +376,15 @@ sqlCtx.sql(<span class="lit">"INSERT INTO people SELECT 'michael', 29"</span>)</
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#jsonFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="jsonFile(path:String,schema:org.apache.spark.sql.api.java.types.StructType):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
-      <a id="jsonFile(String,api.java.types.StructType):JavaSchemaRDD"></a>
+      <a id="jsonFile(path:String,schema:org.apache.spark.sql.api.java.StructType):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
+      <a id="jsonFile(String,api.java.StructType):JavaSchemaRDD"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">jsonFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="schema">schema: <a href="../../../api/java/types/StructType.html" class="extype" name="org.apache.spark.sql.api.java.types.StructType">api.java.types.StructType</a></span>)</span><span class="result">: <a href="../../../api/java/JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
+        <span class="name">jsonFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="schema">schema: <a href="../../../api/java/StructType.html" class="extype" name="org.apache.spark.sql.api.java.StructType">api.java.StructType</a></span>)</span><span class="result">: <a href="../../../api/java/JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
@@ -408,15 +412,15 @@ returning the result as a JavaSchemaRDD.
 It goes through the entire dataset once to determine the schema.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../api/java/JavaSQLContext.html" class="extype" name="org.apache.spark.sql.api.java.JavaSQLContext">JavaSQLContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#jsonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="jsonRDD(json:org.apache.spark.api.java.JavaRDD[String],schema:org.apache.spark.sql.api.java.types.StructType):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
-      <a id="jsonRDD(JavaRDD[String],api.java.types.StructType):JavaSchemaRDD"></a>
+      <a id="jsonRDD(json:org.apache.spark.api.java.JavaRDD[String],schema:org.apache.spark.sql.api.java.StructType):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
+      <a id="jsonRDD(JavaRDD[String],api.java.StructType):JavaSchemaRDD"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">jsonRDD</span><span class="params">(<span name="json">json: <a href="../../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="schema">schema: <a href="../../../api/java/types/StructType.html" class="extype" name="org.apache.spark.sql.api.java.types.StructType">api.java.types.StructType</a></span>)</span><span class="result">: <a href="../../../api/java/JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
+        <span class="name">jsonRDD</span><span class="params">(<span name="json">json: <a href="../../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="schema">schema: <a href="../../../api/java/StructType.html" class="extype" name="org.apache.spark.sql.api.java.StructType">api.java.StructType</a></span>)</span><span class="result">: <a href="../../../api/java/JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">:: Experimental ::
@@ -441,8 +445,8 @@ returning the result as a JavaSchemaRDD.
       </span>
       </h4>
       <p class="shortcomment cmt">Loads an RDD[String] storing JSON objects (one object per record), returning the result as a
-[JavaSchemaRDD.</p><div class="fullcomment"><div class="comment cmt"><p>Loads an RDD[String] storing JSON objects (one object per record), returning the result as a
-[JavaSchemaRDD.
+JavaSchemaRDD.</p><div class="fullcomment"><div class="comment cmt"><p>Loads an RDD[String] storing JSON objects (one object per record), returning the result as a
+JavaSchemaRDD.
 It goes through the entire dataset once to determine the schema.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../api/java/JavaSQLContext.html" class="extype" name="org.apache.spark.sql.api.java.JavaSQLContext">JavaSQLContext</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -498,6 +502,292 @@ It goes through the entire dataset once to determine the schema.
       </h4>
       <p class="shortcomment cmt">Loads a parquet file, returning the result as a <span class="extype" name="JavaSchemaRDD">JavaSchemaRDD</span>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a parquet file, returning the result as a <span class="extype" name="JavaSchemaRDD">JavaSchemaRDD</span>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../api/java/JavaSQLContext.html" class="extype" name="org.apache.spark.sql.api.java.JavaSQLContext">JavaSQLContext</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF22[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF22[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF22.html" class="extype" name="org.apache.spark.sql.api.java.UDF22">UDF22</a>[_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF21[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF21[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF21.html" class="extype" name="org.apache.spark.sql.api.java.UDF21">UDF21</a>[_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF20[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF20[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF20.html" class="extype" name="org.apache.spark.sql.api.java.UDF20">UDF20</a>[_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF19[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF19[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF19.html" class="extype" name="org.apache.spark.sql.api.java.UDF19">UDF19</a>[_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF18[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF18[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF18.html" class="extype" name="org.apache.spark.sql.api.java.UDF18">UDF18</a>[_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF17[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF17[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF17.html" class="extype" name="org.apache.spark.sql.api.java.UDF17">UDF17</a>[_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF16[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF16[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF16.html" class="extype" name="org.apache.spark.sql.api.java.UDF16">UDF16</a>[_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF15[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF15[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF15.html" class="extype" name="org.apache.spark.sql.api.java.UDF15">UDF15</a>[_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF14[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF14[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF14.html" class="extype" name="org.apache.spark.sql.api.java.UDF14">UDF14</a>[_, _, _, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF13[_,_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF13[_,_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF13.html" class="extype" name="org.apache.spark.sql.api.java.UDF13">UDF13</a>[_, _, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF12[_,_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF12[_,_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF12.html" class="extype" name="org.apache.spark.sql.api.java.UDF12">UDF12</a>[_, _, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF11[_,_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF11[_,_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF11.html" class="extype" name="org.apache.spark.sql.api.java.UDF11">UDF11</a>[_, _, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF10[_,_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF10[_,_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF10.html" class="extype" name="org.apache.spark.sql.api.java.UDF10">UDF10</a>[_, _, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF9[_,_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF9[_,_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF9.html" class="extype" name="org.apache.spark.sql.api.java.UDF9">UDF9</a>[_, _, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF8[_,_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF8[_,_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF8.html" class="extype" name="org.apache.spark.sql.api.java.UDF8">UDF8</a>[_, _, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF7[_,_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF7[_,_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF7.html" class="extype" name="org.apache.spark.sql.api.java.UDF7">UDF7</a>[_, _, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF6[_,_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF6[_,_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF6.html" class="extype" name="org.apache.spark.sql.api.java.UDF6">UDF6</a>[_, _, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF5[_,_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF5[_,_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF5.html" class="extype" name="org.apache.spark.sql.api.java.UDF5">UDF5</a>[_, _, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF4[_,_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF4[_,_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF4.html" class="extype" name="org.apache.spark.sql.api.java.UDF4">UDF4</a>[_, _, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF3[_,_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF3[_,_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF3.html" class="extype" name="org.apache.spark.sql.api.java.UDF3">UDF3</a>[_, _, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF2[_,_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF2[_,_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF2.html" class="extype" name="org.apache.spark.sql.api.java.UDF2">UDF2</a>[_, _, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
+    </li><li name="org.apache.spark.sql.api.java.UDFRegistration#registerFunction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="registerFunction(name:String,f:org.apache.spark.sql.api.java.UDF1[_,_],dataType:org.apache.spark.sql.api.java.DataType):Unit"></a>
+      <a id="registerFunction(String,UDF1[_,_],api.java.DataType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">registerFunction</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="f">f: <a href="../../../api/java/UDF1.html" class="extype" name="org.apache.spark.sql.api.java.UDF1">UDF1</a>[_, _]</span>, <span name="dataType">dataType: <a href="../../../api/java/DataType.html" class="extype" name="org.apache.spark.sql.api.java.DataType">api.java.DataType</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UDFRegistration</dd></dl></div>
     </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#registerRDDAsTable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="registerRDDAsTable(rdd:org.apache.spark.sql.api.java.JavaSchemaRDD,tableName:String):Unit"></a>
       <a id="registerRDDAsTable(JavaSchemaRDD,String):Unit"></a>
@@ -513,8 +803,8 @@ It goes through the entire dataset once to determine the schema.
       <p class="shortcomment cmt">Registers the given RDD as a temporary table in the catalog.</p><div class="fullcomment"><div class="comment cmt"><p>Registers the given RDD as a temporary table in the catalog.  Temporary tables exist only
 during the lifetime of this instance of SQLContext.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../api/java/JavaSQLContext.html" class="extype" name="org.apache.spark.sql.api.java.JavaSQLContext">JavaSQLContext</a></dd></dl></div>
-    </li><li name="org.apache.spark.sql.api.java.JavaSQLContext#sql" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sql(sqlQuery:String):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
+    </li><li name="org.apache.spark.sql.hive.api.java.JavaHiveContext#sql" visbl="pub" data-isabs="false" fullComment="yes" group="userf">
+      <a id="sql(sqlText:String):org.apache.spark.sql.api.java.JavaSchemaRDD"></a>
       <a id="sql(String):JavaSchemaRDD"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -522,12 +812,12 @@ during the lifetime of this instance of SQLContext.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sql</span><span class="params">(<span name="sqlQuery">sqlQuery: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../api/java/JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
+        <span class="name">sql</span><span class="params">(<span name="sqlText">sqlText: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../api/java/JavaSchemaRDD.html" class="extype" name="org.apache.spark.sql.api.java.JavaSchemaRDD">JavaSchemaRDD</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Executes a query expressed in SQL, returning the result as a JavaSchemaRDD
-</p><div class="fullcomment"><div class="comment cmt"><p>Executes a query expressed in SQL, returning the result as a JavaSchemaRDD
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../api/java/JavaSQLContext.html" class="extype" name="org.apache.spark.sql.api.java.JavaSQLContext">JavaSQLContext</a></dd></dl></div>
+      <p class="shortcomment cmt">Executes a SQL query using Spark, returning the result as a SchemaRDD.</p><div class="fullcomment"><div class="comment cmt"><p>Executes a SQL query using Spark, returning the result as a SchemaRDD.  The dialect that is
+used for SQL parsing can be configured with 'spark.sql.dialect'.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.hive.api.java.JavaHiveContext">JavaHiveContext</a> → <a href="../../../api/java/JavaSQLContext.html" class="extype" name="org.apache.spark.sql.api.java.JavaSQLContext">JavaSQLContext</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.hive.api.java.JavaHiveContext#sqlContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sqlContext:org.apache.spark.sql.hive.HiveContext"></a>
       <a id="sqlContext:HiveContext"></a>
@@ -635,6 +925,8 @@ during the lifetime of this instance of SQLContext.
         <div id="inheritedMembers">
         <div class="parent" name="org.apache.spark.sql.api.java.JavaSQLContext">
               <h3>Inherited from <a href="../../../api/java/JavaSQLContext.html" class="extype" name="org.apache.spark.sql.api.java.JavaSQLContext">JavaSQLContext</a></h3>
+            </div><div class="parent" name="org.apache.spark.sql.api.java.UDFRegistration">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.sql.api.java.UDFRegistration">api.java.UDFRegistration</span></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
@@ -644,7 +936,10 @@ during the lifetime of this instance of SQLContext.
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="Ungrouped">
+        <div class="group" name="userf">
+              <h3>userf</h3>
+              
+            </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>
               
             </div>

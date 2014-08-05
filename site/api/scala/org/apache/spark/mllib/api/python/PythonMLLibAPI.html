@@ -203,6 +203,36 @@ The Java stubs necessary for the Python mllib bindings.</p><p>See python/pyspark
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#corr" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="corr(x:org.apache.spark.api.java.JavaRDD[Array[Byte]],y:org.apache.spark.api.java.JavaRDD[Array[Byte]],method:String):Double"></a>
+      <a id="corr(JavaRDD[Array[Byte]],JavaRDD[Array[Byte]],String):Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">corr</span><span class="params">(<span name="x">x: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="y">y: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="method">method: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Java stub for mllib Statistics.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for mllib Statistics.corr(x: RDD[Double], y: RDD[Double], method: String).
+</p></div></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#corr" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="corr(X:org.apache.spark.api.java.JavaRDD[Array[Byte]],method:String):Array[Byte]"></a>
+      <a id="corr(JavaRDD[Array[Byte]],String):Array[Byte]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">corr</span><span class="params">(<span name="X">X: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="method">method: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Java stub for mllib Statistics.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for mllib Statistics.corr(X: RDD[Vector], method: String).
+Returns the correlation matrix serialized into a byte array understood by deserializers in
+pyspark.
+</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -314,6 +344,34 @@ The Java stubs necessary for the Python mllib bindings.</p><p>See python/pyspark
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#normalRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="normalRDD(jsc:org.apache.spark.api.java.JavaSparkContext,size:Long,numPartitions:Integer,seed:Long):org.apache.spark.api.java.JavaRDD[Array[Byte]]"></a>
+      <a id="normalRDD(JavaSparkContext,Long,Integer,Long):JavaRDD[Array[Byte]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">normalRDD</span><span class="params">(<span name="jsc">jsc: <a href="../../../api/java/JavaSparkContext.html" class="extype" name="org.apache.spark.api.java.JavaSparkContext">JavaSparkContext</a></span>, <span name="size">size: <span class="extype" name="scala.Long">Long</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="java.lang.Integer">Integer</span></span>, <span name="seed">seed: <span class="extype" name="java.lang.Long">Long</span></span>)</span><span class="result">: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Java stub for Python mllib RandomRDDGenerators.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for Python mllib RandomRDDGenerators.normalRDD()
+</p></div></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#normalVectorRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="normalVectorRDD(jsc:org.apache.spark.api.java.JavaSparkContext,numRows:Long,numCols:Int,numPartitions:Integer,seed:Long):org.apache.spark.api.java.JavaRDD[Array[Byte]]"></a>
+      <a id="normalVectorRDD(JavaSparkContext,Long,Int,Integer,Long):JavaRDD[Array[Byte]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">normalVectorRDD</span><span class="params">(<span name="jsc">jsc: <a href="../../../api/java/JavaSparkContext.html" class="extype" name="org.apache.spark.api.java.JavaSparkContext">JavaSparkContext</a></span>, <span name="numRows">numRows: <span class="extype" name="scala.Long">Long</span></span>, <span name="numCols">numCols: <span class="extype" name="scala.Int">Int</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="java.lang.Integer">Integer</span></span>, <span name="seed">seed: <span class="extype" name="java.lang.Long">Long</span></span>)</span><span class="result">: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Java stub for Python mllib RandomRDDGenerators.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for Python mllib RandomRDDGenerators.normalVectorRDD()
+</p></div></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
@@ -340,6 +398,66 @@ The Java stubs necessary for the Python mllib bindings.</p><p>See python/pyspark
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#poissonRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="poissonRDD(jsc:org.apache.spark.api.java.JavaSparkContext,mean:Double,size:Long,numPartitions:Integer,seed:Long):org.apache.spark.api.java.JavaRDD[Array[Byte]]"></a>
+      <a id="poissonRDD(JavaSparkContext,Double,Long,Integer,Long):JavaRDD[Array[Byte]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">poissonRDD</span><span class="params">(<span name="jsc">jsc: <a href="../../../api/java/JavaSparkContext.html" class="extype" name="org.apache.spark.api.java.JavaSparkContext">JavaSparkContext</a></span>, <span name="mean">mean: <span class="extype" name="scala.Double">Double</span></span>, <span name="size">size: <span class="extype" name="scala.Long">Long</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="java.lang.Integer">Integer</span></span>, <span name="seed">seed: <span class="extype" name="java.lang.Long">Long</span></span>)</span><span class="result">: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Java stub for Python mllib RandomRDDGenerators.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for Python mllib RandomRDDGenerators.poissonRDD()
+</p></div></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#poissonVectorRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="poissonVectorRDD(jsc:org.apache.spark.api.java.JavaSparkContext,mean:Double,numRows:Long,numCols:Int,numPartitions:Integer,seed:Long):org.apache.spark.api.java.JavaRDD[Array[Byte]]"></a>
+      <a id="poissonVectorRDD(JavaSparkContext,Double,Long,Int,Integer,Long):JavaRDD[Array[Byte]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">poissonVectorRDD</span><span class="params">(<span name="jsc">jsc: <a href="../../../api/java/JavaSparkContext.html" class="extype" name="org.apache.spark.api.java.JavaSparkContext">JavaSparkContext</a></span>, <span name="mean">mean: <span class="extype" name="scala.Double">Double</span></span>, <span name="numRows">numRows: <span class="extype" name="scala.Long">Long</span></span>, <span name="numCols">numCols: <span class="extype" name="scala.Int">Int</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="java.lang.Integer">Integer</span></span>, <span name="seed">seed: <span class="extype" name="java.lang.Long">Long</span></span>)</span><span class="result">: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Java stub for Python mllib RandomRDDGenerators.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for Python mllib RandomRDDGenerators.poissonVectorRDD()
+</p></div></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#predictDecisionTreeModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="predictDecisionTreeModel(model:org.apache.spark.mllib.tree.model.DecisionTreeModel,dataJRDD:org.apache.spark.api.java.JavaRDD[Array[Byte]]):org.apache.spark.api.java.JavaRDD[Array[Byte]]"></a>
+      <a id="predictDecisionTreeModel(DecisionTreeModel,JavaRDD[Array[Byte]]):JavaRDD[Array[Byte]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">predictDecisionTreeModel</span><span class="params">(<span name="model">model: <a href="../../tree/model/DecisionTreeModel.html" class="extype" name="org.apache.spark.mllib.tree.model.DecisionTreeModel">DecisionTreeModel</a></span>, <span name="dataJRDD">dataJRDD: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>)</span><span class="result">: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Predict the labels of the given data points.</p><div class="fullcomment"><div class="comment cmt"><p>Predict the labels of the given data points.
+This is a Java stub for python DecisionTreeModel.predict()
+</p></div><dl class="paramcmts block"><dt class="param">dataJRDD</dt><dd class="cmt"><p>A JavaRDD with serialized feature vectors</p></dd><dt>returns</dt><dd class="cmt"><p>JavaRDD of serialized predictions
+</p></dd></dl></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#predictDecisionTreeModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="predictDecisionTreeModel(model:org.apache.spark.mllib.tree.model.DecisionTreeModel,featuresBytes:Array[Byte]):Double"></a>
+      <a id="predictDecisionTreeModel(DecisionTreeModel,Array[Byte]):Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">predictDecisionTreeModel</span><span class="params">(<span name="model">model: <a href="../../tree/model/DecisionTreeModel.html" class="extype" name="org.apache.spark.mllib.tree.model.DecisionTreeModel">DecisionTreeModel</a></span>, <span name="featuresBytes">featuresBytes: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Predict the label of the given data point.</p><div class="fullcomment"><div class="comment cmt"><p>Predict the label of the given data point.
+This is a Java stub for python DecisionTreeModel.predict()
+</p></div><dl class="paramcmts block"><dt class="param">featuresBytes</dt><dd class="cmt"><p>Serialized feature vector for data point</p></dd><dt>returns</dt><dd class="cmt"><p>predicted label
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -383,6 +501,23 @@ to the Java object instead of the content of the Java object.  Extra care
 needs to be taken in the Python code to ensure it gets freed on exit; see
 the Py4J documentation.
 </p></div></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#trainDecisionTreeModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="trainDecisionTreeModel(dataBytesJRDD:org.apache.spark.api.java.JavaRDD[Array[Byte]],algoStr:String,numClasses:Int,categoricalFeaturesInfoJMap:java.util.Map[Int,Int],impurityStr:String,maxDepth:Int,maxBins:Int):org.apache.spark.mllib.tree.model.DecisionTreeModel"></a>
+      <a id="trainDecisionTreeModel(JavaRDD[Array[Byte]],String,Int,Map[Int,Int],String,Int,Int):DecisionTreeModel"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trainDecisionTreeModel</span><span class="params">(<span name="dataBytesJRDD">dataBytesJRDD: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="algoStr">algoStr: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numClasses">numClasses: <span class="extype" name="scala.Int">Int</span></span>, <span name="categoricalFeaturesInfoJMap">categoricalFeaturesInfoJMap: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>]</span>, <span name="impurityStr">impurityStr: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="maxDepth">maxDepth: <span class="extype" name="scala.Int">Int</span></span>, <span name="maxBins">maxBins: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../tree/model/DecisionTreeModel.html" class="extype" name="org.apache.spark.mllib.tree.model.DecisionTreeModel">DecisionTreeModel</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Java stub for Python mllib DecisionTree.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for Python mllib DecisionTree.train().
+This stub returns a handle to the Java object instead of the content of the Java object.
+Extra care needs to be taken in the Python code to ensure it gets freed on exit;
+see the Py4J documentation.</p></div><dl class="paramcmts block"><dt class="param">dataBytesJRDD</dt><dd class="cmt"><p>Training data</p></dd><dt class="param">categoricalFeaturesInfoJMap</dt><dd class="cmt"><p>Categorical features info, as Java map
+</p></dd></dl></div>
     </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#trainImplicitALSModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="trainImplicitALSModel(ratingsBytesJRDD:org.apache.spark.api.java.JavaRDD[Array[Byte]],rank:Int,iterations:Int,lambda:Double,blocks:Int,alpha:Double):org.apache.spark.mllib.recommendation.MatrixFactorizationModel"></a>
       <a id="trainImplicitALSModel(JavaRDD[Array[Byte]],Int,Int,Double,Int,Double):MatrixFactorizationModel"></a>
@@ -429,15 +564,15 @@ exit; see the Py4J documentation.
       <p class="shortcomment cmt">Java stub for Python mllib LassoWithSGD.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for Python mllib LassoWithSGD.train()
 </p></div></div>
     </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#trainLinearRegressionModelWithSGD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="trainLinearRegressionModelWithSGD(dataBytesJRDD:org.apache.spark.api.java.JavaRDD[Array[Byte]],numIterations:Int,stepSize:Double,miniBatchFraction:Double,initialWeightsBA:Array[Byte]):java.util.List[Object]"></a>
-      <a id="trainLinearRegressionModelWithSGD(JavaRDD[Array[Byte]],Int,Double,Double,Array[Byte]):List[AnyRef]"></a>
+      <a id="trainLinearRegressionModelWithSGD(dataBytesJRDD:org.apache.spark.api.java.JavaRDD[Array[Byte]],numIterations:Int,stepSize:Double,miniBatchFraction:Double,initialWeightsBA:Array[Byte],regParam:Double,regType:String,intercept:Boolean):java.util.List[Object]"></a>
+      <a id="trainLinearRegressionModelWithSGD(JavaRDD[Array[Byte]],Int,Double,Double,Array[Byte],Double,String,Boolean):List[AnyRef]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">trainLinearRegressionModelWithSGD</span><span class="params">(<span name="dataBytesJRDD">dataBytesJRDD: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="numIterations">numIterations: <span class="extype" name="scala.Int">Int</span></span>, <span name="stepSize">stepSize: <span class="extype" name="scala.Double">Double</span></span>, <span name="miniBatchFraction">miniBatchFraction: <span class="extype" name="scala.Double">Double</span></span>, <span name="initialWeightsBA">initialWeightsBA: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="result">: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>
+        <span class="name">trainLinearRegressionModelWithSGD</span><span class="params">(<span name="dataBytesJRDD">dataBytesJRDD: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="numIterations">numIterations: <span class="extype" name="scala.Int">Int</span></span>, <span name="stepSize">stepSize: <span class="extype" name="scala.Double">Double</span></span>, <span name="miniBatchFraction">miniBatchFraction: <span class="extype" name="scala.Double">Double</span></span>, <span name="initialWeightsBA">initialWeightsBA: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>, <span name="regParam">regParam: <span class="extype" name="scala.Double">Double</span></span>, <span name="regType">regType: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="intercept">intercept: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Java stub for Python mllib LinearRegressionWithSGD.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for Python mllib LinearRegressionWithSGD.train()
@@ -497,6 +632,34 @@ exit; see the Py4J documentation.
       </span>
       </h4>
       <p class="shortcomment cmt">Java stub for Python mllib SVMWithSGD.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for Python mllib SVMWithSGD.train()
+</p></div></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#uniformRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="uniformRDD(jsc:org.apache.spark.api.java.JavaSparkContext,size:Long,numPartitions:Integer,seed:Long):org.apache.spark.api.java.JavaRDD[Array[Byte]]"></a>
+      <a id="uniformRDD(JavaSparkContext,Long,Integer,Long):JavaRDD[Array[Byte]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uniformRDD</span><span class="params">(<span name="jsc">jsc: <a href="../../../api/java/JavaSparkContext.html" class="extype" name="org.apache.spark.api.java.JavaSparkContext">JavaSparkContext</a></span>, <span name="size">size: <span class="extype" name="scala.Long">Long</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="java.lang.Integer">Integer</span></span>, <span name="seed">seed: <span class="extype" name="java.lang.Long">Long</span></span>)</span><span class="result">: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Java stub for Python mllib RandomRDDGenerators.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for Python mllib RandomRDDGenerators.uniformRDD()
+</p></div></div>
+    </li><li name="org.apache.spark.mllib.api.python.PythonMLLibAPI#uniformVectorRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="uniformVectorRDD(jsc:org.apache.spark.api.java.JavaSparkContext,numRows:Long,numCols:Int,numPartitions:Integer,seed:Long):org.apache.spark.api.java.JavaRDD[Array[Byte]]"></a>
+      <a id="uniformVectorRDD(JavaSparkContext,Long,Int,Integer,Long):JavaRDD[Array[Byte]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uniformVectorRDD</span><span class="params">(<span name="jsc">jsc: <a href="../../../api/java/JavaSparkContext.html" class="extype" name="org.apache.spark.api.java.JavaSparkContext">JavaSparkContext</a></span>, <span name="numRows">numRows: <span class="extype" name="scala.Long">Long</span></span>, <span name="numCols">numCols: <span class="extype" name="scala.Int">Int</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="java.lang.Integer">Integer</span></span>, <span name="seed">seed: <span class="extype" name="java.lang.Long">Long</span></span>)</span><span class="result">: <a href="../../../api/java/JavaRDD.html" class="extype" name="org.apache.spark.api.java.JavaRDD">JavaRDD</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Java stub for Python mllib RandomRDDGenerators.</p><div class="fullcomment"><div class="comment cmt"><p>Java stub for Python mllib RandomRDDGenerators.uniformVectorRDD()
 </p></div></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>

@@ -234,15 +234,15 @@ all partitions.</p>
       <p class="comment cmt">Extra functions available on RDDs of (key, value) pairs to create a Hadoop SequenceFile,
 through an implicit conversion.</p>
     </li><li name="org.apache.spark.rdd.ShuffledRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ShuffledRDD[K,V,C,P&lt;:Product2[K,C]]extendsRDD[P]"></a>
-      <a id="ShuffledRDD[K,V,C,P&lt;:Product2[K,C]]:ShuffledRDD[K,V,C,P]"></a>
+      <a id="ShuffledRDD[K,V,C]extendsRDD[(K,C)]"></a>
+      <a id="ShuffledRDD[K,V,C]:ShuffledRDD[K,V,C]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ShuffledRDD.html"><span class="name">ShuffledRDD</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>, <span name="C">C</span>, <span name="P">P &lt;: <span class="extype" name="scala.Product2">Product2</span>[<span class="extype" name="org.apache.spark.rdd.ShuffledRDD.K">K</span>, <span class="extype" name="org.apache.spark.rdd.ShuffledRDD.C">C</span>]</span>]</span><span class="result"> extends <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.ShuffledRDD.P">P</span>]</span>
+        <a href="ShuffledRDD.html"><span class="name">ShuffledRDD</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>, <span name="C">C</span>]</span><span class="result"> extends <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.ShuffledRDD.K">K</span>, <span class="extype" name="org.apache.spark.rdd.ShuffledRDD.C">C</span>)]</span>
       </span>
       </h4>
       <p class="comment cmt">:: DeveloperApi ::

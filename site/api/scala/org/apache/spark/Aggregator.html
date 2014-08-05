@@ -206,15 +206,15 @@ A set of functions used to aggregate data.
               
         </dd></dl></div>
     </li><li name="org.apache.spark.Aggregator#combineCombinersByKey" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="combineCombinersByKey(iter:Iterator[(K,C)],context:org.apache.spark.TaskContext):Iterator[(K,C)]"></a>
-      <a id="combineCombinersByKey(Iterator[(K,C)],TaskContext):Iterator[(K,C)]"></a>
+      <a id="combineCombinersByKey(iter:Iterator[_&lt;:Product2[K,C]],context:org.apache.spark.TaskContext):Iterator[(K,C)]"></a>
+      <a id="combineCombinersByKey(Iterator[_&lt;:Product2[K,C]],TaskContext):Iterator[(K,C)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">combineCombinersByKey</span><span class="params">(<span name="iter">iter: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.Aggregator.K">K</span>, <span class="extype" name="org.apache.spark.Aggregator.C">C</span>)]</span>, <span name="context">context: <a href="TaskContext.html" class="extype" name="org.apache.spark.TaskContext">TaskContext</a></span>)</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.Aggregator.K">K</span>, <span class="extype" name="org.apache.spark.Aggregator.C">C</span>)]</span>
+        <span class="name">combineCombinersByKey</span><span class="params">(<span name="iter">iter: <span class="extype" name="scala.Iterator">Iterator</span>[_ &lt;: <span class="extype" name="scala.Product2">Product2</span>[<span class="extype" name="org.apache.spark.Aggregator.K">K</span>, <span class="extype" name="org.apache.spark.Aggregator.C">C</span>]]</span>, <span name="context">context: <a href="TaskContext.html" class="extype" name="org.apache.spark.TaskContext">TaskContext</a></span>)</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.Aggregator.K">K</span>, <span class="extype" name="org.apache.spark.Aggregator.C">C</span>)]</span>
       </span>
       </h4>
       
@@ -445,15 +445,15 @@ A set of functions used to aggregate data.
         <div id="values" class="values members">
               <h3>Deprecated Value Members</h3>
               <ol><li name="org.apache.spark.Aggregator#combineCombinersByKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="combineCombinersByKey(iter:Iterator[(K,C)]):Iterator[(K,C)]"></a>
-      <a id="combineCombinersByKey(Iterator[(K,C)]):Iterator[(K,C)]"></a>
+      <a id="combineCombinersByKey(iter:Iterator[_&lt;:Product2[K,C]]):Iterator[(K,C)]"></a>
+      <a id="combineCombinersByKey(Iterator[_&lt;:Product2[K,C]]):Iterator[(K,C)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.9.0) use combineCombinersByKey with TaskContext argument">combineCombinersByKey</span><span class="params">(<span name="iter">iter: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.Aggregator.K">K</span>, <span class="extype" name="org.apache.spark.Aggregator.C">C</span>)]</span>)</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.Aggregator.K">K</span>, <span class="extype" name="org.apache.spark.Aggregator.C">C</span>)]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 0.9.0) use combineCombinersByKey with TaskContext argument">combineCombinersByKey</span><span class="params">(<span name="iter">iter: <span class="extype" name="scala.Iterator">Iterator</span>[_ &lt;: <span class="extype" name="scala.Product2">Product2</span>[<span class="extype" name="org.apache.spark.Aggregator.K">K</span>, <span class="extype" name="org.apache.spark.Aggregator.C">C</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.Aggregator.K">K</span>, <span class="extype" name="org.apache.spark.Aggregator.C">C</span>)]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>

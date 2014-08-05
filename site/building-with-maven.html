@@ -219,7 +219,13 @@ mvn -Pyarn-alpha -Phadoop-2.3 -Dhadoop.version<span class="o">=</span>2.3.0 -Dya
 
 <h1 id="spark-tests-in-maven">Spark Tests in Maven</h1>
 
-<p>Tests are run by default via the <a href="http://www.scalatest.org/user_guide/using_the_scalatest_maven_plugin">ScalaTest Maven plugin</a>. Some of the require Spark to be packaged first, so always run <code>mvn package</code> with <code>-DskipTests</code> the first time. You can then run the tests with <code>mvn -Dhadoop.version=... test</code>.</p>
+<p>Tests are run by default via the <a href="http://www.scalatest.org/user_guide/using_the_scalatest_maven_plugin">ScalaTest Maven plugin</a>. </p>
+
+<p>Some of the tests require Spark to be packaged first, so always run <code>mvn package</code> with <code>-DskipTests</code> the first time.  The following is an example of a correct (build, test) sequence:</p>
+
+<pre><code>mvn -Pyarn -Phadoop-2.3 -DskipTests -Phive clean package
+mvn -Pyarn -Phadoop-2.3 -Phive test
+</code></pre>
 
 <p>The ScalaTest plugin also supports running only a specific test suite as follows:</p>
 

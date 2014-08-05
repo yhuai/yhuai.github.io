@@ -182,6 +182,143 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="org.apache.spark.streaming.flume.FlumeUtils#createPollingStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createPollingStream(jssc:org.apache.spark.streaming.api.java.JavaStreamingContext,addresses:Array[java.net.InetSocketAddress],storageLevel:org.apache.spark.storage.StorageLevel,maxBatchSize:Int,parallelism:Int):org.apache.spark.streaming.api.java.JavaReceiverInputDStream[org.apache.spark.streaming.flume.SparkFlumeEvent]"></a>
+      <a id="createPollingStream(JavaStreamingContext,Array[InetSocketAddress],StorageLevel,Int,Int):JavaReceiverInputDStream[SparkFlumeEvent]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createPollingStream</span><span class="params">(<span name="jssc">jssc: <a href="../api/java/JavaStreamingContext.html" class="extype" name="org.apache.spark.streaming.api.java.JavaStreamingContext">JavaStreamingContext</a></span>, <span name="addresses">addresses: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span>]</span>, <span name="storageLevel">storageLevel: <a href="../../storage/StorageLevel.html" class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</a></span>, <span name="maxBatchSize">maxBatchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="parallelism">parallelism: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../api/java/JavaReceiverInputDStream.html" class="extype" name="org.apache.spark.streaming.api.java.JavaReceiverInputDStream">JavaReceiverInputDStream</a>[<a href="SparkFlumeEvent.html" class="extype" name="org.apache.spark.streaming.flume.SparkFlumeEvent">SparkFlumeEvent</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.
+This stream will poll the sink for data and will pull events as they are available.</p></div><dl class="paramcmts block"><dt class="param">addresses</dt><dd class="cmt"><p>List of InetSocketAddresses on which the Spark Sink is running</p></dd><dt class="param">storageLevel</dt><dd class="cmt"><p>Storage level to use for storing the received objects
+</p></dd><dt class="param">maxBatchSize</dt><dd class="cmt"><p>The maximum number of events to be pulled from the Spark sink in a
+                    single RPC call</p></dd><dt class="param">parallelism</dt><dd class="cmt"><p>Number of concurrent requests this stream should send to the sink. Note
+                    that having a higher number of requests concurrently being pulled will
+                    result in this stream using more threads</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.streaming.flume.FlumeUtils#createPollingStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createPollingStream(jssc:org.apache.spark.streaming.api.java.JavaStreamingContext,addresses:Array[java.net.InetSocketAddress],storageLevel:org.apache.spark.storage.StorageLevel):org.apache.spark.streaming.api.java.JavaReceiverInputDStream[org.apache.spark.streaming.flume.SparkFlumeEvent]"></a>
+      <a id="createPollingStream(JavaStreamingContext,Array[InetSocketAddress],StorageLevel):JavaReceiverInputDStream[SparkFlumeEvent]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createPollingStream</span><span class="params">(<span name="jssc">jssc: <a href="../api/java/JavaStreamingContext.html" class="extype" name="org.apache.spark.streaming.api.java.JavaStreamingContext">JavaStreamingContext</a></span>, <span name="addresses">addresses: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span>]</span>, <span name="storageLevel">storageLevel: <a href="../../storage/StorageLevel.html" class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</a></span>)</span><span class="result">: <a href="../api/java/JavaReceiverInputDStream.html" class="extype" name="org.apache.spark.streaming.api.java.JavaReceiverInputDStream">JavaReceiverInputDStream</a>[<a href="SparkFlumeEvent.html" class="extype" name="org.apache.spark.streaming.flume.SparkFlumeEvent">SparkFlumeEvent</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.
+This stream will poll the sink for data and will pull events as they are available.
+This stream will use a batch size of 1000 events and run 5 threads to pull data.</p></div><dl class="paramcmts block"><dt class="param">addresses</dt><dd class="cmt"><p>List of InetSocketAddresses on which the Spark Sink is running.</p></dd><dt class="param">storageLevel</dt><dd class="cmt"><p>Storage level to use for storing the received objects
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.streaming.flume.FlumeUtils#createPollingStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createPollingStream(jssc:org.apache.spark.streaming.api.java.JavaStreamingContext,hostname:String,port:Int,storageLevel:org.apache.spark.storage.StorageLevel):org.apache.spark.streaming.api.java.JavaReceiverInputDStream[org.apache.spark.streaming.flume.SparkFlumeEvent]"></a>
+      <a id="createPollingStream(JavaStreamingContext,String,Int,StorageLevel):JavaReceiverInputDStream[SparkFlumeEvent]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createPollingStream</span><span class="params">(<span name="jssc">jssc: <a href="../api/java/JavaStreamingContext.html" class="extype" name="org.apache.spark.streaming.api.java.JavaStreamingContext">JavaStreamingContext</a></span>, <span name="hostname">hostname: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span></span>, <span name="storageLevel">storageLevel: <a href="../../storage/StorageLevel.html" class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</a></span>)</span><span class="result">: <a href="../api/java/JavaReceiverInputDStream.html" class="extype" name="org.apache.spark.streaming.api.java.JavaReceiverInputDStream">JavaReceiverInputDStream</a>[<a href="SparkFlumeEvent.html" class="extype" name="org.apache.spark.streaming.flume.SparkFlumeEvent">SparkFlumeEvent</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.
+This stream will poll the sink for data and will pull events as they are available.
+This stream will use a batch size of 1000 events and run 5 threads to pull data.</p></div><dl class="paramcmts block"><dt class="param">hostname</dt><dd class="cmt"><p>Hostname of the host on which the Spark Sink is running</p></dd><dt class="param">port</dt><dd class="cmt"><p>Port of the host at which the Spark Sink is listening</p></dd><dt class="param">storageLevel</dt><dd class="cmt"><p>Storage level to use for storing the received objects
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.streaming.flume.FlumeUtils#createPollingStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createPollingStream(jssc:org.apache.spark.streaming.api.java.JavaStreamingContext,hostname:String,port:Int):org.apache.spark.streaming.api.java.JavaReceiverInputDStream[org.apache.spark.streaming.flume.SparkFlumeEvent]"></a>
+      <a id="createPollingStream(JavaStreamingContext,String,Int):JavaReceiverInputDStream[SparkFlumeEvent]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createPollingStream</span><span class="params">(<span name="jssc">jssc: <a href="../api/java/JavaStreamingContext.html" class="extype" name="org.apache.spark.streaming.api.java.JavaStreamingContext">JavaStreamingContext</a></span>, <span name="hostname">hostname: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../api/java/JavaReceiverInputDStream.html" class="extype" name="org.apache.spark.streaming.api.java.JavaReceiverInputDStream">JavaReceiverInputDStream</a>[<a href="SparkFlumeEvent.html" class="extype" name="org.apache.spark.streaming.flume.SparkFlumeEvent">SparkFlumeEvent</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.
+This stream will poll the sink for data and will pull events as they are available.
+This stream will use a batch size of 1000 events and run 5 threads to pull data.</p></div><dl class="paramcmts block"><dt class="param">hostname</dt><dd class="cmt"><p>Hostname of the host on which the Spark Sink is running</p></dd><dt class="param">port</dt><dd class="cmt"><p>Port of the host at which the Spark Sink is listening
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.streaming.flume.FlumeUtils#createPollingStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createPollingStream(ssc:org.apache.spark.streaming.StreamingContext,addresses:Seq[java.net.InetSocketAddress],storageLevel:org.apache.spark.storage.StorageLevel,maxBatchSize:Int,parallelism:Int):org.apache.spark.streaming.dstream.ReceiverInputDStream[org.apache.spark.streaming.flume.SparkFlumeEvent]"></a>
+      <a id="createPollingStream(StreamingContext,Seq[InetSocketAddress],StorageLevel,Int,Int):ReceiverInputDStream[SparkFlumeEvent]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createPollingStream</span><span class="params">(<span name="ssc">ssc: <a href="../StreamingContext.html" class="extype" name="org.apache.spark.streaming.StreamingContext">StreamingContext</a></span>, <span name="addresses">addresses: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span>]</span>, <span name="storageLevel">storageLevel: <a href="../../storage/StorageLevel.html" class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</a></span>, <span name="maxBatchSize">maxBatchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="parallelism">parallelism: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../dstream/ReceiverInputDStream.html" class="extype" name="org.apache.spark.streaming.dstream.ReceiverInputDStream">ReceiverInputDStream</a>[<a href="SparkFlumeEvent.html" class="extype" name="org.apache.spark.streaming.flume.SparkFlumeEvent">SparkFlumeEvent</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.
+This stream will poll the sink for data and will pull events as they are available.</p></div><dl class="paramcmts block"><dt class="param">addresses</dt><dd class="cmt"><p>List of InetSocketAddresses representing the hosts to connect to.</p></dd><dt class="param">storageLevel</dt><dd class="cmt"><p>Storage level to use for storing the received objects
+</p></dd><dt class="param">maxBatchSize</dt><dd class="cmt"><p>Maximum number of events to be pulled from the Spark sink in a
+                    single RPC call</p></dd><dt class="param">parallelism</dt><dd class="cmt"><p>Number of concurrent requests this stream should send to the sink. Note
+                   that having a higher number of requests concurrently being pulled will
+                   result in this stream using more threads</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.streaming.flume.FlumeUtils#createPollingStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createPollingStream(ssc:org.apache.spark.streaming.StreamingContext,addresses:Seq[java.net.InetSocketAddress],storageLevel:org.apache.spark.storage.StorageLevel):org.apache.spark.streaming.dstream.ReceiverInputDStream[org.apache.spark.streaming.flume.SparkFlumeEvent]"></a>
+      <a id="createPollingStream(StreamingContext,Seq[InetSocketAddress],StorageLevel):ReceiverInputDStream[SparkFlumeEvent]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createPollingStream</span><span class="params">(<span name="ssc">ssc: <a href="../StreamingContext.html" class="extype" name="org.apache.spark.streaming.StreamingContext">StreamingContext</a></span>, <span name="addresses">addresses: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span>]</span>, <span name="storageLevel">storageLevel: <a href="../../storage/StorageLevel.html" class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</a></span>)</span><span class="result">: <a href="../dstream/ReceiverInputDStream.html" class="extype" name="org.apache.spark.streaming.dstream.ReceiverInputDStream">ReceiverInputDStream</a>[<a href="SparkFlumeEvent.html" class="extype" name="org.apache.spark.streaming.flume.SparkFlumeEvent">SparkFlumeEvent</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.
+This stream will poll the sink for data and will pull events as they are available.
+This stream will use a batch size of 1000 events and run 5 threads to pull data.</p></div><dl class="paramcmts block"><dt class="param">addresses</dt><dd class="cmt"><p>List of InetSocketAddresses representing the hosts to connect to.</p></dd><dt class="param">storageLevel</dt><dd class="cmt"><p>Storage level to use for storing the received objects
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.streaming.flume.FlumeUtils#createPollingStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createPollingStream(ssc:org.apache.spark.streaming.StreamingContext,hostname:String,port:Int,storageLevel:org.apache.spark.storage.StorageLevel):org.apache.spark.streaming.dstream.ReceiverInputDStream[org.apache.spark.streaming.flume.SparkFlumeEvent]"></a>
+      <a id="createPollingStream(StreamingContext,String,Int,StorageLevel):ReceiverInputDStream[SparkFlumeEvent]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createPollingStream</span><span class="params">(<span name="ssc">ssc: <a href="../StreamingContext.html" class="extype" name="org.apache.spark.streaming.StreamingContext">StreamingContext</a></span>, <span name="hostname">hostname: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span></span>, <span name="storageLevel">storageLevel: <a href="../../storage/StorageLevel.html" class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">StorageLevel.MEMORY_AND_DISK_SER_2</a></span></span></span>)</span><span class="result">: <a href="../dstream/ReceiverInputDStream.html" class="extype" name="org.apache.spark.streaming.dstream.ReceiverInputDStream">ReceiverInputDStream</a>[<a href="SparkFlumeEvent.html" class="extype" name="org.apache.spark.streaming.flume.SparkFlumeEvent">SparkFlumeEvent</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an input stream that is to be used with the Spark Sink deployed on a Flume agent.
+This stream will poll the sink for data and will pull events as they are available.
+This stream will use a batch size of 1000 events and run 5 threads to pull data.</p></div><dl class="paramcmts block"><dt class="param">hostname</dt><dd class="cmt"><p>Address of the host on which the Spark Sink is running</p></dd><dt class="param">port</dt><dd class="cmt"><p>Port of the host at which the Spark Sink is listening</p></dd><dt class="param">storageLevel</dt><dd class="cmt"><p>Storage level to use for storing the received objects
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="org.apache.spark.streaming.flume.FlumeUtils#createStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="createStream(jssc:org.apache.spark.streaming.api.java.JavaStreamingContext,hostname:String,port:Int,storageLevel:org.apache.spark.storage.StorageLevel,enableDecompression:Boolean):org.apache.spark.streaming.api.java.JavaReceiverInputDStream[org.apache.spark.streaming.flume.SparkFlumeEvent]"></a>
       <a id="createStream(JavaStreamingContext,String,Int,StorageLevel,Boolean):JavaReceiverInputDStream[SparkFlumeEvent]"></a>

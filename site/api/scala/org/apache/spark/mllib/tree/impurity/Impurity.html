@@ -105,7 +105,7 @@ Trait for calculating information gain.
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::
 information calculation for regression</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
-information calculation for regression</p></div><dl class="paramcmts block"><dt class="param">count</dt><dd class="cmt"><p>number of instances</p></dd><dt class="param">sum</dt><dd class="cmt"><p>sum of labels</p></dd><dt class="param">sumSquares</dt><dd class="cmt"><p>summation of squares of the labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value
+information calculation for regression</p></div><dl class="paramcmts block"><dt class="param">count</dt><dd class="cmt"><p>number of instances</p></dd><dt class="param">sum</dt><dd class="cmt"><p>sum of labels</p></dd><dt class="param">sumSquares</dt><dd class="cmt"><p>summation of squares of the labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value, or 0 if count = 0
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
@@ -124,7 +124,7 @@ information calculation for regression</p></div><dl class="paramcmts block"><dt 
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::
 information calculation for multiclass classification</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
-information calculation for multiclass classification</p></div><dl class="paramcmts block"><dt class="param">counts</dt><dd class="cmt"><p>Array[Double] with counts for each label</p></dd><dt class="param">totalCount</dt><dd class="cmt"><p>sum of counts for all labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value
+information calculation for multiclass classification</p></div><dl class="paramcmts block"><dt class="param">counts</dt><dd class="cmt"><p>Array[Double] with counts for each label</p></dd><dt class="param">totalCount</dt><dd class="cmt"><p>sum of counts for all labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value, or 0 if totalCount = 0
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               

@@ -58,22 +58,8 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="org.apache.spark.mllib.random.DistributionGenerator" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="DistributionGeneratorextendsPseudorandomwithSerializable"></a>
-      <a id="DistributionGenerator:DistributionGenerator"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="DistributionGenerator.html"><span class="name">DistributionGenerator</span></a><span class="result"> extends <a href="../../util/random/Pseudorandom.html" class="extype" name="org.apache.spark.util.random.Pseudorandom">Pseudorandom</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4>
-      <p class="comment cmt">:: Experimental ::
-Trait for random number generators that generate i.</p>
-    </li><li name="org.apache.spark.mllib.random.PoissonGenerator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="PoissonGeneratorextendsDistributionGenerator"></a>
+              <ol><li name="org.apache.spark.mllib.random.PoissonGenerator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PoissonGeneratorextendsRandomDataGenerator[Double]"></a>
       <a id="PoissonGenerator:PoissonGenerator"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -81,13 +67,27 @@ Trait for random number generators that generate i.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PoissonGenerator.html"><span class="name">PoissonGenerator</span></a><span class="result"> extends <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></span>
+        <a href="PoissonGenerator.html"><span class="name">PoissonGenerator</span></a><span class="result"> extends <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">:: Experimental ::
 Generates i.</p>
+    </li><li name="org.apache.spark.mllib.random.RandomDataGenerator" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RandomDataGenerator[T]extendsPseudorandomwithSerializable"></a>
+      <a id="RandomDataGenerator[T]:RandomDataGenerator[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="RandomDataGenerator.html"><span class="name">RandomDataGenerator</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="../../util/random/Pseudorandom.html" class="extype" name="org.apache.spark.util.random.Pseudorandom">Pseudorandom</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">:: Experimental ::
+Trait for random data generators that generate i.</p>
     </li><li name="org.apache.spark.mllib.random.StandardNormalGenerator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="StandardNormalGeneratorextendsDistributionGenerator"></a>
+      <a id="StandardNormalGeneratorextendsRandomDataGenerator[Double]"></a>
       <a id="StandardNormalGenerator:StandardNormalGenerator"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -95,13 +95,13 @@ Generates i.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="StandardNormalGenerator.html"><span class="name">StandardNormalGenerator</span></a><span class="result"> extends <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></span>
+        <a href="StandardNormalGenerator.html"><span class="name">StandardNormalGenerator</span></a><span class="result"> extends <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">:: Experimental ::
 Generates i.</p>
     </li><li name="org.apache.spark.mllib.random.UniformGenerator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="UniformGeneratorextendsDistributionGenerator"></a>
+      <a id="UniformGeneratorextendsRandomDataGenerator[Double]"></a>
       <a id="UniformGenerator:UniformGenerator"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -109,7 +109,7 @@ Generates i.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="UniformGenerator.html"><span class="name">UniformGenerator</span></a><span class="result"> extends <a href="DistributionGenerator.html" class="extype" name="org.apache.spark.mllib.random.DistributionGenerator">DistributionGenerator</a></span>
+        <a href="UniformGenerator.html"><span class="name">UniformGenerator</span></a><span class="result"> extends <a href="RandomDataGenerator.html" class="extype" name="org.apache.spark.mllib.random.RandomDataGenerator">RandomDataGenerator</a>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">:: Experimental ::

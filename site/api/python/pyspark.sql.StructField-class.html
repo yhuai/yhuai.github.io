@@ -61,14 +61,21 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class StructField</h1><p class="nomargin-top"><span class="codelink"><a href="pyspark.sql-pysrc.html#StructField">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-object --+
-         |
-        <strong class="uidshort">StructField</strong>
+object --+    
+         |    
+  DataType --+
+             |
+            <strong class="uidshort">StructField</strong>
 </pre>
 
 <hr />
 <p>Spark SQL StructField</p>
-  <p>Represents a field in a StructType.</p>
+  <p>Represents a field in a StructType. A StructField object comprises 
+  three fields, name (a string), dataType (a DataType) and nullable (a 
+  bool). The field of name is the name of a StructField. The field of 
+  dataType specifies the data type of a StructField.</p>
+  <p>The field of nullable specifies if values of a StructField can contain
+  None values.</p>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -88,7 +95,8 @@ object --+
         <span class="summary-sig-arg">name</span>,
         <span class="summary-sig-arg">dataType</span>,
         <span class="summary-sig-arg">nullable</span>)</span><br />
-      Creates a StructField :param name: the name of this field.</td>
+      Creates a StructField
+:param name: the name of this field.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyspark.sql-pysrc.html#StructField.__init__">source&nbsp;code</a></span>
             
@@ -104,27 +112,10 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="__eq__"></a><span class="summary-sig-name">__eq__</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">other</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyspark.sql.StructField-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      repr(x)</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyspark.sql-pysrc.html#StructField.__eq__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="__ne__"></a><span class="summary-sig-name">__ne__</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">other</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyspark.sql-pysrc.html#StructField.__ne__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyspark.sql-pysrc.html#StructField.__repr__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -134,15 +125,18 @@ object --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>DataType</code></b>:
+      <code>__eq__</code>,
+      <code>__hash__</code>,
+      <code>__ne__</code>
+      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
       <code>__getattribute__</code>,
-      <code>__hash__</code>,
       <code>__new__</code>,
       <code>__reduce__</code>,
       <code>__reduce_ex__</code>,
-      <code>__repr__</code>,
       <code>__setattr__</code>,
       <code>__sizeof__</code>,
       <code>__str__</code>,
@@ -194,17 +188,48 @@ object --+
     </td>
   </tr></table>
   
-  <p>Creates a StructField :param name: the name of this field. :param 
-  dataType: the data type of this field. :param nullable: indicates whether
-  values of this field can be null. :return:</p>
-<pre class="py-doctest">
-<span class="py-prompt">&gt;&gt;&gt; </span>StructField(<span class="py-string">&quot;f1&quot;</span>, StringType, True) == StructField(<span class="py-string">&quot;f1&quot;</span>, StringType, True)
-<span class="py-output">True</span>
-<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>StructField(<span class="py-string">&quot;f1&quot;</span>, StringType, True) == StructField(<span class="py-string">&quot;f2&quot;</span>, StringType, True)
-<span class="py-output">False</span></pre>
+  <pre class="literalblock">
+Creates a StructField
+:param name: the name of this field.
+:param dataType: the data type of this field.
+:param nullable: indicates whether values of this field
+                 can be null.
+
+&gt;&gt;&gt; (StructField(&quot;f1&quot;, StringType, True)
+...      == StructField(&quot;f1&quot;, StringType, True))
+True
+&gt;&gt;&gt; (StructField(&quot;f1&quot;, StringType, True)
+...      == StructField(&quot;f2&quot;, StringType, True))
+False
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.sql-pysrc.html#StructField.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>repr(x)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
+        <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
 </td></tr></table>
@@ -241,7 +266,7 @@ object --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Jul 27 17:21:23 2014
+    Generated by Epydoc 3.0.1 on Mon Aug  4 17:24:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

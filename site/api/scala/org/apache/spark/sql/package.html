@@ -94,11 +94,10 @@
         <span class="name">ArrayType</span><span class="result"> = <span class="extype" name="org.apache.spark.sql.catalyst.types.ArrayType">sql.catalyst.types.ArrayType</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>The data type representing <code>Seq</code>s.
-An <a href="#ArrayType=org.apache.spark.sql.catalyst.types.ArrayType" class="extmbr" name="org.apache.spark.sql.ArrayType">ArrayType</a> object comprises two fields, <code>elementType: <a href="#DataType=org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.DataType">DataType</a></code> and
+      <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>The data type for collections of multiple values.
+Internally these are represented as columns that contain a <code><code>scala.collection.Seq</code></code>.</p><p>An <a href="#ArrayType=org.apache.spark.sql.catalyst.types.ArrayType" class="extmbr" name="org.apache.spark.sql.ArrayType">ArrayType</a> object comprises two fields, <code>elementType: <a href="#DataType=org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.DataType">DataType</a></code> and
 <code>containsNull: Boolean</code>. The field of <code>elementType</code> is used to specify the type of
-array elements. The field of <code>containsNull</code> is used to specify if the array can have
-any <code>null</code> value.
+array elements. The field of <code>containsNull</code> is used to specify if the array has <code>null</code> values.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
@@ -120,19 +119,6 @@ any <code>null</code> value.
                 <span class="name">@<a href="../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="org.apache.spark.sql.Logging" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Logging=com.typesafe.scalalogging.slf4j.Logging"></a>
-      <a id="Logging:Logging"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Logging</span><span class="result"> = <span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="org.apache.spark.sql.MapType" visbl="pub" data-isabs="false" fullComment="yes" group="dataType">
       <a id="MapType=org.apache.spark.sql.catalyst.types.MapType"></a>
       <a id="MapType:MapType"></a>
@@ -145,10 +131,12 @@ any <code>null</code> value.
         <span class="name">MapType</span><span class="result"> = <span class="extype" name="org.apache.spark.sql.catalyst.types.MapType">sql.catalyst.types.MapType</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>The data type representing <code>Map</code>s. A <a href="#MapType=org.apache.spark.sql.catalyst.types.MapType" class="extmbr" name="org.apache.spark.sql.MapType">MapType</a> object comprises two fields,
-<code>keyType: <a href="#DataType=org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.DataType">DataType</a></code> and <code>valueType: <a href="#DataType=org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.DataType">DataType</a></code>.
+      <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>The data type representing <code>Map</code>s. A <a href="#MapType=org.apache.spark.sql.catalyst.types.MapType" class="extmbr" name="org.apache.spark.sql.MapType">MapType</a> object comprises three fields,
+<code>keyType: <a href="#DataType=org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.DataType">DataType</a></code>, <code>valueType: <a href="#DataType=org.apache.spark.sql.catalyst.types.DataType" class="extmbr" name="org.apache.spark.sql.DataType">DataType</a></code> and <code>valueContainsNull: Boolean</code>.
 The field of <code>keyType</code> is used to specify the type of keys in the map.
 The field of <code>valueType</code> is used to specify the type of values in the map.
+The field of <code>valueContainsNull</code> is used to specify if values of this map has <code>null</code> values.
+For values of a MapType column, keys are not allowed to have <code>null</code> values.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
@@ -181,9 +169,9 @@ The field of <code>valueType</code> is used to specify the type of values in the
         <a href="SQLConf.html"><span class="name">SQLConf</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <p class="comment cmt">SQLConf holds mutable config parameters and hints.</p>
+      <p class="comment cmt">A trait that enables the setting and getting of mutable config parameters/hints.</p>
     </li><li name="org.apache.spark.sql.SQLContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SQLContextextendsorg.apache.spark.sql.LoggingwithSQLConfwithExpressionConversionswithSerializable"></a>
+      <a id="SQLContextextendsLoggingwithSQLConfwithExpressionConversionswithUDFRegistrationwithSerializable"></a>
       <a id="SQLContext:SQLContext"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -191,7 +179,7 @@ The field of <code>valueType</code> is used to specify the type of values in the
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SQLContext.html"><span class="name">SQLContext</span></a><span class="result"> extends <a href="#Logging=com.typesafe.scalalogging.slf4j.Logging" class="extmbr" name="org.apache.spark.sql.Logging">Logging</a> with <a href="SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a> with <span class="extype" name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions">ExpressionConversions</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="SQLContext.html"><span class="name">SQLContext</span></a><span class="result"> extends <a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a> with <a href="SQLConf.html" class="extype" name="org.apache.spark.sql.SQLConf">SQLConf</a> with <span class="extype" name="org.apache.spark.sql.catalyst.dsl.ExpressionConversions">ExpressionConversions</span> with <a href="UDFRegistration.html" class="extype" name="org.apache.spark.sql.UDFRegistration">UDFRegistration</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">:: AlphaComponent ::
@@ -249,6 +237,19 @@ A <a href="#StructType=org.apache.spark.sql.catalyst.types.StructType" class="ex
                 <span class="name">@<a href="../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="org.apache.spark.sql.UDFRegistration" visbl="prt" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UDFRegistrationextendsAnyRef"></a>
+      <a id="UDFRegistration:UDFRegistration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="UDFRegistration.html"><span class="name">UDFRegistration</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Functions for registering scala lambda functions as UDFs in a SQLContext.</p>
     </li></ol>
             </div>
 
@@ -394,7 +395,9 @@ A <a href="#StructType=org.apache.spark.sql.catalyst.types.StructType" class="ex
         <span class="name">MapType</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.types.MapType">sql.catalyst.types.MapType</span>.type</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>A <a href="#MapType=org.apache.spark.sql.catalyst.types.MapType" class="extmbr" name="org.apache.spark.sql.MapType">MapType</a> can be constructed by</p><pre>MapType(keyType: DataType, valueType: DataType)</pre></div></div>
+      <p class="shortcomment cmt">:: DeveloperApi ::</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::</p><p>A <a href="#MapType=org.apache.spark.sql.catalyst.types.MapType" class="extmbr" name="org.apache.spark.sql.MapType">MapType</a> object can be constructed with two ways,</p><pre>MapType(keyType: DataType, valueType: DataType, valueContainsNull: <span class="std">Boolean</span>)</pre><p> and</p><pre>MapType(keyType: DataType, valueType: DataType)</pre><p>For <code>MapType(keyType: DataType, valueType: DataType)</code>,
+the field of <code>valueContainsNull</code> is set to <code>true</code>.
+</p></div></div>
     </li><li name="org.apache.spark.sql.package#Row" visbl="pub" data-isabs="false" fullComment="yes" group="row">
       <a id="Row:org.apache.spark.sql.catalyst.expressions.Row.type"></a>
       <a id="Row:sql.catalyst.expressions.Row.type"></a>
@@ -636,6 +639,19 @@ An execution engine for relational query plans that runs on top Spark and return
       </span>
       <span class="symbol">
         <a href="test/package.html"><span class="name">test</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="org.apache.spark.sql.types" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="types"></a>
+      <a id="types:types"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="types/package.html"><span class="name">types</span></a>
       </span>
       </h4>
       

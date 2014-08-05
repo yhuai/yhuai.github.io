@@ -84,6 +84,27 @@ Stores all the configuration options for tree construction</p></div><dl class="a
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.apache.spark.mllib.tree.configuration.Strategy#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(algo:org.apache.spark.mllib.tree.configuration.Algo.Algo,impurity:org.apache.spark.mllib.tree.impurity.Impurity,maxDepth:Int,numClassesForClassification:Int,maxBins:Int,categoricalFeaturesInfo:java.util.Map[Integer,Integer]):org.apache.spark.mllib.tree.configuration.Strategy"></a>
+      <a id="&lt;init&gt;:Strategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Strategy</span><span class="params">(<span name="algo">algo: <a href="Algo$.html#Algo=org.apache.spark.mllib.tree.configuration.Algo.Value" class="extmbr" name="org.apache.spark.mllib.tree.configuration.Algo.Algo">Algo.Algo</a></span>, <span name="impurity">impurity: <a href="../impurity/Impurity.html" class="extype" name="org.apache.spark.mllib.tree.impurity.Impurity">Impurity</a></span>, <span name="maxDepth">maxDepth: <span class="extype" name="scala.Int">Int</span></span>, <span name="numClassesForClassification">numClassesForClassification: <span class="extype" name="scala.Int">Int</span></span>, <span name="maxBins">maxBins: <span class="extype" name="scala.Int">Int</span></span>, <span name="categoricalFeaturesInfo">categoricalFeaturesInfo: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="java.lang.Integer">Integer</span>, <span class="extype" name="java.lang.Integer">Integer</span>]</span>)</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Java-friendly constructor.</p><div class="fullcomment"><div class="comment cmt"><p>Java-friendly constructor.
+</p></div><dl class="paramcmts block"><dt class="param">algo</dt><dd class="cmt"><p>classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>Maximum depth of the tree.
+                E.g., depth 0 means 1 leaf node; depth 1 means 1 internal node + 2 leaf nodes.</p></dd><dt class="param">numClassesForClassification</dt><dd class="cmt"><p>number of classes for classification. Default value is 2
+                                   leads to binary classification</p></dd><dt class="param">maxBins</dt><dd class="cmt"><p>maximum number of bins used for splitting features</p></dd><dt class="param">categoricalFeaturesInfo</dt><dd class="cmt"><p>A map storing information about the categorical variables and
+                               the number of discrete values they take. For example, an entry
+                               (n -&gt; k) implies the feature n is categorical with k categories
+                               0, 1, 2, ... , k-1. It's important to note that features are
+                               zero-indexed.
+</p></dd></dl></div>
+    </li><li name="org.apache.spark.mllib.tree.configuration.Strategy#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="&lt;init&gt;(algo:org.apache.spark.mllib.tree.configuration.Algo.Algo,impurity:org.apache.spark.mllib.tree.impurity.Impurity,maxDepth:Int,numClassesForClassification:Int,maxBins:Int,quantileCalculationStrategy:org.apache.spark.mllib.tree.configuration.QuantileStrategy.QuantileStrategy,categoricalFeaturesInfo:Map[Int,Int],maxMemoryInMB:Int):org.apache.spark.mllib.tree.configuration.Strategy"></a>
       <a id="&lt;init&gt;:Strategy"></a>
       <h4 class="signature">
@@ -95,7 +116,8 @@ Stores all the configuration options for tree construction</p></div><dl class="a
         <span class="name">Strategy</span><span class="params">(<span name="algo">algo: <a href="Algo$.html#Algo=org.apache.spark.mllib.tree.configuration.Algo.Value" class="extmbr" name="org.apache.spark.mllib.tree.configuration.Algo.Algo">Algo.Algo</a></span>, <span name="impurity">impurity: <a href="../impurity/Impurity.html" class="extype" name="org.apache.spark.mllib.tree.impurity.Impurity">Impurity</a></span>, <span name="maxDepth">maxDepth: <span class="extype" name="scala.Int">Int</span></span>, <span name="numClassesForClassification">numClassesForClassification: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">2</span></span>, <span name="maxBins">maxBins: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">100</span></span>, <span name="quantileCalculationStrategy">quantileCalculationStrategy: <a href="QuantileStrategy$.html#QuantileStrategy=org.apache.spark.mllib.tree.configuration.QuantileStrategy.Value" class="extmbr" name="org.apache.spark.mllib.tree.configuration.QuantileStrategy.QuantileStrategy">QuantileStrategy.QuantileStrategy</a> = <span class="defval" name="org.apache.spark.mllib.tree.configuration.QuantileStrategy.Sort">...</span></span>, <span name="categoricalFeaturesInfo">categoricalFeaturesInfo: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>] = <span class="defval" name="scala.this.Predef.Map.apply[Int, Int]()">...</span></span>, <span name="maxMemoryInMB">maxMemoryInMB: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">128</span></span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">algo</dt><dd class="cmt"><p>classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>maximum depth of the tree</p></dd><dt class="param">numClassesForClassification</dt><dd class="cmt"><p>number of classes for classification. Default value is 2
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">algo</dt><dd class="cmt"><p>classification or regression</p></dd><dt class="param">impurity</dt><dd class="cmt"><p>criterion used for information gain calculation</p></dd><dt class="param">maxDepth</dt><dd class="cmt"><p>Maximum depth of the tree.
+                E.g., depth 0 means 1 leaf node; depth 1 means 1 internal node + 2 leaf nodes.</p></dd><dt class="param">numClassesForClassification</dt><dd class="cmt"><p>number of classes for classification. Default value is 2
                                    leads to binary classification</p></dd><dt class="param">maxBins</dt><dd class="cmt"><p>maximum number of bins used for splitting features</p></dd><dt class="param">quantileCalculationStrategy</dt><dd class="cmt"><p>algorithm for calculating quantiles</p></dd><dt class="param">categoricalFeaturesInfo</dt><dd class="cmt"><p>A map storing information about the categorical variables and the
                                number of discrete values they take. For example, an entry (n -&gt;
                                k) implies the feature n is categorical with k categories 0,
@@ -375,7 +397,7 @@ Stores all the configuration options for tree construction</p></div><dl class="a
       </span>
       </h4>
       <p class="shortcomment cmt">maximum number of bins used for splitting features</p>
-    </li><li name="org.apache.spark.mllib.tree.configuration.Strategy#maxDepth" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="org.apache.spark.mllib.tree.configuration.Strategy#maxDepth" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="maxDepth:Int"></a>
       <a id="maxDepth:Int"></a>
       <h4 class="signature">
@@ -387,7 +409,8 @@ Stores all the configuration options for tree construction</p></div><dl class="a
         <span class="name">maxDepth</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">maximum depth of the tree</p>
+      <p class="shortcomment cmt">Maximum depth of the tree.</p><div class="fullcomment"><div class="comment cmt"><p>Maximum depth of the tree.
+                E.g., depth 0 means 1 leaf node; depth 1 means 1 internal node + 2 leaf nodes.</p></div></div>
     </li><li name="org.apache.spark.mllib.tree.configuration.Strategy#maxMemoryInMB" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="maxMemoryInMB:Int"></a>
       <a id="maxMemoryInMB:Int"></a>

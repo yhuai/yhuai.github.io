@@ -100,10 +100,31 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="pyspark.sql.SQLContext-class.html#registerFunction" class="summary-sig-name">registerFunction</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">f</span>,
+        <span class="summary-sig-arg">returnType</span>=<span class="summary-sig-default">StringType()</span>)</span><br />
+      Registers a lambda function as a UDF so it can be used in SQL 
+      statements.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyspark.sql-pysrc.html#SQLContext.registerFunction">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="pyspark.sql.SQLContext-class.html#inferSchema" class="summary-sig-name">inferSchema</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">rdd</span>)</span><br />
-      Infer and apply a schema to an RDD of <code 
-      class="link">dict</code>s.</td>
+      Infer and apply a schema to an RDD of <a 
+      href="pyspark.sql.Row-class.html" class="link">Row</a>s.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyspark.sql-pysrc.html#SQLContext.inferSchema">source&nbsp;code</a></span>
             
@@ -123,7 +144,7 @@
         <span class="summary-sig-arg">rdd</span>,
         <span class="summary-sig-arg">schema</span>)</span><br />
       Applies the given schema to the given RDD of <code 
-      class="link">dict</code>s.</td>
+      class="link">tuple</code> or <code class="link">list</code>s.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyspark.sql-pysrc.html#SQLContext.applySchema">source&nbsp;code</a></span>
             
@@ -323,7 +344,7 @@
 <span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.inferSchema(srdd) <span class="py-comment"># doctest: +IGNORE_EXCEPTION_DETAIL</span>
 <span class="py-except">Traceback (most recent call last):</span>
 <span class="py-except">    ...</span>
-<span class="py-except">ValueError:...</span></pre>
+<span class="py-except">TypeError:...</span></pre>
 <pre class="py-doctest">
 <span class="py-prompt">&gt;&gt;&gt; </span>bad_rdd = sc.parallelize([1,2,3])
 <span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.inferSchema(bad_rdd) <span class="py-comment"># doctest: +IGNORE_EXCEPTION_DETAIL</span>
@@ -331,13 +352,56 @@
 <span class="py-except">    ...</span>
 <span class="py-except">ValueError:...</span></pre>
 <pre class="py-doctest">
-<span class="py-prompt">&gt;&gt;&gt; </span>allTypes = sc.parallelize([{<span class="py-string">&quot;int&quot;</span> : 1, <span class="py-string">&quot;string&quot;</span> : <span class="py-string">&quot;string&quot;</span>, <span class="py-string">&quot;double&quot;</span> : 1.0, <span class="py-string">&quot;long&quot;</span>: 1L,
-<span class="py-more">... </span><span class="py-string">&quot;boolean&quot;</span> : True}])
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.inferSchema(allTypes).map(<span class="py-keyword">lambda</span> x: (x.int, x.string, x.double, x.long,
-<span class="py-more">... </span>x.boolean))
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd.collect()[0]
-<span class="py-output">(1, u'string', 1.0, 1, True)</span></pre></li>
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> datetime <span class="py-keyword">import</span> datetime
+<span class="py-prompt">&gt;&gt;&gt; </span>allTypes = sc.parallelize([Row(i=1, s=<span class="py-string">&quot;string&quot;</span>, d=1.0, l=1L,
+<span class="py-more">... </span>    b=True, list=[1, 2, 3], dict={<span class="py-string">&quot;s&quot;</span>: 0}, row=Row(a=1),
+<span class="py-more">... </span>    time=datetime(2014, 8, 1, 14, 1, 5))])
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.inferSchema(allTypes)
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd.registerTempTable(<span class="py-string">&quot;allTypes&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.sql(<span class="py-string">'select i+1, d+1, not b, list[1], dict[&quot;s&quot;], time, row.a '</span>
+<span class="py-more">... </span>           <span class="py-string">'from allTypes where b and i &gt; 0'</span>).collect()
+<span class="py-output">[Row(c0=2, c1=2.0, c2=False, c3=2, c4=0...8, 1, 14, 1, 5), a=1)]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>srdd.map(<span class="py-keyword">lambda</span> x: (x.i, x.s, x.d, x.l, x.b, x.time,
+<span class="py-more">... </span>                    x.row.a, x.list)).collect()
+<span class="py-output">[(1, u'string', 1.0, 1, True, ...(2014, 8, 1, 14, 1, 5), 1, [1, 2, 3])]</span></pre></li>
     </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="registerFunction"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">registerFunction</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">f</span>,
+        <span class="sig-arg">returnType</span>=<span class="sig-default">StringType()</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyspark.sql-pysrc.html#SQLContext.registerFunction">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Registers a lambda function as a UDF so it can be used in SQL 
+  statements.</p>
+  <p>In addition to a name and the function itself, the return type can be 
+  optionally specified. When the return type is not given it default to a 
+  string and conversion will automatically be done.  For any other return 
+  type, the produced object must match the specified type.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerFunction(<span class="py-string">&quot;stringLengthString&quot;</span>, <span class="py-keyword">lambda</span> x: len(x))
+<span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.sql(<span class="py-string">&quot;SELECT stringLengthString('test')&quot;</span>).collect()
+<span class="py-output">[Row(c0=u'4')]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerFunction(<span class="py-string">&quot;stringLengthInt&quot;</span>, <span class="py-keyword">lambda</span> x: len(x), IntegerType())
+<span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.sql(<span class="py-string">&quot;SELECT stringLengthInt('test')&quot;</span>).collect()
+<span class="py-output">[Row(c0=4)]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerFunction(<span class="py-string">&quot;twoArgs&quot;</span>, <span class="py-keyword">lambda</span> x, y: len(x) + y, IntegerType())
+<span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.sql(<span class="py-string">&quot;SELECT twoArgs('test', 1)&quot;</span>).collect()
+<span class="py-output">[Row(c0=5)]</span></pre>
+  <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
@@ -356,28 +420,39 @@
     </td>
   </tr></table>
   
-  <p>Infer and apply a schema to an RDD of <code 
-  class="link">dict</code>s.</p>
-  <p>We peek at the first row of the RDD to determine the fields names and 
-  types, and then use that to extract all the dictionaries. Nested 
-  collections are supported, which include array, dict, list, set, and 
-  tuple.</p>
+  <p>Infer and apply a schema to an RDD of <a 
+  href="pyspark.sql.Row-class.html" class="link">Row</a>s.</p>
+  <p>We peek at the first row of the RDD to determine the fields' names and
+  types. Nested collections are supported, which include array, dict, list,
+  Row, tuple, namedtuple, or object.</p>
+  <p>All the rows in `rdd` should have the same type with the first one, or
+  it will cause runtime exceptions.</p>
+  <p>Each row could be <a href="pyspark.sql.Row-class.html" 
+  class="link">pyspark.sql.Row</a> object or namedtuple or objects, using 
+  dict is deprecated.</p>
 <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>rdd = sc.parallelize(
+<span class="py-more">... </span>    [Row(field1=1, field2=<span class="py-string">&quot;row1&quot;</span>),
+<span class="py-more">... </span>     Row(field1=2, field2=<span class="py-string">&quot;row2&quot;</span>),
+<span class="py-more">... </span>     Row(field1=3, field2=<span class="py-string">&quot;row3&quot;</span>)])
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.inferSchema(rdd)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd.collect() == [{<span class="py-string">&quot;field1&quot;</span> : 1, <span class="py-string">&quot;field2&quot;</span> : <span class="py-string">&quot;row1&quot;</span>}, {<span class="py-string">&quot;field1&quot;</span> : 2, <span class="py-string">&quot;field2&quot;</span>: <span class="py-string">&quot;row2&quot;</span>},
-<span class="py-more">... </span>                   {<span class="py-string">&quot;field1&quot;</span> : 3, <span class="py-string">&quot;field2&quot;</span>: <span class="py-string">&quot;row3&quot;</span>}]
-<span class="py-output">True</span></pre>
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd.collect()[0]
+<span class="py-output">Row(field1=1, field2=u'row1')</span></pre>
 <pre class="py-doctest">
-<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> array <span class="py-keyword">import</span> array
+<span class="py-prompt">&gt;&gt;&gt; </span>NestedRow = Row(<span class="py-string">&quot;f1&quot;</span>, <span class="py-string">&quot;f2&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>nestedRdd1 = sc.parallelize([
+<span class="py-more">... </span>    NestedRow(array(<span class="py-string">'i'</span>, [1, 2]), {<span class="py-string">&quot;row1&quot;</span>: 1.0}),
+<span class="py-more">... </span>    NestedRow(array(<span class="py-string">'i'</span>, [2, 3]), {<span class="py-string">&quot;row2&quot;</span>: 2.0})])
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.inferSchema(nestedRdd1)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd.collect() == [{<span class="py-string">&quot;f1&quot;</span> : array(<span class="py-string">'i'</span>, [1, 2]), <span class="py-string">&quot;f2&quot;</span> : {<span class="py-string">&quot;row1&quot;</span> : 1.0}},
-<span class="py-more">... </span>                   {<span class="py-string">&quot;f1&quot;</span> : array(<span class="py-string">'i'</span>, [2, 3]), <span class="py-string">&quot;f2&quot;</span> : {<span class="py-string">&quot;row2&quot;</span> : 2.0}}]
-<span class="py-output">True</span></pre>
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd.collect()
+<span class="py-output">[Row(f1=[1, 2], f2={u'row1': 1.0}), ..., f2={u'row2': 2.0})]</span></pre>
 <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>nestedRdd2 = sc.parallelize([
+<span class="py-more">... </span>    NestedRow([[1, 2], [2, 3]], [1, 2]),
+<span class="py-more">... </span>    NestedRow([[2, 3], [3, 4]], [2, 3])])
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.inferSchema(nestedRdd2)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd.collect() == [{<span class="py-string">&quot;f1&quot;</span> : [[1, 2], [2, 3]], <span class="py-string">&quot;f2&quot;</span> : set([1, 2]), <span class="py-string">&quot;f3&quot;</span> : (1, 2)},
-<span class="py-more">... </span>                   {<span class="py-string">&quot;f1&quot;</span> : [[2, 3], [3, 4]], <span class="py-string">&quot;f2&quot;</span> : set([2, 3]), <span class="py-string">&quot;f3&quot;</span> : (2, 3)}]
-<span class="py-output">True</span></pre>
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd.collect()
+<span class="py-output">[Row(f1=[[1, 2], [2, 3]], f2=[1, 2]), ..., f2=[2, 3])]</span></pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -399,16 +474,52 @@
   </tr></table>
   
   <p>Applies the given schema to the given RDD of <code 
-  class="link">dict</code>s. :param rdd: :param schema: :return:</p>
+  class="link">tuple</code> or <code class="link">list</code>s.</p>
+  <p>These tuples or lists can contain complex nested structures like 
+  lists, maps or nested rows.</p>
+  <p>The schema should be a StructType.</p>
+  <p>It is important that the schema matches the types of the objects in 
+  each row or exceptions could be thrown at runtime.</p>
 <pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>rdd2 = sc.parallelize([(1, <span class="py-string">&quot;row1&quot;</span>), (2, <span class="py-string">&quot;row2&quot;</span>), (3, <span class="py-string">&quot;row3&quot;</span>)])
 <span class="py-prompt">&gt;&gt;&gt; </span>schema = StructType([StructField(<span class="py-string">&quot;field1&quot;</span>, IntegerType(), False),
 <span class="py-more">... </span>    StructField(<span class="py-string">&quot;field2&quot;</span>, StringType(), False)])
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.applySchema(rdd, schema)
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.applySchema(rdd2, schema)
 <span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerRDDAsTable(srdd, <span class="py-string">&quot;table1&quot;</span>)
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd2 = sqlCtx.sql(<span class="py-string">&quot;SELECT * from table1&quot;</span>)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd2.collect() == [{<span class="py-string">&quot;field1&quot;</span> : 1, <span class="py-string">&quot;field2&quot;</span> : <span class="py-string">&quot;row1&quot;</span>}, {<span class="py-string">&quot;field1&quot;</span> : 2, <span class="py-string">&quot;field2&quot;</span>: <span class="py-string">&quot;row2&quot;</span>},
-<span class="py-more">... </span>                   {<span class="py-string">&quot;field1&quot;</span> : 3, <span class="py-string">&quot;field2&quot;</span>: <span class="py-string">&quot;row3&quot;</span>}]
-<span class="py-output">True</span></pre>
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd2.collect()
+<span class="py-output">[Row(field1=1, field2=u'row1'),..., Row(field1=3, field2=u'row3')]</span></pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> datetime <span class="py-keyword">import</span> datetime
+<span class="py-prompt">&gt;&gt;&gt; </span>rdd = sc.parallelize([(127, -32768, 1.0,
+<span class="py-more">... </span>    datetime(2010, 1, 1, 1, 1, 1),
+<span class="py-more">... </span>    {<span class="py-string">&quot;a&quot;</span>: 1}, (2,), [1, 2, 3], None)])
+<span class="py-prompt">&gt;&gt;&gt; </span>schema = StructType([
+<span class="py-more">... </span>    StructField(<span class="py-string">&quot;byte&quot;</span>, ByteType(), False),
+<span class="py-more">... </span>    StructField(<span class="py-string">&quot;short&quot;</span>, ShortType(), False),
+<span class="py-more">... </span>    StructField(<span class="py-string">&quot;float&quot;</span>, FloatType(), False),
+<span class="py-more">... </span>    StructField(<span class="py-string">&quot;time&quot;</span>, TimestampType(), False),
+<span class="py-more">... </span>    StructField(<span class="py-string">&quot;map&quot;</span>,
+<span class="py-more">... </span>        MapType(StringType(), IntegerType(), False), False),
+<span class="py-more">... </span>    StructField(<span class="py-string">&quot;struct&quot;</span>,
+<span class="py-more">... </span>        StructType([StructField(<span class="py-string">&quot;b&quot;</span>, ShortType(), False)]), False),
+<span class="py-more">... </span>    StructField(<span class="py-string">&quot;list&quot;</span>, ArrayType(ByteType(), False), False),
+<span class="py-more">... </span>    StructField(<span class="py-string">&quot;null&quot;</span>, DoubleType(), True)])
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.applySchema(rdd, schema).map(
+<span class="py-more">... </span>    <span class="py-keyword">lambda</span> x: (x.byte, x.short, x.float, x.time,
+<span class="py-more">... </span>        x.map[<span class="py-string">&quot;a&quot;</span>], x.struct.b, x.list, x.null))
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd.collect()[0]
+<span class="py-output">(127, -32768, 1.0, ...(2010, 1, 1, 1, 1, 1), 1, 2, [1, 2, 3], None)</span></pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>rdd = sc.parallelize([(127, -32768, 1.0,
+<span class="py-more">... </span>    datetime(2010, 1, 1, 1, 1, 1),
+<span class="py-more">... </span>    {<span class="py-string">&quot;a&quot;</span>: 1}, (2,), [1, 2, 3])])
+<span class="py-prompt">&gt;&gt;&gt; </span>abstract = <span class="py-string">&quot;byte short float time map{} struct(b) list[]&quot;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>schema = _parse_schema_abstract(abstract)
+<span class="py-prompt">&gt;&gt;&gt; </span>typedSchema = _infer_schema_type(rdd.first(), schema)
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.applySchema(rdd, typedSchema)
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd.collect()
+<span class="py-output">[Row(byte=127, short=-32768, float=1.0, time=..., list=[1, 2, 3])]</span></pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -488,8 +599,9 @@
   <p>Loads a text file storing one JSON object per line as a <a 
   href="pyspark.sql.SchemaRDD-class.html" class="link">SchemaRDD</a>.</p>
   <p>If the schema is provided, applies the given schema to this JSON 
-  dataset. Otherwise, it goes through the entire dataset once to determine 
-  the schema.</p>
+  dataset.</p>
+  <p>Otherwise, it goes through the entire dataset once to determine the 
+  schema.</p>
 <pre class="py-doctest">
 <span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> tempfile, shutil
 <span class="py-prompt">&gt;&gt;&gt; </span>jsonFile = tempfile.mkdtemp()
@@ -501,35 +613,36 @@
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd1 = sqlCtx.jsonFile(jsonFile)
 <span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerRDDAsTable(srdd1, <span class="py-string">&quot;table1&quot;</span>)
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd2 = sqlCtx.sql(
-<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field1 AS f1, field2 as f2, field3 as f3, field6 as f4 from table1&quot;</span>)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd2.collect() == [
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:1, <span class="py-string">&quot;f2&quot;</span>:<span class="py-string">&quot;row1&quot;</span>, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:11, <span class="py-string">&quot;field5&quot;</span>: None}, <span class="py-string">&quot;f4&quot;</span>:None},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:2, <span class="py-string">&quot;f2&quot;</span>:None, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:22,  <span class="py-string">&quot;field5&quot;</span>: [10, 11]}, <span class="py-string">&quot;f4&quot;</span>:[{<span class="py-string">&quot;field7&quot;</span>: <span class="py-string">&quot;row2&quot;</span>}]},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:None, <span class="py-string">&quot;f2&quot;</span>:<span class="py-string">&quot;row3&quot;</span>, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:33, <span class="py-string">&quot;field5&quot;</span>: []}, <span class="py-string">&quot;f4&quot;</span>:None}]
-<span class="py-output">True</span>
+<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field1 AS f1, field2 as f2, field3 as f3, &quot;</span>
+<span class="py-more">... </span>  <span class="py-string">&quot;field6 as f4 from table1&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">for</span> r <span class="py-keyword">in</span> srdd2.collect():
+<span class="py-more">... </span>    <span class="py-keyword">print</span> r
+<span class="py-output">Row(f1=1, f2=u'row1', f3=Row(field4=11, field5=None), f4=None)</span>
+<span class="py-output">Row(f1=2, f2=None, f3=Row(field4=22,..., f4=[Row(field7=u'row2')])</span>
+<span class="py-output">Row(f1=None, f2=u'row3', f3=Row(field4=33, field5=[]), f4=None)</span>
 <span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>srdd3 = sqlCtx.jsonFile(jsonFile, srdd1.schema())
 <span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerRDDAsTable(srdd3, <span class="py-string">&quot;table2&quot;</span>)
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd4 = sqlCtx.sql(
-<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field1 AS f1, field2 as f2, field3 as f3, field6 as f4 from table2&quot;</span>)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd4.collect() == [
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:1, <span class="py-string">&quot;f2&quot;</span>:<span class="py-string">&quot;row1&quot;</span>, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:11, <span class="py-string">&quot;field5&quot;</span>: None}, <span class="py-string">&quot;f4&quot;</span>:None},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:2, <span class="py-string">&quot;f2&quot;</span>:None, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:22,  <span class="py-string">&quot;field5&quot;</span>: [10, 11]}, <span class="py-string">&quot;f4&quot;</span>:[{<span class="py-string">&quot;field7&quot;</span>: <span class="py-string">&quot;row2&quot;</span>}]},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:None, <span class="py-string">&quot;f2&quot;</span>:<span class="py-string">&quot;row3&quot;</span>, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:33, <span class="py-string">&quot;field5&quot;</span>: []}, <span class="py-string">&quot;f4&quot;</span>:None}]
-<span class="py-output">True</span>
+<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field1 AS f1, field2 as f2, field3 as f3, &quot;</span>
+<span class="py-more">... </span>  <span class="py-string">&quot;field6 as f4 from table2&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">for</span> r <span class="py-keyword">in</span> srdd4.collect():
+<span class="py-more">... </span>   <span class="py-keyword">print</span> r
+<span class="py-output">Row(f1=1, f2=u'row1', f3=Row(field4=11, field5=None), f4=None)</span>
+<span class="py-output">Row(f1=2, f2=None, f3=Row(field4=22,..., f4=[Row(field7=u'row2')])</span>
+<span class="py-output">Row(f1=None, f2=u'row3', f3=Row(field4=33, field5=[]), f4=None)</span>
 <span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>schema = StructType([
 <span class="py-more">... </span>    StructField(<span class="py-string">&quot;field2&quot;</span>, StringType(), True),
 <span class="py-more">... </span>    StructField(<span class="py-string">&quot;field3&quot;</span>,
 <span class="py-more">... </span>        StructType([
-<span class="py-more">... </span>            StructField(<span class="py-string">&quot;field5&quot;</span>, ArrayType(IntegerType(), False), True)]), False)])
+<span class="py-more">... </span>            StructField(<span class="py-string">&quot;field5&quot;</span>,
+<span class="py-more">... </span>                ArrayType(IntegerType(), False), True)]), False)])
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd5 = sqlCtx.jsonFile(jsonFile, schema)
 <span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerRDDAsTable(srdd5, <span class="py-string">&quot;table3&quot;</span>)
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd6 = sqlCtx.sql(
-<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field2 AS f1, field3.field5 as f2, field3.field5[0] as f3 from table3&quot;</span>)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd6.collect() == [
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>: <span class="py-string">&quot;row1&quot;</span>, <span class="py-string">&quot;f2&quot;</span>: None, <span class="py-string">&quot;f3&quot;</span>: None},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>: None, <span class="py-string">&quot;f2&quot;</span>: [10, 11], <span class="py-string">&quot;f3&quot;</span>: 10},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>: <span class="py-string">&quot;row3&quot;</span>, <span class="py-string">&quot;f2&quot;</span>: [], <span class="py-string">&quot;f3&quot;</span>: None}]
-<span class="py-output">True</span></pre>
+<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field2 AS f1, field3.field5 as f2, &quot;</span>
+<span class="py-more">... </span>  <span class="py-string">&quot;field3.field5[0] as f3 from table3&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd6.collect()
+<span class="py-output">[Row(f1=u'row1', f2=None, f3=None)...Row(f1=u'row3', f2=[], f3=None)]</span></pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -553,41 +666,43 @@
   <p>Loads an RDD storing one JSON object per string as a <a 
   href="pyspark.sql.SchemaRDD-class.html" class="link">SchemaRDD</a>.</p>
   <p>If the schema is provided, applies the given schema to this JSON 
-  dataset. Otherwise, it goes through the entire dataset once to determine 
-  the schema.</p>
+  dataset.</p>
+  <p>Otherwise, it goes through the entire dataset once to determine the 
+  schema.</p>
 <pre class="py-doctest">
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd1 = sqlCtx.jsonRDD(json)
 <span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerRDDAsTable(srdd1, <span class="py-string">&quot;table1&quot;</span>)
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd2 = sqlCtx.sql(
-<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field1 AS f1, field2 as f2, field3 as f3, field6 as f4 from table1&quot;</span>)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd2.collect() == [
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:1, <span class="py-string">&quot;f2&quot;</span>:<span class="py-string">&quot;row1&quot;</span>, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:11, <span class="py-string">&quot;field5&quot;</span>: None}, <span class="py-string">&quot;f4&quot;</span>:None},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:2, <span class="py-string">&quot;f2&quot;</span>:None, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:22,  <span class="py-string">&quot;field5&quot;</span>: [10, 11]}, <span class="py-string">&quot;f4&quot;</span>:[{<span class="py-string">&quot;field7&quot;</span>: <span class="py-string">&quot;row2&quot;</span>}]},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:None, <span class="py-string">&quot;f2&quot;</span>:<span class="py-string">&quot;row3&quot;</span>, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:33, <span class="py-string">&quot;field5&quot;</span>: []}, <span class="py-string">&quot;f4&quot;</span>:None}]
-<span class="py-output">True</span>
+<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field1 AS f1, field2 as f2, field3 as f3, &quot;</span>
+<span class="py-more">... </span>  <span class="py-string">&quot;field6 as f4 from table1&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">for</span> r <span class="py-keyword">in</span> srdd2.collect():
+<span class="py-more">... </span>    <span class="py-keyword">print</span> r
+<span class="py-output">Row(f1=1, f2=u'row1', f3=Row(field4=11, field5=None), f4=None)</span>
+<span class="py-output">Row(f1=2, f2=None, f3=Row(field4=22..., f4=[Row(field7=u'row2')])</span>
+<span class="py-output">Row(f1=None, f2=u'row3', f3=Row(field4=33, field5=[]), f4=None)</span>
 <span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>srdd3 = sqlCtx.jsonRDD(json, srdd1.schema())
 <span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerRDDAsTable(srdd3, <span class="py-string">&quot;table2&quot;</span>)
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd4 = sqlCtx.sql(
-<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field1 AS f1, field2 as f2, field3 as f3, field6 as f4 from table2&quot;</span>)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd4.collect() == [
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:1, <span class="py-string">&quot;f2&quot;</span>:<span class="py-string">&quot;row1&quot;</span>, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:11, <span class="py-string">&quot;field5&quot;</span>: None}, <span class="py-string">&quot;f4&quot;</span>:None},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:2, <span class="py-string">&quot;f2&quot;</span>:None, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:22,  <span class="py-string">&quot;field5&quot;</span>: [10, 11]}, <span class="py-string">&quot;f4&quot;</span>:[{<span class="py-string">&quot;field7&quot;</span>: <span class="py-string">&quot;row2&quot;</span>}]},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>:None, <span class="py-string">&quot;f2&quot;</span>:<span class="py-string">&quot;row3&quot;</span>, <span class="py-string">&quot;f3&quot;</span>:{<span class="py-string">&quot;field4&quot;</span>:33, <span class="py-string">&quot;field5&quot;</span>: []}, <span class="py-string">&quot;f4&quot;</span>:None}]
-<span class="py-output">True</span>
+<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field1 AS f1, field2 as f2, field3 as f3, &quot;</span>
+<span class="py-more">... </span>  <span class="py-string">&quot;field6 as f4 from table2&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">for</span> r <span class="py-keyword">in</span> srdd4.collect():
+<span class="py-more">... </span>    <span class="py-keyword">print</span> r
+<span class="py-output">Row(f1=1, f2=u'row1', f3=Row(field4=11, field5=None), f4=None)</span>
+<span class="py-output">Row(f1=2, f2=None, f3=Row(field4=22..., f4=[Row(field7=u'row2')])</span>
+<span class="py-output">Row(f1=None, f2=u'row3', f3=Row(field4=33, field5=[]), f4=None)</span>
 <span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>schema = StructType([
 <span class="py-more">... </span>    StructField(<span class="py-string">&quot;field2&quot;</span>, StringType(), True),
 <span class="py-more">... </span>    StructField(<span class="py-string">&quot;field3&quot;</span>,
 <span class="py-more">... </span>        StructType([
-<span class="py-more">... </span>            StructField(<span class="py-string">&quot;field5&quot;</span>, ArrayType(IntegerType(), False), True)]), False)])
+<span class="py-more">... </span>            StructField(<span class="py-string">&quot;field5&quot;</span>,
+<span class="py-more">... </span>                ArrayType(IntegerType(), False), True)]), False)])
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd5 = sqlCtx.jsonRDD(json, schema)
 <span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerRDDAsTable(srdd5, <span class="py-string">&quot;table3&quot;</span>)
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd6 = sqlCtx.sql(
-<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field2 AS f1, field3.field5 as f2, field3.field5[0] as f3 from table3&quot;</span>)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd6.collect() == [
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>: <span class="py-string">&quot;row1&quot;</span>, <span class="py-string">&quot;f2&quot;</span>: None, <span class="py-string">&quot;f3&quot;</span>: None},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>: None, <span class="py-string">&quot;f2&quot;</span>: [10, 11], <span class="py-string">&quot;f3&quot;</span>: 10},
-<span class="py-more">... </span>{<span class="py-string">&quot;f1&quot;</span>: <span class="py-string">&quot;row3&quot;</span>, <span class="py-string">&quot;f2&quot;</span>: [], <span class="py-string">&quot;f3&quot;</span>: None}]
-<span class="py-output">True</span></pre>
+<span class="py-more">... </span>  <span class="py-string">&quot;SELECT field2 AS f1, field3.field5 as f2, &quot;</span>
+<span class="py-more">... </span>  <span class="py-string">&quot;field3.field5[0] as f3 from table3&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd6.collect()
+<span class="py-output">[Row(f1=u'row1', f2=None,...Row(f1=u'row3', f2=[], f3=None)]</span></pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -614,9 +729,8 @@
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd = sqlCtx.inferSchema(rdd)
 <span class="py-prompt">&gt;&gt;&gt; </span>sqlCtx.registerRDDAsTable(srdd, <span class="py-string">&quot;table1&quot;</span>)
 <span class="py-prompt">&gt;&gt;&gt; </span>srdd2 = sqlCtx.sql(<span class="py-string">&quot;SELECT field1 AS f1, field2 as f2 from table1&quot;</span>)
-<span class="py-prompt">&gt;&gt;&gt; </span>srdd2.collect() == [{<span class="py-string">&quot;f1&quot;</span> : 1, <span class="py-string">&quot;f2&quot;</span> : <span class="py-string">&quot;row1&quot;</span>}, {<span class="py-string">&quot;f1&quot;</span> : 2, <span class="py-string">&quot;f2&quot;</span>: <span class="py-string">&quot;row2&quot;</span>},
-<span class="py-more">... </span>                    {<span class="py-string">&quot;f1&quot;</span> : 3, <span class="py-string">&quot;f2&quot;</span>: <span class="py-string">&quot;row3&quot;</span>}]
-<span class="py-output">True</span></pre>
+<span class="py-prompt">&gt;&gt;&gt; </span>srdd2.collect()
+<span class="py-output">[Row(f1=1, f2=u'row1'), Row(f1=2, f2=u'row2'), Row(f1=3, f2=u'row3')]</span></pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -680,7 +794,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Jul 27 17:21:23 2014
+    Generated by Epydoc 3.0.1 on Mon Aug  4 17:24:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

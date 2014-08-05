@@ -250,11 +250,7 @@
 <a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">                <tt class="py-keyword">and</tt> <tt class="py-name">array_equal</tt><tt class="py-op">(</tt><tt class="py-name">other</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="pyspark.rdd.RDD.values" class="py-name" href="#" onclick="return doclink('link-23', 'values', 'link-0');">values</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="pyspark.rdd.RDD.values" class="py-name" href="#" onclick="return doclink('link-24', 'values', 'link-0');">values</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
 </div><a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"> </tt>
 <a name="SparseVector.__ne__"></a><div id="SparseVector.__ne__-def"><a name="L190"></a><tt class="py-lineno">190</tt> <a class="py-toggle" href="#" id="SparseVector.__ne__-toggle" onclick="return toggle('SparseVector.__ne__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pyspark.mllib.linalg.SparseVector-class.html#__ne__">__ne__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">other</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="SparseVector.__ne__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SparseVector.__ne__-expanded"><a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method pyspark.mllib.linalg.SparseVector.__eq__()=pyspark.mllib.linalg.SparseVector-class.html#__eq__,Method pyspark.sql.ArrayType.__eq__()=pyspark.sql.ArrayType-class.html#__eq__,Method pyspark.sql.MapType.__eq__()=pyspark.sql.MapType-class.html#__eq__,Method pyspark.sql.StructField.__eq__()=pyspark.sql.StructField-class.html#__eq__,Method pyspark.sql.StructType.__eq__()=pyspark.sql.StructType-class.html#__eq__"><a title="pyspark.mllib.linalg.SparseVector.__eq__
-pyspark.sql.ArrayType.__eq__
-pyspark.sql.MapType.__eq__
-pyspark.sql.StructField.__eq__
-pyspark.sql.StructType.__eq__" class="py-name" href="#" onclick="return doclink('link-25', '__eq__', 'link-25');">__eq__</a></tt><tt class="py-op">(</tt><tt class="py-name">other</tt><tt class="py-op">)</tt> </tt>
+</div><div id="SparseVector.__ne__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SparseVector.__ne__-expanded"><a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method pyspark.mllib.linalg.SparseVector.__eq__()=pyspark.mllib.linalg.SparseVector-class.html#__eq__"><a title="pyspark.mllib.linalg.SparseVector.__eq__" class="py-name" href="#" onclick="return doclink('link-25', '__eq__', 'link-25');">__eq__</a></tt><tt class="py-op">(</tt><tt class="py-name">other</tt><tt class="py-op">)</tt> </tt>
 </div></div><a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"> </tt>
 <a name="Vectors"></a><div id="Vectors-def"><a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"> </tt>
 <a name="L194"></a><tt class="py-lineno">194</tt> <a class="py-toggle" href="#" id="Vectors-toggle" onclick="return toggle('Vectors');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="pyspark.mllib.linalg.Vectors-class.html">Vectors</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
@@ -321,8 +317,12 @@ pyspark.sql.StructType.__eq__" class="py-name" href="#" onclick="return doclink(
 <a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">        <tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
 </div><a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line"> </tt>
 <a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
-<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">    <tt class="py-name">_test</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">    <tt class="py-comment"># remove current path from list of search paths to avoid importing mllib.random</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line">    <tt class="py-comment"># for C{import random}, which is done in an external dependency of pyspark during doctests.</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">    <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">pop</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">    <tt class="py-name">_test</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -360,7 +360,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Jul 27 17:21:23 2014
+    Generated by Epydoc 3.0.1 on Mon Aug  4 17:24:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

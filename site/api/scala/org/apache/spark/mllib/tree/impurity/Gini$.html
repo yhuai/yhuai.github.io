@@ -184,7 +184,8 @@ during binary classification.
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::
 variance calculation</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
-variance calculation</p></div><dl class="paramcmts block"><dt class="param">count</dt><dd class="cmt"><p>number of instances</p></dd><dt class="param">sum</dt><dd class="cmt"><p>sum of labels</p></dd><dt class="param">sumSquares</dt><dd class="cmt"><p>summation of squares of the labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.tree.impurity.Gini">Gini</a> → <a href="Impurity.html" class="extype" name="org.apache.spark.mllib.tree.impurity.Impurity">Impurity</a></dd><dt>Annotations</dt><dd>
+variance calculation</p></div><dl class="paramcmts block"><dt class="param">count</dt><dd class="cmt"><p>number of instances</p></dd><dt class="param">sum</dt><dd class="cmt"><p>sum of labels</p></dd><dt class="param">sumSquares</dt><dd class="cmt"><p>summation of squares of the labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value, or 0 if count = 0
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.tree.impurity.Gini">Gini</a> → <a href="Impurity.html" class="extype" name="org.apache.spark.mllib.tree.impurity.Impurity">Impurity</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
         </dd></dl></div>
@@ -202,7 +203,7 @@ variance calculation</p></div><dl class="paramcmts block"><dt class="param">coun
       </h4>
       <p class="shortcomment cmt">:: DeveloperApi ::
 information calculation for multiclass classification</p><div class="fullcomment"><div class="comment cmt"><p>:: DeveloperApi ::
-information calculation for multiclass classification</p></div><dl class="paramcmts block"><dt class="param">counts</dt><dd class="cmt"><p>Array[Double] with counts for each label</p></dd><dt class="param">totalCount</dt><dd class="cmt"><p>sum of counts for all labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value
+information calculation for multiclass classification</p></div><dl class="paramcmts block"><dt class="param">counts</dt><dd class="cmt"><p>Array[Double] with counts for each label</p></dd><dt class="param">totalCount</dt><dd class="cmt"><p>sum of counts for all labels</p></dd><dt>returns</dt><dd class="cmt"><p>information value, or 0 if totalCount = 0
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.tree.impurity.Gini">Gini</a> → <a href="Impurity.html" class="extype" name="org.apache.spark.mllib.tree.impurity.Impurity">Impurity</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
               
@@ -297,6 +298,21 @@ information calculation for multiclass classification</p></div><dl class="paramc
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.apache.spark.mllib.tree.impurity.Gini#instance" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="instance:org.apache.spark.mllib.tree.impurity.Gini.type"></a>
+      <a id="instance:Gini.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">instance</span><span class="result">: <a href="" class="extype" name="org.apache.spark.mllib.tree.impurity.Gini">Gini</a>.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get this impurity instance.</p><div class="fullcomment"><div class="comment cmt"><p>Get this impurity instance.
+This is useful for passing impurity parameters to a Strategy in Java.
+</p></div></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>

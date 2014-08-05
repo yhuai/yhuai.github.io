@@ -346,43 +346,29 @@ partitions.</p>
       <p class="shortcomment cmt">Loads binary labeled data in the LIBSVM format into an RDD[LabeledPoint], with number of
 features determined automatically and the default number of partitions.</p>
     </li><li name="org.apache.spark.mllib.util.MLUtils#loadLibSVMFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="loadLibSVMFile(sc:org.apache.spark.SparkContext,path:String,multiclass:Boolean):org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]"></a>
-      <a id="loadLibSVMFile(SparkContext,String,Boolean):RDD[LabeledPoint]"></a>
+      <a id="loadLibSVMFile(sc:org.apache.spark.SparkContext,path:String,numFeatures:Int):org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]"></a>
+      <a id="loadLibSVMFile(SparkContext,String,Int):RDD[LabeledPoint]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">loadLibSVMFile</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="multiclass">multiclass: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Loads labeled data in the LIBSVM format into an RDD[LabeledPoint], with the number of features
-determined automatically and the default number of partitions.</p>
-    </li><li name="org.apache.spark.mllib.util.MLUtils#loadLibSVMFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="loadLibSVMFile(sc:org.apache.spark.SparkContext,path:String,multiclass:Boolean,numFeatures:Int):org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]"></a>
-      <a id="loadLibSVMFile(SparkContext,String,Boolean,Int):RDD[LabeledPoint]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">loadLibSVMFile</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="multiclass">multiclass: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="numFeatures">numFeatures: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>
+        <span class="name">loadLibSVMFile</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numFeatures">numFeatures: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Loads labeled data in the LIBSVM format into an RDD[LabeledPoint], with the default number of
 partitions.</p>
     </li><li name="org.apache.spark.mllib.util.MLUtils#loadLibSVMFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="loadLibSVMFile(sc:org.apache.spark.SparkContext,path:String,multiclass:Boolean,numFeatures:Int,minPartitions:Int):org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]"></a>
-      <a id="loadLibSVMFile(SparkContext,String,Boolean,Int,Int):RDD[LabeledPoint]"></a>
+      <a id="loadLibSVMFile(sc:org.apache.spark.SparkContext,path:String,numFeatures:Int,minPartitions:Int):org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]"></a>
+      <a id="loadLibSVMFile(SparkContext,String,Int,Int):RDD[LabeledPoint]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">loadLibSVMFile</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="multiclass">multiclass: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="numFeatures">numFeatures: <span class="extype" name="scala.Int">Int</span></span>, <span name="minPartitions">minPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>
+        <span class="name">loadLibSVMFile</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numFeatures">numFeatures: <span class="extype" name="scala.Int">Int</span></span>, <span name="minPartitions">minPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Loads labeled data in the LIBSVM format into an RDD[LabeledPoint].</p><div class="fullcomment"><div class="comment cmt"><p>Loads labeled data in the LIBSVM format into an RDD[LabeledPoint].
@@ -390,14 +376,30 @@ The LIBSVM format is a text-based format used by LIBSVM and LIBLINEAR.
 Each line represents a labeled sparse feature vector using the following format:</p><pre>label index1:value1 index2:value2 ...</pre><p>where the indices are one-based and in ascending order.
 This method parses each line into a <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a>,
 where the feature indices are converted to zero-based.
-</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>Spark context</p></dd><dt class="param">path</dt><dd class="cmt"><p>file or directory path in any Hadoop-supported file system URI</p></dd><dt class="param">multiclass</dt><dd class="cmt"><p>whether the input labels contain more than two classes. If false, any label
-                  with value greater than 0.5 will be mapped to 1.0, or 0.0 otherwise. So it
-                  works for both +1/-1 and 1/0 cases. If true, the double value parsed directly
-                  from the label string will be used as the label value.</p></dd><dt class="param">numFeatures</dt><dd class="cmt"><p>number of features, which will be determined from the input data if a
+</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>Spark context</p></dd><dt class="param">path</dt><dd class="cmt"><p>file or directory path in any Hadoop-supported file system URI</p></dd><dt class="param">numFeatures</dt><dd class="cmt"><p>number of features, which will be determined from the input data if a
                    nonpositive value is given. This is useful when the dataset is already split
                    into multiple files and you want to load them separately, because some
                    features may not present in certain files, which leads to inconsistent
                    feature dimensions.</p></dd><dt class="param">minPartitions</dt><dd class="cmt"><p>min number of partitions</p></dd><dt>returns</dt><dd class="cmt"><p>labeled data stored as an RDD[LabeledPoint]
+</p></dd></dl></div>
+    </li><li name="org.apache.spark.mllib.util.MLUtils#loadStreamingLabeledPoints" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="loadStreamingLabeledPoints(ssc:org.apache.spark.streaming.StreamingContext,dir:String):org.apache.spark.streaming.dstream.DStream[org.apache.spark.mllib.regression.LabeledPoint]"></a>
+      <a id="loadStreamingLabeledPoints(StreamingContext,String):DStream[LabeledPoint]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">loadStreamingLabeledPoints</span><span class="params">(<span name="ssc">ssc: <a href="../../streaming/StreamingContext.html" class="extype" name="org.apache.spark.streaming.StreamingContext">StreamingContext</a></span>, <span name="dir">dir: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../streaming/dstream/DStream.html" class="extype" name="org.apache.spark.streaming.dstream.DStream">DStream</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Loads streaming labeled points from a stream of text files
+where points are in the same format as used in <code>RDD[LabeledPoint].saveAsTextFile</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Loads streaming labeled points from a stream of text files
+where points are in the same format as used in <code>RDD[LabeledPoint].saveAsTextFile</code>.
+See <code>StreamingContext.textFileStream</code> for more details on how to
+generate a stream from files
+</p></div><dl class="paramcmts block"><dt class="param">ssc</dt><dd class="cmt"><p>Streaming context</p></dd><dt class="param">dir</dt><dd class="cmt"><p>Directory path in any Hadoop-supported file system URI</p></dd><dt>returns</dt><dd class="cmt"><p>Labeled points stored as a DStream[LabeledPoint]
 </p></dd></dl></div>
     </li><li name="org.apache.spark.mllib.util.MLUtils#loadVectors" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="loadVectors(sc:org.apache.spark.SparkContext,path:String):org.apache.spark.rdd.RDD[org.apache.spark.mllib.linalg.Vector]"></a>
@@ -591,6 +593,54 @@ where &lt;f1&gt;, &lt;f2&gt; are feature values in Double and &lt;L&gt; is the c
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.0.1)</i> Should use MLUtils.loadLabeledPoints instead.</p></dd></dl></div>
+    </li><li name="org.apache.spark.mllib.util.MLUtils#loadLibSVMFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="loadLibSVMFile(sc:org.apache.spark.SparkContext,path:String,multiclass:Boolean):org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]"></a>
+      <a id="loadLibSVMFile(SparkContext,String,Boolean):RDD[LabeledPoint]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 1.1.0) use method without multiclass argument, which no longer has effect">loadLibSVMFile</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="multiclass">multiclass: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.1.0)</i> use method without multiclass argument, which no longer has effect</p></dd></dl></div>
+    </li><li name="org.apache.spark.mllib.util.MLUtils#loadLibSVMFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="loadLibSVMFile(sc:org.apache.spark.SparkContext,path:String,multiclass:Boolean,numFeatures:Int):org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]"></a>
+      <a id="loadLibSVMFile(SparkContext,String,Boolean,Int):RDD[LabeledPoint]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 1.1.0) use method without multiclass argument, which no longer has effect">loadLibSVMFile</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="multiclass">multiclass: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="numFeatures">numFeatures: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.1.0)</i> use method without multiclass argument, which no longer has effect</p></dd></dl></div>
+    </li><li name="org.apache.spark.mllib.util.MLUtils#loadLibSVMFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="loadLibSVMFile(sc:org.apache.spark.SparkContext,path:String,multiclass:Boolean,numFeatures:Int,minPartitions:Int):org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]"></a>
+      <a id="loadLibSVMFile(SparkContext,String,Boolean,Int,Int):RDD[LabeledPoint]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 1.1.0) use method without multiclass argument, which no longer has effect">loadLibSVMFile</span><span class="params">(<span name="sc">sc: <a href="../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="multiclass">multiclass: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="numFeatures">numFeatures: <span class="extype" name="scala.Int">Int</span></span>, <span name="minPartitions">minPartitions: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 1.1.0)</i> use method without multiclass argument, which no longer has effect</p></dd></dl></div>
     </li><li name="org.apache.spark.mllib.util.MLUtils#saveLabeledData" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveLabeledData(data:org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint],dir:String):Unit"></a>
       <a id="saveLabeledData(RDD[LabeledPoint],String):Unit"></a>

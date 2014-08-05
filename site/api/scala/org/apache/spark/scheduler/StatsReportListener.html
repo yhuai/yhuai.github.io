@@ -391,6 +391,19 @@ Simple SparkListener that logs a few summary statistics when each stage complete
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <a id="logName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
     </li><li name="org.apache.spark.Logging#logTrace" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logTrace(msg:=&gt;String,throwable:Throwable):Unit"></a>
       <a id="logTrace(⇒String,Throwable):Unit"></a>
@@ -556,6 +569,20 @@ Simple SparkListener that logs a few summary statistics when each stage complete
       </h4>
       <p class="shortcomment cmt">Called when environment properties have been updated
 </p><div class="fullcomment"><div class="comment cmt"><p>Called when environment properties have been updated
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SparkListener.html" class="extype" name="org.apache.spark.scheduler.SparkListener">SparkListener</a></dd></dl></div>
+    </li><li name="org.apache.spark.scheduler.SparkListener#onExecutorMetricsUpdate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onExecutorMetricsUpdate(executorMetricsUpdate:org.apache.spark.scheduler.SparkListenerExecutorMetricsUpdate):Unit"></a>
+      <a id="onExecutorMetricsUpdate(SparkListenerExecutorMetricsUpdate):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onExecutorMetricsUpdate</span><span class="params">(<span name="executorMetricsUpdate">executorMetricsUpdate: <a href="SparkListenerExecutorMetricsUpdate.html" class="extype" name="org.apache.spark.scheduler.SparkListenerExecutorMetricsUpdate">SparkListenerExecutorMetricsUpdate</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Called when the driver receives task metrics from an executor in a heartbeat.</p><div class="fullcomment"><div class="comment cmt"><p>Called when the driver receives task metrics from an executor in a heartbeat.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SparkListener.html" class="extype" name="org.apache.spark.scheduler.SparkListener">SparkListener</a></dd></dl></div>
     </li><li name="org.apache.spark.scheduler.SparkListener#onJobEnd" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="onJobEnd(jobEnd:org.apache.spark.scheduler.SparkListenerJobEnd):Unit"></a>

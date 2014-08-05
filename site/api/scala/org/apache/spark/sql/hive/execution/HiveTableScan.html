@@ -35,7 +35,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">HiveTableScan</span><span class="params">(<span name="attributes">attributes: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>, <span name="relation">relation: <span class="extype" name="org.apache.spark.sql.hive.MetastoreRelation">MetastoreRelation</span></span>, <span name="partitionPruningPred">partitionPruningPred: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../HiveContext.html" class="extype" name="org.apache.spark.sql.hive.HiveContext">HiveContext</a></span>)</span><span class="result"> extends <a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.LeafNode">LeafNode</span> with <span class="extype" name="org.apache.spark.sql.hive.HiveInspectors">HiveInspectors</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">HiveTableScan</span><span class="params">(<span name="attributes">attributes: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>, <span name="relation">relation: <span class="extype" name="org.apache.spark.sql.hive.MetastoreRelation">MetastoreRelation</span></span>, <span name="partitionPruningPred">partitionPruningPred: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="params">(<span name="context">context: <a href="../HiveContext.html" class="extype" name="org.apache.spark.sql.hive.HiveContext">HiveContext</a></span>)</span><span class="result"> extends <a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> with <span class="extype" name="org.apache.spark.sql.execution.LeafNode">LeafNode</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -47,7 +47,7 @@ The Hive table scan operator.  Column and partition pruning are both handled.
               
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="org.apache.spark.sql.hive.HiveInspectors">HiveInspectors</span>, <span class="extype" name="org.apache.spark.sql.execution.LeafNode">LeafNode</span>, <span class="extype" name="org.apache.spark.sql.catalyst.trees.LeafNode">LeafNode</span>[<a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span>, <span class="extype" name="org.apache.spark.sql.catalyst.plans.QueryPlan">QueryPlan</span>[<a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[<a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="org.apache.spark.sql.execution.LeafNode">LeafNode</span>, <span class="extype" name="org.apache.spark.sql.catalyst.trees.LeafNode">LeafNode</span>[<a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a>, <span class="extype" name="org.apache.spark.sql.catalyst.plans.QueryPlan">QueryPlan</span>[<a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[<a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -65,7 +65,7 @@ The Hive table scan operator.  Column and partition pruning are both handled.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.apache.spark.sql.hive.execution.HiveTableScan"><span>HiveTableScan</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="org.apache.spark.sql.hive.HiveInspectors"><span>HiveInspectors</span></li><li class="in" name="org.apache.spark.sql.execution.LeafNode"><span>LeafNode</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.LeafNode"><span>LeafNode</span></li><li class="in" name="org.apache.spark.sql.execution.SparkPlan"><span>SparkPlan</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.sql.catalyst.plans.QueryPlan"><span>QueryPlan</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.TreeNode"><span>TreeNode</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.apache.spark.sql.hive.execution.HiveTableScan"><span>HiveTableScan</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="org.apache.spark.sql.execution.LeafNode"><span>LeafNode</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.LeafNode"><span>LeafNode</span></li><li class="in" name="org.apache.spark.sql.execution.SparkPlan"><span>SparkPlan</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.sql.catalyst.plans.QueryPlan"><span>QueryPlan</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.TreeNode"><span>TreeNode</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -102,23 +102,7 @@ The Hive table scan operator.  Column and partition pruning are both handled.
     </li></ol>
             </div>
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="org.apache.spark.sql.hive.HiveInspectors.typeInfoConversions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="typeInfoConversionsextendsAnyRef"></a>
-      <a id="typeInfoConversions:typeInfoConversions"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <span class="name">typeInfoConversions</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HiveInspectors</dd></dl></div>
-    </li></ol>
-            </div>
+        
 
         
 
@@ -241,21 +225,6 @@ The Hive table scan operator.  Column and partition pruning are both handled.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.hive.execution.HiveTableScan#attributeFunctions" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="attributeFunctions:Seq[(Any,Array[String])=&gt;Any]"></a>
-      <a id="attributeFunctions:Seq[(Any,Array[String])⇒Any]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">attributeFunctions</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]) ⇒ <span class="extype" name="scala.Any">Any</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Functions that extract the requested attributes from the hive output.</p><div class="fullcomment"><div class="comment cmt"><p>Functions that extract the requested attributes from the hive output.  Partitioned values are
-casted from string to its declared data type.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="org.apache.spark.sql.hive.execution.HiveTableScan#attributes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="attributes:Seq[org.apache.spark.sql.catalyst.expressions.Attribute]"></a>
       <a id="attributes:Seq[Attribute]"></a>
@@ -269,19 +238,6 @@ casted from string to its declared data type.
       </span>
       </h4>
       <p class="shortcomment cmt">Attributes to be fetched from the Hive table.</p>
-    </li><li name="org.apache.spark.sql.execution.SparkPlan#buildRow" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="buildRow(values:Seq[Any]):org.apache.spark.sql.Row"></a>
-      <a id="buildRow(Seq[Any]):Row"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">buildRow</span><span class="params">(<span name="values">values: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <a href="../../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.LeafNode#children" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="children:scala.collection.immutable.Nil.type"></a>
       <a id="children:Nil.type"></a>
@@ -314,6 +270,19 @@ casted from string to its declared data type.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkPlan#codegenEnabled" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="codegenEnabled:Boolean"></a>
+      <a id="codegenEnabled:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">codegenEnabled</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#collect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="collect[B](pf:PartialFunction[BaseType,B]):Seq[B]"></a>
       <a id="collect[B](PartialFunction[SparkPlan,B]):Seq[B]"></a>
@@ -354,29 +323,29 @@ casted from string to its declared data type.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.apache.spark.sql.hive.execution.HiveTableScan#execute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="execute():org.apache.spark.rdd.RDD[org.apache.spark.sql.Row]"></a>
-      <a id="execute():RDD[Row]"></a>
+      <a id="execute():org.apache.spark.rdd.RDD[org.apache.spark.sql.catalyst.expressions.Row]"></a>
+      <a id="execute():RDD[catalyst.expressions.Row]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">execute</span><span class="params">()</span><span class="result">: <a href="../../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>]</span>
+        <span class="name">execute</span><span class="params">()</span><span class="result">: <a href="../../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Row">catalyst.expressions.Row</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Runs this query returning the result as an RDD.</p><div class="fullcomment"><div class="comment cmt"><p>Runs this query returning the result as an RDD.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.sql.hive.execution.HiveTableScan">HiveTableScan</a> → <a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.execution.SparkPlan#executeCollect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeCollect():Array[org.apache.spark.sql.Row]"></a>
-      <a id="executeCollect():Array[Row]"></a>
+      <a id="executeCollect():Array[org.apache.spark.sql.catalyst.expressions.Row]"></a>
+      <a id="executeCollect():Array[catalyst.expressions.Row]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeCollect</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../../package.html#Row=org.apache.spark.sql.catalyst.expressions.Row" class="extmbr" name="org.apache.spark.sql.Row">Row</a>]</span>
+        <span class="name">executeCollect</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Row">catalyst.expressions.Row</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Runs this query returning the result as an array.</p><div class="fullcomment"><div class="comment cmt"><p>Runs this query returning the result as an array.
@@ -504,19 +473,6 @@ casted from string to its declared data type.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
-    </li><li name="org.apache.spark.sql.hive.HiveInspectors#inspectorToDataType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="inspectorToDataType(inspector:org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector):org.apache.spark.sql.catalyst.types.DataType"></a>
-      <a id="inspectorToDataType(ObjectInspector):catalyst.types.DataType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">inspectorToDataType</span><span class="params">(<span name="inspector">inspector: <span class="extype" name="org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector">ObjectInspector</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.types.DataType">catalyst.types.DataType</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HiveInspectors</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -530,34 +486,177 @@ casted from string to its declared data type.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="org.apache.spark.sql.hive.HiveInspectors#javaClassToDataType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="javaClassToDataType(clz:Class[_]):org.apache.spark.sql.catalyst.types.DataType"></a>
-      <a id="javaClassToDataType(Class[_]):catalyst.types.DataType"></a>
+    </li><li name="org.apache.spark.Logging#isTraceEnabled" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isTraceEnabled():Boolean"></a>
+      <a id="isTraceEnabled():Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">javaClassToDataType</span><span class="params">(<span name="clz">clz: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.types.DataType">catalyst.types.DataType</span></span>
+        <span class="name">isTraceEnabled</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HiveInspectors</dd></dl></div>
-    </li><li name="com.typesafe.scalalogging.slf4j.Logging#logger" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="logger:com.typesafe.scalalogging.slf4j.Logger"></a>
-      <a id="logger:Logger"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#log" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="log:org.slf4j.Logger"></a>
+      <a id="log:Logger"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logger</span><span class="result">: <span class="extype" name="com.typesafe.scalalogging.slf4j.Logger">Logger</span></span>
+        <span class="name">log</span><span class="result">: <span class="extype" name="org.slf4j.Logger">Logger</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
-    </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#makeCopy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="makeCopy(newArgs:Array[AnyRef]):org.apache.spark.sql.catalyst.trees.&lt;refinement&gt;.type"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logDebug" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logDebug(msg:=&gt;String,throwable:Throwable):Unit"></a>
+      <a id="logDebug(⇒String,Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logDebug</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logDebug" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logDebug(msg:=&gt;String):Unit"></a>
+      <a id="logDebug(⇒String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logDebug</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logError" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logError(msg:=&gt;String,throwable:Throwable):Unit"></a>
+      <a id="logError(⇒String,Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logError</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logError" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logError(msg:=&gt;String):Unit"></a>
+      <a id="logError(⇒String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logError</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logInfo" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logInfo(msg:=&gt;String,throwable:Throwable):Unit"></a>
+      <a id="logInfo(⇒String,Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logInfo</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logInfo" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logInfo(msg:=&gt;String):Unit"></a>
+      <a id="logInfo(⇒String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logInfo</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <a id="logName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logTrace" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logTrace(msg:=&gt;String,throwable:Throwable):Unit"></a>
+      <a id="logTrace(⇒String,Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logTrace</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logTrace" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logTrace(msg:=&gt;String):Unit"></a>
+      <a id="logTrace(⇒String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logTrace</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logWarning" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logWarning(msg:=&gt;String,throwable:Throwable):Unit"></a>
+      <a id="logWarning(⇒String,Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logWarning</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logWarning" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logWarning(msg:=&gt;String):Unit"></a>
+      <a id="logWarning(⇒String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logWarning</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkPlan#makeCopy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="makeCopy(newArgs:Array[AnyRef]):&lt;refinement&gt;.type"></a>
       <a id="makeCopy(Array[AnyRef]):HiveTableScan.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -568,7 +667,7 @@ casted from string to its declared data type.
         <span class="name">makeCopy</span><span class="params">(<span name="newArgs">newArgs: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.sql.hive.execution.HiveTableScan">HiveTableScan</a>.this.type</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
+      <p class="shortcomment cmt">Overridden make copy also propogates sqlContext to copied plan.</p><div class="fullcomment"><div class="comment cmt"><p>Overridden make copy also propogates sqlContext to copied plan.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a> → TreeNode</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#map" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="map[A](f:BaseType=&gt;A):Seq[A]"></a>
       <a id="map[A]((SparkPlan)⇒A):Seq[A]"></a>
@@ -608,6 +707,58 @@ casted from string to its declared data type.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkPlan#newMutableProjection" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="newMutableProjection(expressions:Seq[org.apache.spark.sql.catalyst.expressions.Expression],inputSchema:Seq[org.apache.spark.sql.catalyst.expressions.Attribute]):()=&gt;org.apache.spark.sql.catalyst.expressions.MutableProjection"></a>
+      <a id="newMutableProjection(Seq[Expression],Seq[Attribute]):()⇒MutableProjection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newMutableProjection</span><span class="params">(<span name="expressions">expressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>, <span name="inputSchema">inputSchema: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="result">: () ⇒ <span class="extype" name="org.apache.spark.sql.catalyst.expressions.MutableProjection">MutableProjection</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkPlan#newOrdering" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="newOrdering(order:Seq[org.apache.spark.sql.catalyst.expressions.SortOrder],inputSchema:Seq[org.apache.spark.sql.catalyst.expressions.Attribute]):Ordering[org.apache.spark.sql.catalyst.expressions.Row]"></a>
+      <a id="newOrdering(Seq[SortOrder],Seq[Attribute]):Ordering[catalyst.expressions.Row]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newOrdering</span><span class="params">(<span name="order">order: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.SortOrder">SortOrder</span>]</span>, <span name="inputSchema">inputSchema: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Row">catalyst.expressions.Row</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkPlan#newPredicate" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="newPredicate(expression:org.apache.spark.sql.catalyst.expressions.Expression,inputSchema:Seq[org.apache.spark.sql.catalyst.expressions.Attribute]):org.apache.spark.sql.catalyst.expressions.Row=&gt;Boolean"></a>
+      <a id="newPredicate(Expression,Seq[Attribute]):(catalyst.expressions.Row)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newPredicate</span><span class="params">(<span name="expression">expression: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>, <span name="inputSchema">inputSchema: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Row">catalyst.expressions.Row</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkPlan#newProjection" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="newProjection(expressions:Seq[org.apache.spark.sql.catalyst.expressions.Expression],inputSchema:Seq[org.apache.spark.sql.catalyst.expressions.Attribute]):org.apache.spark.sql.catalyst.expressions.Projection"></a>
+      <a id="newProjection(Seq[Expression],Seq[Attribute]):Projection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newProjection</span><span class="params">(<span name="expressions">expressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>, <span name="inputSchema">inputSchema: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Attribute">Attribute</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Projection">Projection</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#nodeName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="nodeName:String"></a>
       <a id="nodeName:String"></a>
@@ -816,6 +967,35 @@ casted from string to its declared data type.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkPlan#sparkContext" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sparkContext:org.apache.spark.SparkContext"></a>
+      <a id="sparkContext:SparkContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sparkContext</span><span class="result">: <a href="../../../SparkContext.html" class="extype" name="org.apache.spark.SparkContext">SparkContext</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
+    </li><li name="org.apache.spark.sql.execution.SparkPlan#sqlContext" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sqlContext:org.apache.spark.sql.SQLContext"></a>
+      <a id="sqlContext:SQLContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sqlContext</span><span class="result">: <a href="../../SQLContext.html" class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">A handle to the SQL Context that was used to create this plan.</p><div class="fullcomment"><div class="comment cmt"><p>A handle to the SQL Context that was used to create this plan.   Since many operators need
+access to the sqlContext for RDD operations or configuration this field is automatically
+populated by the query planning infrastructure.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#stringArgs" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="stringArgs:Iterator[Any]"></a>
       <a id="stringArgs:Iterator[Any]"></a>
@@ -842,19 +1022,6 @@ casted from string to its declared data type.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.apache.spark.sql.hive.HiveInspectors#toInspector" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toInspector(dataType:org.apache.spark.sql.catalyst.types.DataType):org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector"></a>
-      <a id="toInspector(catalyst.types.DataType):ObjectInspector"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toInspector</span><span class="params">(<span name="dataType">dataType: <span class="extype" name="org.apache.spark.sql.catalyst.types.DataType">catalyst.types.DataType</span></span>)</span><span class="result">: <span class="extype" name="org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector">ObjectInspector</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HiveInspectors</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
@@ -998,32 +1165,6 @@ casted from string to its declared data type.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
-    </li><li name="org.apache.spark.sql.hive.HiveInspectors#unwrap" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="unwrap(a:Any):Any"></a>
-      <a id="unwrap(Any):Any"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">unwrap</span><span class="params">(<span name="a">a: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Converts hive types to native catalyst types.</p><div class="fullcomment"><div class="comment cmt"><p>Converts hive types to native catalyst types.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>HiveInspectors</dd></dl></div>
-    </li><li name="org.apache.spark.sql.hive.HiveInspectors#unwrapData" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="unwrapData(data:Any,oi:org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector):Any"></a>
-      <a id="unwrapData(Any,ObjectInspector):Any"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">unwrapData</span><span class="params">(<span name="data">data: <span class="extype" name="scala.Any">Any</span></span>, <span name="oi">oi: <span class="extype" name="org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector">ObjectInspector</span></span>)</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HiveInspectors</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -1094,19 +1235,6 @@ casted from string to its declared data type.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
-    </li><li name="org.apache.spark.sql.hive.HiveInspectors#wrap" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wrap(a:Any):AnyRef"></a>
-      <a id="wrap(Any):AnyRef"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wrap</span><span class="params">(<span name="a">a: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Converts native catalyst types to the types expected by Hive</p><div class="fullcomment"><div class="comment cmt"><p>Converts native catalyst types to the types expected by Hive</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>HiveInspectors</dd></dl></div>
     </li></ol>
             </div>
 
@@ -1116,24 +1244,22 @@ casted from string to its declared data type.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
-              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="java.io.Serializable">
-              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="scala.Product">
+        <div class="parent" name="scala.Product">
               <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
             </div><div class="parent" name="scala.Equals">
               <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
-            </div><div class="parent" name="org.apache.spark.sql.hive.HiveInspectors">
-              <h3>Inherited from <span class="extype" name="org.apache.spark.sql.hive.HiveInspectors">HiveInspectors</span></h3>
             </div><div class="parent" name="org.apache.spark.sql.execution.LeafNode">
               <h3>Inherited from <span class="extype" name="org.apache.spark.sql.execution.LeafNode">LeafNode</span></h3>
             </div><div class="parent" name="org.apache.spark.sql.catalyst.trees.LeafNode">
               <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.trees.LeafNode">LeafNode</span>[<a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</h3>
             </div><div class="parent" name="org.apache.spark.sql.execution.SparkPlan">
               <h3>Inherited from <a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a></h3>
-            </div><div class="parent" name="com.typesafe.scalalogging.slf4j.Logging">
-              <h3>Inherited from <span class="extype" name="com.typesafe.scalalogging.slf4j.Logging">com.typesafe.scalalogging.slf4j.Logging</span></h3>
+            </div><div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="org.apache.spark.Logging">
+              <h3>Inherited from <a href="../../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></h3>
             </div><div class="parent" name="org.apache.spark.sql.catalyst.plans.QueryPlan">
               <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.plans.QueryPlan">QueryPlan</span>[<a href="../../execution/SparkPlan.html" class="extype" name="org.apache.spark.sql.execution.SparkPlan">SparkPlan</a>]</h3>
             </div><div class="parent" name="org.apache.spark.sql.catalyst.trees.TreeNode">

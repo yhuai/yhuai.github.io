@@ -264,7 +264,7 @@ RDDs will be removed. This function must be called before any job has been
 executed on this RDD. It is strongly recommended that this RDD is persisted in
 memory, otherwise saving it on a file will require recomputation.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
-    </li><li name="org.apache.spark.rdd.RDD#clearDependencies" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.apache.spark.rdd.UnionRDD#clearDependencies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clearDependencies():Unit"></a>
       <a id="clearDependencies():Unit"></a>
       <h4 class="signature">
@@ -280,7 +280,7 @@ memory, otherwise saving it on a file will require recomputation.
 to the original parent RDDs is removed to enable the parent RDDs to be garbage
 collected. Subclasses of RDD may override this method for implementing their own cleaning
 logic. See <a href="" class="extype" name="org.apache.spark.rdd.UnionRDD">org.apache.spark.rdd.UnionRDD</a> for an example.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.rdd.UnionRDD">UnionRDD</a> → <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -1069,6 +1069,19 @@ subclasses of RDD.
       </span>
       <span class="symbol">
         <span class="name">logInfo</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <a id="logName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>

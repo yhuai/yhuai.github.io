@@ -40,8 +40,8 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>:: Experimental ::
-A class that implements a decision tree algorithm for classification and regression. It
-supports both continuous and categorical features.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+A class which implements a decision tree learning algorithm for classification and regression.
+It supports both continuous and categorical features.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
         </dd></dl><div class="toggleContainer block">
@@ -394,6 +394,19 @@ supports both continuous and categorical features.</p></div><dl class="attribute
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <a id="logName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
     </li><li name="org.apache.spark.Logging#logTrace" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logTrace(msg:=&gt;String,throwable:Throwable):Unit"></a>
       <a id="logTrace(⇒String,Throwable):Unit"></a>
@@ -523,7 +536,7 @@ supports both continuous and categorical features.</p></div><dl class="attribute
         <span class="name">train</span><span class="params">(<span name="input">input: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">LabeledPoint</a>]</span>)</span><span class="result">: <a href="model/DecisionTreeModel.html" class="extype" name="org.apache.spark.mllib.tree.model.DecisionTreeModel">DecisionTreeModel</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Method to train a decision tree model over an RDD</p><div class="fullcomment"><div class="comment cmt"><p>Method to train a decision tree model over an RDD</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a> used as training data</p></dd><dt>returns</dt><dd class="cmt"><p>a DecisionTreeModel that can be used for prediction
+      <p class="shortcomment cmt">Method to train a decision tree model over an RDD</p><div class="fullcomment"><div class="comment cmt"><p>Method to train a decision tree model over an RDD</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>Training data: RDD of <a href="../regression/LabeledPoint.html" class="extype" name="org.apache.spark.mllib.regression.LabeledPoint">org.apache.spark.mllib.regression.LabeledPoint</a></p></dd><dt>returns</dt><dd class="cmt"><p>DecisionTreeModel that can be used for prediction
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>

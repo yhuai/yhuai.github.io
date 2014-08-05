@@ -92,7 +92,7 @@ rdd.sortByKey()</pre></div><div class="toggleContainer block">
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="org.apache.spark.rdd.OrderedRDDFunctions#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="org.apache.spark.rdd.OrderedRDDFunctions#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="&lt;init&gt;(self:org.apache.spark.rdd.RDD[P])(implicitevidence$1:Ordering[K],implicitevidence$2:scala.reflect.ClassTag[K],implicitevidence$3:scala.reflect.ClassTag[V],implicitevidence$4:scala.reflect.ClassTag[P]):org.apache.spark.rdd.OrderedRDDFunctions[K,V,P]"></a>
       <a id="&lt;init&gt;:OrderedRDDFunctions[K,V,P]"></a>
       <h4 class="signature">
@@ -104,7 +104,10 @@ rdd.sortByKey()</pre></div><div class="toggleContainer block">
         <span class="name">OrderedRDDFunctions</span><span class="params">(<span name="self">self: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.OrderedRDDFunctions.P">P</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.apache.spark.rdd.OrderedRDDFunctions.K">K</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.OrderedRDDFunctions.K">K</span>]</span>, <span name="arg2">arg2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.OrderedRDDFunctions.V">V</span>]</span>, <span name="arg3">arg3: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.OrderedRDDFunctions.P">P</span>]</span>)</span>
       </span>
       </h4>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li></ol>
             </div>
 
@@ -399,6 +402,19 @@ rdd.sortByKey()</pre></div><div class="toggleContainer block">
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <a id="logName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
     </li><li name="org.apache.spark.Logging#logTrace" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logTrace(msg:=&gt;String,throwable:Throwable):Unit"></a>
       <a id="logTrace(⇒String,Throwable):Unit"></a>
@@ -491,15 +507,15 @@ rdd.sortByKey()</pre></div><div class="toggleContainer block">
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.apache.spark.rdd.OrderedRDDFunctions#sortByKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sortByKey(ascending:Boolean,numPartitions:Int):org.apache.spark.rdd.RDD[P]"></a>
-      <a id="sortByKey(Boolean,Int):RDD[P]"></a>
+      <a id="sortByKey(ascending:Boolean,numPartitions:Int):org.apache.spark.rdd.RDD[(K,V)]"></a>
+      <a id="sortByKey(Boolean,Int):RDD[(K,V)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sortByKey</span><span class="params">(<span name="ascending">ascending: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="RDD.html#partitions:Array[org.apache.spark.Partition]">self.partitions.size</a></span></span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.OrderedRDDFunctions.P">P</span>]</span>
+        <span class="name">sortByKey</span><span class="params">(<span name="ascending">ascending: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="numPartitions">numPartitions: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="RDD.html#partitions:Array[org.apache.spark.Partition]">self.partitions.size</a></span></span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.OrderedRDDFunctions.K">K</span>, <span class="extype" name="org.apache.spark.rdd.OrderedRDDFunctions.V">V</span>)]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Sort the RDD by key, so that each partition contains a sorted range of the elements.</p><div class="fullcomment"><div class="comment cmt"><p>Sort the RDD by key, so that each partition contains a sorted range of the elements. Calling

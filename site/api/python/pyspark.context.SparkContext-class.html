@@ -164,22 +164,6 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="__del__"></a><span class="summary-sig-name">__del__</span>(<span class="summary-sig-arg">self</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyspark.context-pysrc.html#SparkContext.__del__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
           <td><span class="summary-sig"><a name="stop"></a><span class="summary-sig-name">stop</span>(<span class="summary-sig-arg">self</span>)</span><br />
       Shut down the SparkContext.</td>
           <td align="right" valign="top">
@@ -283,7 +267,8 @@ object --+
         <span class="summary-sig-arg">valueClass</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">keyConverter</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">valueConverter</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">minSplits</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">minSplits</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">batchSize</span>=<span class="summary-sig-default">None</span>)</span><br />
       Read a Hadoop SequenceFile with arbitrary key and value Writable 
       class from HDFS, a local file system (available on all nodes), or any
       Hadoop-supported file system URI.</td>
@@ -309,7 +294,8 @@ object --+
         <span class="summary-sig-arg">valueClass</span>,
         <span class="summary-sig-arg">keyConverter</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">valueConverter</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">conf</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">conf</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">batchSize</span>=<span class="summary-sig-default">None</span>)</span><br />
       Read a 'new API' Hadoop InputFormat with arbitrary key and value 
       class from HDFS, a local file system (available on all nodes), or any
       Hadoop-supported file system URI.</td>
@@ -334,7 +320,8 @@ object --+
         <span class="summary-sig-arg">valueClass</span>,
         <span class="summary-sig-arg">keyConverter</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">valueConverter</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">conf</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">conf</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">batchSize</span>=<span class="summary-sig-default">None</span>)</span><br />
       Read a 'new API' Hadoop InputFormat with arbitrary key and value 
       class, from an arbitrary Hadoop configuration, which is passed in as 
       a Python dict.</td>
@@ -360,7 +347,8 @@ object --+
         <span class="summary-sig-arg">valueClass</span>,
         <span class="summary-sig-arg">keyConverter</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">valueConverter</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">conf</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">conf</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">batchSize</span>=<span class="summary-sig-default">None</span>)</span><br />
       Read an 'old' Hadoop InputFormat with arbitrary key and value class 
       from HDFS, a local file system (available on all nodes), or any 
       Hadoop-supported file system URI.</td>
@@ -385,7 +373,8 @@ object --+
         <span class="summary-sig-arg">valueClass</span>,
         <span class="summary-sig-arg">keyConverter</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">valueConverter</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">conf</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">conf</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">batchSize</span>=<span class="summary-sig-default">None</span>)</span><br />
       Read an 'old' Hadoop InputFormat with arbitrary key and value class, 
       from an arbitrary Hadoop configuration, which is passed in as a 
       Python dict.</td>
@@ -786,7 +775,7 @@ either through the named parameters here or through C{conf}.
 @param serializer: The serializer for RDDs.
 @param conf: A L{SparkConf} object setting Spark properties.
 @param gateway: Use an existing gateway and JVM, otherwise a new JVM
-       will be instatiated.
+       will be instantiated.
 
 
 &gt;&gt;&gt; from pyspark.context import SparkContext
@@ -1047,7 +1036,8 @@ ValueError:...
         <span class="sig-arg">valueClass</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">keyConverter</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">valueConverter</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">minSplits</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">minSplits</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">batchSize</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="pyspark.context-pysrc.html#SparkContext.sequenceFile">source&nbsp;code</a></span>&nbsp;
@@ -1085,6 +1075,8 @@ ValueError:...
         <li><strong class="pname"><code>keyConverter</code></strong></li>
         <li><strong class="pname"><code>valueConverter</code></strong></li>
         <li><strong class="pname"><code>minSplits</code></strong> - minimum splits in dataset (default min(2, sc.defaultParallelism))</li>
+        <li><strong class="pname"><code>batchSize</code></strong> - The number of Python objects represented as a single Java object.
+          (default sc._default_batch_size_for_serialized_input)</li>
     </ul></dd>
   </dl>
 </td></tr></table>
@@ -1103,7 +1095,8 @@ ValueError:...
         <span class="sig-arg">valueClass</span>,
         <span class="sig-arg">keyConverter</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">valueConverter</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">conf</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">conf</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">batchSize</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="pyspark.context-pysrc.html#SparkContext.newAPIHadoopFile">source&nbsp;code</a></span>&nbsp;
@@ -1129,6 +1122,8 @@ ValueError:...
         <li><strong class="pname"><code>keyConverter</code></strong> - (None by default)</li>
         <li><strong class="pname"><code>valueConverter</code></strong> - (None by default)</li>
         <li><strong class="pname"><code>conf</code></strong> - Hadoop configuration, passed in as a dict (None by default)</li>
+        <li><strong class="pname"><code>batchSize</code></strong> - The number of Python objects represented as a single Java object.
+          (default sc._default_batch_size_for_serialized_input)</li>
     </ul></dd>
   </dl>
 </td></tr></table>
@@ -1146,7 +1141,8 @@ ValueError:...
         <span class="sig-arg">valueClass</span>,
         <span class="sig-arg">keyConverter</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">valueConverter</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">conf</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">conf</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">batchSize</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="pyspark.context-pysrc.html#SparkContext.newAPIHadoopRDD">source&nbsp;code</a></span>&nbsp;
@@ -1169,6 +1165,8 @@ ValueError:...
         <li><strong class="pname"><code>keyConverter</code></strong> - (None by default)</li>
         <li><strong class="pname"><code>valueConverter</code></strong> - (None by default)</li>
         <li><strong class="pname"><code>conf</code></strong> - Hadoop configuration, passed in as a dict (None by default)</li>
+        <li><strong class="pname"><code>batchSize</code></strong> - The number of Python objects represented as a single Java object.
+          (default sc._default_batch_size_for_serialized_input)</li>
     </ul></dd>
   </dl>
 </td></tr></table>
@@ -1187,7 +1185,8 @@ ValueError:...
         <span class="sig-arg">valueClass</span>,
         <span class="sig-arg">keyConverter</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">valueConverter</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">conf</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">conf</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">batchSize</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="pyspark.context-pysrc.html#SparkContext.hadoopFile">source&nbsp;code</a></span>&nbsp;
@@ -1213,6 +1212,8 @@ ValueError:...
         <li><strong class="pname"><code>keyConverter</code></strong> - (None by default)</li>
         <li><strong class="pname"><code>valueConverter</code></strong> - (None by default)</li>
         <li><strong class="pname"><code>conf</code></strong> - Hadoop configuration, passed in as a dict (None by default)</li>
+        <li><strong class="pname"><code>batchSize</code></strong> - The number of Python objects represented as a single Java object.
+          (default sc._default_batch_size_for_serialized_input)</li>
     </ul></dd>
   </dl>
 </td></tr></table>
@@ -1230,7 +1231,8 @@ ValueError:...
         <span class="sig-arg">valueClass</span>,
         <span class="sig-arg">keyConverter</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">valueConverter</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">conf</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">conf</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">batchSize</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="pyspark.context-pysrc.html#SparkContext.hadoopRDD">source&nbsp;code</a></span>&nbsp;
@@ -1253,6 +1255,8 @@ ValueError:...
         <li><strong class="pname"><code>keyConverter</code></strong> - (None by default)</li>
         <li><strong class="pname"><code>valueConverter</code></strong> - (None by default)</li>
         <li><strong class="pname"><code>conf</code></strong> - Hadoop configuration, passed in as a dict (None by default)</li>
+        <li><strong class="pname"><code>batchSize</code></strong> - The number of Python objects represented as a single Java object.
+          (default sc._default_batch_size_for_serialized_input)</li>
     </ul></dd>
   </dl>
 </td></tr></table>
@@ -1593,7 +1597,7 @@ ValueError:...
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Jul 27 17:21:23 2014
+    Generated by Epydoc 3.0.1 on Mon Aug  4 17:24:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -40,7 +40,8 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>:: Experimental ::
-Model to store the decision tree parameters</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+Decision tree model for classification or regression.
+This model stores the decision tree structure and parameters.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
         </dd></dl><div class="toggleContainer block">
@@ -217,6 +218,21 @@ Model to store the decision tree parameters</p></div><dl class="attributes block
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="org.apache.spark.mllib.tree.model.DecisionTreeModel#depth" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="depth:Int"></a>
+      <a id="depth:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">depth</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get depth of tree.</p><div class="fullcomment"><div class="comment cmt"><p>Get depth of tree.
+E.g.: Depth 0 means 1 leaf node.  Depth 1 means 1 internal node and 2 leaf nodes.
+</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -340,6 +356,19 @@ Model to store the decision tree parameters</p></div><dl class="attributes block
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.apache.spark.mllib.tree.model.DecisionTreeModel#numNodes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="numNodes:Int"></a>
+      <a id="numNodes:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">numNodes</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get number of nodes in tree, including leaf nodes.</p>
     </li><li name="org.apache.spark.mllib.tree.model.DecisionTreeModel#predict" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="predict(features:org.apache.spark.rdd.RDD[org.apache.spark.mllib.linalg.Vector]):org.apache.spark.rdd.RDD[Double]"></a>
       <a id="predict(RDD[Vector]):RDD[Double]"></a>
@@ -383,7 +412,7 @@ Model to store the decision tree parameters</p></div><dl class="attributes block
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.apache.spark.mllib.tree.model.DecisionTreeModel#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
       <h4 class="signature">
@@ -392,10 +421,11 @@ Model to store the decision tree parameters</p></div><dl class="attributes block
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <p class="shortcomment cmt">Print full model.</p><div class="fullcomment"><div class="comment cmt"><p>Print full model.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.apache.spark.mllib.tree.model.DecisionTreeModel">DecisionTreeModel</a> → AnyRef → Any</dd></dl></div>
     </li><li name="org.apache.spark.mllib.tree.model.DecisionTreeModel#topNode" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="topNode:org.apache.spark.mllib.tree.model.Node"></a>
       <a id="topNode:Node"></a>

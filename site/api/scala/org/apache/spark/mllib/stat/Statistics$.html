@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>API for statistical functions in MLlib
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>API for statistical functions in MLlib.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
               
@@ -198,12 +198,18 @@
         <span class="name">corr</span><span class="params">(<span name="x">x: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="y">y: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="method">method: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Compute the correlation for the input RDDs using the specified method.</p><div class="fullcomment"><div class="comment cmt"><p>Compute the correlation for the input RDDs using the specified method.
-Methods currently supported: pearson (default), spearman
-</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"><p>RDD[Double] of the same cardinality as y</p></dd><dt class="param">y</dt><dd class="cmt"><p>RDD[Double] of the same cardinality as x</p></dd><dt class="param">method</dt><dd class="cmt"><p>String specifying the method to use for computing correlation.
+      <p class="shortcomment cmt">:: Experimental ::
+Compute the correlation for the input RDDs using the specified method.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
+Compute the correlation for the input RDDs using the specified method.
+Methods currently supported: <code>pearson</code> (default), <code>spearman</code>.</p><p>Note: the two input RDDs need to have the same number of partitions and the same number of
+elements in each partition.
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"><p>RDD[Double] of the same cardinality as y.</p></dd><dt class="param">y</dt><dd class="cmt"><p>RDD[Double] of the same cardinality as x.</p></dd><dt class="param">method</dt><dd class="cmt"><p>String specifying the method to use for computing correlation.
               Supported: <code>pearson</code> (default), <code>spearman</code></p></dd><dt>returns</dt><dd class="cmt"><p>A Double containing the correlation between the two input RDD[Double]s using the
         specified method.
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="org.apache.spark.mllib.stat.Statistics#corr" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="corr(x:org.apache.spark.rdd.RDD[Double],y:org.apache.spark.rdd.RDD[Double]):Double"></a>
       <a id="corr(RDD[Double],RDD[Double]):Double"></a>
@@ -216,10 +222,16 @@ Methods currently supported: pearson (default), spearman
         <span class="name">corr</span><span class="params">(<span name="x">x: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="y">y: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="scala.Double">Double</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Compute the Pearson correlation for the input RDDs.</p><div class="fullcomment"><div class="comment cmt"><p>Compute the Pearson correlation for the input RDDs.
-Columns with 0 covariance produce NaN entries in the correlation matrix.
-</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"><p>RDD[Double] of the same cardinality as y</p></dd><dt class="param">y</dt><dd class="cmt"><p>RDD[Double] of the same cardinality as x</p></dd><dt>returns</dt><dd class="cmt"><p>A Double containing the Pearson correlation between the two input RDD[Double]s
-</p></dd></dl></div>
+      <p class="shortcomment cmt">:: Experimental ::
+Compute the Pearson correlation for the input RDDs.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
+Compute the Pearson correlation for the input RDDs.
+Returns NaN if either vector has 0 variance.</p><p>Note: the two input RDDs need to have the same number of partitions and the same number of
+elements in each partition.
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"><p>RDD[Double] of the same cardinality as y.</p></dd><dt class="param">y</dt><dd class="cmt"><p>RDD[Double] of the same cardinality as x.</p></dd><dt>returns</dt><dd class="cmt"><p>A Double containing the Pearson correlation between the two input RDD[Double]s
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="org.apache.spark.mllib.stat.Statistics#corr" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="corr(X:org.apache.spark.rdd.RDD[org.apache.spark.mllib.linalg.Vector],method:String):org.apache.spark.mllib.linalg.Matrix"></a>
       <a id="corr(RDD[Vector],String):Matrix"></a>
@@ -232,14 +244,19 @@ Columns with 0 covariance produce NaN entries in the correlation matrix.
         <span class="name">corr</span><span class="params">(<span name="X">X: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../linalg/Vector.html" class="extype" name="org.apache.spark.mllib.linalg.Vector">Vector</a>]</span>, <span name="method">method: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../linalg/Matrix.html" class="extype" name="org.apache.spark.mllib.linalg.Matrix">Matrix</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Compute the correlation matrix for the input RDD of Vectors using the specified method.</p><div class="fullcomment"><div class="comment cmt"><p>Compute the correlation matrix for the input RDD of Vectors using the specified method.
-Methods currently supported: <code>pearson</code> (default), <code>spearman</code></p><p>Note that for Spearman, a rank correlation, we need to create an RDD[Double] for each column
+      <p class="shortcomment cmt">:: Experimental ::
+Compute the correlation matrix for the input RDD of Vectors using the specified method.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
+Compute the correlation matrix for the input RDD of Vectors using the specified method.
+Methods currently supported: <code>pearson</code> (default), <code>spearman</code>.</p><p>Note that for Spearman, a rank correlation, we need to create an RDD[Double] for each column
 and sort it in order to retrieve the ranks and then join the columns back into an RDD[Vector],
 which is fairly costly. Cache the input RDD before calling corr with <code>method = &quot;spearman&quot;</code> to
 avoid recomputing the common lineage.
 </p></div><dl class="paramcmts block"><dt class="param">X</dt><dd class="cmt"><p>an RDD[Vector] for which the correlation matrix is to be computed.</p></dd><dt class="param">method</dt><dd class="cmt"><p>String specifying the method to use for computing correlation.
               Supported: <code>pearson</code> (default), <code>spearman</code></p></dd><dt>returns</dt><dd class="cmt"><p>Correlation matrix comparing columns in X.
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="org.apache.spark.mllib.stat.Statistics#corr" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="corr(X:org.apache.spark.rdd.RDD[org.apache.spark.mllib.linalg.Vector]):org.apache.spark.mllib.linalg.Matrix"></a>
       <a id="corr(RDD[Vector]):Matrix"></a>
@@ -252,10 +269,15 @@ avoid recomputing the common lineage.
         <span class="name">corr</span><span class="params">(<span name="X">X: <a href="../../rdd/RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<a href="../linalg/Vector.html" class="extype" name="org.apache.spark.mllib.linalg.Vector">Vector</a>]</span>)</span><span class="result">: <a href="../linalg/Matrix.html" class="extype" name="org.apache.spark.mllib.linalg.Matrix">Matrix</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Compute the Pearson correlation matrix for the input RDD of Vectors.</p><div class="fullcomment"><div class="comment cmt"><p>Compute the Pearson correlation matrix for the input RDD of Vectors.
-Returns NaN if either vector has 0 variance.
+      <p class="shortcomment cmt">:: Experimental ::
+Compute the Pearson correlation matrix for the input RDD of Vectors.</p><div class="fullcomment"><div class="comment cmt"><p>:: Experimental ::
+Compute the Pearson correlation matrix for the input RDD of Vectors.
+Columns with 0 covariance produce NaN entries in the correlation matrix.
 </p></div><dl class="paramcmts block"><dt class="param">X</dt><dd class="cmt"><p>an RDD[Vector] for which the correlation matrix is to be computed.</p></dd><dt>returns</dt><dd class="cmt"><p>Pearson correlation matrix comparing columns in X.
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotation/Experimental.html" class="extype" name="org.apache.spark.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>

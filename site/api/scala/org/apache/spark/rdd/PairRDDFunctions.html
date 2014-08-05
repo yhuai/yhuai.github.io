@@ -389,7 +389,7 @@ list of values for that key in <code>this</code> as well as <code>other</code>.<
       <p class="shortcomment cmt">For each key k in <code>this</code> or <code>other1</code> or <code>other2</code> or <code>other3</code>,
 return a resulting RDD that contains a tuple with the list of values
 for that key in <code>this</code>, <code>other1</code>, <code>other2</code> and <code>other3</code>.</p>
-    </li><li name="org.apache.spark.rdd.PairRDDFunctions#collectAsMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="org.apache.spark.rdd.PairRDDFunctions#collectAsMap" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="collectAsMap():scala.collection.Map[K,V]"></a>
       <a id="collectAsMap():Map[K,V]"></a>
       <h4 class="signature">
@@ -401,7 +401,9 @@ for that key in <code>this</code>, <code>other1</code>, <code>other2</code> and 
         <span class="name">collectAsMap</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.collection.Map">Map</span>[<span class="extype" name="org.apache.spark.rdd.PairRDDFunctions.K">K</span>, <span class="extype" name="org.apache.spark.rdd.PairRDDFunctions.V">V</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Return the key-value pairs in this RDD to the master as a Map.</p>
+      <p class="shortcomment cmt">Return the key-value pairs in this RDD to the master as a Map.</p><div class="fullcomment"><div class="comment cmt"><p>Return the key-value pairs in this RDD to the master as a Map.</p><p>Warning: this doesn't return a multimap (so if you have multiple values to the same key, only
+         one value per key is preserved in the map returned)
+</p></div></div>
     </li><li name="org.apache.spark.rdd.PairRDDFunctions#combineByKey" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="combineByKey[C](createCombiner:V=&gt;C,mergeValue:(C,V)=&gt;C,mergeCombiners:(C,C)=&gt;C):org.apache.spark.rdd.RDD[(K,C)]"></a>
       <a id="combineByKey[C]((V)⇒C,(C,V)⇒C,(C,C)⇒C):RDD[(K,C)]"></a>
@@ -1020,6 +1022,19 @@ partition the output RDD.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <a id="logName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
     </li><li name="org.apache.spark.Logging#logTrace" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logTrace(msg:=&gt;String,throwable:Throwable):Unit"></a>
       <a id="logTrace(⇒String,Throwable):Unit"></a>
@@ -1309,6 +1324,28 @@ resulting RDD will either contain all pairs (k, (Some(v), w)) for v in <code>thi
 pair (k, (None, w)) if no elements in <code>this</code> have key k. Uses the given Partitioner to
 partition the output RDD.
 </p></div></div>
+    </li><li name="org.apache.spark.rdd.PairRDDFunctions#sampleByKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sampleByKey(withReplacement:Boolean,fractions:scala.collection.Map[K,Double],exact:Boolean,seed:Long):org.apache.spark.rdd.RDD[(K,V)]"></a>
+      <a id="sampleByKey(Boolean,Map[K,Double],Boolean,Long):RDD[(K,V)]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sampleByKey</span><span class="params">(<span name="withReplacement">withReplacement: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="fractions">fractions: <span class="extype" name="scala.collection.Map">Map</span>[<span class="extype" name="org.apache.spark.rdd.PairRDDFunctions.K">K</span>, <span class="extype" name="scala.Double">Double</span>]</span>, <span name="exact">exact: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="seed">seed: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Utils.random.nextLong</a></span></span></span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[(<span class="extype" name="org.apache.spark.rdd.PairRDDFunctions.K">K</span>, <span class="extype" name="org.apache.spark.rdd.PairRDDFunctions.V">V</span>)]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return a subset of this RDD sampled by key (via stratified sampling).</p><div class="fullcomment"><div class="comment cmt"><p>Return a subset of this RDD sampled by key (via stratified sampling).</p><p>Create a sample of this RDD using variable sampling rates for different keys as specified by
+<code>fractions</code>, a key to sampling rate map.</p><p>If <code>exact</code> is set to false, create the sample via simple random sampling, with one pass
+over the RDD, to produce a sample of size that's approximately equal to the sum of
+math.ceil(numItems * samplingRate) over all key values; otherwise, use
+additional passes over the RDD to create a sample size that's exactly equal to the sum of
+math.ceil(numItems * samplingRate) over all key values with a 99.99% confidence. When sampling
+without replacement, we need one additional pass over the RDD to guarantee sample size;
+when sampling with replacement, we need two additional passes.
+</p></div><dl class="paramcmts block"><dt class="param">withReplacement</dt><dd class="cmt"><p>whether to sample with or without replacement</p></dd><dt class="param">fractions</dt><dd class="cmt"><p>map of specific keys to sampling rates</p></dd><dt class="param">exact</dt><dd class="cmt"><p>whether sample size needs to be exactly math.ceil(fraction * size) per key</p></dd><dt class="param">seed</dt><dd class="cmt"><p>seed for the random number generator</p></dd><dt>returns</dt><dd class="cmt"><p>RDD containing the sampled subset
+</p></dd></dl></div>
     </li><li name="org.apache.spark.rdd.PairRDDFunctions#saveAsHadoopDataset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveAsHadoopDataset(conf:org.apache.hadoop.mapred.JobConf):Unit"></a>
       <a id="saveAsHadoopDataset(JobConf):Unit"></a>

@@ -1158,6 +1158,19 @@ subclasses of RDD.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
+    </li><li name="org.apache.spark.Logging#logName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <a id="logName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logging.html" class="extype" name="org.apache.spark.Logging">Logging</a></dd></dl></div>
     </li><li name="org.apache.spark.Logging#logTrace" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logTrace(msg:=&gt;String,throwable:Throwable):Unit"></a>
       <a id="logTrace(⇒String,Throwable):Unit"></a>
@@ -1277,6 +1290,22 @@ of the original partition.</p><div class="fullcomment"><div class="comment cmt">
 of the original partition.</p><p><code>preservesPartitioning</code> indicates whether the input function preserves the partitioner, which
 should be <code>false</code> unless this is a pair RDD and the input function doesn't modify the keys.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a></dd></dl></div>
+    </li><li name="org.apache.spark.rdd.HadoopRDD#mapPartitionsWithInputSplit" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="mapPartitionsWithInputSplit[U](f:(org.apache.hadoop.mapred.InputSplit,Iterator[(K,V)])=&gt;Iterator[U],preservesPartitioning:Boolean)(implicitevidence$1:scala.reflect.ClassTag[U]):org.apache.spark.rdd.RDD[U]"></a>
+      <a id="mapPartitionsWithInputSplit[U]((InputSplit,Iterator[(K,V)])⇒Iterator[U],Boolean)(ClassTag[U]):RDD[U]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mapPartitionsWithInputSplit</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="org.apache.hadoop.mapred.InputSplit">InputSplit</span>, <span class="extype" name="scala.Iterator">Iterator</span>[(<span class="extype" name="org.apache.spark.rdd.HadoopRDD.K">K</span>, <span class="extype" name="org.apache.spark.rdd.HadoopRDD.V">V</span>)]) ⇒ <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="org.apache.spark.rdd.HadoopRDD.mapPartitionsWithInputSplit.U">U</span>]</span>, <span name="preservesPartitioning">preservesPartitioning: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="org.apache.spark.rdd.HadoopRDD.mapPartitionsWithInputSplit.U">U</span>]</span>)</span><span class="result">: <a href="RDD.html" class="extype" name="org.apache.spark.rdd.RDD">RDD</a>[<span class="extype" name="org.apache.spark.rdd.HadoopRDD.mapPartitionsWithInputSplit.U">U</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Maps over a partition, providing the InputSplit that was used as the base of the partition.</p><div class="fullcomment"><div class="comment cmt"><p>Maps over a partition, providing the InputSplit that was used as the base of the partition.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../annotation/DeveloperApi.html" class="extype" name="org.apache.spark.annotation.DeveloperApi">DeveloperApi</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="org.apache.spark.rdd.RDD#max" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="max()(implicitord:Ordering[T]):T"></a>
       <a id="max()(Ordering[(K,V)]):(K,V)"></a>

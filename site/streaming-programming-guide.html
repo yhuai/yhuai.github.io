@@ -128,7 +128,10 @@
       <li><a href="#linking">Linking</a></li>
       <li><a href="#initializing">Initializing</a></li>
       <li><a href="#dstreams">DStreams</a></li>
-      <li><a href="#input-sources">Input Sources</a></li>
+      <li><a href="#input-sources">Input Sources</a>        <ul>
+          <li><a href="#kinesis">Kinesis</a></li>
+        </ul>
+      </li>
       <li><a href="#operations">Operations</a>        <ul>
           <li><a href="#transformations">Transformations</a></li>
           <li><a href="#output-operations">Output Operations</a></li>
@@ -164,7 +167,7 @@
 <h1 id="overview">Overview</h1>
 <p>Spark Streaming is an extension of the core Spark API that allows enables high-throughput,
 fault-tolerant stream processing of live data streams. Data can be ingested from many sources
-like Kafka, Flume, Twitter, ZeroMQ or plain old TCP sockets and be processed using complex
+like Kafka, Flume, Twitter, ZeroMQ, Kinesis or plain old TCP sockets and be processed using complex
 algorithms expressed with high-level functions like <code>map</code>, <code>reduce</code>, <code>join</code> and <code>window</code>.
 Finally, processed data can be pushed out to filesystems, databases,
 and live dashboards. In fact, you can apply Spark’s in-built
@@ -185,7 +188,7 @@ stream of results in batches.</p>
 
 <p>Spark Streaming provides a high-level abstraction called <em>discretized stream</em> or <em>DStream</em>,
 which represents a continuous stream of data. DStreams can be created either from input data
-stream from sources such as Kafka and Flume, or by applying high-level
+stream from sources such as Kafka, Flume, and Kinesis, or by applying high-level
 operations on other DStreams. Internally, a DStream is represented as a sequence of
 <a href="api/scala/index.html#org.apache.spark.rdd.RDD">RDDs</a>.</p>
 
@@ -432,7 +435,7 @@ artifactId = spark-streaming_2.10
 version = 1.0.0-SNAPSHOT
 </code></pre>
 
-<p>For ingesting data from sources like Kafka and Flume that are not present in the Spark
+<p>For ingesting data from sources like Kafka, Flume, and Kinesis that are not present in the Spark
 Streaming core
  API, you will have to add the corresponding
 artifact <code>spark-streaming-xyz_2.10</code> to the dependencies. For example,
@@ -445,6 +448,7 @@ some of the common ones are as follows.</p>
 <tr><td> Twitter </td><td> spark-streaming-twitter_2.10 </td></tr>
 <tr><td> ZeroMQ </td><td> spark-streaming-zeromq_2.10 </td></tr>
 <tr><td> MQTT </td><td> spark-streaming-mqtt_2.10 </td></tr>
+<tr><td> Kinesis<br />(built separately)</td><td> kinesis-asl_2.10 </td></tr>
 <tr><td> </td><td></td></tr>
 </table>
 
@@ -553,7 +557,7 @@ see the API documentations of the relevant functions in
 Scala and <a href="api/scala/index.html#org.apache.spark.streaming.api.java.JavaStreamingContext">JavaStreamingContext</a>
  for Java.</p>
 
-<p>Additional functionality for creating DStreams from sources such as Kafka, Flume, and Twitter
+<p>Additional functionality for creating DStreams from sources such as Kafka, Flume, Kinesis, and Twitter
 can be imported by adding the right dependencies as explained in an
 <a href="#linking">earlier</a> section. To take the
 case of Kafka, after adding the artifact <code>spark-streaming-kafka_2.10</code> to the
@@ -577,6 +581,9 @@ project dependencies, you can create a DStream from Kafka as</p>
 <p>For more details on these additional sources, see the corresponding <a href="#where-to-go-from-here">API documentation</a>.
 Furthermore, you can also implement your own custom receiver for your sources. See the
 <a href="streaming-custom-receivers.html">Custom Receiver Guide</a>.</p>
+
+<h3 id="kinesis">Kinesis</h3>
+<p><a href="streaming-kinesis.html">Kinesis</a></p>
 
 <h2 id="operations">Operations</h2>
 <p>There are two kinds of DStream operations - <em>transformations</em> and <em>output operations</em>. Similar to
@@ -1035,7 +1042,7 @@ Receiving multiple data streams can therefore be achieved by creating multiple i
 and configuring them to receive different partitions of the data stream from the source(s).
 For example, a single Kafka input stream receiving two topics of data can be split into two
 Kafka input streams, each receiving only one topic. This would run two receivers on two workers,
-thus allowing data to received in parallel, and increasing overall throughput.</p>
+thus allowing data to be received in parallel, and increasing overall throughput.</p>
 
 <p>Another parameter that should be considered is the receiver’s blocking interval. For most receivers,
 the received data is coalesced together into large blocks of data before storing inside Spark’s memory.
@@ -1083,7 +1090,7 @@ latencies. The overhead can be reduced by the following changes:</p>
 
 <ul>
   <li>
-    <p><strong>Task Serialization</strong>: Using Kryo serialization for serializing tasks can reduced the task
+    <p><strong>Task Serialization</strong>: Using Kryo serialization for serializing tasks can reduce the task
 sizes, and therefore reduce the time taken to send them to the slaves.</p>
   </li>
   <li>
