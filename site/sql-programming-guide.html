@@ -289,7 +289,19 @@ registered as a table.  Tables can be used in subsequent SQL statements.</p>
 <span class="c1">// The columns of a row in the result can be accessed by ordinal.</span>
 <span class="n">teenagers</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span></code></pre></div>
 
-    <p>Another way to turns an RDD to table is to use <code>applySchema</code>. Here is an example.</p>
+    <p>In cases that case classes cannot be defined ahead of time (for example,
+dynamically parsing text files and then projecting parsed fields),
+a <code>SchemaRDD</code> can be created programmatically with three steps.</p>
+
+    <ol>
+      <li>Create an RDD of <code>Row</code>s from the original RDD;</li>
+      <li>Create the schema represented by a <code>StructType</code> matching the structure of
+<code>Row</code>s in the RDD created in the step 1.</li>
+      <li>Apply the schema to the RDD of <code>Row</code>s via <code>applySchema</code> method provided
+by <code>SQLContext</code>.</li>
+    </ol>
+
+    <p>For example:</p>
 
     <div class="highlight"><pre><code class="scala"><span class="c1">// sc is an existing SparkContext.</span>
 <span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
@@ -306,7 +318,7 @@ registered as a table.  Tables can be used in subsequent SQL statements.</p>
     <span class="nc">StructField</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="nc">StringType</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span> <span class="o">::</span>
     <span class="nc">StructField</span><span class="o">(</span><span class="s">&quot;age&quot;</span><span class="o">,</span> <span class="nc">IntegerType</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span> <span class="o">::</span> <span class="nc">Nil</span><span class="o">)</span>
 
-<span class="c1">// Convert records of the RDD (people) to rows.</span>
+<span class="c1">// Convert records of the RDD (people) to Rows.</span>
 <span class="k">val</span> <span class="n">rowRDD</span> <span class="k">=</span> <span class="n">people</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">)).</span><span class="n">map</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="nc">Row</span><span class="o">(</span><span class="n">p</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">p</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="n">trim</span><span class="o">.</span><span class="n">toInt</span><span class="o">))</span>
 
 <span class="c1">// Apply the schema to the RDD.</span>
@@ -387,7 +399,19 @@ for the JavaBean.</p>
   <span class="o">}</span>
 <span class="o">}).</span><span class="na">collect</span><span class="o">();</span></code></pre></div>
 
-    <p>Another way to turns an RDD to table is to use <code>applySchema</code>. Here is an example.</p>
+    <p>In cases that JavaBean classes cannot be defined ahead of time (for example,
+dynamically parsing text files and then projecting parsed fields),
+a <code>SchemaRDD</code> can be created programmatically with three steps.</p>
+
+    <ol>
+      <li>Create an RDD of <code>Row</code>s from the original RDD;</li>
+      <li>Create the schema represented by a <code>StructType</code> matching the structure of
+<code>Row</code>s in the RDD created in the step 1.</li>
+      <li>Apply the schema to the RDD of <code>Row</code>s via <code>applySchema</code> method provided
+by <code>JavaSQLContext</code>.</li>
+    </ol>
+
+    <p>For example:</p>
 
     <div class="highlight"><pre><code class="java"><span class="c1">// Import factory methods provided by DataType.</span>
 <span class="kn">import</span> <span class="nn">org.apache.spark.sql.api.java.DataType</span>
@@ -408,7 +432,7 @@ for the JavaBean.</p>
     <span class="n">fields</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">DataType</span><span class="o">.</span><span class="na">createStructField</span><span class="o">(</span><span class="s">&quot;age&quot;</span><span class="o">,</span> <span class="n">DataType</span><span class="o">.</span><span class="na">IntegerType</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
 <span class="n">StructType</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">DataType</span><span class="o">.</span><span class="na">createStructType</span><span class="o">(</span><span class="n">fields</span><span class="o">);</span>
 
-<span class="c1">// Convert records of the RDD (people) to rows.</span>
+<span class="c1">// Convert records of the RDD (people) to Rows.</span>
 <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">&gt;</span> <span class="n">rowRDD</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
   <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Row</span><span class="o">&gt;()</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">Row</span> <span class="nf">call</span><span class="o">(</span><span class="n">Person</span> <span class="n">person</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
@@ -465,7 +489,16 @@ can be used in subsequent SQL statements.</p>
 <span class="k">for</span> <span class="n">teenName</span> <span class="ow">in</span> <span class="n">teenNames</span><span class="o">.</span><span class="n">collect</span><span class="p">():</span>
   <span class="k">print</span> <span class="n">teenName</span></code></pre></div>
 
-    <p>Another way to turns an RDD to table is to use <code>applySchema</code>. Here is an example.</p>
+    <p>Alternatively, a <code>SchemaRDD</code> can be created programmatically with three steps.</p>
+
+    <ol>
+      <li>Create an RDD of tuples or lists from the original RDD;</li>
+      <li>Create the schema represented by a <code>StructType</code> matching the structure of
+tuples or lists in the RDD created in the step 1.</li>
+      <li>Apply the schema to the RDD via <code>applySchema</code> method provided by <code>SQLContext</code>.</li>
+    </ol>
+
+    <p>For example:</p>
 
     <div class="highlight"><pre><code class="python"><span class="c"># Import SQLContext and data types</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="o">*</span>
