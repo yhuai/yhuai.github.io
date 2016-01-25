@@ -15,11 +15,11 @@
   
 
   <!-- Bootstrap core CSS -->
-  <link href="css/cerulean.min.css" rel="stylesheet">
-  <link href="css/custom.css" rel="stylesheet">
+  <link href="/css/cerulean.min.css" rel="stylesheet">
+  <link href="/css/custom.css" rel="stylesheet">
 
   <!-- Code highlighter CSS -->
-  <link rel="stylesheet" href="css/pygments-default.css">
+  <link rel="stylesheet" href="/css/pygments-default.css">
 
   <script type="text/javascript">
   <!-- Google Analytics initialization -->
@@ -182,79 +182,10 @@ On top of Sparkâ€™s RDD API, high level APIs are provided, e.g. <em>DataFrame AP
 These high level APIs provide a concise way to conduct certain data operations.
 In this page, we will show examples using RDD API as well as examples using high level APIs.</p>
 
-<p>For examples shown below, a <em>SparkContext</em> and <em>SQLContext</em> are used.
-The following code snippet shows how to create them.</p>
-
-<ul class="nav nav-tabs">
-  <li class="lang-tab lang-tab-python active"><a href="#">Python</a></li>
-  <li class="lang-tab lang-tab-scala"><a href="#">Scala</a></li>
-  <li class="lang-tab lang-tab-java"><a href="#">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div class="tab-pane tab-pane-python active">
-<div class="code code-tab">
-
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkContext</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SQLContext</span>
-
-<span class="c"># Creates SparkContext and SQLContext.</span>
-<span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">()</span>
-<span class="n">sqlContext</span> <span class="o">=</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
-
-<span class="c"># Starting from Spark 1.6.0, getOrCreate is available.</span>
-<span class="c"># It can be used to gets or instantiates</span>
-<span class="c"># a SparkContext/SQLContext and</span>
-<span class="c"># registers it as a singleton object.</span>
-<span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
-<span class="n">sqlContext</span> <span class="o">=</span> <span class="n">SQLContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span></code></pre></div>
-
-</div>
-</div>
-
-<div class="tab-pane tab-pane-scala">
-<div class="code code-tab">
-
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">org.apache.spark.SparkContext</span>
-<span class="k">import</span> <span class="nn">org.apache.spark.sql.SQLContext</span>
-
-<span class="c1">// Creates SparkContext and SQLContext.</span>
-<span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">()</span>
-<span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span>
-
-<span class="c1">// Starting from Spark 1.5.0, getOrCreate is available.</span>
-<span class="c1">// It can be used to gets or instantiates</span>
-<span class="c1">// a SparkContext/SQLContext and</span>
-<span class="c1">// registers it as a singleton object.</span>
-<span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="nc">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="k">val</span> <span class="n">sqlContext</span> <span class="k">=</span> <span class="nc">SQLContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="o">(</span><span class="n">sc</span><span class="o">)</span></code></pre></div>
-
-</div>
-</div>
-
-<div class="tab-pane tab-pane-java">
-<div class="code code-tab">
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.spark.api.java.JavaSparkContext</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.SparkContext</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.SQLContext</span><span class="o">;</span>
-
-<span class="c1">// Creates SparkContext and SQLContext.</span>
-<span class="n">JavaSparkContext</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">JavaSparkContext</span><span class="o">();</span>
-<span class="n">SQLContext</span> <span class="n">sqlContext</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">SQLContext</span><span class="o">(</span><span class="n">sc</span><span class="o">);</span>
-
-<span class="c1">// Starting from Spark 1.5.0, getOrCreate is available.</span>
-<span class="c1">// It can be used to gets or instantiates</span>
-<span class="c1">// a SparkContext/SQLContext and</span>
-<span class="c1">// registers it as a singleton object.</span>
-<span class="n">JavaSparkContext</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">JavaSparkContext</span><span class="o">(</span><span class="n">SparkContext</span><span class="o">.</span><span class="na">getOrCreate</span><span class="o">());</span>
-<span class="n">SQLContext</span> <span class="n">sqlContext</span> <span class="o">=</span> <span class="n">SQLContext</span><span class="o">.</span><span class="na">getOrCreate</span><span class="o">(</span><span class="n">sc</span><span class="o">.</span><span class="na">sc</span><span class="o">());</span></code></pre></div>
-
-</div>
-</div>
-</div>
-
-<p><em>Note: Examples below require Spark 1.4.0 and above.</em></p>
+<p>For examples shown below, Spark 1.4.0 and above is required, and
+a <em><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.SparkContext">SparkContext</a></em>
+and <em><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.SQLContext">SQLContext</a></em> are used.
+Also, to make examples concise, import statements are not shown below.</p>
 
 <h2>RDD API Examples</h2>
 
@@ -295,17 +226,7 @@ The following code snippet shows how to create them.</p>
 <div class="tab-pane tab-pane-java">
 <div class="code code-tab">
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">scala.Tuple2</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.JavaPairRDD</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.JavaRDD</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.function.FlatMapFunction</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.function.Function2</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.function.PairFunction</span><span class="o">;</span>
-
-<span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">textFile</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">textFile</span><span class="o">(</span><span class="s">&quot;hdfs://...&quot;</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">textFile</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">textFile</span><span class="o">(</span><span class="s">&quot;hdfs://...&quot;</span><span class="o">);</span>
 <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">words</span> <span class="o">=</span> <span class="n">textFile</span><span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="k">new</span> <span class="n">FlatMapFunction</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
   <span class="kd">public</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">call</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&quot; &quot;</span><span class="o">));</span> <span class="o">}</span>
 <span class="o">});</span>
@@ -334,16 +255,13 @@ The following code snippet shows how to create them.</p>
 <div class="tab-pane tab-pane-python active">
 <div class="code code-tab">
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
-
-<span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">()</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span>
 
 <span class="n">count</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NUM_SAMPLES</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> \
              <span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Pi is roughly </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">count</span> <span class="o">/</span> <span class="n">NUM_SAMPLES</span><span class="p">))</span></code></pre></div>
+<span class="k">print</span> <span class="s">&quot;Pi is roughly </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">count</span> <span class="o">/</span> <span class="n">NUM_SAMPLES</span><span class="p">)</span></code></pre></div>
 
 </div>
 </div>
@@ -364,12 +282,7 @@ The following code snippet shows how to create them.</p>
 <div class="tab-pane tab-pane-java">
 <div class="code code-tab">
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.function.Function</span><span class="o">;</span>
-
-<span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="n">NUM_SAMPLES</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="n">NUM_SAMPLES</span><span class="o">);</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_SAMPLES</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
   <span class="n">l</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
 <span class="o">}</span>
@@ -408,10 +321,7 @@ Also, programs based on DataFrame API will be automatically optimized by Sparkâ€
 <div class="tab-pane tab-pane-python active">
 <div class="code code-tab">
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">Row</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">textFile</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="s">&quot;hdfs://...&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">textFile</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="s">&quot;hdfs://...&quot;</span><span class="p">)</span>
 
 <span class="c"># Creates a DataFrame having a single column named &quot;line&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">textFile</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">Row</span><span class="p">(</span><span class="n">r</span><span class="p">))</span><span class="o">.</span><span class="n">toDF</span><span class="p">([</span><span class="s">&quot;line&quot;</span><span class="p">])</span>
@@ -429,10 +339,7 @@ Also, programs based on DataFrame API will be automatically optimized by Sparkâ€
 <div class="tab-pane tab-pane-scala">
 <div class="code code-tab">
 
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
-<span class="k">import</span> <span class="nn">sqlContext.implicits._</span>
-
-<span class="k">val</span> <span class="n">textFile</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&quot;hdfs://...&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">textFile</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&quot;hdfs://...&quot;</span><span class="o">)</span>
 
 <span class="c1">// Creates a DataFrame having a single column named &quot;line&quot;</span>
 <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">textFile</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;line&quot;</span><span class="o">)</span>
@@ -450,20 +357,7 @@ Also, programs based on DataFrame API will be automatically optimized by Sparkâ€
 <div class="tab-pane tab-pane-java">
 <div class="code code-tab">
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.JavaRDD</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.function.Function</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.DataFrame</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">spark</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">functions</span><span class="o">.</span><span class="na">col</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.Row</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.RowFactory</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.types.DataTypes</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.types.StructField</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.types.StructType</span><span class="o">;</span>
-
-<span class="c1">// Creates a DataFrame having a single column named &quot;line&quot;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Creates a DataFrame having a single column named &quot;line&quot;</span>
 <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">textFile</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">textFile</span><span class="o">(</span><span class="s">&quot;hdfs://...&quot;</span><span class="o">);</span>
 <span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">&gt;</span> <span class="n">rowRDD</span> <span class="o">=</span> <span class="n">textFile</span><span class="o">.</span><span class="na">map</span><span class="o">(</span>
   <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Row</span><span class="o">&gt;()</span> <span class="o">{</span>
@@ -492,15 +386,9 @@ Also, programs based on DataFrame API will be automatically optimized by Sparkâ€
 <p>
 In this example, we read a table stored in a database and calculate the number of people for every age.
 Finally, we save the calculated result to S3 in the format of JSON.
-A simple MySQL table "people" is used in the example. This table can be created by using the following SQL commands.
+A simple MySQL table "people" is used in the example and this table has two columns,
+"name" and "age".
 </p>
-
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">test</span><span class="p">;</span>
-<span class="n">USE</span> <span class="n">test</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">people</span> <span class="p">(</span><span class="n">name</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">age</span> <span class="nb">INT</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">people</span> <span class="k">VALUES</span> <span class="p">(</span><span class="ss">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">people</span> <span class="k">VALUES</span> <span class="p">(</span><span class="ss">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">people</span> <span class="k">VALUES</span> <span class="p">(</span><span class="ss">&quot;Carol&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span></code></pre></div>
 
 <ul class="nav nav-tabs">
   <li class="lang-tab lang-tab-python active"><a href="#">Python</a></li>
@@ -566,9 +454,7 @@ A simple MySQL table "people" is used in the example. This table can be created 
 <div class="tab-pane tab-pane-java">
 <div class="code code-tab">
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.spark.sql.DataFrame</span><span class="o">;</span>
-
-<span class="c1">// Creates a DataFrame based on a table named &quot;people&quot;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Creates a DataFrame based on a table named &quot;people&quot;</span>
 <span class="c1">// stored in a MySQL database.</span>
 <span class="n">String</span> <span class="n">url</span> <span class="o">=</span>
   <span class="s">&quot;jdbc:mysql://yourIP:yourPort/test?user=yourUsername;password=yourPassword&quot;</span><span class="o">;</span>
@@ -621,15 +507,8 @@ We learn to predict the labels from feature vectors using the Logistic Regressio
 <div class="tab-pane tab-pane-python active">
 <div class="code code-tab">
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pyspark.ml.classification</span> <span class="kn">import</span> <span class="n">LogisticRegression</span><span class="p">,</span> <span class="n">LogisticRegressionModel</span>
-<span class="kn">from</span> <span class="nn">pyspark.mllib.linalg</span> <span class="kn">import</span> <span class="n">Vectors</span>
-
-<span class="c"># Create a DataFrame of vectors to cluster.</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)),</span>
-        <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)),</span>
-        <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)),</span>
-        <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="mf">8.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)),</span>
-        <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">))]</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Every record of this DataFrame contains the label and</span>
+<span class="c"># features represented by a vector.</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;label&quot;</span><span class="p">,</span> <span class="s">&quot;features&quot;</span><span class="p">])</span>
 
 <span class="c"># Set parameters for the algorithm.</span>
@@ -648,17 +527,8 @@ We learn to predict the labels from feature vectors using the Logistic Regressio
 <div class="tab-pane tab-pane-scala">
 <div class="code code-tab">
 
-<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">org.apache.spark.ml.classification.LogisticRegression</span>
-<span class="k">import</span> <span class="nn">org.apache.spark.mllib.linalg.Vectors</span>
-
-<span class="c1">// Create a DataFrame of vectors to cluster.</span>
-<span class="k">val</span> <span class="n">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
-  <span class="o">(</span><span class="mf">0.0</span><span class="o">,</span> <span class="nc">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="o">(</span><span class="mf">1.0</span><span class="o">,</span> <span class="mf">2.0</span><span class="o">,</span> <span class="mf">5.0</span><span class="o">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">)),</span>
-  <span class="o">(</span><span class="mf">1.0</span><span class="o">,</span> <span class="nc">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="o">(-</span><span class="mf">1.0</span><span class="o">,</span> <span class="mf">2.0</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mf">1.0</span><span class="o">)),</span>
-  <span class="o">(</span><span class="mf">0.0</span><span class="o">,</span> <span class="nc">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="o">(</span><span class="mf">3.0</span><span class="o">,</span> <span class="mf">0.0</span><span class="o">,</span> <span class="mf">9.0</span><span class="o">,</span> <span class="mf">1.0</span><span class="o">)),</span>
-  <span class="o">(</span><span class="mf">0.0</span><span class="o">,</span> <span class="nc">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="o">(</span><span class="mf">8.0</span><span class="o">,</span> <span class="mf">1.0</span><span class="o">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">)),</span>
-  <span class="o">(</span><span class="mf">1.0</span><span class="o">,</span> <span class="nc">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="o">(</span><span class="mf">1.0</span><span class="o">,</span> <span class="mf">4.0</span><span class="o">,</span> <span class="mf">2.0</span><span class="o">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">))</span>
-<span class="o">)</span>
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="c1">// Every record of this DataFrame contains the label and</span>
+<span class="c1">// features represented by a vector.</span>
 <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">createDataFrame</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;label&quot;</span><span class="o">,</span> <span class="s">&quot;features&quot;</span><span class="o">)</span>
 
 <span class="c1">// Set parameters for the algorithm.</span>
@@ -680,27 +550,8 @@ We learn to predict the labels from feature vectors using the Logistic Regressio
 <div class="tab-pane tab-pane-java">
 <div class="code code-tab">
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">org.apache.spark.api.java.JavaRDD</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.ml.classification.LogisticRegression</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.ml.classification.LogisticRegressionModel</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Vector</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.VectorUDT</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.mllib.linalg.Vectors</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.DataFrame</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.Row</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.RowFactory</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.spark.sql.types.*</span><span class="o">;</span>
-
-<span class="c1">// Create a DataFrame of vectors to cluster.</span>
-<span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">jsc</span><span class="o">.</span><span class="na">parallelize</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
-  <span class="n">RowFactory</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="mf">0.0</span><span class="o">,</span> <span class="n">Vectors</span><span class="o">.</span><span class="na">dense</span><span class="o">(</span><span class="mf">1.0</span><span class="o">,</span> <span class="mf">2.0</span><span class="o">,</span> <span class="mf">5.0</span><span class="o">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">)),</span>
-  <span class="n">RowFactory</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="mf">1.0</span><span class="o">,</span> <span class="n">Vectors</span><span class="o">.</span><span class="na">dense</span><span class="o">(-</span><span class="mf">1.0</span><span class="o">,</span> <span class="mf">2.0</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mf">1.0</span><span class="o">)),</span>
-  <span class="n">RowFactory</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="mf">0.0</span><span class="o">,</span> <span class="n">Vectors</span><span class="o">.</span><span class="na">dense</span><span class="o">(</span><span class="mf">3.0</span><span class="o">,</span> <span class="mf">0.0</span><span class="o">,</span> <span class="mf">9.0</span><span class="o">,</span> <span class="mf">1.0</span><span class="o">)),</span>
-  <span class="n">RowFactory</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="mf">0.0</span><span class="o">,</span> <span class="n">Vectors</span><span class="o">.</span><span class="na">dense</span><span class="o">(</span><span class="mf">8.0</span><span class="o">,</span> <span class="mf">1.0</span><span class="o">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">)),</span>
-  <span class="n">RowFactory</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="mf">1.0</span><span class="o">,</span> <span class="n">Vectors</span><span class="o">.</span><span class="na">dense</span><span class="o">(</span><span class="mf">1.0</span><span class="o">,</span> <span class="mf">4.0</span><span class="o">,</span> <span class="mf">2.0</span><span class="o">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">))</span>
-<span class="o">));</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Every record of this DataFrame contains the label and</span>
+<span class="c1">// features represented by a vector.</span>
 <span class="n">StructType</span> <span class="n">schema</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">StructType</span><span class="o">(</span><span class="k">new</span> <span class="n">StructField</span><span class="o">[]{</span>
   <span class="k">new</span> <span class="nf">StructField</span><span class="o">(</span><span class="s">&quot;label&quot;</span><span class="o">,</span> <span class="n">DataTypes</span><span class="o">.</span><span class="na">DoubleType</span><span class="o">,</span> <span class="kc">false</span><span class="o">,</span> <span class="n">Metadata</span><span class="o">.</span><span class="na">empty</span><span class="o">()),</span>
   <span class="k">new</span> <span class="nf">StructField</span><span class="o">(</span><span class="s">&quot;features&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nf">VectorUDT</span><span class="o">(),</span> <span class="kc">false</span><span class="o">,</span> <span class="n">Metadata</span><span class="o">.</span><span class="na">empty</span><span class="o">()),</span>
